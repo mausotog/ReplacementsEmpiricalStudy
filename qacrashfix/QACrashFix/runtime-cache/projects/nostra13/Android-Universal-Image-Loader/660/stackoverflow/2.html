@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+    
+    <title>java.lang.RuntimeException: Unable to create application and at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4254) - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="java.lang.RuntimeException: Unable to create application and at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4254)" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I am new to android and java. I tried to check my code against an example but somehow the application keeps forced close while the example works perfectly well. I need help please! Thanks in advanc..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=7e66a1b227e7"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=689e41cd2883">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;java.lang.RuntimeException: Unable to create application and at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4254)&#39;" href="/feeds/question/17966164">
+    <meta name="twitter:app:country" content="US" />
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:iphone" content="871299723" />
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti" />
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:ipad" content="871299723" />
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti" />
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:17966164});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '17966164');
+                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+        });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1428123056,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"a79554347e92cbc0695a04e1e8375545","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"a01c3030569e","js/moderator.en.js":"9be321ee4fdc","js/full-anon.en.js":"0e605e6101e2","js/full.en.js":"d86f58802e92","js/wmd.en.js":"89e46762f17e","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"a2341f691d0d","js/help.en.js":"637a173e1aa4","js/tageditor.en.js":"3f818f06656a","js/tageditornew.en.js":"f9c5a11452c0","js/inline-tag-editing.en.js":"f53885bdadce","js/revisions.en.js":"6c7265ea9fa1","js/review.en.js":"1305a2469a54","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"23eb1e4c85da","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"588492b46561","js/keyboard-shortcuts.en.js":"77412b2bfcc4","js/external-editor.en.js":"333f2972598f","js/external-editor.en.js":"333f2972598f","js/snippet-javascript.en.js":"d4699d4cc44f","js/snippet-javascript-codemirror.en.js":"5407f517dfab"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f17966164%2fjava-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f17966164%2fjava-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 140 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f17966164%2fjava-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f17966164%2fjava-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+	<link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+			<h1 itemprop="name"><a href="/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti" class="question-hyperlink">java.lang.RuntimeException: Unable to create application and at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4254)</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="17966164"  id="question">
+
+    <div class="everyonelovesstackoverflow" id="careers1">
+        </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="17966164">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b></b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>I am new to android and java. I tried to check my code against an example but somehow the application keeps forced close while the example works perfectly well. I need help please! Thanks in advance! I just changed the name to string instead of int. I don't know if i did correct for HistoryActivity the ArrayAdapter </p>
+
+<p><strong>Logcat:</strong></p>
+
+<pre><code>07-31 17:26:56.485: E/ArrayAdapter(20248): You must supply a resource ID for a TextView
+07-31 17:26:56.490: D/AndroidRuntime(20248): Shutting down VM
+07-31 17:26:56.490: W/dalvikvm(20248): threadid=1: thread exiting with uncaught exception (group=0x40fdb2a0)
+07-31 17:26:56.505: E/AndroidRuntime(20248): FATAL EXCEPTION: main
+07-31 17:26:56.505: E/AndroidRuntime(20248): java.lang.IllegalStateException: ArrayAdapter requires the resource ID to be a TextView
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.ArrayAdapter.createViewFromResource(ArrayAdapter.java:386)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.ArrayAdapter.getView(ArrayAdapter.java:362)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.AbsListView.obtainView(AbsListView.java:2465)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.ListView.makeAndAddView(ListView.java:1775)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.ListView.fillDown(ListView.java:678)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.ListView.fillFromTop(ListView.java:739)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.ListView.layoutChildren(ListView.java:1628)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.AbsListView.onLayout(AbsListView.java:2300)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.View.layout(View.java:14072)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewGroup.layout(ViewGroup.java:4607)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1655)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1513)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.LinearLayout.onLayout(LinearLayout.java:1426)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.View.layout(View.java:14072)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewGroup.layout(ViewGroup.java:4607)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.View.layout(View.java:14072)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewGroup.layout(ViewGroup.java:4607)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1655)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1513)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.LinearLayout.onLayout(LinearLayout.java:1426)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.View.layout(View.java:14072)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewGroup.layout(ViewGroup.java:4607)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.View.layout(View.java:14072)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewGroup.layout(ViewGroup.java:4607)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:1997)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:1818)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1115)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:4526)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.Choreographer$CallbackRecord.run(Choreographer.java:725)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.Choreographer.doCallbacks(Choreographer.java:555)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.Choreographer.doFrame(Choreographer.java:525)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:711)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.os.Handler.handleCallback(Handler.java:615)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.os.Handler.dispatchMessage(Handler.java:92)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.os.Looper.loop(Looper.java:137)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.app.ActivityThread.main(ActivityThread.java:4921)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at java.lang.reflect.Method.invokeNative(Native Method)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at java.lang.reflect.Method.invoke(Method.java:511)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1038)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:805)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at dalvik.system.NativeStart.main(Native Method)
+07-31 17:26:56.505: E/AndroidRuntime(20248): Caused by: java.lang.ClassCastException: android.widget.LinearLayout cannot be cast to android.widget.TextView
+07-31 17:26:56.505: E/AndroidRuntime(20248):    at android.widget.ArrayAdapter.createViewFromResource(ArrayAdapter.java:379)
+07-31 17:26:56.505: E/AndroidRuntime(20248):    ... 42 more
+</code></pre>
+
+<p>Contacts.java</p>
+
+<pre><code> package com.Elson.ProjectVersion;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteException;
+import android.util.Log;
+
+public class Contacts implements Comparable&lt;Contacts&gt; {
+
+    private long id;
+    private String name;
+    private int Phone;
+    private int Email;
+    private Date date;
+    private double runningAverage;
+
+
+
+
+    public Contacts(String name, int Phone,  Date date) {
+        this.name = name;
+        this.Phone = Phone;
+        this.date = date;
+    }
+
+    public Contacts(long id, String name,int Phone) {
+        this.id=id;
+        this.Phone=Phone;
+        this.name= (name);
+
+    }
+
+
+    public long getId() {
+
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getPhone() {
+        return Phone;
+    }
+    public void setPhone(int Phone) {
+        this.Phone = Phone;
+    }
+    public String getname() {
+        return name;
+    }
+    public void setname(String name) {
+        this.name = name;
+    }
+    public Date getDate() {
+        return date;
+    }
+
+    public long getDateEpoch(){
+        return date.getTime()/1000;
+    }
+    public void setDateEpoch(long seconds){
+        date= new Date (seconds*1000);
+    }
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+
+
+
+    public void setRunningAverage(double runningAverage) {
+        this.runningAverage = runningAverage;
+    }
+    public boolean equals(Object that){
+        Contacts bs = (Contacts) that;
+
+        return this.date.equals(bs.date);
+      }
+
+
+    @Override
+
+
+
+    public String toString() {
+        String result;
+
+        // "ID" + id +" "
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+        result = df.format(date) + "" + name + "" + Phone ; 
+
+
+
+        return result;
+    }
+
+    @Override
+    public int compareTo(Contacts another) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+}
+</code></pre>
+
+<p>ContactsActivityApplication:</p>
+
+<pre><code>package com.Elson.ProjectVersion;
+
+import java.util.ArrayList;
+
+import android.app.Application;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import static com.Elson.ProjectVersion.MyContactSQL.*;
+
+public class EnterContactsActivity extends Activity {
+
+private Button saveButton;
+private EditText NameEditText;
+private EditText PhoneEditText;
+private Button ExitButton;
+private EditText EmailEditText;
+private TextView date;
+
+private int month;//private within class
+private int day;
+private int year;
+
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_addcontacts);
+
+    setUpViews();
+
+    Calendar calendar =Calendar.getInstance();
+    year = calendar.get(Calendar.YEAR);
+    month = calendar.get(Calendar.MONTH);
+    day = calendar.get(Calendar.DAY_OF_MONTH);
+
+    Date today = calendar.getTime();
+    DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+    String cs = df.format(today);
+    date.setText(cs);
+}
+
+
+public void saveClickHandler(View v){
+
+    String ContactsScore;
+    ContactsScore= NameEditText.getText().toString();
+    String name = String.format(ContactsScore, null);
+    ContactsScore= PhoneEditText.getText().toString();
+    int Phone = Integer.parseInt(ContactsScore);
+
+    Log.d("EnterContacts" , "I hear the Save Button");
+
+    if( isValid(Phone) ) {
+        Contacts contacts;
+        Date dateofGames= new GregorianCalendar(year,month,day).getTime();
+        contacts = new Contacts (name , Phone ,  dateofGames);
+
+        ContactsActivityApplication app  = (ContactsActivityApplication) getApplication();
+        //might be wrong
+
+        Log.d("DeBUGGING", "app is this type: " + app.getClass().getName());
+        //need add the function addBowlingScores
+        app.addallContacts(contacts);
+
+        Toast.makeText(getApplicationContext(), "Your Contact has been Saved!", Toast.LENGTH_SHORT).show();
+
+}
+
+    else{
+        //pop up a dialog that data is invalid
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Invalid Phone Number")
+               .setMessage("Phone numbers cannot have more than 8 numbers")
+               .setCancelable(false)
+               .setPositiveButton("OK", 
+
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        dialog.cancel(); 
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+    }
+
+
+
+private boolean isValid(int Phone ) {
+
+    if(Phone &gt; 0 &amp;&amp; Phone &lt;100000000)
+        return true;
+    return false;
+    // TODO Auto-generated method stub
+}
+
+
+public void handleShowHistoryClick (View v) {
+
+    Intent intent = new Intent(this, HistoryActivity.class);
+    startActivity(intent);
+}
+
+
+private void setUpViews()
+{
+    ExitButton = (Button) findViewById(R.id.BtnExit);
+    saveButton =(Button) findViewById(R.id.BtnSave);
+    NameEditText= (EditText) findViewById(R.id.NameEditText);
+    PhoneEditText= (EditText) findViewById(R.id.PhoneEditText);
+    EmailEditText= (EditText) findViewById(R.id.EmailEditText);
+    date = (TextView) findViewById(R.id.DateTextView);
+
+}
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.addcontacts, menu);
+    return true;
+}
+
+}
+</code></pre>
+
+<p>EnterContactsActivity:</p>
+
+<pre><code>package com.Elson.ProjectVersion;
+
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class EnterContactsActivity extends Activity {
+
+private Button saveButton;
+private EditText NameEditText;
+private EditText PhoneEditText;
+private Button ExitButton;
+private EditText EmailEditText;
+private TextView date;
+
+private int month;//private within class
+private int day;
+private int year;
+
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_addcontacts);
+
+    setUpViews();
+
+    Calendar calendar =Calendar.getInstance();
+    year = calendar.get(Calendar.YEAR);
+    month = calendar.get(Calendar.MONTH);
+    day = calendar.get(Calendar.DAY_OF_MONTH);
+
+    Date today = calendar.getTime();
+    DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+    String cs = df.format(today);
+    date.setText(cs);
+}
+
+
+public void saveClickHandler(View v){
+
+    String ContactsScore;
+    ContactsScore= NameEditText.getText().toString();
+    int name = Integer.parseInt(ContactsScore);
+    ContactsScore= PhoneEditText.getText().toString();
+    int Phone = Integer.parseInt(ContactsScore);
+    ContactsScore = EmailEditText.getText().toString();
+    int Email = Integer.parseInt(ContactsScore);
+
+    Log.d("EnterContacts" , "I hear the Save Button");
+
+    if( isValid(name) &amp;&amp; isValid(Phone) &amp;&amp; isValid(Email) ) {
+        Contacts contacts;
+        Date dateofGames= new GregorianCalendar(year,month,day).getTime();
+        contacts = new Contacts (name , Phone , Email, dateofGames);
+
+        ContactsActivityApplication app  = (ContactsActivityApplication) getApplication();
+        //might be wrong
+
+        Log.d("DeBUGGING", "app is this type: " + app.getClass().getName());
+        //need add the function addBowlingScores
+        app.addallContacts(contacts);
+
+        Toast.makeText(getApplicationContext(), "Your Contact has been Saved!", Toast.LENGTH_SHORT).show();
+
+}
+
+    else{
+        //pop up a dialog that data is invalid
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Invalid Phone Number")
+               .setMessage("Phone numbers cannot have more than 8 numbers")
+               .setCancelable(false)
+               .setPositiveButton("OK", 
+
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        dialog.cancel(); 
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+    }
+private boolean isValid(int phone) {
+
+    if(phone &lt;= 0 &amp;&amp; phone &gt;=100000000)
+        return true;
+    return false;
+    // TODO Auto-generated method stub
+}
+
+
+private void setUpViews()
+{
+    ExitButton = (Button) findViewById(R.id.BtnExit);
+    saveButton =(Button) findViewById(R.id.BtnSave);
+    NameEditText= (EditText) findViewById(R.id.NameEditText);
+    PhoneEditText= (EditText) findViewById(R.id.PhoneEditText);
+    EmailEditText= (EditText) findViewById(R.id.EmailEditText);
+    date = (TextView) findViewById(R.id.DateTextView);
+
+}
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.addcontacts, menu);
+    return true;
+}
+
+ }
+</code></pre>
+
+<p>MyContactsSQL:</p>
+
+<pre><code>package com.Elson.ProjectVersion;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteException;
+import android.util.Log;
+</code></pre>
+
+<p>public class MyContactSQL extends SQLiteOpenHelper {</p>
+
+<pre><code>public static final String DB_NAME ="MyContactSQL.SQLite";
+public static final int DB_VERSION = 1;
+public static String CONTACT_LIST_TABLE = "ContactListTable";
+public static String RECORD_ID ="ID";
+public  static String NAME = "NAME";
+public static String PHONE_NUMBER="PhoneNumber";
+
+public MyContactSQL(Context context) {
+    super(context, DB_NAME, null, DB_VERSION);
+
+}
+
+@Override
+public void onCreate(SQLiteDatabase contactListDB) {
+
+
+    String sqlStatement = "create table " + CONTACT_LIST_TABLE 
+            + " ("
+            + RECORD_ID + " integer primary key autoincrement not null,"
+            + NAME + " long,"
+            + PHONE_NUMBER +" integer"
+            +");";
+
+
+           Log.d("Contact Database", sqlStatement);
+
+           contactListDB.execSQL(sqlStatement);
+
+}
+
+@Override
+public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+
+}
+
+}
+</code></pre>
+
+<p>HistoryActivity:        </p>
+
+<pre><code>import java.util.ArrayList;
+
+import android.app.AlertDialog;
+import android.app.ListActivity;
+import android.content.DialogInterface;
+import android.os.Bundle; 
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class HistoryActivity extends ListActivity {
+
+Bundle savedInstanceState;
+private ArrayList &lt;Contacts&gt; allContacts;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    this.savedInstanceState = savedInstanceState;
+    setContentView(R.layout.history_layout);
+
+    //get data from the App
+    ContactsActivityApplication app = (ContactsActivityApplication) getApplication();
+    allContacts = app.getAllContacts();
+
+
+    //View  --- Adapter  ------ Data 
+
+    setListAdapter(
+            new ArrayAdapter&lt;Contacts&gt; (this, R.layout.history_row,
+                    allContacts
+                    ));
+
+        ListView listView = this.getListView();
+        listView.setOnItemClickListener(
+                 new OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView&lt;?&gt; parent, View view,
+                            int position, long id) {
+                        verifyDeleteRow(position);
+                        Log.d("DEBUG", "I hear item selected:" + position);
+                        // TODO Auto-generated method stub
+
+                    }
+
+                 }
+
+                 );
+ }
+
+private void verifyDeleteRow(final int position){
+    //pop up a dialog to confirm delete row
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setTitle("Delete this Series?")
+           .setMessage("Do you want to delete this data?" + allContacts.get(position))
+           .setCancelable(false)
+           .setNegativeButton("NO! Leave it there!", 
+
+                   new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // TODO Auto-generated method stub
+                    dialog.cancel(); 
+                }
+            })
+           .setPositiveButton("Delete", 
+
+            new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    Contacts toDelete = allContacts.get(position);
+
+                    ContactsActivityApplication app = (ContactsActivityApplication) getApplication();
+                    app.deleteBowlingScores(toDelete);
+                    // TODO Auto-generated method stub
+                    onCreate(savedInstanceState);
+                }
+            });
+
+    AlertDialog alert = builder.create();
+    alert.show();
+
+}
+}
+</code></pre>
+
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/java" class="post-tag" title="show questions tagged 'java'" rel="tag">java</a> <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/forceclose" class="post-tag" title="show questions tagged 'forceclose'" rel="tag">forceclose</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/17966164" title="short permalink to this question" class="short-link" id="link-post-17966164">share</a><span class="lsep">|</span><a href="/posts/17966164/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/17966164/revisions" title="show all edits to this post">edited <span title="2013-07-31 09:32:54Z" class="relativetime">Jul 31 '13 at 9:32</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2013-07-31 09:10:09Z" class="relativetime">Jul 31 '13 at 9:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2627981/elson-tan"><div class="gravatar-wrapper-32"><img src="http://graph.facebook.com/564220998/picture?type=large" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2627981/elson-tan">Elson Tan</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">20</span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-17966164" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-17966164" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								2 Answers
+                                <span style="display:none;" itemprop="answerCount">2</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/17966164/java-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="17966208"></a>
+<div id="answer-17966208" class="answer accepted-answer" data-answerid="17966208"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="17966208">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The <code>date</code> object you are passing to <code>df.format</code> is NULL, which is causing <code>NullPointerException</code></p>
+
+<pre><code>public String toString() {
+    String result;
+
+    // "ID" + id +" "
+    DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+    result = df.format(date) + "" + name + "" + Phone ; 
+             ^^^^^^^^^^^^^^^
+             date object is null above
+
+
+    return result;
+}
+</code></pre>
+
+<p>you need to do <strong>null check</strong> on the <code>date</code> instance</p>
+
+<pre><code>if(date != null) {
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+        result = df.format(date) + "" + name + "" + Phone ; 
+}
+else {
+      result = name + "" + Phone ; 
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/17966208" title="short permalink to this answer" class="short-link" id="link-post-17966208">share</a><span class="lsep">|</span><a href="/posts/17966208/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-07-31 09:12:11Z" class="relativetime">Jul 31 '13 at 9:12</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/991778/sanbhat"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/YaM1q.png?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/991778/sanbhat">sanbhat</a><br>
+        <span class="reputation-score" title="reputation score 11905" dir="ltr">11.9k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="20 silver badges"><span class="badge2"></span><span class="badgecount">20</span></span><span title="38 bronze badges"><span class="badge3"></span><span class="badgecount">38</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-17966208" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-26261400" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Yeah it works. But now when i press my History button it force closes again. I think it is regarding the ArrayAdapter. I have updated the Logcat above. Please help me. THANKS A LOT IN ADVANCE!</span>
+                &ndash;&nbsp;
+                    <a href="/users/2627981/elson-tan"
+                       title="20 reputation"
+                       class="comment-user owner">Elson Tan</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-31 09:34:06Z" class="relativetime-clean">Jul 31 '13 at 9:34</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-17966208" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<div class="everyonelovesstackoverflow" id="careers3">
+        </div>
+  
+<a name="17966248"></a>
+<div id="answer-17966248" class="answer" data-answerid="17966248"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="17966248">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I think the <code>date</code> varibale is not initialized when you are trying to parse using it here:</p>
+
+<pre><code>result = df.format(date) + "" + name + "" + Phone ; 
+</code></pre>
+
+<p>So make sure you have initialized it before passing it to parse.</p>
+
+<p>And please <strong>only post the code relevant to your problem</strong>. Not the entire code, unless required. It creates a lot of confusion</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/17966248" title="short permalink to this answer" class="short-link" id="link-post-17966248">share</a><span class="lsep">|</span><a href="/posts/17966248/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-07-31 09:14:26Z" class="relativetime">Jul 31 '13 at 9:14</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1151456/abubakkar-rangara"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/f2acf85f0a669a916bb98b7171d7afea?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1151456/abubakkar-rangara">Abubakkar Rangara</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">7,177</span><span title="22 silver badges"><span class="badge2"></span><span class="badgecount">22</span></span><span title="45 bronze badges"><span class="badge3"></span><span class="badgecount">45</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-17966248" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-26261373" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Sorry i am new here. So sorry.</span>
+                &ndash;&nbsp;
+                    <a href="/users/2627981/elson-tan"
+                       title="20 reputation"
+                       class="comment-user owner">Elson Tan</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-31 09:33:16Z" class="relativetime-clean">Jul 31 '13 at 9:33</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-26261500" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">No problem, you will learn this by time. Have a nice day</span>
+                &ndash;&nbsp;
+                    <a href="/users/1151456/abubakkar-rangara"
+                       title="7177 reputation"
+                       class="comment-user">Abubakkar Rangara</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-31 09:36:55Z" class="relativetime-clean">Jul 31 '13 at 9:36</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-17966248" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/17966164/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="17966164" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="a79554347e92cbc0695a04e1e8375545">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?returnurl=%2fquestions%2f17966164%2fjava-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f17966164%2fjava-lang-runtimeexception-unable-to-create-application-and-at-android-app-acti%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/java" class="post-tag" title="show questions tagged 'java'" rel="tag">java</a> <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/forceclose" class="post-tag" title="show questions tagged 'forceclose'" rel="tag">forceclose</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-07-31 09:10:09Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>1557 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-02-11 09:49:34Z">1 month ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+						
+			<div class="everyonelovesstackoverflow" id="careers2">
+        </div>
+        <div id="hireme">
+            <script>
+window.careers_adurl="//careers.stackoverflow.com/gethired/companyjs",window.careers_cssurl="//cdn-careers.sstatic.net/careers/gethired/company.min.css?v=cace662f1716",window.careers_cssurl2="//cdn-careers.sstatic.net/careers/gethired/sidebar.min.css?v=19f7c7921388",window.careers_adselector="#hireme",StackExchange.ready(function(){var e=window.StackExchange,t=e&&e.options&&e.options.user&&e.options.user.accountId,n="//cdn-careers.sstatic.net/careers/gethired/company-loader.min.js?v=5de06e302fd6";$.ajax({url:n+(t?(-1===n.indexOf("?")?"?":"&")+"accountId="+t:""),dataType:"script",cache:!1})});            </script>
+        </div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/11560185" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="/questions/11560185/disable-force-stop-button-in-manage-application" class="question-hyperlink">Disable force stop button in manage application</a>
+</div>
+<div class="spacer">
+<a href="/q/14653090" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/14653090/android-camera-application-force-close" class="question-hyperlink">Android camera application force close</a>
+</div>
+<div class="spacer">
+<a href="/q/19240075" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/19240075/android-overriding-dialer-application-or-turning-it-off" class="question-hyperlink">Android: overriding dialer application or turning it off</a>
+</div>
+<div class="spacer">
+<a href="/q/20380684" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/20380684/unusual-fatal-exception-unable-to-start-activity-componentinfo-on-the-line-act" class="question-hyperlink">Unusual FATAL EXCEPTION: Unable to start activity ComponentInfo on the line: actionBar.setCustomView(R.layout.actionbar_custom_view_home);</a>
+</div>
+<div class="spacer">
+<a href="/q/20402767" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/20402767/fatal-exception-main-unable-to-start-activity-componentinfo-caused-by-java-lan" class="question-hyperlink">FATAL EXCEPTION: main Unable to start activity ComponentInfo Caused by: java.lang.NullPointerException</a>
+</div>
+<div class="spacer">
+<a href="/q/20546609" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/20546609/fatal-exception-main-ava-lang-runtimeexception-unable-to-instantiate-applicati" class="question-hyperlink">FATAL EXCEPTION: main ava.lang.RuntimeException: Unable to instantiate application android.app.Application: java.lang.NullPointerException</a>
+</div>
+<div class="spacer">
+<a href="/q/20830610" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/20830610/android-google-map-api-v2-unfortunately-application-has-stopped-force-clos" class="question-hyperlink">Android - Google Map API v2 - Unfortunately, application has stopped. Force closing every time</a>
+</div>
+<div class="spacer">
+<a href="/q/21383372" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/21383372/android-application-force-closed-when-its-opening" class="question-hyperlink">Android application force closed when its opening</a>
+</div>
+<div class="spacer">
+<a href="/q/23730328" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">5
+    </div>
+</a><a href="/questions/23730328/java-lang-runtimeexception-unable-to-instantiate-application-java-lang-classno" class="question-hyperlink">java.lang.RuntimeException: Unable to instantiate application, java.lang.ClassNotFoundException:</a>
+</div>
+<div class="spacer">
+<a href="/q/28348882" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/28348882/java-lang-runtimeexception-unable-to-instantiate-application" class="question-hyperlink">java.lang.RuntimeException: Unable to instantiate application</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/897632/scanning-old-papers-in-tiff-format-is-scanning-at-48-bit-color-worth-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Scanning old papers in TIFF format. Is scanning at 48-bit color worth it?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/174003/would-a-spinning-evenly-charged-sphere-generate-a-magnetic-field" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Would a spinning, evenly charged sphere generate a magnetic field?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-webmasters" title="Webmasters Stack Exchange"></div><a href="http://webmasters.stackexchange.com/questions/78788/how-come-com-google-is-a-valid-domain-name" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:45 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How come com.google is a valid domain name?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/194157/bracket-expression-without-ranges-matching-unexpected-character-in-bash" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Bracket expression (without ranges) matching unexpected character in bash
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/59048/will-i-still-get-spell-failure-with-multicalss-kensai-fighter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Will I still get spell failure with multicalss Kensai / fighter?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-cogsci" title="Cognitive Sciences Stack Exchange"></div><a href="http://cogsci.stackexchange.com/questions/9690/what-is-the-difference-between-double-dissociation-and-simply-having-control-a" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:391 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the difference between &quot;double dissociation&quot; and simply having control and experimental groups?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1219424/trying-mathematical-induction-with-3n1-conjecture" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Trying mathematical Induction with 3n+1 conjecture
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-italian" title="Italian Language Stack Exchange"></div><a href="http://italian.stackexchange.com/questions/5328/the-use-of-ci-when-specifying-locations" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:524 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The use of ci when specifying locations
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/194319/how-to-check-if-both-parameters-are-set-in-bash" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    how to check if both parameters are set in bash?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/63077/why-would-circuit-breakers-be-connected-in-panel" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why would circuit breakers be connected in panel?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/212054/which-cities-can-i-play-pac-man-in" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which cities can I play Pac-Man in?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1218726/is-every-integer-a-unary-operation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is every integer a unary operation?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/48406/is-the-word-typeable-with-keys-adjacent-to-each-other" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is the word typeable with keys adjacent to each other?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/237154/a-question-asked-in-order-to-expose-ignorance" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A question asked in order to expose ignorance
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-matheducators" title="Mathematics Educators Stack Exchange"></div><a href="http://matheducators.stackexchange.com/questions/7778/should-we-teach-abstract-affine-spaces" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:548 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should we teach abstract affine spaces?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/78976/how-can-i-tally-continuous-sequences-in-a-list" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I tally continuous sequences in a list?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/85477/which-sci-fi-work-introduced-the-idea-of-aliens" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which Sci-Fi work introduced the idea of &quot;Aliens&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/58968/whats-the-best-way-to-kill-a-character-in-a-way-that-is-memorable-and-treated" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s the best way to kill a character in a way that is memorable, and treated with respect by players?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-craftcms" title="Craft CMS Stack Exchange"></div><a href="http://craftcms.stackexchange.com/questions/9028/how-do-i-set-up-a-section-of-text-on-my-home-page-to-rotate-through-rather-than" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:563 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I set up a section of text on my home page to rotate through, rather than stay static?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gis" title="Geographic Information Systems Stack Exchange"></div><a href="http://gis.stackexchange.com/questions/141430/accessing-multiple-shapefiles-in-folder-using-python-and-arcgis-for-desktop" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:79 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Accessing multiple shapefiles in folder using Python and ArcGIS for Desktop?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/85820/possible-sub-optimal-selection-sort" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Possible sub-optimal selection sort
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/11504/i-cant-be-touched-but-i-often-touch" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I can&#39;t be touched, but I often touch
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/75850/is-there-research-supporting-the-link-between-colors-and-emotions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there research supporting the link between colors and emotions?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/29437796/can-i-initialize-public-properties-of-a-class-using-a-different-type-in-c" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can I initialize public properties of a class using a different type in C#?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/17966164" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/17966164/ivc/9d6f');});
+</script>
+<noscript>
+    <div><img src="/posts/17966164/ivc/9d6f" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.4.3.2444
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|java|android|forceclose|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>                
+    </body>
+</html>

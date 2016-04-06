@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <link rel="stylesheet" type="text/css" href="./index_files/style.css">
+    <title>QACrashFix</title>
+<body bgcolor="#eeeeee" border="1"cellpadding="5"cellspacing="0"width="100%">
+<div id="container">
+	<div id="header">
+		<h1>QACrashFix</h1>
+	</div> <!-- end header -->
+
+<div id="sidebar">
+ <div id="sidebar2"> 
+  <ul>
+   <li> <a href="./home.htm">About</a>
+   </li><li> <a href="./home.htm#Download">Download</a>
+   </li><li> <a href="./tutorial.htm">Tutorial</a> 
+   </li><li> <a href="./home.htm#Publication">Publication</a>
+   </li><li> <a href="./home.htm#Contributors">Contributors</a>
+  </li>
+  <li> <a href="./home.htm#References">References</a>
+  </li><li> <a href="./examples.htm">Examples</a>
+  </li></ul>
+ </div>
+</div>
+
+
+<div id="main">
+
+
+<a name="About"></a>
+
+<div id="about">
+
+  <p>
+  	QACrashFix is a tool for generating fixes for crash bugs automatically via analyzing Q&A pages. It extracts code snippets from each page and generates edit scripts. By extracting source code snippets and applying the edit scripts, it generates patches and filters out those failed to compile.
+	</p>
+  
+  <p>QACrashFix uses <a href="http://www.eclipse.org/articles/article.php?file=Article-JavaCodeManipulation_AST/index.html">Eclipse AST parser</a> to parse code snippets to ASTs, re-implements and modifies the <a href="https://github.com/GumTreeDiff/gumtree/">GumTree</a> algorithm to build mappings and generate edit scripts, and uses <a href="http://stackoverflow.com">Stack Overflow</a> as the source of Q&A pages.</p>
+
+	<p>Full analysis of the first filtered patches in the experiment described in <a href="./home.htm#Publication">our paper</a> is <a href="./examples.htm">here</a>.</p>
+
+</div>
+
+
+
+<a name="Download"><h3>Download</h3></a>
+
+    <ul>
+        <li> <a href="./qacrashfix.zip">qacrashfix.zip</a>
+    </li></ul>
+
+
+<a name="Tutorial"><h3>Tutorial</h3></a>
+
+		<ul>
+        <li> <a href="./tutorial.htm#Installation">Installation</a>
+    </li>
+    <li> <a href="./tutorial.htm#Usage">Usage</a>
+    </li></ul>
+
+<a name="Publication"><h3>Publication</h3></a>
+    <ul>
+        <li> <div id="paper"> <a href="./qacrashfix-ase15.pdf">Fixing Recurring Crash Bugs via Analyzing Q&A Sites</a></div>
+    </li></ul>
+    
+
+<a name="Contributors"><h3>Contributors</h3></a>
+		<p>Contributors to QACrashFix implementation are:</p>
+        <ul><li><a href="http://www.zhanghs.com">Hansheng Zhang</a></li>
+        <li>Jie Wang</li>
+        <li>Qing Gao</li>
+        </ul>
+    
+<a name="References"><h3>References</h3></a>
+    	<p>QACrashFix uses the following tools:</p>
+    <ul>
+        <li><a href="http://www.eclipse.org/jdt/">Eclipse JDT</a></li>
+        <li><a href="http://sourceforge.net/projects/htmlparser/files/htmlparser/">HTML Parser</a></li>
+        <li><a href="http://commons.apache.org/">Apache Commons</a></li>
+        <li><a href="http://logging.apache.org/log4j/2.x/">Apache Log4j</a></li>
+    </ul>
+</div>
+<div id="wapper">  
+    HTML style inspired from <a href="http://www.cs.cornell.edu/projects/crystal/fastcheck/">Fastcheck</a>
+    <div id="main-content">  
+    </div>  
+    <!-- 页脚 -->  
+    <div id="footer">  
+    </div>  
+</div>
+
+</body></html>

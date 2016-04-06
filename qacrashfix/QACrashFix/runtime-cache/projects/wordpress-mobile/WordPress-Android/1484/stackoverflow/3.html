@@ -1,0 +1,2825 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+    
+    <title>memory - java.lang.OutOfMemoryError: bitmap size exceeds VM budget - Android - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="java.lang.OutOfMemoryError: bitmap size exceeds VM budget - Android" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I developed an application that uses lots of images on Android.
+
+The app runs once, fills the information on the screen (Layouts, Listviews, Textviews, ImageViews, etc) and user reads the informati..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=7e66a1b227e7"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=689e41cd2883">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;java.lang.OutOfMemoryError: bitmap size exceeds VM budget - Android&#39;" href="/feeds/question/1949066">
+    <meta name="twitter:app:country" content="US" />
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:iphone" content="871299723" />
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android" />
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:ipad" content="871299723" />
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android" />
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:1949066});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '1949066');
+                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+        });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1428123248,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"a79554347e92cbc0695a04e1e8375545","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"a01c3030569e","js/moderator.en.js":"9be321ee4fdc","js/full-anon.en.js":"0e605e6101e2","js/full.en.js":"d86f58802e92","js/wmd.en.js":"89e46762f17e","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"a2341f691d0d","js/help.en.js":"637a173e1aa4","js/tageditor.en.js":"3f818f06656a","js/tageditornew.en.js":"f9c5a11452c0","js/inline-tag-editing.en.js":"f53885bdadce","js/revisions.en.js":"6c7265ea9fa1","js/review.en.js":"1305a2469a54","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"23eb1e4c85da","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"588492b46561","js/keyboard-shortcuts.en.js":"77412b2bfcc4","js/external-editor.en.js":"333f2972598f","js/external-editor.en.js":"333f2972598f","js/snippet-javascript.en.js":"d4699d4cc44f","js/snippet-javascript-codemirror.en.js":"5407f517dfab"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1949066%2fjava-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1949066%2fjava-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 140 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1949066%2fjava-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1949066%2fjava-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+	<link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+			<h1 itemprop="name"><a href="/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android" class="question-hyperlink">java.lang.OutOfMemoryError: bitmap size exceeds VM budget - Android</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="1949066"  id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1729857893",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1729857893">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="1949066">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">124</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>76</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>I developed an application that uses lots of images on Android.</p>
+
+<p>The app runs once, fills the information on the screen (<code>Layouts</code>, <code>Listviews</code>, <code>Textviews</code>, <code>ImageViews</code>, etc) and user reads the information.</p>
+
+<p>There is no animation, no special effects or anything that can fill the memory.
+Sometimes the drawables can change. Some are android resources and some are files saved in a folder in the SDCARD.</p>
+
+<p>Then the user quits (the <code>onDestroy</code> method is executed and app stays in memory by the VM ) and then at some point the user enters again. </p>
+
+<p>Each time the user enters to the app, I can see the memory growing more and more until user gets the <code>java.lang.OutOfMemoryError</code>.</p>
+
+<p>So what is the best/correct way to handle many images?</p>
+
+<p>Should I put them in static methods so they are not loaded all the time?
+Do I have to clean the layout or the images used in the layout in a special way?</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/memory" class="post-tag" title="show questions tagged 'memory'" rel="tag">memory</a> <a href="/questions/tagged/memory-leaks" class="post-tag" title="show questions tagged 'memory-leaks'" rel="tag">memory-leaks</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/1949066" title="short permalink to this question" class="short-link" id="link-post-1949066">share</a><span class="lsep">|</span><a href="/posts/1949066/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/1949066/revisions" title="show all edits to this post">edited <span title="2011-06-13 11:05:58Z" class="relativetime">Jun 13 '11 at 11:05</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1288/bill-the-lizard"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/fc763c6ff6c160ddad05741e87e517b6?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1288/bill-the-lizard">Bill the Lizard</a><span class="mod-flair" title="moderator">&#9830;</span><br>
+        <span class="reputation-score" title="reputation score 167547" dir="ltr">168k</span><span title="110 gold badges"><span class="badge1"></span><span class="badgecount">110</span></span><span title="395 silver badges"><span class="badge2"></span><span class="badgecount">395</span></span><span title="680 bronze badges"><span class="badge3"></span><span class="badgecount">680</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2009-12-22 20:51:31Z" class="relativetime">Dec 22 '09 at 20:51</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/237115/daniel-benedykt"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/eb6a0e8a359e375bcb9054bd34602423?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/237115/daniel-benedykt">Daniel Benedykt</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,128</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="28 silver badges"><span class="badge2"></span><span class="badgecount">28</span></span><span title="47 bronze badges"><span class="badge3"></span><span class="badgecount">47</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1949066" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-10615725" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This may help if you have lots of drawables changing. It is working since I did the program myself :) <a href="http://androidactivity.wordpress.com/2011/09/24/solution-for-outofmemoryerror-bitmap-size-exceeds-vm-budget/" rel="nofollow">androidactivity.wordpress.com/2011/09/24/&hellip;</a></span>
+                &ndash;&nbsp;
+		            <span class="comment-user">user964099</span>
+                <span class="comment-date" dir="ltr"><span title="2011-09-25 22:08:16Z" class="relativetime-clean">Sep 25 '11 at 22:08</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1949066" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								13 Answers
+                                <span style="display:none;" itemprop="answerCount">13</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/1949066/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="1949449"></a>
+<div id="answer-1949449" class="answer accepted-answer" data-answerid="1949449"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="1949449">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">60</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>It sounds like you have a memory leak. The problem isn't handling many images, it's that your images aren't getting deallocated when your activity is destroyed.</p>
+
+<p>It's difficult to say why this is without looking at your code. However, this article has some tips that might help:</p>
+
+<p><a href="http://android-developers.blogspot.de/2009/01/avoiding-memory-leaks.html">http://android-developers.blogspot.de/2009/01/avoiding-memory-leaks.html</a></p>
+
+<p>In particular, using static variables is likely to make things worse, not better. You might need to add code that removes callbacks when your application redraws -- but again, there's not enough information here to say for sure.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1949449" title="short permalink to this answer" class="short-link" id="link-post-1949449">share</a><span class="lsep">|</span><a href="/posts/1949449/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/1949449/revisions" title="show all edits to this post">edited <span title="2012-07-03 22:13:10Z" class="relativetime">Jul 3 '12 at 22:13</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/568492/michael-biermann"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/BUvhi.png?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/568492/michael-biermann">Michael Biermann</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,696</span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-12-22 21:55:12Z" class="relativetime">Dec 22 '09 at 21:55</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/186035/trevor-johns"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/840bb88a43d69f6cc9345429559ae421?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/186035/trevor-johns">Trevor Johns</a><br>
+        <span class="reputation-score" title="reputation score 10102" dir="ltr">10.1k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="37 silver badges"><span class="badge2"></span><span class="badgecount">37</span></span><span title="41 bronze badges"><span class="badge3"></span><span class="badgecount">41</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1949449" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2048298" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">8</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">this is true and also having lots of images (and not a memory leak) can cause outOfMemory for multiple reasons like lots of other apps are running, fragmentation of memory, etc.  I learned that when working with lots of images if you get the outOfMemory systematically, like doing always the same, then its a leak.  If you get it like once a day or something, its because you are too close to the limit. My suggestion in this case is try to remove some stuff and try again.  Also Image memory is outside Heap memory, so look out for both.</span>
+                &ndash;&nbsp;
+                    <a href="/users/237115/daniel-benedykt"
+                       title="2128 reputation"
+                       class="comment-user owner">Daniel Benedykt</a>
+                <span class="comment-date" dir="ltr"><span title="2010-01-21 20:32:37Z" class="relativetime-clean">Jan 21 '10 at 20:32</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-9814782" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">15</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">If you suspect memory leakage, a quick way to monitor the heap usage is via the adb shell dumpsys meminfo command. If you see heap usage increasing over a few gc cycles (GC_* log row in logcat) you can be pretty sure you have a leak. Then create a heap dump (or several at different times) via adb or DDMS and analyze it via the dominator tree tooling on Eclipse MAT. You should pretty soon find which object has a retaines heap that grows over time. That&#39;s your memory leak. I wrote an article with some more details here: <a href="http://macgyverdev.blogspot.com/2011/11/android-track-down-memory-leaks.html" rel="nofollow">macgyverdev.blogspot.com/2011/11/&hellip;</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/720213/johan-nor%c3%a9n"
+                       title="189 reputation"
+                       class="comment-user">Johan Nor&#233;n</a>
+                <span class="comment-date" dir="ltr"><span title="2011-11-05 10:21:12Z" class="relativetime-clean">Nov 5 '11 at 10:21</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1949449" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk247134867",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk247134867">
+            </div>
+  
+<a name="6779067"></a>
+<div id="answer-6779067" class="answer" data-answerid="6779067"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="6779067">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">89</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>One of the most common errors that I found developing Android Apps is the “java.lang.OutOfMemoryError: Bitmap Size Exceeds VM Budget” error. I found this error frequently on activities using lots of bitmaps after changing orientation: the Activity is destroyed, created again and the layouts are “inflated” from the XML consuming the VM memory available for bitmaps.</p>
+
+<p>Bitmaps on the previous activity layout are not properly de-allocated by the garbage collector because they have crossed references to their activity. After many experiments I found a quite good solution for this problem.</p>
+
+<p>First, set the “id” attribute on the parent view of your XML layout:</p>
+
+<pre><code>    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+    &lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:id="@+id/RootView"
+     &gt;
+     ...
+</code></pre>
+
+<p>Then, on the <code>onDestroy()</code>  method of your Activity, call the <code>unbindDrawables()</code> method passing a reference to the parent View and then do a <code>System.gc()</code>.</p>
+
+<pre><code>    @Override
+    protected void onDestroy() {
+    super.onDestroy();
+
+    unbindDrawables(findViewById(R.id.RootView));
+    System.gc();
+    }
+
+    private void unbindDrawables(View view) {
+        if (view.getBackground() != null) {
+        view.getBackground().setCallback(null);
+        }
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i &lt; ((ViewGroup) view).getChildCount(); i++) {
+            unbindDrawables(((ViewGroup) view).getChildAt(i));
+            }
+        ((ViewGroup) view).removeAllViews();
+        }
+    }
+</code></pre>
+
+<p>This <code>unbindDrawables()</code> method explores the view tree recursively and:</p>
+
+<ol>
+<li>Removes callbacks on all the background drawables</li>
+<li>Removes children on every viewgroup</li>
+</ol>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/6779067" title="short permalink to this answer" class="short-link" id="link-post-6779067">share</a><span class="lsep">|</span><a href="/posts/6779067/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/6779067/revisions" title="show all edits to this post">edited <span title="2014-01-22 12:09:27Z" class="relativetime">Jan 22 '14 at 12:09</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1288/bill-the-lizard"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/fc763c6ff6c160ddad05741e87e517b6?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1288/bill-the-lizard">Bill the Lizard</a><span class="mod-flair" title="moderator">&#9830;</span><br>
+        <span class="reputation-score" title="reputation score 167547" dir="ltr">168k</span><span title="110 gold badges"><span class="badge1"></span><span class="badgecount">110</span></span><span title="395 silver badges"><span class="badge2"></span><span class="badgecount">395</span></span><span title="680 bronze badges"><span class="badge3"></span><span class="badgecount">680</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-07-21 15:57:53Z" class="relativetime">Jul 21 '11 at 15:57</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/738198/hp-android"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/dd40f6c0b62d01a9e56c99174683ac98?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/738198/hp-android">hp.android</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,339</span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="18 bronze badges"><span class="badge3"></span><span class="badgecount">18</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-6779067" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="7"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-8875349" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">10</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Except... java.lang.UnsupportedOperationException: removeAllViews() is not supported in AdapterView</span>
+                &ndash;&nbsp;
+                    <a href="/users/213345/gjtorikian"
+                       title="661 reputation"
+                       class="comment-user">GJTorikian</a>
+                <span class="comment-date" dir="ltr"><span title="2011-09-09 00:48:26Z" class="relativetime-clean">Sep 9 '11 at 0:48</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-9176835" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks this helps reduce my heap size significantly since I have a lot of drawables ... @GJTorikian for that just try catch at removeAllViews() most ViewGroup subclasses work just fine.</span>
+                &ndash;&nbsp;
+                    <a href="/users/479478/e-x-p"
+                       title="1328 reputation"
+                       class="comment-user">e_x_p</a>
+                <span class="comment-date" dir="ltr"><span title="2011-09-27 12:41:46Z" class="relativetime-clean">Sep 27 '11 at 12:41</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-12438133" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Or just change the condition:  if (view instanceof ViewGroup &amp;&amp; !(view instanceof AdapterView))</span>
+                &ndash;&nbsp;
+                    <a href="/users/552193/anke"
+                       title="4545 reputation"
+                       class="comment-user">Anke</a>
+                <span class="comment-date" dir="ltr"><span title="2012-03-19 15:44:40Z" class="relativetime-clean">Mar 19 '12 at 15:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-14175129" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Adam Varhegyi, you can explicitly call same function for gallery view in onDestroy. Like unbindDrawables(galleryView); hope this works for you...</span>
+                &ndash;&nbsp;
+                    <a href="/users/738198/hp-android"
+                       title="2339 reputation"
+                       class="comment-user">hp.android</a>
+                <span class="comment-date" dir="ltr"><span title="2012-06-04 07:10:51Z" class="relativetime-clean">Jun 4 '12 at 7:10</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-17021702" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">watch out for these two gotcha&#39;s <a href="http://stackoverflow.com/questions/8405475/android-unable-to-destroy-activity" title="android unable to destroy activity">stackoverflow.com/questions/8405475/&hellip;</a> AND <a href="http://stackoverflow.com/questions/4486034/get-root-view-from-current-activity" title="get root view from current activity">stackoverflow.com/questions/4486034/&hellip;</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/579646/max4ever"
+                       title="3353 reputation"
+                       class="comment-user">max4ever</a>
+                <span class="comment-date" dir="ltr"><span title="2012-09-27 15:09:44Z" class="relativetime-clean">Sep 27 '12 at 15:09</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-6779067" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post, or add one of your own" href=# onclick="">show <b>7</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="10995471"></a>
+<div id="answer-10995471" class="answer" data-answerid="10995471"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="10995471">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>To avoid this problem you can use native method <code>Bitmap.recycle()</code> before <code>null</code>-ing <code>Bitmap</code> object (or setting another value). Example:</p>
+
+<pre><code>public final void setMyBitmap(Bitmap bitmap) {
+  if (this.myBitmap != null) {
+    this.myBitmap.recycle();
+  }
+  this.myBitmap = bitmap;
+}
+</code></pre>
+
+<p>And next you can change <code>myBitmap</code> w/o calling <code>System.gc()</code> like:</p>
+
+<pre><code>setMyBitmap(null);    
+setMyBitmap(anotherBitmap);
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10995471" title="short permalink to this answer" class="short-link" id="link-post-10995471">share</a><span class="lsep">|</span><a href="/posts/10995471/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/10995471/revisions" title="show all edits to this post">edited <span title="2013-09-04 10:49:22Z" class="relativetime">Sep 4 '13 at 10:49</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-06-12 11:10:37Z" class="relativetime">Jun 12 '12 at 11:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/746529/ddmytrenko"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/73341c7ebe8bb09b128f4833ea25f986?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/746529/ddmytrenko">ddmytrenko</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">211</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="9 bronze badges"><span class="badge3"></span><span class="badgecount">9</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10995471" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-19111712" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">this won&#39;t work if trying to add those elements into a listview. do you have any suggestion on that?</span>
+                &ndash;&nbsp;
+                    <a href="/users/410293/rafael-sanches"
+                       title="1125 reputation"
+                       class="comment-user">Rafael Sanches</a>
+                <span class="comment-date" dir="ltr"><span title="2012-12-14 10:01:26Z" class="relativetime-clean">Dec 14 '12 at 10:01</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-22274971" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@ddmytrenko  You&#39;re recycling the image before assigning it.  Wouldn&#39;t that prevent its pixels from rendering?</span>
+                &ndash;&nbsp;
+                    <a href="/users/238937/igor-ganapolsky"
+                       title="3668 reputation"
+                       class="comment-user">Igor Ganapolsky</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-28 17:48:04Z" class="relativetime-clean">Mar 28 '13 at 17:48</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10995471" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="1949546"></a>
+<div id="answer-1949546" class="answer" data-answerid="1949546"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="1949546">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I've ran into this exact problem. The heap is pretty small so these images can get out of control rather quickly in regards to memory. One way is to give the garbage collector a hint to collect memory on a bitmap by calling <a href="http://developer.android.com/reference/android/graphics/Bitmap.html#recycle%28%29">its recycle method</a>. </p>
+
+<p>Also, the onDestroy method is not guaranteed to get called. You may want to move this logic/clean up into the onPause activity. Check out the Activity Lifecycle diagram/table <a href="http://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle">on this page</a> for more info.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1949546" title="short permalink to this answer" class="short-link" id="link-post-1949546">share</a><span class="lsep">|</span><a href="/posts/1949546/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-12-22 22:16:10Z" class="relativetime">Dec 22 '09 at 22:16</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/5210/donn-felker"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/daf1617c9a4ff129239e922e8c56af1b?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/5210/donn-felker">Donn Felker</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,419</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="27 silver badges"><span class="badge2"></span><span class="badgecount">27</span></span><span title="42 bronze badges"><span class="badge3"></span><span class="badgecount">42</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1949546" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1866843" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks for the info.  I am managing all Drawables and not Bitmaps, so I cant call Recycle. Any other suggestion for drawables?  Thanks  Daniel</span>
+                &ndash;&nbsp;
+                    <a href="/users/237115/daniel-benedykt"
+                       title="2128 reputation"
+                       class="comment-user owner">Daniel Benedykt</a>
+                <span class="comment-date" dir="ltr"><span title="2009-12-23 19:30:15Z" class="relativetime-clean">Dec 23 '09 at 19:30</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-46615255" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks for the <code>onPause</code> suggestion. I am using 4 tabs with <code>Bitmap</code> images in them all, so destroying the activity might not happen too soon (if user browses all tabs).</span>
+                &ndash;&nbsp;
+                    <a href="/users/2418793/noni-a"
+                       title="454 reputation"
+                       class="comment-user">Noni A.</a>
+                <span class="comment-date" dir="ltr"><span title="2015-03-23 00:41:11Z" class="relativetime-clean">Mar 23 at 0:41</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1949546" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="4487801"></a>
+<div id="answer-4487801" class="answer" data-answerid="4487801"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="4487801">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I had the exact same problem. After a few testing I found that this error is appearing for large image scaling. I reduced the image scaling and the problem disappeared. </p>
+
+<p>P.S. At first I tried to reduce the image size without scaling the image down. That did not stop the error. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/4487801" title="short permalink to this answer" class="short-link" id="link-post-4487801">share</a><span class="lsep">|</span><a href="/posts/4487801/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-12-20 07:56:19Z" class="relativetime">Dec 20 '10 at 7:56</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/518219/gsree"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/76ccfd150197cc3f6c96dfa05a9bd77e?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/518219/gsree">GSree</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,898</span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="22 bronze badges"><span class="badge3"></span><span class="badgecount">22</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4487801" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-7138694" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">could you post the code on how you did the image scaling, I am facing the same problem and I think this might solve it. Thanks!</span>
+                &ndash;&nbsp;
+                    <a href="/users/717927/gix"
+                       title="1155 reputation"
+                       class="comment-user">Gix</a>
+                <span class="comment-date" dir="ltr"><span title="2011-05-27 03:22:23Z" class="relativetime-clean">May 27 '11 at 3:22</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-13393962" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Gix - I believe he means that he had to reduce the size of the images before bringing them into the project resources, thus lowering the memory footprint of the drawables. For this you should use the photo editor of your choice.  I like pixlr.com</span>
+                &ndash;&nbsp;
+                    <a href="/users/654870/kyle-clegg"
+                       title="12147 reputation"
+                       class="comment-user">Kyle Clegg</a>
+                <span class="comment-date" dir="ltr"><span title="2012-04-30 17:26:59Z" class="relativetime-clean">Apr 30 '12 at 17:26</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4487801" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="10098486"></a>
+<div id="answer-10098486" class="answer" data-answerid="10098486"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="10098486">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This explanation might help:
+<a href="http://code.google.com/p/android/issues/detail?id=8488#c80">http://code.google.com/p/android/issues/detail?id=8488#c80</a></p>
+
+<p>"Fast Tips:</p>
+
+<p>1) NEVER call System.gc() yourself. This has been propagated as a fix here, and it doesn't work. Do not do it. If you noticed in my explanation, before getting an OutOfMemoryError, the JVM already runs a garbage collection so there is no reason to do one again (its slowing your program down). Doing one at the end of your activity is just covering up the problem. It may causes the bitmap to be put on the finalizer queue faster, but there is no reason you couldn't have simply called recycle on each bitmap instead. </p>
+
+<p>2) Always call recycle() on bitmaps you don't need anymore. At the very least, in the onDestroy of your activity go through and recycle all the bitmaps you were using. Also, if you want the bitmap instances to be collected from the dalvik heap faster, it doesn't hurt to clear any references to the bitmap. </p>
+
+<p>3) Calling recycle() and then System.gc() still might not remove the bitmap from the Dalvik heap. DO NOT BE CONCERNED about this. recycle() did its job and freed the native memory, it will just take some time to go through the steps I outlined earlier to actually remove the bitmap from the Dalvik heap. This is NOT a big deal because the large chunk of native memory is already free!</p>
+
+<p>4) Always assume there is a bug in the framework last. Dalvik is doing exactly what its supposed to do. It may not be what you expect or what you want, but its how it works. "</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10098486" title="short permalink to this answer" class="short-link" id="link-post-10098486">share</a><span class="lsep">|</span><a href="/posts/10098486/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-11 00:52:10Z" class="relativetime">Apr 11 '12 at 0:52</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/585137/aron"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/788e946a5d35574d3fd0dc086e1f641a?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/585137/aron">Aron</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">74</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="11 bronze badges"><span class="badge3"></span><span class="badgecount">11</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10098486" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10098486" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="7075512"></a>
+<div id="answer-7075512" class="answer" data-answerid="7075512"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="7075512">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I suggest a convenient way to solve this problem.
+Just assign the attribute "android:configChanges" value as followed in the Mainfest.xml for your errored activity.
+like this:</p>
+
+<pre><code>&lt;activity android:name=".main.MainActivity"
+              android:label="mainActivity"
+              android:configChanges="orientation|keyboardHidden|navigation"&gt;
+&lt;/activity&gt;
+</code></pre>
+
+<p>the first solution I gave out had really reduced the frequency of OOM error to a low level. But, it did not solve the problem totally. And then I will give out the 2nd solution:</p>
+
+<p>As the OOM detailed, I have used too much runtime memory. So, I reduce the picture size in ~/res/drawable of my project. Such as an overqualified picture which has a resolution of 128X128, could be resized to 64x64 which would also be suitable for my application. And after I did so with a pile of pictures, the OOM error doesn't occur again.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/7075512" title="short permalink to this answer" class="short-link" id="link-post-7075512">share</a><span class="lsep">|</span><a href="/posts/7075512/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/7075512/revisions" title="show all edits to this post">edited <span title="2011-09-22 14:04:57Z" class="relativetime">Sep 22 '11 at 14:04</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1/jeff-atwood"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/51d623f33f8b83095db84ff35e15dbe8?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1/jeff-atwood">Jeff Atwood</a><span class="mod-flair" title="moderator">&#9830;</span><br>
+        <span class="reputation-score" title="reputation score 33318" dir="ltr">33.3k</span><span title="38 gold badges"><span class="badge1"></span><span class="badgecount">38</span></span><span title="123 silver badges"><span class="badge2"></span><span class="badgecount">123</span></span><span title="138 bronze badges"><span class="badge3"></span><span class="badgecount">138</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-08-16 08:31:41Z" class="relativetime">Aug 16 '11 at 8:31</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/832659/gaga-ek"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/4ad90b1688ef38545f815c5ec6b36a66?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/832659/gaga-ek">GaGa_Ek</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">89</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-7075512" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-14046815" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This works because you&#39;re avoiding the restart of your app.  So it is not so much a solution as it is an avoidance.  But sometimes that is all that you need.  And the default onConfigurationChanged() method in Activity will flip your orientation for you, so if you don&#39;t need any UI changes to truly adapt to the different orientations, you may be perfectly happy with the result.  Watch out for other things that can restart you, though.  You may want to use this:                    android:configChanges=&quot;keyboardHidden|orientation|keyboard|locale|mcc|mnc|touchs&zwnj;&#8203;creen|screenLayout|fontScale&quot;</span>
+                &ndash;&nbsp;
+                    <a href="/users/928054/carl"
+                       title="7608 reputation"
+                       class="comment-user">Carl</a>
+                <span class="comment-date" dir="ltr"><span title="2012-05-29 10:46:57Z" class="relativetime-clean">May 29 '12 at 10:46</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-7075512" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="10484555"></a>
+<div id="answer-10484555" class="answer" data-answerid="10484555"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="10484555">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Following points really helped me a lot. There might be other points too, but these are very crucial:</p>
+
+<ol>
+<li>Use application context(instead of activity.this) where ever possible.</li>
+<li>Stop and release your threads in onPause() method of activity</li>
+<li>Release your views / callbacks in onDestroy() method of activity</li>
+</ol>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10484555" title="short permalink to this answer" class="short-link" id="link-post-10484555">share</a><span class="lsep">|</span><a href="/posts/10484555/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/10484555/revisions" title="show all edits to this post">edited <span title="2012-05-08 06:03:39Z" class="relativetime">May 8 '12 at 6:03</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-05-07 15:12:55Z" class="relativetime">May 7 '12 at 15:12</span>
+    </div>
+    <div class="user-gravatar32">
+        <span class="anonymous-gravatar"></span>
+    </div>
+    <div class="user-details">
+        user517491<br>
+        
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10484555" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10484555" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="10288758"></a>
+<div id="answer-10288758" class="answer" data-answerid="10288758"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="10288758">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I too am frustrated by the outofmemory bug. And yes, I too found that this error pops up a lot when scaling images. At first I tried creating image sizes for all densities, but I found this substantially increased the size of my app. So I'm now just using one image for all densities and scaling my images. </p>
+
+<p>My application would throw an outofmemory error whenever the user went from one activity to another. Setting my drawables to null and calling System.gc() didn't work, neither did recycling my bitmapDrawables with getBitMap().recycle(). Android would continue to throw the outofmemory error with the first approach, and it would throw a canvas error message whenever it tried using a recycled bitmap with the second approach.</p>
+
+<p>I took an even third approach. I set all views to null and the background to black. I do this cleanup in my onStop() method. This is the method that gets called as soon as the activity is no longer visible. If you do it in the onPause() method, users will see a black background. Not ideal. As for doing it in the onDestroy() method, there is no guarantee that it will get called. </p>
+
+<p>To prevent a black screen from occurring if the user presses the back button on the device, I reload the activity in the onRestart() method by calling the startActivity(getIntent()) and then finish() methods.</p>
+
+<p>Note: it's not really necessary to change the background to black. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10288758" title="short permalink to this answer" class="short-link" id="link-post-10288758">share</a><span class="lsep">|</span><a href="/posts/10288758/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/10288758/revisions" title="show all edits to this post">edited <span title="2012-04-23 21:58:21Z" class="relativetime">Apr 23 '12 at 21:58</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-23 21:43:34Z" class="relativetime">Apr 23 '12 at 21:43</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1350279/subduedjoy"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/43aae4ae36bbdbdbee913954de342703?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1350279/subduedjoy">subduedjoy</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">31</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10288758" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10288758" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="10482648"></a>
+<div id="answer-10482648" class="answer" data-answerid="10482648"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="10482648">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The BitmapFactory.decode* methods, discussed in the <a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html" rel="nofollow">Load Large Bitmaps Efficiently lesson</a>, should not be executed on the main UI thread if the source data is read from disk or a network location (or really any source other than memory). The time this data takes to load is unpredictable and depends on a variety of factors (speed of reading from disk or network, size of image, power of CPU, etc.). If one of these tasks blocks the UI thread, the system flags your application as non-responsive and the user has the option of closing it (see Designing for Responsiveness for more information).</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10482648" title="short permalink to this answer" class="short-link" id="link-post-10482648">share</a><span class="lsep">|</span><a href="/posts/10482648/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-05-07 13:06:56Z" class="relativetime">May 7 '12 at 13:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1219163/li3ro"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/0cfb76a9b86772e22aac8d474319c597?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1219163/li3ro">Li3ro</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">579</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="24 bronze badges"><span class="badge3"></span><span class="badgecount">24</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10482648" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10482648" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="10204146"></a>
+<div id="answer-10204146" class="answer" data-answerid="10204146"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="10204146">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Well I've tried everything I found on the internet and none of them worked. Calling System.gc() only drags down the speed of app. Recycling bitmaps in onDestroy didn't work for me too. </p>
+
+<p>The only thing that works now is to have a static list of all the bitmap so that the bitmaps survive after a restart. And just use the saved bitmaps instead of creating new ones every time the activity if restarted.</p>
+
+<p>In my case the code looks like this:</p>
+
+<pre><code>private static BitmapDrawable currentBGDrawable;
+
+if (new File(uriString).exists()) {
+    if (!uriString.equals(currentBGUri)) {
+        freeBackground();
+        bg = BitmapFactory.decodeFile(uriString);
+
+        currentBGUri = uriString;
+        bgDrawable = new BitmapDrawable(bg);
+        currentBGDrawable = bgDrawable;
+    } else {
+        bgDrawable = currentBGDrawable;
+    }
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10204146" title="short permalink to this answer" class="short-link" id="link-post-10204146">share</a><span class="lsep">|</span><a href="/posts/10204146/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-18 06:40:34Z" class="relativetime">Apr 18 '12 at 6:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/374982/harryhao"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/af1c74cf99d6ed8be6b57023cb533514?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/374982/harryhao">HarryHao</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">81</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10204146" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-19111762" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">wouldn&#39;t this leak your context? (activity data)</span>
+                &ndash;&nbsp;
+                    <a href="/users/410293/rafael-sanches"
+                       title="1125 reputation"
+                       class="comment-user">Rafael Sanches</a>
+                <span class="comment-date" dir="ltr"><span title="2012-12-14 10:03:00Z" class="relativetime-clean">Dec 14 '12 at 10:03</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10204146" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="16659820"></a>
+<div id="answer-16659820" class="answer" data-answerid="16659820"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="16659820">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I had the same problem just with switching the background images with reasonable sizes. I got better results with setting the ImageView to null before putting in a new picture.</p>
+
+<pre><code>ImageView ivBg = (ImageView) findViewById(R.id.main_backgroundImage);
+ivBg.setImageDrawable(null);
+ivBg.setImageDrawable(getResources().getDrawable(R.drawable.new_picture));
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/16659820" title="short permalink to this answer" class="short-link" id="link-post-16659820">share</a><span class="lsep">|</span><a href="/posts/16659820/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-05-20 23:22:45Z" class="relativetime">May 20 '13 at 23:22</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1854563/gunnar-bernstein"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a35a0a2452bd51baeb666ffb2b182b93?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1854563/gunnar-bernstein">Gunnar Bernstein</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,318</span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="19 bronze badges"><span class="badge3"></span><span class="badgecount">19</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16659820" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16659820" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="19886413"></a>
+<div id="answer-19886413" class="answer" data-answerid="19886413"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="19886413">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>FWIW, here's a lightweight bitmap-cache I coded and have used for a few months. It's not all-the-bells-and-whistles, so read the code before you use it. </p>
+
+<pre><code>/**
+ * Lightweight cache for Bitmap objects. 
+ * 
+ * There is no thread-safety built into this class. 
+ * 
+ * Note: you may wish to create bitmaps using the application-context, rather than the activity-context. 
+ * I believe the activity-context has a reference to the Activity object. 
+ * So for as long as the bitmap exists, it will have an indirect link to the activity, 
+ * and prevent the garbaage collector from disposing the activity object, leading to memory leaks. 
+ */
+public class BitmapCache { 
+
+    private Hashtable&lt;String,ArrayList&lt;Bitmap&gt;&gt; hashtable = new Hashtable&lt;String, ArrayList&lt;Bitmap&gt;&gt;();  
+
+    private StringBuilder sb = new StringBuilder(); 
+
+    public BitmapCache() { 
+    } 
+
+    /**
+     * A Bitmap with the given width and height will be returned. 
+     * It is removed from the cache. 
+     * 
+     * An attempt is made to return the correct config, but for unusual configs (as at 30may13) this might not happen.  
+     * 
+     * Note that thread-safety is the caller's responsibility. 
+     */
+    public Bitmap get(int width, int height, Bitmap.Config config) { 
+        String key = getKey(width, height, config); 
+        ArrayList&lt;Bitmap&gt; list = getList(key); 
+        int listSize = list.size();
+        if (listSize&gt;0) { 
+            return list.remove(listSize-1); 
+        } else { 
+            try { 
+                return Bitmap.createBitmap(width, height, config);
+            } catch (RuntimeException e) { 
+                // TODO: Test appendHockeyApp() works. 
+                App.appendHockeyApp("BitmapCache has "+hashtable.size()+":"+listSize+" request "+width+"x"+height); 
+                throw e ; 
+            }
+        }
+    }
+
+    /**
+     * Puts a Bitmap object into the cache. 
+     * 
+     * Note that thread-safety is the caller's responsibility. 
+     */
+    public void put(Bitmap bitmap) { 
+        if (bitmap==null) return ; 
+        String key = getKey(bitmap); 
+        ArrayList&lt;Bitmap&gt; list = getList(key); 
+        list.add(bitmap); 
+    }
+
+    private ArrayList&lt;Bitmap&gt; getList(String key) {
+        ArrayList&lt;Bitmap&gt; list = hashtable.get(key);
+        if (list==null) { 
+            list = new ArrayList&lt;Bitmap&gt;(); 
+            hashtable.put(key, list); 
+        }
+        return list;
+    } 
+
+    private String getKey(Bitmap bitmap) {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        Config config = bitmap.getConfig();
+        return getKey(width, height, config);
+    }
+
+    private String getKey(int width, int height, Config config) {
+        sb.setLength(0); 
+        sb.append(width); 
+        sb.append("x"); 
+        sb.append(height); 
+        sb.append(" "); 
+        switch (config) {
+        case ALPHA_8:
+            sb.append("ALPHA_8"); 
+            break;
+        case ARGB_4444:
+            sb.append("ARGB_4444"); 
+            break;
+        case ARGB_8888:
+            sb.append("ARGB_8888"); 
+            break;
+        case RGB_565:
+            sb.append("RGB_565"); 
+            break;
+        default:
+            sb.append("unknown"); 
+            break; 
+        }
+        return sb.toString();
+    }
+
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/19886413" title="short permalink to this answer" class="short-link" id="link-post-19886413">share</a><span class="lsep">|</span><a href="/posts/19886413/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-11-10 04:51:06Z" class="relativetime">Nov 10 '13 at 4:51</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/950036/guy-smith"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e906017b8ef48ba1df4430a5ace29dd3?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/950036/guy-smith">Guy Smith</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">101</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-19886413" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-19886413" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+				        <div class="question-status">
+        <h2>                    <b>protected</b> by <a href="/users/-1/community">Community</a><span class="mod-flair" title="moderator">♦</span> <span dir="ltr"><span title="2013-01-10 16:25:53Z" class="relativetime">Jan 10 '13 at 16:25</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality answers, posting an answer now requires 10 <a href="/help/whats-reputation">reputation</a> on this site.
+<br /><br />
+Would you like to answer one of these <a href="/unanswered?fromProtectedNotice=true">unanswered questions</a> instead?
+</p>
+    </div>
+
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/memory" class="post-tag" title="show questions tagged 'memory'" rel="tag">memory</a> <a href="/questions/tagged/memory-leaks" class="post-tag" title="show questions tagged 'memory-leaks'" rel="tag">memory-leaks</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2009-12-22 20:51:31Z"><b>5 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>103520 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-12-10 03:57:26Z">3 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+						
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk13001257",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk13001257">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(e){var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,r=setTimeout,h=document,q,b,m={},l=location.hash;if(l.length>1){l.substr(1).split("&").forEach(function(t){var u=t.split("=");this[g(u[0])]=g(u[1])},m)}b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(!m.tags){q=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(q.length>0){m.tags=Array.prototype.join.call(q,";")}}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(t){return a(t).html().replace(/\s+/g,"").length>0}function s(){var t=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(t.length===0){return true}return !j(t)}function n(){var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(z,y){return"d="+y.id}).get().join("&");var x=["l","ip","ac","eng","prov","tags","theme"];var u=Object.keys(m).filter(function(y){return x.indexOf(y)!==-1}).map(function(y){return i(y)+"="+i(m[y])}).join("&");if(u){v+="&"+u}var w=h.createElement("script");w.type="text/javascript";w.src=e+(e.indexOf("?")===-1?"?":"&")+v;h.body.appendChild(w)}}function o(){if(s()){d=r(o,f);return}if(m.abort){k()}n()}function k(){clearTimeout(d);a(c).each(function(){var t=a(this);if(!j(t)){var v=t;var u=t.parents(".everyonelovesstackoverflow").first();if(u.length>0){v=u}v.remove()}})}r(k,2000);var d=r(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/18306551" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="/questions/18306551/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android-java" class="question-hyperlink">java.lang.OutOfMemoryError: bitmap size exceeds VM budget - Android JAVA</a>
+</div><div class="spacer">
+	<a href="/q/13536817" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">4</div>
+	</a>
+	<a href="/questions/13536817/viewpager-java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget" class="question-hyperlink">ViewPager java.lang.OutOfMemoryError: bitmap size exceeds VM budget</a>
+</div><div class="spacer">
+	<a href="/q/14323273" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="/questions/14323273/vm-wont-let-us-allocate-bytes" class="question-hyperlink">VM won&#39;t let us allocate ** bytes</a>
+</div><div class="spacer">
+	<a href="/q/11985497" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">-8</div>
+	</a>
+	<a href="/questions/11985497/android-java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget" class="question-hyperlink">Android: java.lang.OutOfMemoryError: bitmap size exceeds VM budget</a>
+</div><div class="spacer">
+	<a href="/q/13248698" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/13248698/error-in-loading-images-to-gridview-android" class="question-hyperlink">error in loading images to gridview android</a>
+</div><div class="spacer">
+	<a href="/q/10426874" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/10426874/how-to-solve-bitmap-size-exceeds-vm-budget-solution" class="question-hyperlink">how to solve bitmap size exceeds VM budget solution?</a>
+</div><div class="spacer">
+	<a href="/q/27377384" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/27377384/app-crash-after-i-select-the-3rd-function" class="question-hyperlink">app crash after i select the 3rd function</a>
+</div><div class="spacer">
+	<a href="/q/26775160" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/26775160/app-crash-after-start-second-activity" class="question-hyperlink">App crash after start second activity</a>
+</div><div class="spacer">
+	<a href="/q/29104063" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/29104063/my-app-crashed-in-galaxy-grande-and-all-kitkat-androids" class="question-hyperlink">my app crashed in galaxy grande and all kitkat androids</a>
+</div><div class="spacer">
+	<a href="/q/4486034" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted large">224</div>
+	</a>
+	<a href="/questions/4486034/get-root-view-from-current-activity" class="question-hyperlink">Get root view from current activity</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/1949066">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/1955188" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="/questions/1955188/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-android-how-many-i" class="question-hyperlink">java.lang.OutOfMemoryError: bitmap size exceeds VM budget - android - how many images?</a>
+</div>
+<div class="spacer">
+<a href="/q/3588282" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="/questions/3588282/how-to-fix-a-java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-error" class="question-hyperlink">How to fix a &ldquo;java.lang.OutOfMemoryError: bitmap size exceeds VM budget &rdquo; error on android</a>
+</div>
+<div class="spacer">
+<a href="/q/4611822" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">21
+    </div>
+</a><a href="/questions/4611822/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget" class="question-hyperlink">java.lang.OutOfMemoryError: bitmap size exceeds VM budget</a>
+</div>
+<div class="spacer">
+<a href="/q/6402858" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="/questions/6402858/android-outofmemoryerror-bitmap-size-exceeds-vm-budget" class="question-hyperlink">Android OutOfMemoryError bitmap size exceeds VM budget</a>
+</div>
+<div class="spacer">
+<a href="/q/7621655" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/7621655/android-custom-gallery-widget-crashes-with-java-lang-outofmemoryerror-bitmap-si" class="question-hyperlink">Android Custom Gallery Widget crashes with java.lang.OutOfMemoryError: bitmap size exceeds VM budget</a>
+</div>
+<div class="spacer">
+<a href="/q/8657104" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/8657104/bitmap-size-exceed-vm-budget-in-android" class="question-hyperlink">Bitmap Size Exceed VM budget In android</a>
+</div>
+<div class="spacer">
+<a href="/q/11253474" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/11253474/java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget-in-listview" class="question-hyperlink">java.lang.OutOfMemoryError: bitmap size exceeds VM budget in listview</a>
+</div>
+<div class="spacer">
+<a href="/q/11985497" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">-8
+    </div>
+</a><a href="/questions/11985497/android-java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget" class="question-hyperlink">Android: java.lang.OutOfMemoryError: bitmap size exceeds VM budget</a>
+</div>
+<div class="spacer">
+<a href="/q/13536817" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/13536817/viewpager-java-lang-outofmemoryerror-bitmap-size-exceeds-vm-budget" class="question-hyperlink">ViewPager java.lang.OutOfMemoryError: bitmap size exceeds VM budget</a>
+</div>
+<div class="spacer">
+<a href="/q/22690254" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/22690254/programatically-free-application-occupied-space-from-my-application-due-to-java" class="question-hyperlink">Programatically free application occupied space from my application due to &ldquo;java.lang.OutOfMemoryError: bitmap size exceeds VM budget&rdquo;</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/11504/i-cant-be-touched-but-i-often-touch" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I can&#39;t be touched, but I often touch
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/237295/are-there-english-equivalents-for-as-beautiful-as-ass-inside-out" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are there English equivalents for “as beautiful as ass inside out”?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1218687/why-is-the-slope-of-a-line-defined-the-way-it-is" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the slope of a line defined the way it is.
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-webmasters" title="Webmasters Stack Exchange"></div><a href="http://webmasters.stackexchange.com/questions/78788/how-come-com-google-is-a-valid-domain-name" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:45 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How come com.google is a valid domain name?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/54097/condemn-or-sentence-someone" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Condemn or sentence someone
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/236704/how-to-draw-this-simple-box-diagram-with-tikz" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to draw this simple box diagram with Tikz
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="http://music.stackexchange.com/questions/31381/why-are-conductors-required-at-orchestra-performances" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are conductors required at orchestra performances?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/48406/is-the-word-typeable-with-keys-adjacent-to-each-other" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is the word typeable with keys adjacent to each other?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/75694/should-i-avoid-using-abort-in-favor-of-its-synonyms" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I avoid using &quot;abort&quot; in favor of its synonyms?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/163077/how-to-shut-off-a-valve-safely-in-the-power-outage" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to shut off a valve safely in the power outage
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1216125/why-is-the-construction-of-the-real-numbers-important" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the construction of the real numbers important?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/680348/regex-replace-append-filename" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Regex Replace Append Filename
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/43616/how-to-prevent-employees-from-escalating-issues-straight-to-the-ceo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to prevent employees from escalating issues straight to the CEO?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/13638/development-of-society-with-random-encounters" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Development of society with random encounters
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/85480/did-aragorn-and-gandalf-ever-venture-into-mordor" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Did Aragorn and Gandalf ever venture into Mordor?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/59048/will-i-still-get-spell-failure-with-multicalss-kensai-fighter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Will I still get spell failure with multicalss Kensai / fighter?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-pm" title="Project Management Stack Exchange"></div><a href="http://pm.stackexchange.com/questions/14587/scrum-team-committments" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:208 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Scrum team committments
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/604925/how-to-change-file-ownership-when-chown-says-invalid-user-r" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to change file ownership when chown says &quot;invalid user: ‘–R&#39;&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/75850/is-there-research-supporting-the-link-between-colors-and-emotions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there research supporting the link between colors and emotions?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/50625/what-4c-process-blend-best-represents-a-yellow-highlighter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What 4c process blend best represents a yellow highlighter?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-woodworking" title="Woodworking Stack Exchange"></div><a href="http://woodworking.stackexchange.com/questions/741/how-do-you-plane-end-grain" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:603 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do you plane end grain?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1217788/what-is-wrong-with-this-putative-proof" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is wrong with this putative proof?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/85471/how-many-people-know-that-harry-owns-an-invisibility-cloak" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How many people know that Harry owns an Invisibility Cloak?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/13554/how-can-a-pirate-board-a-spaceship-without-teleportation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can a pirate board a spaceship without teleportation?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/1949066" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/1949066/ivc/6baf');});
+</script>
+<noscript>
+    <div><img src="/posts/1949066/ivc/6baf" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.4.3.2444
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('android,memory,memory-leaks');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|android|memory|memory-leaks|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>                
+    </body>
+</html>

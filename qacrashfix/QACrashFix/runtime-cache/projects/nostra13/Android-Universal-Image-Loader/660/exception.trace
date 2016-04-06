@@ -1,0 +1,33 @@
+Hello. I received an error log from my user.
+
+```java
+java.lang.RuntimeException: Unable to create application my.CustomApplication: java.lang.NullPointerException
+at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4584)
+at android.app.ActivityThread.access$1600(ActivityThread.java:161)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1325)
+at android.os.Handler.dispatchMessage(Handler.java:102)
+at android.os.Looper.loop(Looper.java:157)
+at android.app.ActivityThread.main(ActivityThread.java:5356)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:515)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1265)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1081)
+at dalvik.system.NativeStart.main(Native Method) Caused by: java.lang.NullPointerException
+at android.os.Environment.getStorageState(Environment.java:715)
+at android.os.Environment.getExternalStorageState(Environment.java:690)
+at com.nostra13.universalimageloader.utils.getCacheDirectory(SourceFile:68)
+at my.CustomApplication.onCreate(SourceFile:97)
+at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1025)
+at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4581)
+... 10 more
+```
+
+Device specifications:
+Model SCH-I545
+Android 4.2.2
+
+My line №97
+
+```java
+File cacheDir = StorageUtils.getCacheDirectory(getApplicationContext());
+```

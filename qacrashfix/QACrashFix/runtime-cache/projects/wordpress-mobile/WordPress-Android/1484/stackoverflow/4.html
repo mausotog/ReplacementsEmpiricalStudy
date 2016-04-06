@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>garbage collection - Error java.lang.OutOfMemoryError: GC overhead limit exceeded - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Error java.lang.OutOfMemoryError: GC overhead limit exceeded" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I get this error message as I execute my JUnit tests:
+
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+
+I know what an OutOfMemoryError is, but what does GC overhead limit mean? How can I s..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=170fca19b264"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=3423b2dbb2d4">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Error java.lang.OutOfMemoryError: GC overhead limit exceeded&#39;" href="/feeds/question/1393486">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:7,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:1393486});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '1393486');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1431415891,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"bf60fd4d98f4795ca72d6f528a4006a2","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"b711670c6b2e","js/moderator.en.js":"75062b042101","js/full-anon.en.js":"e5947ae502a5","js/full.en.js":"770dd62b9281","js/wmd.en.js":"f35993d287d1","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"5faaefde3284","js/help.en.js":"b5f40fd81205","js/tageditor.en.js":"260ae44a356d","js/tageditornew.en.js":"55a1e89456e7","js/inline-tag-editing.en.js":"21223186b436","js/revisions.en.js":"255b536e5531","js/review.en.js":"ce8065ff2428","js/tagsuggestions.en.js":"bc2c996faeda","js/post-validation.en.js":"50b6f6d364df","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"2fa54a1ec36c","js/keyboard-shortcuts.en.js":"b564d9466f61","js/external-editor.en.js":"b04e37426de6","js/external-editor.en.js":"b04e37426de6","js/snippet-javascript.en.js":"49fc6920793f","js/snippet-javascript-codemirror.en.js":"fbf04318936a"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1393486%2ferror-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1393486%2ferror-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 143 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1393486%2ferror-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f1393486%2ferror-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="question-hyperlink">Error java.lang.OutOfMemoryError: GC overhead limit exceeded</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="1393486"  id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1036595804",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1036595804">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1393486">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">241</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>76</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I get this error message as I execute my JUnit tests:</p>
+
+<pre><code>java.lang.OutOfMemoryError: GC overhead limit exceeded
+</code></pre>
+
+<p>I know what an <code>OutOfMemoryError</code> is, but what does GC overhead limit mean? How can I solve this?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/java" class="post-tag" title="show questions tagged &#39;java&#39;" rel="tag">java</a> <a href="/questions/tagged/garbage-collection" class="post-tag" title="show questions tagged &#39;garbage-collection&#39;" rel="tag">garbage-collection</a> <a href="/questions/tagged/out-of-memory" class="post-tag" title="show questions tagged &#39;out-of-memory&#39;" rel="tag">out-of-memory</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/1393486" title="short permalink to this question" class="short-link" id="link-post-1393486">share</a><span class="lsep">|</span><a href="/posts/1393486/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1393486/revisions" title="show all edits to this post">edited <span title="2013-10-11 12:03:35Z" class="relativetime">Oct 11 '13 at 12:03</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/94363/rds"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/6017d97591b78ae31e34b6483ee77a33?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/94363/rds">rds</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">7,300</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="40 silver badges"><span class="badge2"></span><span class="badgecount">40</span></span><span title="74 bronze badges"><span class="badge3"></span><span class="badgecount">74</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2009-09-08 11:34:28Z" class="relativetime">Sep 8 '09 at 11:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/21005/mnementh"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/1768cce8ccf2dffe3483b0ab5d7cfd74?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/21005/mnementh">Mnementh</a><br>
+        <span class="reputation-score" title="reputation score 21972" dir="ltr">22k</span><span title="26 gold badges"><span class="badge1"></span><span class="badgecount">26</span></span><span title="103 silver badges"><span class="badge2"></span><span class="badgecount">103</span></span><span title="159 bronze badges"><span class="badge3"></span><span class="badgecount">159</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1393486" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1234445" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This sounds very interesting. I&#39;d love if someone could post some code that generates this.</span>
+                &ndash;&nbsp;
+                    <a href="/users/119636/buhb"
+                       title="3540 reputation"
+                       class="comment-user">Buhb</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-08 12:21:13Z" class="relativetime-clean">Sep 8 '09 at 12:21</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1474206" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Can you post an indication of how you solved the problem?  we&#39;re running into the same issue now and a hint as to where to look would be helpful.</span>
+                &ndash;&nbsp;
+                    <a href="/users/20630/matt"
+                       title="1580 reputation"
+                       class="comment-user">Matt</a>
+                <span class="comment-date" dir="ltr"><span title="2009-10-22 17:04:25Z" class="relativetime-clean">Oct 22 '09 at 17:04</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1478372" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I simply found the problem, that lead to too much memory-usage, near to the limit of the heap. A simple solution could be simply to give some more Heap-memory to the Java-Engine (-Xmx) but this only helps, if the application needs exactly as much memory, as the heap-limit before was set.</span>
+                &ndash;&nbsp;
+                    <a href="/users/21005/mnementh"
+                       title="21972 reputation"
+                       class="comment-user owner">Mnementh</a>
+                <span class="comment-date" dir="ltr"><span title="2009-10-23 09:10:17Z" class="relativetime-clean">Oct 23 '09 at 9:10</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-17433750" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">also check out <a href="http://xmlandmore.blogspot.com/2011/05/diagnosing-javalangoutofmemory.html" rel="nofollow">xmlandmore.blogspot.com/2011/05/&hellip;</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/135982/vik"
+                       title="613 reputation"
+                       class="comment-user">Vik</a>
+                <span class="comment-date" dir="ltr"><span title="2012-10-13 05:02:52Z" class="relativetime-clean">Oct 13 '12 at 5:02</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-44567846" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@SimonKuang Note that there are multiple <code>OutOfMemoryError</code> scenarios for which increasing the heap isn&#39;t a valid solution: running out of native threads and running out of perm gen (which is separate from heap) are two examples.  Be careful about making overly broad statements about <code>OutOfMemoryErrors</code>; there&#39;s an unexpectedly diverse set of things that can cause them.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1247705/tim"
+                       title="1614 reputation"
+                       class="comment-user">Tim</a>
+                <span class="comment-date" dir="ltr"><span title="2015-01-22 18:25:18Z" class="relativetime-clean">Jan 22 at 18:25</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1393486" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								6 Answers
+                                <span style="display:none;" itemprop="answerCount">6</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="1393503"></a>
+<div id="answer-1393503" class="answer accepted-answer" data-answerid="1393503"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1393503">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">279</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This message means that for some reason the garbage collector is taking an excessive amount of time (by default 98% of all CPU time of the process) and recovers very little memory in each run (by default 2% of the heap).</p>
+
+<p>This effectively means that your program stops doing any progress and is busy running only the garbage collection at all time.</p>
+
+<p>To prevent your application from soaking up CPU time without getting anything done, the JVM throws this <code>Error</code> so that you have a chance of diagnosing the problem.</p>
+
+<p>The rare cases where I've seen this happen is where some code was creating tons of temporary objects and tons of weakly-referenced objects in an already very memory-constrained environment.</p>
+
+<p>Check out <a href="http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html">this article</a> for details (specifically <a href="http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#par_gc.oom">this part</a>).</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1393503" title="short permalink to this answer" class="short-link" id="link-post-1393503">share</a><span class="lsep">|</span><a href="/posts/1393503/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/1393503/revisions" title="show all edits to this post">edited <span title="2010-11-29 19:29:57Z" class="relativetime">Nov 29 '10 at 19:29</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-09-08 11:39:14Z" class="relativetime">Sep 8 '09 at 11:39</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/40342/joachim-sauer"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a648ccb47bbbe9497c073315aac4d33e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/40342/joachim-sauer">Joachim Sauer</a><br>
+        <span class="reputation-score" title="reputation score 149681" dir="ltr">150k</span><span title="28 gold badges"><span class="badge1"></span><span class="badgecount">28</span></span><span title="319 silver badges"><span class="badge2"></span><span class="badgecount">319</span></span><span title="450 bronze badges"><span class="badge3"></span><span class="badgecount">450</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1393503" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="7"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-3151554" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Would it be correct to summarise your answer as follows:  &quot;It&#39;s just like an &#39;Out of Java Heap space&#39; error.  Give it more memory with -Xmx.&quot;  ?</span>
+                &ndash;&nbsp;
+                    <a href="/users/10592/tim-cooper"
+                       title="2941 reputation"
+                       class="comment-user">Tim Cooper</a>
+                <span class="comment-date" dir="ltr"><span title="2010-06-19 13:28:46Z" class="relativetime-clean">Jun 19 '10 at 13:28</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3156128" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">20</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Tim: No, that wouldn&#39;t be correct. While giving it more memory <i>could</i> reduce the problem, you should also look at your code and see why it produces that amount of garbage and why your code skims just below the &quot;out of memory&quot; mark. It&#39;s often a sign of broken code.</span>
+                &ndash;&nbsp;
+                    <a href="/users/40342/joachim-sauer"
+                       title="149681 reputation"
+                       class="comment-user">Joachim Sauer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-06-20 15:48:45Z" class="relativetime-clean">Jun 20 '10 at 15:48</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-4676701" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks, it seems Oracle isn&#39;t actually that good in data migration, they broke the link.</span>
+                &ndash;&nbsp;
+                    <a href="/users/40342/joachim-sauer"
+                       title="149681 reputation"
+                       class="comment-user">Joachim Sauer</a>
+                <span class="comment-date" dir="ltr"><span title="2010-11-29 19:30:17Z" class="relativetime-clean">Nov 29 '10 at 19:30</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-6131300" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="supernova">44</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You had me at &quot;Thanks, it seems Oracle isn&#39;t actually that good&quot;</span>
+                &ndash;&nbsp;
+                    <a href="/users/61938/robert-grant"
+                       title="3945 reputation"
+                       class="comment-user">Robert Grant</a>
+                <span class="comment-date" dir="ltr"><span title="2011-03-24 10:46:42Z" class="relativetime-clean">Mar 24 '11 at 10:46</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-12051521" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Guus: if multiple applications run in the same JVM, then yes, they can easily influence each other. It&#39;ll be hard to tell which one is misbehaving. Separating the applications into distinct JVMs might be the easiest solution.</span>
+                &ndash;&nbsp;
+                    <a href="/users/40342/joachim-sauer"
+                       title="149681 reputation"
+                       class="comment-user">Joachim Sauer</a>
+                <span class="comment-date" dir="ltr"><span title="2012-03-01 11:48:44Z" class="relativetime-clean">Mar 1 '12 at 11:48</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1393503" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>7</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk502472415",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk502472415">
+            </div>
+  
+<a name="1393522"></a>
+<div id="answer-1393522" class="answer" data-answerid="1393522"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="1393522">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">70</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The GC throws this exception when too much time is spent in garbage collection for too little return, eg. 98% of CPU time is spent on GC and less than 2% of heap is recovered.</p>
+
+<p>This feature is designed to prevent applications from running for an extended period of time while making little or no progress because the heap is too small.</p>
+
+<p>You can turn this off with the command line option -XX:-UseGCOverheadLimit</p>
+
+<p>More info <a href="http://java.sun.com/javase/technologies/hotspot/gc/gc%5Ftuning%5F6.html#par%5Fgc.oom">here</a></p>
+
+<p>EDIT: looks like someone can type faster than me :)</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/1393522" title="short permalink to this answer" class="short-link" id="link-post-1393522">share</a><span class="lsep">|</span><a href="/posts/1393522/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-09-08 11:43:16Z" class="relativetime">Sep 8 '09 at 11:43</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/135351/dave"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8281b1bd2eaad90adfda7f9aefac1d24?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/135351/dave">dave</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">3,325</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="33 bronze badges"><span class="badge3"></span><span class="badgecount">33</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1393522" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1234625" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">25</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">&quot;You can turn this off...&quot; but the OP most likely should not do this.</span>
+                &ndash;&nbsp;
+                    <a href="/users/139985/stephen-c"
+                       title="301512 reputation"
+                       class="comment-user">Stephen C</a>
+                <span class="comment-date" dir="ltr"><span title="2009-09-08 12:57:34Z" class="relativetime-clean">Sep 8 '09 at 12:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2875372" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Can you tell me the difference between &quot;-XX&quot; and &quot;-Xmx&quot;?  I was able to turn it off using the &quot;-Xmx&quot; option too.</span>
+                &ndash;&nbsp;
+                    <a href="/users/49847/susheel-javadi"
+                       title="1159 reputation"
+                       class="comment-user">Susheel Javadi</a>
+                <span class="comment-date" dir="ltr"><span title="2010-05-14 12:37:08Z" class="relativetime-clean">May 14 '10 at 12:37</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-5639590" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">8</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Replying to a very old comment here, but... @Bart The <code>-XX:</code> at the start of several command line options is a flag of sorts indicating that this option is highly VM-specific and unstable (subject to change without notice in future versions).  In any case, the <code>-XX:-UseGCOverheadLimit</code> flag tells the VM to disable GC overhead limit checking (actually &quot;turns it off&quot;), whereas your <code>-Xmx</code> command merely increased the heap.  In the latter case the GC overhead checking was still <i>running</i>, it just sounds like a bigger heap solved the GC thrashing issues <i>in your case</i> (this will not always help).</span>
+                &ndash;&nbsp;
+                    <a href="/users/45664/andrzej-doyle"
+                       title="58709 reputation"
+                       class="comment-user">Andrzej Doyle</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-18 10:51:40Z" class="relativetime-clean">Feb 18 '11 at 10:51</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1393522" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="8498644"></a>
+<div id="answer-8498644" class="answer" data-answerid="8498644"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="8498644">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">25</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If you are sure there are no <a href="http://www.ibm.com/developerworks/library/j-leaks/">memory leaks</a> in your program, try to:</p>
+
+<ol>
+<li>Increase the heap size, for example <code>-Xmx1g</code>.  </li>
+<li>Enable the concurrent low pause collector <code>-XX:+UseConcMarkSweepGC</code>. </li>
+<li>Reuse existing objects when possible to save some memory.</li>
+</ol>
+
+<p>If necessary, the <a href="http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#par_gc.oom">limit check</a> can be disabled by adding the option <code>-XX:-UseGCOverheadLimit</code> to the command line.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/8498644" title="short permalink to this answer" class="short-link" id="link-post-8498644">share</a><span class="lsep">|</span><a href="/posts/8498644/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-12-14 01:44:17Z" class="relativetime">Dec 14 '11 at 1:44</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/288671/vitalii-fedorenko"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/Fwgef.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/288671/vitalii-fedorenko">Vitalii Fedorenko</a><br>
+        <span class="reputation-score" title="reputation score 25534" dir="ltr">25.5k</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="75 silver badges"><span class="badge2"></span><span class="badgecount">75</span></span><span title="73 bronze badges"><span class="badge3"></span><span class="badgecount">73</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-8498644" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-8498644" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="5640498"></a>
+<div id="answer-5640498" class="answer" data-answerid="5640498"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="5640498">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">17</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>It's usually the code. Here's a simple example:</p>
+
+<pre><code>import java.util.*;
+
+public class GarbageCollector {
+
+    public static void main(String... args) {
+
+        System.out.printf("Testing...%n");
+        List&lt;Double&gt; list = new ArrayList&lt;Double&gt;();
+        for (int outer = 0; outer &lt; 10000; outer++) {
+
+            // list = new ArrayList&lt;Double&gt;(10000); // BAD
+            // list = new ArrayList&lt;Double&gt;(); // WORSE
+            list.clear(); // BETTER
+
+            for (int inner = 0; inner &lt; 10000; inner++) {
+                list.add(Math.random());
+            }
+
+            if (outer % 1000 == 0) {
+                System.out.printf("Outer loop at %d%n", outer);
+            }
+
+        }
+        System.out.printf("Done.%n");
+    }
+}
+</code></pre>
+
+<p>Using java 1.6.0_24-b07 On a Windows7 32 bit.</p>
+
+<p>java -Xloggc:gc.log GarbageCollector</p>
+
+<p>Then look at gc.log</p>
+
+<ul>
+<li>Triggered 444 times using BAD method</li>
+<li>Triggered 666 times using WORSE method </li>
+<li>Triggered 354 times using BETTER method</li>
+</ul>
+
+<p>Now granted, this is not the best test or the best design but when faced with a situation where you have no choice but implementing such a loop or when dealing with existing code that behaves badly, choosing to reuse objects instead of creating new ones can reduce the number of times the garbage collector gets in the way...</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/5640498" title="short permalink to this answer" class="short-link" id="link-post-5640498">share</a><span class="lsep">|</span><a href="/posts/5640498/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/5640498/revisions" title="show all edits to this post">edited <span title="2011-04-12 20:29:09Z" class="relativetime">Apr 12 '11 at 20:29</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-04-12 19:27:01Z" class="relativetime">Apr 12 '11 at 19:27</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/495987/mike"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/369b6fac8d626070c5a3e987d4f531cc?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/495987/mike">Mike</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">506</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="11 bronze badges"><span class="badge3"></span><span class="badgecount">11</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-5640498" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-12830193" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Please clarify: When you say &quot;Triggered n times&quot;, does that mean that a regular GC happened n times, or that the &quot;GC overhead limit exceeded&quot; error reported by the OP happened n times?</span>
+                &ndash;&nbsp;
+                    <a href="/users/12484/jon-schneider"
+                       title="3817 reputation"
+                       class="comment-user">Jon Schneider</a>
+                <span class="comment-date" dir="ltr"><span title="2012-04-05 15:15:22Z" class="relativetime-clean">Apr 5 '12 at 15:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-5640498" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="23628984"></a>
+<div id="answer-23628984" class="answer" data-answerid="23628984"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="23628984">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I had encountered the same problem</p>
+
+<p>Exception in thread “main” java.lang.OutOfMemoryError: GC overhead limit exceeded </p>
+
+<p>and when I tried to fix this error it showed the same error. So don't panic and just increase size a little more by setting this option in</p>
+
+<p><strong>Run->Run Configurations->Click on arguments->inside VM arguments type</strong></p>
+
+<pre><code> -Xms1024M -Xmx2048M
+</code></pre>
+
+<p><strong>Xms</strong>- for minimum limit</p>
+
+<p><strong>Xmx</strong>- for maximum limit</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/23628984" title="short permalink to this answer" class="short-link" id="link-post-23628984">share</a><span class="lsep">|</span><a href="/posts/23628984/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/23628984/revisions" title="show all edits to this post">edited <span title="2014-12-02 10:50:04Z" class="relativetime">Dec 2 '14 at 10:50</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-05-13 10:40:23Z" class="relativetime">May 13 '14 at 10:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3392249/sooraj"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/NhyoK.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3392249/sooraj">sooraj</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">235</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="11 bronze badges"><span class="badge3"></span><span class="badgecount">11</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-23628984" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-39048484" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@web-tiki i have edited my answer.now plz check</span>
+                &ndash;&nbsp;
+                    <a href="/users/3392249/sooraj"
+                       title="235 reputation"
+                       class="comment-user">sooraj</a>
+                <span class="comment-date" dir="ltr"><span title="2014-08-02 11:57:27Z" class="relativetime-clean">Aug 2 '14 at 11:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-42824886" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The android apps dont have <code>arguments</code> tab...what should we do to achieve this?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1203797/blaze-tama"
+                       title="3705 reputation"
+                       class="comment-user">Blaze Tama</a>
+                <span class="comment-date" dir="ltr"><span title="2014-11-27 08:50:39Z" class="relativetime-clean">Nov 27 '14 at 8:50</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-42853083" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">sorry @BlazeTama  no idea about android...I have not tried that yet...</span>
+                &ndash;&nbsp;
+                    <a href="/users/3392249/sooraj"
+                       title="235 reputation"
+                       class="comment-user">sooraj</a>
+                <span class="comment-date" dir="ltr"><span title="2014-11-28 05:49:33Z" class="relativetime-clean">Nov 28 '14 at 5:49</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-23628984" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="27716421"></a>
+<div id="answer-27716421" class="answer" data-answerid="27716421"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="27716421">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For me following steps worked</p>
+
+<pre><code>1) Open eclipse.ini file
+2)changed
+-Xms40m
+-Xmx512m
+to 
+-Xms512m
+-Xmx1024m
+
+3)then restart eclipse
+</code></pre>
+
+<p><a href="https://docs.oseems.com/general/application/eclipse/fix-gc-overhead-limit-exceeded" rel="nofollow">See here</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/27716421" title="short permalink to this answer" class="short-link" id="link-post-27716421">share</a><span class="lsep">|</span><a href="/posts/27716421/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-12-31 05:09:49Z" class="relativetime">Dec 31 '14 at 5:09</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/111988/sunil-kumar-sahoo"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/fr2X6.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/111988/sunil-kumar-sahoo">Sunil Kumar Sahoo</a><br>
+        <span class="reputation-score" title="reputation score 24119" dir="ltr">24.1k</span><span title="25 gold badges"><span class="badge1"></span><span class="badgecount">25</span></span><span title="110 silver badges"><span class="badge2"></span><span class="badgecount">110</span></span><span title="189 bronze badges"><span class="badge3"></span><span class="badgecount">189</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-27716421" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-46839458" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">the most simple way to fix this problem. Thanks :)</span>
+                &ndash;&nbsp;
+                    <a href="/users/435478/hamza"
+                       title="500 reputation"
+                       class="comment-user">Hamza</a>
+                <span class="comment-date" dir="ltr"><span title="2015-03-29 00:40:57Z" class="relativetime-clean">Mar 29 at 0:40</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-47905609" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">eclipse.ini file in jdev?</span>
+                &ndash;&nbsp;
+                    <a href="/users/2219041/abhinaba-basu"
+                       title="106 reputation"
+                       class="comment-user">Abhinaba Basu</a>
+                <span class="comment-date" dir="ltr"><span title="2015-04-27 08:48:06Z" class="relativetime-clean">Apr 27 at 8:48</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-27716421" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+				        <div class="question-status">
+        <h2>                    <b>protected</b> by <a href="/users/650492/johan">Johan</a> <span dir="ltr"><span title="2013-09-13 13:17:04Z" class="relativetime">Sep 13 '13 at 13:17</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality answers, posting an answer now requires 10 <a href="/help/whats-reputation">reputation</a> on this site.
+<br /><br />
+Would you like to answer one of these <a href="/unanswered?fromProtectedNotice=true">unanswered questions</a> instead?
+</p>
+    </div>
+
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/java" class="post-tag" title="show questions tagged &#39;java&#39;" rel="tag">java</a> <a href="/questions/tagged/garbage-collection" class="post-tag" title="show questions tagged &#39;garbage-collection&#39;" rel="tag">garbage-collection</a> <a href="/questions/tagged/out-of-memory" class="post-tag" title="show questions tagged &#39;out-of-memory&#39;" rel="tag">out-of-memory</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2009-09-08 11:34:28Z"><b>5 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>234041 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-12-31 05:09:49Z">4 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2015/05/stack-exchange-podcast-64-not-recorded-in-ithaca/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2015/05/stack-exchange-podcast-64-not-recorded-in-ithaca/" class="question-hyperlink">Stack Exchange Podcast #64: Not Recorded in Ithaca</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk618273829",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk618273829">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(i){var a=window.$,d=20,m=2000,f="#sidebar [id^='adzerk'].everyonelovesstackoverflow",l="div#hireme,div.hireme",t=setTimeout,c=i.adurl,r=i.azw,g=i.azt,u=function(){return new Date().getTime()},s=u();function j(x){var y={},z=window.StackExchange,w=decodeURIComponent,A;if(x.length>1){x.substr(1).split("&").forEach(function(B){var C=B.split("=");this[w(C[0])]=w(C[1])},y)}var v=y.ac||y.accountid||(z&&z.options&&z.options.user&&z.options.user.accountId);if(v){y.ac=v}if(!y.tags){A=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(A.length>0){y.tags=Array.prototype.join.call(A,";")}}if(x==="#large"){y.l=1}if(x==="#abort"){y.abort=1}return y}function k(v){return a(v).html().replace(/\s+/g,"").length>0}var b=false;function o(A,w){if(b){return}b=true;var v=a(l),x=document,y=encodeURIComponent;clearTimeout(e);if(v.length>0){if(A.l||a("#careersadsdoublehigh").length>0){A.l=1}var C=v.map(function(G,F){return"d="+F.id}).get().join("&");var E=["l","ip","ac","eng","prov","tags","theme"];var B=Object.keys(A).filter(function(F){return E.indexOf(F)!==-1}).map(function(F){return y(F)+"="+y(A[F])}).join("&");if(B){C+="&"+B}if(w){C+="&azt=true"}var z=u()-s;C+="&lw="+z;var D=x.createElement("script");D.type="text/javascript";D.src=c+(c.indexOf("?")===-1?"?":"&")+C;x.body.appendChild(D);window.calculonPlacerStart=new Date().getTime()}}function q(w){var v=a(w);if(!k(v)){console.log(w);v.remove()}}var n=j(location.hash);if(n.abort){return}var h=null;if(r){h=t(o,g,n,true)}function p(v){if(k(f)){if(h){clearTimeout(h)}o(v)}else{e=t(p,d,v)}}var e=t(p,d,n);t(q,m,l)}).apply(null, [{"azw":false,"azt":2000,"adurl":"//clc.stackoverflow.com/j/p"}]);            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/23080078" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">13</div>
+	</a>
+	<a href="/questions/23080078/eclipse-crashes-with-a-gc-overhead-limit-exceeded-error" class="question-hyperlink">Eclipse crashes with a GC overhead limit exceeded error</a>
+</div><div class="spacer">
+	<a href="/q/2985167" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">3</div>
+	</a>
+	<a href="/questions/2985167/exception-in-thread-main-java-lang-outofmemoryerror-how-to-find-and-fix" class="question-hyperlink">Exception in thread &ldquo;main&rdquo; java.lang.OutOfMemoryError, How to find and fix?</a>
+</div><div class="spacer">
+	<a href="/q/22834107" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="/questions/22834107/exception-in-thread-main-java-lang-outofmemoryerror-gc-overhead-limit-exceede" class="question-hyperlink">Exception in thread &ldquo;main&rdquo; java.lang.OutOfMemoryError: GC overhead limit exceeded - Eclipse</a>
+</div><div class="spacer">
+	<a href="/q/23016040" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/23016040/java-lang-outofmemoryerror-gc-overhead-limit-exceeded-after-the-service-gets-ex" class="question-hyperlink">java.lang.OutOfMemoryError: GC overhead limit exceeded after the service gets executed for a week</a>
+</div><div class="spacer">
+	<a href="/q/19223617" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">-1</div>
+	</a>
+	<a href="/questions/19223617/java-lang-runtimeexception-java-lang-outofmemoryerrorgc" class="question-hyperlink">java.lang.RuntimeException: java.lang.OutOfMemoryError:GC</a>
+</div><div class="spacer">
+	<a href="/q/5839359" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted large">124</div>
+	</a>
+	<a href="/questions/5839359/java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="question-hyperlink">java.lang.OutOfMemoryError: GC overhead limit exceeded</a>
+</div><div class="spacer">
+	<a href="/q/22081505" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">9</div>
+	</a>
+	<a href="/questions/22081505/problems-with-java-garbage-collector-and-memory" class="question-hyperlink">Problems with Java garbage collector and memory</a>
+</div><div class="spacer">
+	<a href="/q/8719071" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">11</div>
+	</a>
+	<a href="/questions/8719071/is-it-possible-to-get-outofmemoryerror-because-garbage-collection-too-slow" class="question-hyperlink">Is it possible to get OutOfMemoryError because garbage collection too slow?</a>
+</div><div class="spacer">
+	<a href="/q/11091516" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">5</div>
+	</a>
+	<a href="/questions/11091516/exception-in-thread-main-java-lang-outofmemoryerror-gc-overhead-limit-exceede" class="question-hyperlink">Exception in thread &ldquo;main&rdquo; java.lang.OutOfMemoryError: GC overhead limit exceeded in GWT application</a>
+</div><div class="spacer">
+	<a href="/q/2863984" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">8</div>
+	</a>
+	<a href="/questions/2863984/duration-of-excessive-gc-time-in-java-lang-outofmemoryerror-gc-overhead-limit" class="question-hyperlink">Duration of Excessive GC Time in &ldquo;java.lang.OutOfMemoryError: GC overhead limit exceeded&rdquo;</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/1393486">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/2863984" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">8
+    </div>
+</a><a href="/questions/2863984/duration-of-excessive-gc-time-in-java-lang-outofmemoryerror-gc-overhead-limit" class="question-hyperlink">Duration of Excessive GC Time in &ldquo;java.lang.OutOfMemoryError: GC overhead limit exceeded&rdquo;</a>
+</div>
+<div class="spacer">
+<a href="/q/3972176" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/3972176/gc-overhead-limit-exceeded-error-when-reading-a-text-file" class="question-hyperlink">GC Overhead limit exceeded error when reading a text file</a>
+</div>
+<div class="spacer">
+<a href="/q/4371505" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">80
+    </div>
+</a><a href="/questions/4371505/gc-overhead-limit-exceeded" class="question-hyperlink">GC overhead limit exceeded</a>
+</div>
+<div class="spacer">
+<a href="/q/5839359" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">124
+    </div>
+</a><a href="/questions/5839359/java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="question-hyperlink">java.lang.OutOfMemoryError: GC overhead limit exceeded</a>
+</div>
+<div class="spacer">
+<a href="/q/12181912" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/12181912/why-do-i-get-java-lang-outofmemoryerror-gc-overhead-limit-exceeded-here" class="question-hyperlink">Why do I get &ldquo;java.lang.OutOfMemoryError: GC overhead limit exceeded&rdquo; here?</a>
+</div>
+<div class="spacer">
+<a href="/q/20051291" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="/questions/20051291/8-puzzle-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="question-hyperlink">8-puzzle java.lang.OutOfMemoryError: GC overhead limit exceeded</a>
+</div>
+<div class="spacer">
+<a href="/q/23434920" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="/questions/23434920/r-xlsx-java-lang-outofmemoryerror-gc-overhead-limit-exceeded" class="question-hyperlink">R XLSX java.lang.OutOfMemoryError: GC overhead limit exceeded</a>
+</div>
+<div class="spacer">
+<a href="/q/23469111" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/23469111/loading-big-hashmapstring-treemap-from-file-gives-java-lang-outofmemoryerror" class="question-hyperlink">Loading big HashMap&lt;String, TreeMap&gt; from file gives java.lang.OutOfMemoryError(GC overhead limit exceeded)</a>
+</div>
+<div class="spacer">
+<a href="/q/27164452" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="/questions/27164452/how-to-solve-java-lang-outofmemoryerror-gc-overhead-limit-exceeded-error-in-and" class="question-hyperlink">How to solve java.lang.OutOfMemoryError: GC overhead limit exceeded error in android studio</a>
+</div>
+<div class="spacer">
+<a href="/q/27237284" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/27237284/java-lang-outofmemoryerror-gc-overhead-limit-exceeded-java-heap-space-error" class="question-hyperlink">java.lang.OutOfMemoryError: GC overhead limit exceeded / Java heap space Error</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/89569/do-the-ents-go-to-the-undying-lands" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do the Ents go to the Undying Lands?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/245488/site-hopping-non-related-subjects-wasting-time-on-the-internet" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Site hopping, non-related subjects, wasting time on the internet
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/622542/how-to-list-users-with-uids-higher-than-10" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to list users with UIDs higher than 10?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/45230/author-wants-to-withdraw-or-insist-on-re-reviewing-at-proof-stage-of-publication" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Author wants to withdraw or insist on re-reviewing at proof stage of publication
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/45002/is-it-ethical-for-a-professor-to-disseminate-wrong-answers-online" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it ethical for a Professor to disseminate wrong answers online?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-history" title="History Stack Exchange"></div><a href="http://history.stackexchange.com/questions/22725/where-was-the-cultural-inheritance-of-the-greco-roman-world-antiquity-preserved" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:324 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where was the cultural inheritance of the Greco/Roman world/antiquity preserved?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/913536/where-is-value-coming-from-in-formula" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where is value coming from in formula?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-boardgames" title="Board &amp; Card Games Stack Exchange"></div><a href="http://boardgames.stackexchange.com/questions/24109/is-there-a-card-that-turns-x-x-into-x-1-1-counters" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:147 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a card that turns +X/+X into X +1/+1 counters?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/89004/how-are-digital-certificates-compared" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How are digital certificates compared?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/83118/hightlight-all-the-self-intersections-of-a-lissajous-figure" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Hightlight all the self-intersections of a Lissajous figure
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-history" title="History Stack Exchange"></div><a href="http://history.stackexchange.com/questions/22727/did-a-japanese-medieval-castle-withstand-us-battleship-fire-during-the-pacific-w" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:324 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Did a Japanese medieval castle withstand US battleship fire during the Pacific War?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/89551/in-this-picture-where-is-mordor" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    In this picture, where is Mordor?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/46469/should-i-tell-my-boss-im-leaving-before-going-job-hunting" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I tell my boss I&#39;m leaving before going job-hunting?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/244368/tikz-draw-a-cooking-pot" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    TikZ- Draw a cooking pot
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/206270/algebraic-proof-of-five-color-theorem-using-chromatic-polynomials-by-birkhoff-an" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Algebraic proof of Five-Color Theorem using chromatic polynomials by Birkhoff and Lewis in 1946
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/244082/typesetting-before-tex-and-computers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Typesetting before TeX and computers?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/183501/why-isnt-the-color-of-a-molecule-a-combination-of-the-colors-of-its-component-a" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why isn&#39;t the color of a molecule a combination of the colors of its component atoms?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/219031/how-do-i-contact-rockstar-customer-support" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I contact Rockstar customer support?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/49950/capitalize-first-letter-of-each-word-of-input" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Capitalize first letter of each word of input
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/206341/what-sort-of-models-did-bolyai-and-lobachevsky-use-to-demonstrate-the-consistenc" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What sort of models did Bolyai and Lobachevsky use to demonstrate the consistency of their models of non-Euclidean Geometry?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/61840/how-much-is-a-gold-piece-worth-in-modern-money" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How much is a Gold Piece worth in modern money?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/622142/how-can-i-capitalize-letters-before-a-certain-character" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I capitalize letters before a certain character? (^)
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/14778/tough-series-question-sss-scc-c-sc" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Tough Series Question - SSS, SCC, C, SC
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/20061/should-i-try-to-protect-my-son-from-hearing-that-his-father-wants-nothing-to-do" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I try to protect my son from hearing that his father wants nothing to do with his two boys?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/1393486" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/1393486/ivc/ab9e');});
+</script>
+<noscript>
+    <div><img src="/posts/1393486/ivc/ab9e" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.5.12.2569
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('java,garbage-collection,out-of-memory');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|java|garbage-collection|out-of-memory|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>            
+    </body>
+</html>

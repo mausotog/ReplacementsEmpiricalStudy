@@ -1,0 +1,2509 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+    
+    <title>performance - How to deal with &quot;java.lang.OutOfMemoryError: Java heap space&quot; error (64MB heap size) - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How to deal with &quot;java.lang.OutOfMemoryError: Java heap space&quot; error (64MB heap size)" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I am writing a client-side Swing application (graphical font designer) on Java 5. Recently, I am running into java.lang.OutOfMemoryError: Java heap space error because I am not being conservative on " />
+    <meta property="og:url" content="http://stackoverflow.com/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=7e66a1b227e7"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=689e41cd2883">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;How to deal with &quot;java.lang.OutOfMemoryError: Java heap space&quot; error (64MB heap size)&#39;" href="/feeds/question/37335">
+    <meta name="twitter:app:country" content="US" />
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:iphone" content="871299723" />
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap" />
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:ipad" content="871299723" />
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap" />
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:37335});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '37335');
+                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+        });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1428123244,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"a79554347e92cbc0695a04e1e8375545","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"a01c3030569e","js/moderator.en.js":"9be321ee4fdc","js/full-anon.en.js":"0e605e6101e2","js/full.en.js":"d86f58802e92","js/wmd.en.js":"89e46762f17e","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"a2341f691d0d","js/help.en.js":"637a173e1aa4","js/tageditor.en.js":"3f818f06656a","js/tageditornew.en.js":"f9c5a11452c0","js/inline-tag-editing.en.js":"f53885bdadce","js/revisions.en.js":"6c7265ea9fa1","js/review.en.js":"1305a2469a54","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"23eb1e4c85da","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"588492b46561","js/keyboard-shortcuts.en.js":"77412b2bfcc4","js/external-editor.en.js":"333f2972598f","js/external-editor.en.js":"333f2972598f","js/snippet-javascript.en.js":"d4699d4cc44f","js/snippet-javascript-codemirror.en.js":"5407f517dfab"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f37335%2fhow-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f37335%2fhow-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 140 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f37335%2fhow-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f37335%2fhow-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+	<link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+			<h1 itemprop="name"><a href="/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap" class="question-hyperlink">How to deal with &ldquo;java.lang.OutOfMemoryError: Java heap space&rdquo; error (64MB heap size)</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="37335"  id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk842368892",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk842368892">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="37335">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">148</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>69</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>I am writing a client-side <strong>Swing</strong> application (graphical font designer) on <strong>Java 5</strong>. Recently, I am running into <code>java.lang.OutOfMemoryError: Java heap space</code> error because I am not being conservative on memory usage. The user can open unlimited number of files, and the program keeps the opened objects in the memory. After a quick research I found <a href="http://java.sun.com/docs/hotspot/gc5.0/ergo5.html">Ergonomics in the 5.0 Java Virtual Machine</a> and others saying on Windows machine the JVM defaults max heap size as <code>64MB</code>.</p>
+
+<p>Given this situation, how should I deal with this constraint?</p>
+
+<p>I could increase the <strong>max heap size</strong> using <strong>command line</strong> option to java, but that would require figuring out available RAM and writing some launching program or script. Besides, increasing to some finite max does not ultimately get rid of the issue.</p>
+
+<p>I could rewrite some of my code to persist objects to file system frequently (using database is the same thing) to free up the memory. It could work, but it's probably a lot work too.</p>
+
+<p>If you could point me to details of above ideas or some alternatives like <strong>automatic virtual memory, extending heap size dynamically</strong>, that will be great.</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/java" class="post-tag" title="show questions tagged 'java'" rel="tag">java</a> <a href="/questions/tagged/performance" class="post-tag" title="show questions tagged 'performance'" rel="tag">performance</a> <a href="/questions/tagged/jvm" class="post-tag" title="show questions tagged 'jvm'" rel="tag">jvm</a> <a href="/questions/tagged/out-of-memory" class="post-tag" title="show questions tagged 'out-of-memory'" rel="tag">out-of-memory</a> <a href="/questions/tagged/heap" class="post-tag" title="show questions tagged 'heap'" rel="tag">heap</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/37335" title="short permalink to this question" class="short-link" id="link-post-37335">share</a><span class="lsep">|</span><a href="/posts/37335/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/37335/revisions" title="show all edits to this post">edited <span title="2014-11-25 13:58:20Z" class="relativetime">Nov 25 '14 at 13:58</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1245337/atish-shimpi"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/wxj1F.jpg?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1245337/atish-shimpi">atish shimpi</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,353</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="27 bronze badges"><span class="badge3"></span><span class="badgecount">27</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2008-09-01 01:10:03Z" class="relativetime">Sep 1 '08 at 1:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3827/eugene-yokota"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8f41595db400be30176f6f04630c2842?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3827/eugene-yokota">Eugene Yokota</a><br>
+        <span class="reputation-score" title="reputation score 48622" dir="ltr">48.6k</span><span title="29 gold badges"><span class="badge1"></span><span class="badgecount">29</span></span><span title="109 silver badges"><span class="badge2"></span><span class="badgecount">109</span></span><span title="182 bronze badges"><span class="badge3"></span><span class="badgecount">182</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-37335" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-37335" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								14 Answers
+                                <span style="display:none;" itemprop="answerCount">14</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/37335/how-to-deal-with-java-lang-outofmemoryerror-java-heap-space-error-64mb-heap?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="37349"></a>
+<div id="answer-37349" class="answer accepted-answer" data-answerid="37349"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="37349">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">95</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Ultimately you always have a finite max of heap to use no matter what platform you are running on. In Windows 32 bit this is around 2gb (not specifically heap but total amount of memory per process). It just happens that Java happens to make the default smaller (presumably so that the programmer can't create programs that have runaway memory allocation without running into this problem and having to examine exactly what they are doing).</p>
+
+<p>So this given there are several approaches you could take to either determine what amount of memory you need or to reduce the amount of memory you are using. One common mistake with garbage collected languages such as Java or C# is to keep around references to objects that you no longer are using, or allocating many objects when you could reuse them instead. As long as objects have a reference to them they will continue to use heap space as the garbage collector will not delete them.</p>
+
+<p>In this case you can use a Java memory profiler to determine what methods in your program are allocating large number of objects and then determine if there is a way to make sure they are no longer referenced, or to not allocate them in the first place. One option which I have used in the past is "JMP" <a href="http://www.khelekore.org/jmp/">http://www.khelekore.org/jmp/</a>.</p>
+
+<p>If you determine that you are allocating these objects for a reason and you need to keep around references (depending on what you are doing this might be the case), you will just need to increase the max heap size when you start the program. However, once you do the memory profiling and understand how your objects are getting allocated you should have a better idea about how much memory you need. </p>
+
+<p>In general if you can't guarantee that your program will run in some finite amount of memory (perhaps depending on input size) you will always run into this problem. Only after exhausting all of this will you need to look into caching objects out to disk etc. At this point you should have a very good reason to say "I need Xgb of memory" for something and you can't work around it by improving your algorithms or memory allocation patterns. Generally this will only usually be the case for algorithms operating on large datasets (like a database or some scientific analysis program) and then techniques like caching and memory mapped IO become useful.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/37349" title="short permalink to this answer" class="short-link" id="link-post-37349">share</a><span class="lsep">|</span><a href="/posts/37349/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-09-01 01:29:54Z" class="relativetime">Sep 1 '08 at 1:29</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2925/ben-childs"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/bcb42b6044cd46eebfa74fdbf4d07aea?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2925/ben-childs">Ben Childs</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,989</span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="9 bronze badges"><span class="badge3"></span><span class="badgecount">9</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-37349" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-22905268" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">OpenJDK and OracleJDK have bundled profiler - jvisualvm. If you want more conveniences I&#39;d suggest commercial Yourkit.</span>
+                &ndash;&nbsp;
+                    <a href="/users/117220/petr-gladkikh"
+                       title="986 reputation"
+                       class="comment-user">Petr Gladkikh</a>
+                <span class="comment-date" dir="ltr"><span title="2013-04-17 04:40:43Z" class="relativetime-clean">Apr 17 '13 at 4:40</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-37349" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk135658872",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk135658872">
+            </div>
+  
+<a name="37466"></a>
+<div id="answer-37466" class="answer" data-answerid="37466"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="37466">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">57</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Run Java with the command-line option <code>-Xmx</code>, which sets the <em>maximum</em> size of the heap.</p>
+
+<p><a href="http://docs.oracle.com/javase/7/docs/technotes/tools/windows/java.html#nonstandard">See here for details.</a>.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/37466" title="short permalink to this answer" class="short-link" id="link-post-37466">share</a><span class="lsep">|</span><a href="/posts/37466/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/37466/revisions" title="show all edits to this post">edited <span title="2013-07-11 08:42:08Z" class="relativetime">Jul 11 '13 at 8:42</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1711796/dukeling"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/PZnlu.png?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1711796/dukeling">Dukeling</a><br>
+        <span class="reputation-score" title="reputation score 32466" dir="ltr">32.5k</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="30 silver badges"><span class="badge2"></span><span class="badgecount">30</span></span><span title="64 bronze badges"><span class="badge3"></span><span class="badgecount">64</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2008-09-01 05:00:01Z" class="relativetime">Sep 1 '08 at 5:00</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3171/dave-webb"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/a780bab849bc39176f044f5effbba7da?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3171/dave-webb">Dave Webb</a><br>
+        <span class="reputation-score" title="reputation score 99686" dir="ltr">99.7k</span><span title="27 gold badges"><span class="badge1"></span><span class="badgecount">27</span></span><span title="214 silver badges"><span class="badge2"></span><span class="badgecount">214</span></span><span title="251 bronze badges"><span class="badge3"></span><span class="badgecount">251</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-37466" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-37466" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="5121287"></a>
+<div id="answer-5121287" class="answer" data-answerid="5121287"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="5121287">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">39</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You could specify per project how much heap space your project wants</p>
+
+<p>Following is for Eclipse Helios/Juno/Kepler:</p>
+
+<p>Right mouse click - Run As - Run Configuration - Arguments - Vm Arguments, then add this
+-Xmx2048m</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/5121287" title="short permalink to this answer" class="short-link" id="link-post-5121287">share</a><span class="lsep">|</span><a href="/posts/5121287/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/5121287/revisions" title="show all edits to this post">edited <span title="2014-03-04 10:09:26Z" class="relativetime">Mar 4 '14 at 10:09</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/487785/cuonghuyto"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/4ac14cefb140f244eed351b60702a5eb?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/487785/cuonghuyto">CuongHuyTo</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">473</span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="13 bronze badges"><span class="badge3"></span><span class="badgecount">13</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-02-25 18:45:31Z" class="relativetime">Feb 25 '11 at 18:45</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/454252/allenhwkim"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/d7RlD.png?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/454252/allenhwkim">allenhwkim</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">8,565</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="23 silver badges"><span class="badge2"></span><span class="badgecount">23</span></span><span title="54 bronze badges"><span class="badge3"></span><span class="badgecount">54</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-5121287" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-18539803" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">hi bighostkim and cuongHuyTo, where is &quot;Arguments&quot;..i can able to see upto Run Configuration. Please tel me. My need to download and store nearly 2000 contacts from gmail. It crash due to out of memory exception</span>
+                &ndash;&nbsp;
+                    <a href="/users/1215518/androidraji"
+                       title="503 reputation"
+                       class="comment-user">AndroidRaji</a>
+                <span class="comment-date" dir="ltr"><span title="2012-11-24 05:49:29Z" class="relativetime-clean">Nov 24 '12 at 5:49</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-33644979" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@AndroiRaji: you right click your mouse onto the Java class that has a runnable main (that is &quot;public static void main(String[] args)&quot;), then  choose Run As - Run Configuration. Then &quot;Arguments&quot; is the tab right after the Main (you see the tabs Main, Arguments, JRE, Classpath, Source, Environment, Common).</span>
+                &ndash;&nbsp;
+                    <a href="/users/487785/cuonghuyto"
+                       title="473 reputation"
+                       class="comment-user">CuongHuyTo</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-04 10:06:56Z" class="relativetime-clean">Mar 4 '14 at 10:06</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-5121287" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="747593"></a>
+<div id="answer-747593" class="answer" data-answerid="747593"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="747593">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">14</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Big caveat ---- at my office, we were finding that (on some windows machines) we could not allocate more than 512m for Java heap. This turned out to be due to the Kaspersky anti-virus product installed on some of those machines. After uninstalling that AV product, we found we could allocate at least 1.6gb,   i.e,   -Xmx1600   works.</p>
+
+<p>No idea if this happens with other AV products but presumably this is happening because the AV program is reserving a small block of memory in every address space, thereby preventing a single really large allocation. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/747593" title="short permalink to this answer" class="short-link" id="link-post-747593">share</a><span class="lsep">|</span><a href="/posts/747593/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/747593/revisions" title="show all edits to this post">edited <span title="2012-04-17 06:09:27Z" class="relativetime">Apr 17 '12 at 6:09</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/230717/stas-kurilin"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ed94e87a269db197f3bcfdecd279fefa?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/230717/stas-kurilin">Stas Kurilin</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6,271</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="40 silver badges"><span class="badge2"></span><span class="badgecount">40</span></span><span title="91 bronze badges"><span class="badge3"></span><span class="badgecount">91</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-04-14 13:34:15Z" class="relativetime">Apr 14 '09 at 13:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/57246/david"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/65a1be62dd6dee67ab4391b410740ec9?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/57246/david">David</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,438</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="25 bronze badges"><span class="badge3"></span><span class="badgecount">25</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-747593" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-747593" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="186390"></a>
+<div id="answer-186390" class="answer" data-answerid="186390"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="186390">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Yes, with -Xmx you can configure more memory for you JVM. 
+To be sure that you don't leak or waste memory. Take a heap dump and use <a href="http://www.eclipse.org/mat/">the Eclipse Memory Analyzer</a> to analyze your memory consumption. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/186390" title="short permalink to this answer" class="short-link" id="link-post-186390">share</a><span class="lsep">|</span><a href="/posts/186390/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-10-09 08:22:25Z" class="relativetime">Oct 9 '08 at 8:22</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/26056/kohlerm"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/5d589d0ece6fa7d91a33e5d5f3829f9c?s=32&d=identicon&r=PG&f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/26056/kohlerm">kohlerm</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,760</span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="12 bronze badges"><span class="badge3"></span><span class="badgecount">12</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-186390" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-186390" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="6299069"></a>
+<div id="answer-6299069" class="answer" data-answerid="6299069"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="6299069">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">8</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>VM argument worked for me in eclipse. If you are using eclipse version 3.4, do the following</p>
+
+<p>go to <code>Run --&gt; Run Configurations --&gt;</code> then select the project under maven build --> then select the tab "JRE" --> then enter <code>-Xmx1024m</code>.</p>
+
+<p>Alternatively you could do <code>Run --&gt; Run Configurations --&gt; select the "JRE" tab --&gt;</code> then enter -<code>Xmx1024m</code></p>
+
+<p>This should increase the memory heap for all the builds/projects. The above memory size is 1 GB. You can optimize the way you want.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/6299069" title="short permalink to this answer" class="short-link" id="link-post-6299069">share</a><span class="lsep">|</span><a href="/posts/6299069/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/6299069/revisions" title="show all edits to this post">edited <span title="2015-01-12 14:50:54Z" class="relativetime">Jan 12 at 14:50</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3270595/balder"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/3945169e93b26a04f0403bc5d6866c5b?s=32&d=identicon&r=PG&f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3270595/balder">Balder</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">3,993</span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="37 bronze badges"><span class="badge3"></span><span class="badgecount">37</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-06-09 20:48:29Z" class="relativetime">Jun 9 '11 at 20:48</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/791703/loveall"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/d46fdb3d5501853a13dedbfbbcae6407?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/791703/loveall">loveall</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">81</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-6299069" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-6299069" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="21494341"></a>
+<div id="answer-21494341" class="answer" data-answerid="21494341"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="21494341">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Increasing the heap size is not a "fix" it is a "plaster", 100% temporary. It will crash again in somewhere else. To avoid these issues, write high performance code.</p>
+
+<ol>
+<li>Use local variables wherever possible.</li>
+<li>Make sure you select the correct object (EX: Selection between String, StringBuffer and StringBuiler)</li>
+<li>Use a good code system for your program(EX: Using static variables VS non static variables)</li>
+<li>Other stuff which could work on your code.</li>
+</ol>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/21494341" title="short permalink to this answer" class="short-link" id="link-post-21494341">share</a><span class="lsep">|</span><a href="/posts/21494341/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-02-01 05:10:08Z" class="relativetime">Feb 1 '14 at 5:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1379286/justcause"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/b2435015b556d425de69598dfcd65b4b?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1379286/justcause">JustCause</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,651</span><span title="13 gold badges"><span class="badge1"></span><span class="badgecount">13</span></span><span title="65 silver badges"><span class="badge2"></span><span class="badgecount">65</span></span><span title="145 bronze badges"><span class="badge3"></span><span class="badgecount">145</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21494341" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21494341" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="186957"></a>
+<div id="answer-186957" class="answer" data-answerid="186957"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="186957">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If you need to monitor your memory usage at runtime, the java.lang.management package offers MBeans that can be used to monitor the memory pools in your VM (eg, eden space, tenured generation etc), and also garbage collection behaviour.</p>
+
+<p>The free heap space reported by these MBeans will vary greatly depending on GC behaviour, particularly if your application generates a lot of objects which are later GC-ed. One possible approach is to monitor the free heap space after each full-GC, which you may be able to use to make a decision on freeing up memory by persisting objects.</p>
+
+<p>Ultimately, your best bet is to limit your memory retention as far as possible whilst performance remains acceptable. As a previous comment noted, memory is always limited, but your app should have a strategy for dealing with memory exhaustion. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/186957" title="short permalink to this answer" class="short-link" id="link-post-186957">share</a><span class="lsep">|</span><a href="/posts/186957/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2008-10-09 12:04:30Z" class="relativetime">Oct 9 '08 at 12:04</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/26061/leigh"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/2fff8b40687bafd281b92091931609e8?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/26061/leigh">Leigh</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,414</span><span title="15 silver badges"><span class="badge2"></span><span class="badgecount">15</span></span><span title="16 bronze badges"><span class="badge3"></span><span class="badgecount">16</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-186957" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-186957" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="880998"></a>
+<div id="answer-880998" class="answer" data-answerid="880998"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="880998">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Note that if you need this in a deployment situation, consider using Java WebStart (with an "ondisk" version, not the network one - possible in Java 6u10 and later) as it allows you to specify the various arguments to the JVM in a cross platform way.</p>
+
+<p>Otherwise you will need a operating system specific launcher which sets the arguments you need.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/880998" title="short permalink to this answer" class="short-link" id="link-post-880998">share</a><span class="lsep">|</span><a href="/posts/880998/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-05-19 04:45:22Z" class="relativetime">May 19 '09 at 4:45</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/53897/thorbj%c3%b8rn-ravn-andersen"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/2e71c1745ebc5401c8c8dfbf7c9a5d30?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/53897/thorbj%c3%b8rn-ravn-andersen">Thorbj&#248;rn Ravn Andersen</a><br>
+        <span class="reputation-score" title="reputation score 42550" dir="ltr">42.6k</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="94 silver badges"><span class="badge2"></span><span class="badgecount">94</span></span><span title="205 bronze badges"><span class="badge3"></span><span class="badgecount">205</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-880998" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-880998" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="5954865"></a>
+<div id="answer-5954865" class="answer" data-answerid="5954865"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="5954865">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I have faced same problem of java heap size.
+I have two solutions if you are using java 5(1.5).</p>
+
+<p>1st:-just install jdk1.6 and go to the preferences of eclipse and set the jre path of jav1 1.6 as you have installed.</p>
+
+<p>2nd:-Check your VM argument and let it be whatever it is.
+just add one line below of all the arguments present in VM arguments as 
+-Xms512m  -Xmx512m -XX:MaxPermSize=...m(192m).</p>
+
+<p>I think it will work...</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/5954865" title="short permalink to this answer" class="short-link" id="link-post-5954865">share</a><span class="lsep">|</span><a href="/posts/5954865/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-05-10 18:48:49Z" class="relativetime">May 10 '11 at 18:48</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/747409/soumya-sandeep-mohanty"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/cdd73a5b50f65125af91ee303a16c3f8?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/747409/soumya-sandeep-mohanty">Soumya Sandeep Mohanty</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">21</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-5954865" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-5954865" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3500230"></a>
+<div id="answer-3500230" class="answer" data-answerid="3500230"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="3500230">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I read somewhere else that you can try - catch java.lang.OutOfMemoryError and on the catch block, you can free all resources that you know might use alot of memory, close connections and so forth, then do a System.gc() then re-try whatever you were going to do.</p>
+
+<p>Another way is this although, i don't know whether this would work, but I am currently testing whether it will work on my application.</p>
+
+<p>The Idea is to do Garbage collection by calling System.gc() which is known to increase free memory. You can keep checking this after a memory gobbling code executes.</p>
+
+<pre><code>//Mimimum acceptable free memory you think your app needs
+long minRunningMemory = (1024*1024);
+
+Runtime runtime = Runtime.getRuntime();
+
+if(runtime.freeMemory()&lt;minRunningMemory)
+ System.gc();
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3500230" title="short permalink to this answer" class="short-link" id="link-post-3500230">share</a><span class="lsep">|</span><a href="/posts/3500230/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/3500230/revisions" title="show all edits to this post">edited <span title="2010-08-17 08:19:44Z" class="relativetime">Aug 17 '10 at 8:19</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-08-17 07:30:25Z" class="relativetime">Aug 17 '10 at 7:30</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/422550/mwangi"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/58cca0975a1263cb266c2789d7180dbe?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/422550/mwangi">mwangi</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">985</span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="12 bronze badges"><span class="badge3"></span><span class="badgecount">12</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3500230" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-4581525" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">In general I think the JVM will prefer to Garbage Collect (GC) rather than throw an OutOfMemoryError.  Explicitly calling System.gc() after OutOfMemoryError might possibly help on some VMs/configurations, but I would not expect it to work very well in the general case.  However, dropping unnecessary object references would definitely help in almost all cases.</span>
+                &ndash;&nbsp;
+                    <a href="/users/312407/mike-clark"
+                       title="6366 reputation"
+                       class="comment-user">Mike Clark</a>
+                <span class="comment-date" dir="ltr"><span title="2010-11-20 10:50:07Z" class="relativetime-clean">Nov 20 '10 at 10:50</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-9651539" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@mwangi Calling System.gc() directly from the code is generally a bad idea. It&#39;s just a <b>suggestion</b> to JVM that GC should be performed, but there&#39;s absolutely <b>no guarantee</b> that it will be performed.</span>
+                &ndash;&nbsp;
+		            <span class="comment-user">user1014581</span>
+                <span class="comment-date" dir="ltr"><span title="2011-10-26 12:51:46Z" class="relativetime-clean">Oct 26 '11 at 12:51</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-20574932" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This is actually an anti-pattern. Never call <code>System.gc()</code> directly.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1005481/thomas"
+                       title="4812 reputation"
+                       class="comment-user">Thomas</a>
+                <span class="comment-date" dir="ltr"><span title="2013-02-05 15:07:10Z" class="relativetime-clean">Feb 5 '13 at 15:07</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3500230" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="7297504"></a>
+<div id="answer-7297504" class="answer" data-answerid="7297504"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="7297504">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Easy way to solve <code>OutOfMemoryError</code> in java is to increase the maximum heap size by using JVM options <code>-Xmx512M</code>, this will immediately solve your OutOfMemoryError. This is my preferred solution when I get OutOfMemoryError in Eclipse, Maven or ANT while building project because based upon size of project you can easily ran out of Memory.</p>
+
+<p>Here is an example of increasing maximum heap size of JVM, Also its better to keep -Xmx to -Xms ration either 1:1 or 1:1.5 if you are setting heap size in your java application.</p>
+
+<p><code>export JVM_ARGS="-Xms1024m -Xmx1024m"</code></p>
+
+<p><a href="http://javarevisited.blogspot.com/2011/09/javalangoutofmemoryerror-permgen-space.html" rel="nofollow">Reference Link</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/7297504" title="short permalink to this answer" class="short-link" id="link-post-7297504">share</a><span class="lsep">|</span><a href="/posts/7297504/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/7297504/revisions" title="show all edits to this post">edited <span title="2012-06-20 10:34:39Z" class="relativetime">Jun 20 '12 at 10:34</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1135954/mtk"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/7e7a1accbdba46d580172b43527ed201?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1135954/mtk">mtk</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,484</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="28 silver badges"><span class="badge2"></span><span class="badgecount">28</span></span><span title="63 bronze badges"><span class="badge3"></span><span class="badgecount">63</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-09-04 05:05:07Z" class="relativetime">Sep 4 '11 at 5:05</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/927269/chaukssey"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/3473a95796d7e28187f8826df9ed639f?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/927269/chaukssey">chaukssey</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">11</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-7297504" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-17748522" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Any idea why we need to keep them in 1:1 or 1:1.5 ratio?</span>
+                &ndash;&nbsp;
+                    <a href="/users/181293/ernesto"
+                       title="547 reputation"
+                       class="comment-user">ernesto</a>
+                <span class="comment-date" dir="ltr"><span title="2012-10-25 10:56:31Z" class="relativetime-clean">Oct 25 '12 at 10:56</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-7297504" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="19222984"></a>
+<div id="answer-19222984" class="answer" data-answerid="19222984"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="19222984">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Open catalina.sh from tomcat/bin.</p>
+
+<p>then</p>
+
+<p>JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms1536m -Xmx1536m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC"</p>
+
+<p>=> Restart your tomcat</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/19222984" title="short permalink to this answer" class="short-link" id="link-post-19222984">share</a><span class="lsep">|</span><a href="/posts/19222984/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-10-07 10:56:05Z" class="relativetime">Oct 7 '13 at 10:56</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2098900/pradip-bhatt"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e3d8d59cff1df7ea9e15a400c3f30500?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2098900/pradip-bhatt">Pradip Bhatt</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">357</span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="12 bronze badges"><span class="badge3"></span><span class="badgecount">12</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-19222984" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-19222984" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3819680"></a>
+<div id="answer-3819680" class="answer" data-answerid="3819680"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="3819680">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If you keep on allocating &amp; keeping references to object, you will fill up any ammount of memory you have.</p>
+
+<p>One option is to do a transparent file close &amp; open when they switch tabs (you only keep a pointer to the file, and when the user switches tab, you close &amp; clean all the objects... it'll make the file change slower... but...), and maybe keep only 3 or 4 files on memory.</p>
+
+<p>Other thing you should do is, when the user opens a file, load it, and intercept any OutOfMemoryError, then (as it is not possible to open the file) close that file, clean its objects and warn the user that he should close unused files.</p>
+
+<p>Your idea of dynamically extending virtual memory doesn't solve the issue, for the machine is limited on resources, so you should be carefull &amp; handle memory issues (or at least, be carefull with them).</p>
+
+<p>A couple of hints i've seen with memory leaks is:</p>
+
+<p>--> Keep on mind that if you put something into a collection and afterwards forget about it, you still have a strong reference to it, so nullify the collection, clean it or do something with it... if not you will find a memory leak difficult to find.</p>
+
+<p>--> Maybe, using collections with weak references (weakhashmap...) can help with memory issues, but you <strong>must</strong> be carefull with it, for you might find that the object you look for has been collected.</p>
+
+<p>--> Another idea i've found is to develope a persistent collection that stored on database objects least used and transparently loaded. This would probably be the best approach... </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3819680" title="short permalink to this answer" class="short-link" id="link-post-3819680">share</a><span class="lsep">|</span><a href="/posts/3819680/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-09-29 07:47:13Z" class="relativetime">Sep 29 '10 at 7:47</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/459303/soulwanderer"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e9c9fb6c53f7b2aefe12e9af523e6c4a?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/459303/soulwanderer">SoulWanderer</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">193</span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3819680" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3819680" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+				        <div class="question-status">
+        <h2>                    <b>protected</b> by <a href="/users/-1/community">Community</a><span class="mod-flair" title="moderator">♦</span> <span dir="ltr"><span title="2011-10-26 14:57:42Z" class="relativetime">Oct 26 '11 at 14:57</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality answers, posting an answer now requires 10 <a href="/help/whats-reputation">reputation</a> on this site.
+<br /><br />
+Would you like to answer one of these <a href="/unanswered?fromProtectedNotice=true">unanswered questions</a> instead?
+</p>
+    </div>
+
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/java" class="post-tag" title="show questions tagged 'java'" rel="tag">java</a> <a href="/questions/tagged/performance" class="post-tag" title="show questions tagged 'performance'" rel="tag">performance</a> <a href="/questions/tagged/jvm" class="post-tag" title="show questions tagged 'jvm'" rel="tag">jvm</a> <a href="/questions/tagged/out-of-memory" class="post-tag" title="show questions tagged 'out-of-memory'" rel="tag">out-of-memory</a> <a href="/questions/tagged/heap" class="post-tag" title="show questions tagged 'heap'" rel="tag">heap</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2008-09-01 01:10:03Z"><b>6 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>424873 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-01-12 14:50:54Z">2 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+						
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk674821957",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk674821957">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(e){var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,r=setTimeout,h=document,q,b,m={},l=location.hash;if(l.length>1){l.substr(1).split("&").forEach(function(t){var u=t.split("=");this[g(u[0])]=g(u[1])},m)}b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(!m.tags){q=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(q.length>0){m.tags=Array.prototype.join.call(q,";")}}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(t){return a(t).html().replace(/\s+/g,"").length>0}function s(){var t=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(t.length===0){return true}return !j(t)}function n(){var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(z,y){return"d="+y.id}).get().join("&");var x=["l","ip","ac","eng","prov","tags","theme"];var u=Object.keys(m).filter(function(y){return x.indexOf(y)!==-1}).map(function(y){return i(y)+"="+i(m[y])}).join("&");if(u){v+="&"+u}var w=h.createElement("script");w.type="text/javascript";w.src=e+(e.indexOf("?")===-1?"?":"&")+v;h.body.appendChild(w)}}function o(){if(s()){d=r(o,f);return}if(m.abort){k()}n()}function k(){clearTimeout(d);a(c).each(function(){var t=a(this);if(!j(t)){var v=t;var u=t.parents(".everyonelovesstackoverflow").first();if(u.length>0){v=u}v.remove()}})}r(k,2000);var d=r(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/511013" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">8</div>
+	</a>
+	<a href="/questions/511013/how-to-handle-outofmemoryerror-in-java" class="question-hyperlink">How to handle OutOfMemoryError in Java?</a>
+</div><div class="spacer">
+	<a href="/q/20714804" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/20714804/how-to-allocate-space-to-java-using-command-line" class="question-hyperlink">How to allocate space to JAVA using command line</a>
+</div><div class="spacer">
+	<a href="/q/5434493" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/5434493/java-heap-memory" class="question-hyperlink">Java - Heap memory</a>
+</div><div class="spacer">
+	<a href="/q/5389216" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/5389216/java-lang-outofmemoryerror-how-to-set-correct-java-parameters" class="question-hyperlink">java.lang.OutOfMemoryError: how to set correct Java parameters</a>
+</div><div class="spacer">
+	<a href="/q/24791380" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/24791380/outofmemoryerror-java-heap-space-in-a-loop" class="question-hyperlink">OutOfMemoryError: Java heap space in a loop</a>
+</div><div class="spacer">
+	<a href="/q/1565388" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">92</div>
+	</a>
+	<a href="/questions/1565388/increase-heap-size-in-java" class="question-hyperlink">Increase heap size in java</a>
+</div><div class="spacer">
+	<a href="/q/1596009" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">37</div>
+	</a>
+	<a href="/questions/1596009/java-lang-outofmemoryerror-java-heap-space" class="question-hyperlink">java.lang.OutOfMemoryError: Java heap space</a>
+</div><div class="spacer">
+	<a href="/q/1260895" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">4</div>
+	</a>
+	<a href="/questions/1260895/merging-1000-pdf-thru-itext-throws-java-lang-outofmemoryerror-java-heap-space" class="question-hyperlink">Merging 1000 PDF thru iText throws java.lang.OutOfMemoryError: Java heap space</a>
+</div><div class="spacer">
+	<a href="/q/4959172" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="/questions/4959172/java-root-cause-java-lang-outofmemoryerror-error" class="question-hyperlink">Java root cause java.lang.OutOfMemoryError error</a>
+</div><div class="spacer">
+	<a href="/q/5853804" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">4</div>
+	</a>
+	<a href="/questions/5853804/how-to-clear-heap" class="question-hyperlink">how to clear heap?</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/37335">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/88235" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">813
+    </div>
+</a><a href="/questions/88235/dealing-with-java-lang-outofmemoryerror-permgen-space-error" class="question-hyperlink">Dealing with &ldquo;java.lang.OutOfMemoryError: PermGen space&rdquo; error</a>
+</div>
+<div class="spacer">
+<a href="/q/3285915" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/3285915/java-webstart-max-heap-size-causes-jvm-cannot-be-started" class="question-hyperlink">Java webstart max-heap-size causes JVM cannot be started</a>
+</div>
+<div class="spacer">
+<a href="/q/4401396" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">91
+    </div>
+</a><a href="/questions/4401396/could-not-reserve-enough-space-for-object-heap" class="question-hyperlink">Could not reserve enough space for object heap</a>
+</div>
+<div class="spacer">
+<a href="/q/9743569" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/9743569/glassfish-das-outofmemory-with-total-heap-usage-below-max-heap-size" class="question-hyperlink">Glassfish DAS OutOfMemory with total heap usage below max heap size</a>
+</div>
+<div class="spacer">
+<a href="/q/16709772" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">-1
+    </div>
+</a><a href="/questions/16709772/how-to-get-rid-off-java-lang-outofmemoryerror-java-heap-space" class="question-hyperlink">How to get rid off java.lang.OutOfMemoryError: Java heap space</a>
+</div>
+<div class="spacer">
+<a href="/q/19603745" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/19603745/java-lang-outofmemoryerror-java-heap-space-in-allocating-array-size" class="question-hyperlink">java.lang.OutOfMemoryError: Java heap space in allocating array size</a>
+</div>
+<div class="spacer">
+<a href="/q/21334778" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/21334778/workaround-for-handling-expectable-java-lang-outofmemoryerror-java-heap-space" class="question-hyperlink">Workaround for handling expectable java.lang.OutOfMemoryError: Java heap space</a>
+</div>
+<div class="spacer">
+<a href="/q/22157849" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">-1
+    </div>
+</a><a href="/questions/22157849/java-lang-outofmemoryerror-java-heap-space-stringbuffer" class="question-hyperlink">java.lang.OutOfMemoryError: Java heap space (StringBuffer)</a>
+</div>
+<div class="spacer">
+<a href="/q/22546684" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/22546684/how-can-i-resolve-java-lang-outofmemoryerror-java-heap-space-in-the-case-when-i" class="question-hyperlink">How can I resolve java.lang.OutOfMemoryError: Java heap space in the case when increasing the heap size will mean delayed OutOfMemoryError</a>
+</div>
+<div class="spacer">
+<a href="/q/27225449" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/27225449/cassandra-java-lang-outofmemoryerror-java-heap-space" class="question-hyperlink">Cassandra java.lang.OutOfMemoryError: Java heap space</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/85346/what-would-sauron-have-done-had-he-recovered-the-ring" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What would Sauron have done had he recovered the Ring?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/85476/which-sci-fi-work-introduced-the-idea-of-mad-scientists-as-villains" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which Sci-Fi work introduced the idea of &quot;Mad Scientists as villains&quot;?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/59048/will-i-still-get-spell-failure-with-multicalss-kensai-fighter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Will I still get spell failure with multicalss Kensai / fighter?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/42889/should-those-more-interested-in-research-choose-a-postdoc-or-teaching-position" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should those more interested in research choose a postdoc or teaching position?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1218687/why-is-the-slope-of-a-line-defined-the-way-it-is" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the slope of a line defined the way it is.
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/45569/how-to-decide-how-much-cash-i-should-carry" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to decide how much cash I should carry?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-pm" title="Project Management Stack Exchange"></div><a href="http://pm.stackexchange.com/questions/14587/scrum-team-committments" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:208 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Scrum team committments
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/194319/how-to-check-if-both-parameters-are-set-in-bash" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    how to check if both parameters are set in bash?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-apple" title="Ask Different"></div><a href="http://apple.stackexchange.com/questions/179461/temporarily-disabling-ram-to-mimic-lower-spec-machine" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:118 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Temporarily disabling RAM to mimic lower spec machine?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/85820/possible-sub-optimal-selection-sort" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Possible sub-optimal selection sort
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/29437796/can-i-initialize-public-properties-of-a-class-using-a-different-type-in-c" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can I initialize public properties of a class using a different type in C#?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/63077/why-would-circuit-breakers-be-connected-in-panel" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why would circuit breakers be connected in panel?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1218834/i-had-this-question-in-my-calculus-exam-and-i-am-bugged-that-i-couldt-solve-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I had this question in my calculus exam and I am bugged that I could&#39;t solve it, any suggestions?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/58999/can-you-concede-when-compelled-to-fight-in-fate-core" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can you concede when compelled to fight in Fate Core?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/604925/how-to-change-file-ownership-when-chown-says-invalid-user-r" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to change file ownership when chown says &quot;invalid user: ‘–R&#39;&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/163044/how-to-best-connect-a-temperature-sensor-to-an-aluminum-block" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to best connect a temperature sensor to an aluminum block?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-woodworking" title="Woodworking Stack Exchange"></div><a href="http://woodworking.stackexchange.com/questions/768/what-advantages-does-a-dust-collector-have-over-a-shop-vac" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:603 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What advantages does a dust collector have over a shop vac?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/236660/how-to-write-the-capital-letter-form-of-%c3%a8" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to write the capital letter form of &quot;&#232;&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/58968/whats-the-best-way-to-kill-a-character-in-a-way-that-is-memorable-and-treated" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s the best way to kill a character in a way that is memorable, and treated with respect by players?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/193815/how-do-i-use-man-pages-to-learn-how-to-use-commands" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I use man pages to learn how to use commands?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-italian" title="Italian Language Stack Exchange"></div><a href="http://italian.stackexchange.com/questions/5328/the-use-of-ci-when-specifying-locations" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:524 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The use of ci when specifying locations
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gis" title="Geographic Information Systems Stack Exchange"></div><a href="http://gis.stackexchange.com/questions/141430/accessing-multiple-shapefiles-in-folder-using-python-and-arcgis-for-desktop" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:79 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Accessing multiple shapefiles in folder using Python and ArcGIS for Desktop?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/201853/why-differential-galois-theory-is-not-widely-used" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why differential Galois theory is not widely used?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/75710/is-it-ok-to-use-arrows-to-indicate-money-movement-in-out-of-an-account" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it ok to use arrows to indicate money movement in &amp; out of an account?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/37335" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/37335/ivc/6baf');});
+</script>
+<noscript>
+    <div><img src="/posts/37335/ivc/6baf" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.4.3.2444
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('java,performance,jvm,out-of-memory,heap');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|java|performance|jvm|out-of-memory|heap|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>                
+    </body>
+</html>

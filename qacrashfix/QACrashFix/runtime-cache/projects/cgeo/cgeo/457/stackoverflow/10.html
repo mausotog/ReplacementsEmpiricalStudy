@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+		<title>Android Studio 1.0.2: java.lang.RuntimeException: Unable to start activity ComponentInfo: java.lang.NullPointerException - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Android Studio 1.0.2: java.lang.RuntimeException: Unable to start activity ComponentInfo: java.lang.NullPointerException" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="Here is the error:
+
+02-14 02:00:55.663      907-907/com.wlodsgn.bunbunup E/AndroidRuntime﹕ FATAL EXCEPTION: main
+        Process: com.wlodsgn.bunbunup, PID: 907
+        java.lang.RuntimeException: ..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=879ad27a577b"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=974e27655b3a">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Android Studio 1.0.2: java.lang.RuntimeException: Unable to start activity ComponentInfo: java.lang.NullPointerException&#39;" href="/feeds/question/28513926">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:8,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:28513926});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '28513926');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1440145767,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"globalAuthDisabled":true,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"bf7767ec6416d7cc9daa20b0465e2128","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"e417ab29467a","js/moderator.en.js":"c8a7b5ca5d38","js/full-anon.en.js":"1cfd2e8e311d","js/full.en.js":"637aaa15bc67","js/wmd.en.js":"fcc4c40c5343","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"1360590e622e","js/help.en.js":"ce2977cf4348","js/tageditor.en.js":"c84618a71b61","js/tageditornew.en.js":"70232155c834","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"9e897f24d78d","js/review.en.js":"fc22003365cd","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"910318f22cb2","js/explore-qlist.en.js":"cd6e5274146c","js/events.en.js":"751a440a8030","js/keyboard-shortcuts.en.js":"f2f26c4f7e6c","js/external-editor.en.js":"24fc09189c99","js/external-editor.en.js":"24fc09189c99","js/snippet-javascript.en.js":"0a74681b16bf","js/snippet-javascript-codemirror.en.js":"c46bece2378d"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f28513926%2fandroid-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f28513926%2fandroid-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 149 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f28513926%2fandroid-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f28513926%2fandroid-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+                <div id="system-message-temp">
+                    <script>
+                        var curSystemMessage = 'Ten. Million. Questions. Let\'s celebrate <a href="\/10m">all we\'ve done together<\/a>.';
+                        $('#system-message-temp').html(curSystemMessage).attr('id', 'system-message');
+                    </script>
+                </div>
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo" class="question-hyperlink">Android Studio 1.0.2: java.lang.RuntimeException: Unable to start activity ComponentInfo: java.lang.NullPointerException</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="28513926"  id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk565639514",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk565639514">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="28513926">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>1</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>Here is the error:</p>
+
+<pre><code>02-14 02:00:55.663      907-907/com.wlodsgn.bunbunup E/AndroidRuntime﹕ FATAL EXCEPTION: main
+        Process: com.wlodsgn.bunbunup, PID: 907
+        java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wlodsgn.bunbunup/com.wlodsgn.bunbunup.MenuActivity}: java.lang.NullPointerException
+        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2195)
+        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2245)
+        at android.app.ActivityThread.access$800(ActivityThread.java:135)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1196)
+        at android.os.Handler.dispatchMessage(Handler.java:102)
+        at android.os.Looper.loop(Looper.java:136)
+        at android.app.ActivityThread.main(ActivityThread.java:5017)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:515)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:779)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:595)
+        at dalvik.system.NativeStart.main(Native Method)
+        Caused by: java.lang.NullPointerException
+        at com.wlodsgn.bunbunup.MenuActivity.onCreate(MenuActivity.java:81)
+        at android.app.Activity.performCreate(Activity.java:5231)
+        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2159)
+        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2245)
+        at android.app.ActivityThread.access$800(ActivityThread.java:135)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1196)
+        at android.os.Handler.dispatchMessage(Handler.java:102)
+        at android.os.Looper.loop(Looper.java:136)
+        at android.app.ActivityThread.main(ActivityThread.java:5017)
+        at java.lang.reflect.Method.invokeNative(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:515)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:779)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:595)
+        at dalvik.system.NativeStart.main(Native Method)
+    02-14 02:01:01.643      907-907/com.wlodsgn.bunbunup I/Process﹕ Sending signal. PID: 907 SIG: 9
+</code></pre>
+
+<p>I seriously have no idea what might be the problem, spent couple of hours trying to look for a solution but it is still crashing. The idea is to make my first main activity (IntroActivity.java) open another activity(menuactivity.java) with navigation drawer. Any help would be greatly appreciated.</p>
+
+<p>Here is IntroActivity.java:</p>
+
+<pre><code>import android.app.Activity;
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+/**
+ * Created by WiLo on 2/13/2015.
+ */
+public class IntroActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_intro);
+        Log.i("BunBunUp", "MainActivity Created");
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_intro, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void startMenuActivity(View v){
+        Intent intent = new Intent(IntroActivity.this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    protected void onResume(){
+        super.onResume();
+        Log.i("BunBunUp", "IntroActivity Resumed");
+    }
+
+    protected void onPause(){
+        super.onPause();
+        Log.i("BunBunUp", "IntroActivity Paused");
+    }
+
+    protected void onStop(){
+        super.onStop();
+        Log.i("BunBunUp", "IntroActivity Stopped");
+    }
+}
+</code></pre>
+
+<p>Here is MenuActivity.java:</p>
+
+<pre><code>import java.util.ArrayList;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.res.Configuration;
+import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+/**
+ * Created by WiLo on 2/13/2015.
+ */
+public class MenuActivity extends Activity {
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
+
+    // nav drawer title
+    private CharSequence mDrawerTitle;
+
+    // used to store app title
+    private CharSequence mTitle;
+
+    // slide menu items
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
+
+    private ArrayList&lt;NavDrawerItem&gt; navDrawerItems;
+    private NavDrawerListAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+
+        mTitle = mDrawerTitle = getTitle();
+
+        // load slide menu items
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+
+        // nav drawer icons from resources
+        navMenuIcons = getResources()
+                .obtainTypedArray(R.array.nav_drawer_icons);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+
+        navDrawerItems = new ArrayList&lt;NavDrawerItem&gt;();
+
+        // agregar un nuevo item al menu deslizante
+        // Favoritos
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+        // Pedidos
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        // Catologo
+        //navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1), true, "Estrenos"));
+        // Contacto
+        //navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+
+        // Recycle the typed array
+        navMenuIcons.recycle();
+
+        mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+
+        // setting the nav drawer list adapter
+        adapter = new NavDrawerListAdapter(getApplicationContext(),
+                navDrawerItems);
+        mDrawerList.setAdapter(adapter);
+
+        // enabling action bar app icon and behaving it as toggle button
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                R.drawable.ic_drawer, //nav menu toggle icon
+                R.string.app_name, // nav drawer open - description for accessibility
+                R.string.app_name // nav drawer close - description for accessibility
+        ) {
+            public void onDrawerClosed(View view) {
+                getActionBar().setTitle(mTitle);
+                // calling onPrepareOptionsMenu() to show action bar icons
+                invalidateOptionsMenu();
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                getActionBar().setTitle(mDrawerTitle);
+                // calling onPrepareOptionsMenu() to hide action bar icons
+                invalidateOptionsMenu();
+            }
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        if (savedInstanceState == null) {
+            // on first time display view for first nav item
+            displayView(0);
+        }
+    }
+
+    /**
+     * Slide menu item click listener
+     * */
+    private class SlideMenuClickListener implements
+            ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position,
+                                long id) {
+            // display view for selected nav drawer item
+            displayView(position);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // toggle nav drawer on selecting action bar app icon/title
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle action bar actions click
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /* *
+     * Called when invalidateOptionsMenu() is triggered
+     */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // if nav drawer is opened, hide the action items
+        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    /**
+     * Diplaying fragment view for selected nav drawer list item
+     * */
+    private void displayView(int position) {
+        // update the main content by replacing fragments
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                fragment = new FmMenu();
+                break;
+            case 1:
+                fragment = new FmContacto();
+                break;
+
+            default:
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frame_container, fragment).commit();
+
+            // update selected item and title, then close the drawer
+            mDrawerList.setItemChecked(position, true);
+            mDrawerList.setSelection(position);
+            setTitle(navMenuTitles[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else {
+            // error in creating fragment
+            Log.e("Ramiro", "MainActivity - Error cuando se creo el fragment");
+        }
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        getActionBar().setTitle(mTitle);
+    }
+
+    /**
+     * When using the ActionBarDrawerToggle, you must call it during
+     * onPostCreate() and onConfigurationChanged()...
+     */
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
+</code></pre>
+
+<p><strong>In Response to Simon's question, here is my debug result:</strong></p>
+
+<p><a href="http://imgur.com/eUbJwur,hNwymAF#0" rel="nofollow">http://imgur.com/eUbJwur,hNwymAF#0</a></p>
+
+<p><strong>And these are the variable results:</strong></p>
+
+<pre><code>this = {com.wlodsgn.bunbunup.MenuActivity@831912707472}
+adapter = {com.wlodsgn.bunbunup.NavDrawerListAdapter@831912476752}
+mDrawerLayout = {android.support.v4.widget.DrawerLayout@831912722552}"android.support.v4.widget.DrawerLayout{b1dcc078 VFE..... ......I. 0,0-0,0 #7f090042 app:id/drawer_layout}"
+mDrawerList = {android.widget.ListView@831912773352}"android.widget.ListView{b1dd86e8 VFED.VC. ......I. 0,0-0,0 #7f090044 app:id/list_slidermenu}"
+mDrawerTitle = {java.lang.String@831912705496}"Menu"
+mDrawerToggle = null
+mTitle = {java.lang.String@831912705496}"Menu"
+navDrawerItems = {java.util.ArrayList@831912670472} size = 2
+navMenuIcons = {android.content.res.TypedArray@831912712688}"[3, 77, 2, 2130837561, 0, 160, 3, 73, 2, 2130837559, 0, 160, 3, 72, 2, 2130837560, 0, 160, 3, 76, 2, 2130837556, 0, 160, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, 0, 0, ...
+navMenuTitles = {java.lang.String[4]@831912431488}
+mActionBar = null
+mActivityInfo = {android.content.pm.ActivityInfo@831912705176}"ActivityInfo{b1dc7c98 com.wlodsgn.bunbunup.MenuActivity}"
+mAllLoaderManagers = null
+mApplication = {android.app.Application@831912467056}
+mWindowManager = {android.view.WindowManagerImpl@831912710184}
+mWindow = {com.android.internal.policy.impl.PhoneWindow@831912708664}
+mUiThread = {java.lang.Thread@831908953256}"Thread[main,5,main]"
+mTranslucentCallback = null
+mComponent = {android.content.ComponentName@831912704936}"ComponentInfo{com.wlodsgn.bunbunup/com.wlodsgn.bunbunup.MenuActivity}"
+mToken = {android.os.BinderProxy@831912705080}
+mContainer = {android.app.Activity$1@831912707880}
+mCurrentConfig = {android.content.res.Configuration@831912708528}"{1.0 310mcc260mnc en_US ldltr sw360dp w360dp h567dp 480dpi nrml port finger qwerty/v/v -nav/h s.5}"
+mDecor = null
+mTitle = {java.lang.String@831912705496}"Menu"
+mDefaultKeySsb = null
+mSearchManager = null
+mResultData = null
+mEmbeddedID = null
+mParent = null
+mMenuInflater = null
+mFragments = {android.app.FragmentManagerImpl@831912707760}"FragmentManager{b1dc86b0 in MenuActivity{b1dc8590}}"
+mHandler = {android.os.Handler@831912708008}"Handler (android.os.Handler) {b1dc87a8}"
+mManagedDialogs = null
+mInstanceTracker = {android.os.StrictMode$InstanceTracker@831912707920}
+mInstrumentation = {android.app.Instrumentation@831912463176}
+mIntent = {android.content.Intent@831912704784}"Intent { cmp=com.wlodsgn.bunbunup/.MenuActivity }"
+mLastNonConfigurationInstances = null
+mLoaderManager = null
+mManagedCursors = {java.util.ArrayList@831912707896} size = 0
+mMainThread = {android.app.ActivityThread@831912436760}
+mLoadersStarted = false
+mIdent = -1308749784
+mFinished = false
+mEnableDefaultActionBarUp = false
+mResultCode = 0
+mDoReportFullyDrawn = true
+mResumed = false
+mDestroyed = false
+mStartedActivity = false
+mStopped = false
+mTemporaryPause = false
+mDefaultKeyMode = 0
+mTitleColor = 0
+mTitleReady = false
+mConfigChangeFlags = 0
+mCheckedForLoaderManager = false
+mChangingConfigurations = false
+mVisibleFromClient = true
+mVisibleFromServer = false
+mChangeCanvasToTranslucent = false
+mWindowAdded = false
+mCalled = true
+mBase = {android.app.ContextImpl@831912708040}
+mInflater = {com.android.internal.policy.impl.PhoneLayoutInflater@831912709768}
+mOverrideConfiguration = null
+mResources = {android.content.res.Resources@831912458488}
+mTheme = {android.content.res.Resources$Theme@831912710208}
+mThemeResource = 2131492864
+mBase = {android.app.ContextImpl@831912708040}
+savedInstanceState = null
+mDrawerList = {android.widget.ListView@831912773352}"android.widget.ListView{b1dd86e8 VFED.VC. ......I. 0,0-0,0 #7f090044 app:id/list_slidermenu}"
+mTempRect = {android.graphics.Rect@831912490576}"Rect(0, 0 - 0, 0)"
+mArrowScrollFocusResult = {android.widget.ListView$ArrowScrollFocusResult@831912688680}
+mDivider = {android.graphics.drawable.ColorDrawable@831912513672}
+mOverScrollHeader = null
+mOverScrollFooter = null
+mDividerPaint = null
+mFocusSelector = null
+mHeaderViewInfos = {java.util.ArrayList@831912694584} size = 0
+mFooterViewInfos = {java.util.ArrayList@831912689696} size = 0
+mHeaderDividersEnabled = true
+mFooterDividersEnabled = true
+mIsCacheColorOpaque = false
+mItemsCanFocus = false
+mDividerIsOpaque = true
+mDividerHeight = 3
+mAreAllItemsSelectable = true
+mAccessibilityDelegate = null
+mVelocityTracker = null
+mAdapter = {com.wlodsgn.bunbunup.NavDrawerListAdapter@831912476752}
+mTouchModeReset = null
+mTouchFrame = null
+mTextFilter = null
+mSelectorRect = {android.graphics.Rect@831912543968}"Rect(0, 0 - 0, 0)"
+mCheckStates = {android.util.SparseBooleanArray@831912575600}"{}"
+mCheckedIdStates = null
+mSelector = {android.graphics.drawable.StateListDrawable@831912745608}
+mChoiceActionMode = null
+mScrollUp = null
+mClearScrollingCache = null
+mContextMenuInfo = null
+mDataSetObserver = {android.widget.AbsListView$AdapterDataSetObserver@831912473520}
+mDefInputConnection = null
+mScrollStrictSpan = null
+mScrollDown = null
+mRemoteAdapter = null
+mRecycler = {android.widget.AbsListView$RecycleBin@831912464376}
+mEdgeGlowBottom = {android.widget.EdgeEffect@831912768272}
+mEdgeGlowTop = {android.widget.EdgeEffect@831912774568}
+mPublicInputConnection = null
+mPositionScroller = null
+mFastScroller = null
+mPositionScrollAfterLayout = null
+mPopup = null
+mPerformClick = null
+mFlingRunnable = null
+mFlingStrictSpan = null
+mPendingSync = null
+mPendingCheckForTap = null
+mPendingCheckForLongPress = null
+mPendingCheckForKeyLongPress = null
+mOwnerThread = {java.lang.Thread@831908953256}"Thread[main,5,main]"
+mIsScrap = {boolean[1]@831912700520}
+mOnScrollListener = null
+mMultiChoiceModeCallback = null
+mListPadding = {android.graphics.Rect@831912509624}"Rect(0, 0 - 0, 0)"
+mLastPositionDistanceGuess = 0
+mLastScrollState = 0
+mLastTouchMode = -1
+mLastY = 0
+mLayoutMode = 0
+mLastHandledItemCount = 0
+mMaximumVelocity = 24000
+mMinimumVelocity = 150
+mMotionCorrection = 0
+mMotionPosition = 0
+mMotionViewNewTop = 0
+mMotionViewOriginalTop = 0
+mMotionX = 0
+mMotionY = 0
+mLastAccessibilityScrollEventToIndex = 0
+mLastAccessibilityScrollEventFromIndex = 0
+mOverflingDistance = 18
+mOverscrollDistance = 0
+mOverscrollMax = 0
+mIsChildViewEnabled = false
+mGlowPaddingRight = 0
+mGlowPaddingLeft = 0
+mGlobalLayoutListenerAddedFilter = false
+mForceTranscriptScroll = false
+mFlingProfilingStarted = false
+mFirstPositionDistanceGuess = 0
+mPopupHidden = false
+mFiltered = false
+mFastScrollEnabled = false
+mFastScrollAlwaysVisible = false
+mDrawSelectorOnTop = false
+mDirection = 0
+mResurrectToPosition = -1
+mDensityScale = 3.0
+mScrollProfilingStarted = false
+mDeferNotifyDataSetChanged = false
+mChoiceMode = 1
+mScrollingCacheEnabled = true
+mSelectedTop = 0
+mSelectionBottomPadding = 0
+mSelectionLeftPadding = 0
+mSelectionRightPadding = 0
+mSelectionTopPadding = 0
+mCheckedItemCount = 0
+mSelectorPosition = -1
+mCachingStarted = false
+mSmoothScrollbarEnabled = true
+mStackFromBottom = false
+mCachingActive = false
+mTextFilterEnabled = false
+mCacheColorHint = 0
+mTouchMode = -1
+mAdapterHasStableIds = false
+mTouchSlop = 24
+mTranscriptMode = 0
+mVelocityScale = 1.0
+mActivePointerId = -1
+mWidthMeasureSpec = 0
+mSelectionNotifier = null
+mOnItemSelectedListener = null
+mOnItemLongClickListener = null
+mOnItemClickListener = {com.wlodsgn.bunbunup.MenuActivity$SlideMenuClickListener@831912422512}
+mEmptyView = null
+mSyncRowId = -9223372036854775808
+mSyncHeight = 0
+mSelectedRowId = -9223372036854775808
+mOldSelectedRowId = -9223372036854775808
+mNextSelectedRowId = -9223372036854775808
+mNextSelectedPosition = -1
+mNeedSync = false
+mOldItemCount = 0
+mOldSelectedPosition = -1
+mLayoutHeight = 0
+mDesiredFocusableState = true
+mDesiredFocusableInTouchModeState = true
+mDataChanged = false
+mSelectedPosition = -1
+mItemCount = 2
+mBlockLayoutRequests = false
+mSpecificTop = 0
+mInLayout = false
+mSyncMode = 0
+mSyncPosition = 0
+mFirstPosition = 0
+mAnimationListener = null
+mCachePaint = null
+mVisibilityChangingChildren = null
+mTransitioningViews = null
+mChildTransformation = null
+mChildren = {android.view.View[12]@831912500288}
+mTransition = null
+mCurrentDrag = null
+mCurrentDragView = null
+mDisappearingChildren = null
+mDragNotifiedChildren = null
+mFirstHoverTarget = null
+mFirstTouchTarget = null
+mFocused = null
+mOnHierarchyChangeListener = null
+mLocalPoint = null
+mInvalidateRegion = null
+mInvalidationTransformation = null
+mLayoutTransitionListener = {android.view.ViewGroup$3@831912441104}
+mLayoutAnimationController = null
+mLastTouchDownX = 0.0
+mLastTouchDownTime = 0
+mLastTouchDownY = 0.0
+mLayoutCalledWhileSuppressed = false
+mLayoutMode = -1
+mLastTouchDownIndex = -1
+mHoveredSelf = false
+mGroupFlags = 2228307
+mPersistentDrawingCache = 2
+mSuppressLayout = false
+mChildrenCount = 0
+mChildCountWithTransientState = 0
+mChildAcceptsDrag = false
+mUnsetPressedState = null
+mAccessibilityDelegate = null
+mUnscaledDrawingCache = null
+mAnimator = null
+mAttachInfo = null
+mBackground = {android.graphics.drawable.ColorDrawable@831912688536}
+mTransformationInfo = null
+mTouchDelegate = null
+mTag = null
+mSendViewStateChangedAccessibilityEvent = null
+mClipBounds = null
+mContentDescription = null
+mContext = {com.wlodsgn.bunbunup.MenuActivity@831912707472}
+mCurrentAnimation = null
+mDisplayList = null
+mDrawableState = null
+mDrawingCache = null
+mSendViewScrolledAccessibilityEvent = null
+mFloatingTreeObserver = null
+mHardwareLayer = null
+mScrollCache = {android.view.View$ScrollabilityCache@831912606240}
+mResources = {android.content.res.Resources@831912458488}
+mInputEventConsistencyVerifier = {android.view.InputEventConsistencyVerifier@831912774440}
+mKeyedTags = null
+mPerformClick = null
+mPendingCheckForTap = null
+mLayerPaint = null
+mPendingCheckForLongPress = null
+mLayoutInsets = null
+mLayoutParams = {android.support.v4.widget.DrawerLayout$LayoutParams@831912431416}
+mParent = {android.support.v4.widget.DrawerLayout@831912722552}"android.support.v4.widget.DrawerLayout{b1dcc078 VFE..... ......I. 0,0-0,0 #7f090042 app:id/drawer_layout}"
+mOverlay = null
+mListenerInfo = null
+mLocalDirtyRect = null
+mMatchIdPredicate = null
+mMatchLabelForPredicate = null
+mMeasureCache = null
+mMeasuredHeight = 0
+mMeasuredWidth = 0
+mMinHeight = 0
+mMinWidth = 0
+mNextFocusDownId = -1
+mNextFocusForwardId = -1
+mNextFocusLeftId = -1
+mNextFocusRightId = -1
+mNextFocusUpId = -1
+mOldHeightMeasureSpec = -2147483648
+mOldWidthMeasureSpec = -2147483648
+mOverScrollMode = 1
+mLeftPaddingDefined = false
+mPaddingBottom = 0
+mPaddingLeft = 0
+mPaddingRight = 0
+mPaddingTop = 0
+mLeft = 0
+mLayerType = 0
+mLastIsOpaque = false
+mLabelForId = -1
+mPrivateFlags = -2121789184
+mPrivateFlags2 = 4334600
+mPrivateFlags3 = 0
+mRecreateDisplayList = false
+mID = 2131296324
+mRight = 0
+mRightPaddingDefined = false
+mHasPerformedLongPress = false
+mScrollX = 0
+mScrollY = 0
+mDrawingCacheBackgroundColor = 0
+mCachingFailed = false
+mSendingHoverAccessibilityEvents = false
+mSystemUiVisibility = 0
+mBottom = 0
+mTop = 0
+mBackgroundSizeChanged = true
+mTouchSlop = 24
+mBackgroundResource = 0
+mTransientStateCount = 0
+mAccessibilityViewId = -1
+mAccessibilityCursorPosition = -1
+mUserPaddingBottom = 0
+mUserPaddingEnd = -2147483648
+mUserPaddingLeft = 0
+mUserPaddingLeftInitial = 0
+mUserPaddingRight = 0
+mUserPaddingRightInitial = 0
+mUserPaddingStart = -2147483648
+mVerticalScrollFactor = 0.0
+mVerticalScrollbarPosition = 0
+mViewFlags = 402932225
+mWindowAttachCount = 0
+adapter = {com.wlodsgn.bunbunup.NavDrawerListAdapter@831912476752}
+context = {android.app.Application@831912467056}
+navDrawerItems = {java.util.ArrayList@831912670472} size = 2
+mDataSetObservable = {android.database.DataSetObservable@831912431560}
+mDrawerToggle = null
+</code></pre>
+
+<p><strong>Now, when I do the step over, these are the results:</strong></p>
+
+<p><a href="http://imgur.com/eUbJwur,hNwymAF#1" rel="nofollow">http://imgur.com/eUbJwur,hNwymAF#1</a></p>
+
+<p><strong>Debug with variable after doing STEPOVER results posted in the comment section since they don't let me add more than 2 links.</strong></p>
+
+<p><strong>If you need info from the subvariables in the debug, let me know</strong></p>
+
+<p><strong><em>As for goonerandroid's request, here is my styles.xml code:</em></strong></p>
+
+<pre><code>&lt;resources&gt;
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;
+        &lt;!-- Customize your theme here. --&gt;
+    &lt;/style&gt;
+
+&lt;/resources&gt;
+</code></pre>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/java" class="post-tag" title="show questions tagged &#39;java&#39;" rel="tag">java</a> <a href="/questions/tagged/android" class="post-tag" title="show questions tagged &#39;android&#39;" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/nullpointerexception" class="post-tag" title="show questions tagged &#39;nullpointerexception&#39;" rel="tag">nullpointerexception</a> <a href="/questions/tagged/runtime" class="post-tag" title="show questions tagged &#39;runtime&#39;" rel="tag">runtime</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/28513926" title="short permalink to this question" class="short-link" id="link-post-28513926">share</a><span class="lsep">|</span><a href="/posts/28513926/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/28513926/revisions" title="show all edits to this post">edited <span title="2015-02-14 18:05:49Z" class="relativetime">Feb 14 at 18:05</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2015-02-14 08:42:15Z" class="relativetime">Feb 14 at 8:42</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3557390/w-lpz"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/36183e1b16a21083688f00f0d96b6a26?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3557390/w-lpz">w_lpz</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">84</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-28513926" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="3"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-45345882" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Wich line is line 81 in your <code>MenuActivity</code>?</span>
+                &ndash;&nbsp;
+                    <a href="/users/3636601/jens"
+                       title="26938 reputation"
+                       class="comment-user">Jens</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-14 08:54:01Z" class="relativetime-clean">Feb 14 at 8:54</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-45345924" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It&#39;s right there in the stack trace <code>Caused by: java.lang.NullPointerException         at com.wlodsgn.bunbunup.MenuActivity.onCreate(MenuActivity.java:81)</code> what is line 81?</span>
+                &ndash;&nbsp;
+                    <a href="/users/789657/simon"
+                       title="9458 reputation"
+                       class="comment-user">Simon</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-14 08:57:33Z" class="relativetime-clean">Feb 14 at 8:57</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-45346468" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks for the quick reply Jens and Simon, line 81 is:      getActionBar().setDisplayHomeAsUpEnabled(true);</span>
+                &ndash;&nbsp;
+                    <a href="/users/3557390/w-lpz"
+                       title="84 reputation"
+                       class="comment-user owner">w_lpz</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-14 09:51:49Z" class="relativetime-clean">Feb 14 at 9:51</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-45346495" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">So, only getActionBar() can be the problem, so that method is returning null.  Why don&#39;t you step through your code with the debugger?  <a href="http://stackoverflow.com/questions/6867076/getactionbar-returns-null">You might find this useful</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/789657/simon"
+                       title="9458 reputation"
+                       class="comment-user">Simon</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-14 09:54:34Z" class="relativetime-clean">Feb 14 at 9:54</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-45346857" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">it is something related to the theme you are applying for your activity.Post your styles.xml and will help you out</span>
+                &ndash;&nbsp;
+                    <a href="/users/2753340/goonerdroid"
+                       title="2426 reputation"
+                       class="comment-user">goonerDroid</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-14 10:23:25Z" class="relativetime-clean">Feb 14 at 10:23</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-28513926" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>3</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">active</a>
+        <a href="/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">oldest</a>
+        <a class="youarehere" href="/questions/28513926/android-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="28519163"></a>
+<div id="answer-28519163" class="answer accepted-answer" data-answerid="28519163"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="28519163">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>try changing your theme to this</p>
+
+<pre><code>&lt;style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar"&gt;
+</code></pre>
+
+<p>and not the AppCompat Version.It basically depends on whch api you are targeting.If it less than 14 use  </p>
+
+<pre><code>&lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;
+</code></pre>
+
+<p>and in your activity call your actionbar using this</p>
+
+<pre><code>getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/28519163" title="short permalink to this answer" class="short-link" id="link-post-28519163">share</a><span class="lsep">|</span><a href="/posts/28519163/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-02-14 19:07:21Z" class="relativetime">Feb 14 at 19:07</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2753340/goonerdroid"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/WLtcJ.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2753340/goonerdroid">goonerDroid</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,426</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="10 silver badges"><span class="badge2"></span><span class="badgecount">10</span></span><span title="26 bronze badges"><span class="badge3"></span><span class="badgecount">26</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-28519163" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-45355625" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks for the help gooner! It actually worked without changing the getActionBar to getSupportActionBar. Is it necessary to change it? I mean when I do it, it displays an error saying that it cannot resolve method. Do I have to import &quot;android.support.v7.app.ActionBarActivity&quot; so it can work? And I assume I have to change the other getActionBar below that one since the error is present. (Check my MenuActivity.java in my OP)</span>
+                &ndash;&nbsp;
+                    <a href="/users/3557390/w-lpz"
+                       title="84 reputation"
+                       class="comment-user owner">w_lpz</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-14 19:26:59Z" class="relativetime-clean">Feb 14 at 19:26</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-28519163" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/28513926/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="28513926" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="bf7767ec6416d7cc9daa20b0465e2128">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?returnurl=%2fquestions%2f28513926%2fandroid-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f28513926%2fandroid-studio-1-0-2-java-lang-runtimeexception-unable-to-start-activity-compo%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/java" class="post-tag" title="show questions tagged &#39;java&#39;" rel="tag">java</a> <a href="/questions/tagged/android" class="post-tag" title="show questions tagged &#39;android&#39;" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/nullpointerexception" class="post-tag" title="show questions tagged &#39;nullpointerexception&#39;" rel="tag">nullpointerexception</a> <a href="/questions/tagged/runtime" class="post-tag" title="show questions tagged &#39;runtime&#39;" rel="tag">runtime</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2015-02-14 08:42:15Z"><b>6 months ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>1148 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-02-14 19:07:21Z">6 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackexchange.com/2015/08/why-stack-overflow-is-a-good-workplace-for-women/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackexchange.com/2015/08/why-stack-overflow-is-a-good-workplace-for-women/" class="question-hyperlink">Why Stack Overflow is a Good Workplace for Women</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1272591906",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1272591906">
+            </div>
+        <div id="hireme">
+            <script>
+(function(){var r=window,n=document,t=n.getElementsByTagName("head")[0],i=r.clc={doc:n,head:t,enc:encodeURIComponent,dec:decodeURIComponent,se:r.StackExchange,ts:function(){return(new Date).getTime()},st:setTimeout,ct:clearTimeout,qsa:function(n){return document.querySelectorAll(n)},uq:"&utm_source="+location.hostname+"&utm_medium=ad&utm_campaign=",ls:function(i,r){var u=n.createElement("script"),f=!1;u.async=!0;u.src=i;r&&(u.onload=u.onreadystatechange=function(){f||this.readyState&&this.readyState!=="loaded"&&this.readyState!=="complete"||(f=!0,r(),u.onload=u.onreadystatechange=null)});t.appendChild(u)},as:function(i){var r=n.createElement("link");r.type="text/css";r.rel="stylesheet";r.href=i;t.appendChild(r)},ia:function(t,r,u,f){var o=(r.cl||[]).join(" "),e=n.getElementById(t);e&&(o&&(e.className+=" "+o),e.innerHTML=r.cn.replace("&pt=0","&pt="+(f||"0")),e.onmousedown=function(n){for(var t=n.target,f,o,s,h,c;t.tagName!=="A"&&t!==e;)t=t.parentNode;if(t!=e){for(f=i.enc,o=u,s=0;s<t.attributes.length;++s)h=t.attributes[s],c=h.name.match(/^data-(.*)$/),c&&(o+="&"+f(c[1])+"="+f(h.value));o+="&utm="+f(i.uq+r.utm);t.href=o}})},load:function(n,t){var r=Object.keys(n.cr),u=i.ia,f="//"+n.h+n.ct+"?an="+n.an;r.forEach(function(i){u(i,n.cr[i],f,t)})}}})();;(function(n){var t=window.clc,h=20,g="#sidebar [id^='adzerk'].everyonelovesstackoverflow",c="#hireme",f=t.st,e=t.ct,i=null,l=!1,a=null,o,v=n.adurl,y=Array.prototype,p=y.map,nt=y.forEach,s=t.ts,r=t.qsa,u=t.se,w=t.dec,b=t.enc,tt=s(),it=function(n){var t={},i,f;return n.length>1&&n.substr(1).split("&").forEach(function(n){var t=n.split("=");this[w(t[0])]=w(t[1])},t),f=t.ac||t.accountid||u&&u.options&&u.options.user&&u.options.user.accountId,f&&(t.ac=f),t.tags||(i=p.call(r(".post-taglist .post-tag"),function(n){return n.innerText}),i.length>0&&(t.tags=i.join(";"))),n==="#large"&&(t.l=1),n==="#abort"&&(t.abort=1),t},k=function(n){return typeof n=="string"&&(n=r(n)),n.length!==0&&n[0].innerHTML.replace(/\s+/g,"").length>0},ft=t.ls,rt=function(n,u){if(!l){l=!0;var h=r(c),w=t.doc,a,o,y,f;e(i);h.length>0&&((n.l||r("#careersadsdoublehigh").length>0)&&(n.l=1),f=p.call(h,function(n){return"d="+n.id}).join("&"),a=["l","ip","ac","eng","prov","tags","theme","remote","seed"],o=Object.keys(n).filter(function(n){return a.indexOf(n)!==-1}).map(function(t){return b(t)+"="+b(n[t])}).join("&"),o&&(f+="&"+o),u&&(f+="&azt=true"),y=s()-tt,f+="&lw="+y,t.ls(v+(v.indexOf("?")===-1?"?":"&")+f),t.cps=s())}},ut=function(n){k(n)||(nt.call(r(n),function(n){n.parentNode.removeChild(n)}),i&&e(i))},d=function(n){k(g)?(a&&e(a),rt(n)):i=f(d,h,n)};(o=it(location.hash),o.abort)||(i=f(d,h,o),f(ut,2e3,c))}).call(null, {"adurl":"//clc.stackoverflow.com/j/p"});            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/6867076" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">83</div>
+	</a>
+	<a href="/questions/6867076/getactionbar-returns-null" class="question-hyperlink">getActionBar() returns null</a>
+</div><div class="spacer">
+	<a href="/q/28533080" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/28533080/issue-android-studio-1-0-2-fatal-exception-main-process-java-lang-nullpointere" class="question-hyperlink">Issue Android Studio 1.0.2: Fatal Exception: main Process java.lang.NullPointerException</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/18725330" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/18725330/java-lang-runtimeexception-unable-to-start-activity-componentinfo-editcity" class="question-hyperlink">java.lang.RuntimeException: Unable to start activity ComponentInfo{&hellip;EditCity}: java.lang.NullPointerException</a>
+</div>
+<div class="spacer">
+<a href="/q/18748432" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-1
+    </div>
+</a><a href="/questions/18748432/java-lang-runtimeexception-unable-to-start-activity-componentinfo-java-lang-nul" class="question-hyperlink">java.lang.RuntimeException: Unable to start activity ComponentInfo java.lang.nullpointerexception newbie code</a>
+</div>
+<div class="spacer">
+<a href="/q/19498575" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/19498575/android-studio-java-lang-runtimeexception-unable-to-start-activity-componentinf" class="question-hyperlink">Android Studio java.lang.RuntimeException: Unable to start activity ComponentInfo</a>
+</div>
+<div class="spacer">
+<a href="/q/22224608" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/22224608/java-lang-runtimeexception-unable-to-start-activity-componentinfo-java-l" class="question-hyperlink">java.lang.RuntimeException: Unable to start activity ComponentInfo {&hellip;}: java.lang.NullPointerException</a>
+</div>
+<div class="spacer">
+<a href="/q/22456227" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/22456227/android-java-lang-runtimeexception-unable-to-instantiate-activity-componentinfo" class="question-hyperlink">Android java.lang.RuntimeException: Unable to instantiate activity ComponentInfo &hellip; java.lang.NullPointerException</a>
+</div>
+<div class="spacer">
+<a href="/q/22756889" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/22756889/java-lang-runtimeexception-unable-to-start-activity-componentinfo-java-lang" class="question-hyperlink">java.lang.RuntimeException: Unable to start activity ComponentInfo{}: java.lang.NullPointerException</a>
+</div>
+<div class="spacer">
+<a href="/q/23821642" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-1
+    </div>
+</a><a href="/questions/23821642/java-lang-runtimeexception-unable-to-start-activity-componentinfo-java-l" class="question-hyperlink">java.lang.RuntimeException: Unable to start activity ComponentInfo{&hellip;}: java.lang.NullPointerException</a>
+</div>
+<div class="spacer">
+<a href="/q/25468681" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/25468681/java-lang-runtimeexception-unable-to-start-activity-componentinfocom-example-e" class="question-hyperlink">java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.exp2/com.example.exp2.MainActivity}: java.lang.NullPointerException</a>
+</div>
+<div class="spacer">
+<a href="/q/26566246" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/26566246/android-studio-java-lang-runtimeexception-unable-to-start-activity-componentin" class="question-hyperlink">Android Studio: java.lang.RuntimeException: Unable to start activity ComponentInfo&hellip;: java.lang.ClassCastException: java.util.ArrayList</a>
+</div>
+<div class="spacer">
+<a href="/q/27196707" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/27196707/java-lang-runtimeexception-unable-to-start-activity-componentinfo-java-lang-null" class="question-hyperlink">java.lang.runtimeexception unable to start activity componentinfo java.lang.nullpointerexception android</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/64787/is-let-us-lets" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is Let us = Let&#39;s?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/23005/could-an-autotrophic-civilisation-develop-or-will-evolving-life-forms-always-ea" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Could an autotrophic civilisation develop, or will evolving life forms always eat each other?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/55051/twisting-words" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Twisting Words!
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/53139/carrying-a-handgun-in-other-countries-with-a-us-concealed-carry-permit" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Carrying a handgun in other countries with a US concealed carry permit
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-japanese" title="Japanese Language Stack Exchange"></div><a href="http://japanese.stackexchange.com/questions/27523/was-%e3%82%af%e3%83%aa%e3%82%b9%e3%83%9e%e3%82%b9%e3%82%b1%e3%83%bc%e3%82%ad-used-metaphorically-about-women" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:257 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Was クリスマスケーキ used metaphorically about women?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-law" title="Law Stack Exchange"></div><a href="http://law.stackexchange.com/questions/1942/what-distinguishes-adverse-possession-from-theft" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:617 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What distinguishes adverse possession from theft?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/201504/why-moving-fan-seems-transparent" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why moving fan seems transparent?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/51783/how-to-deal-with-people-looking-at-their-mobile-phone-during-my-presentation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to deal with people looking at their mobile phone during my presentation?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-blender" title="Blender Stack Exchange"></div><a href="http://blender.stackexchange.com/questions/36080/how-to-model-a-turtles-shell-starting-from-a-circle-using-a-circle" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:502 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to model a turtle&#39;s shell starting from a circle/ using a circle?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/101525/random-number-generation-seeding-in-c" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Random number generation seeding in C++
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1402201/prove-the-theorem-on-analytic-geometry-in-the-picture" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Prove the theorem on analytic geometry in the picture.
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/83295/should-you-always-minimize-cognitive-load" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should you always minimize cognitive load
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-photo" title="Photography Stack Exchange"></div><a href="http://photo.stackexchange.com/questions/67489/as-a-professional-photographer-how-can-one-handle-a-wedding-photographer-being" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:61 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    As a professional photographer, how can one handle a wedding photographer being rude or demanding in a way that will compromise overall image quality?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/22957/religion-after-the-discovery-of-a-multiverse" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Religion After the Discovery of a Multiverse
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1404517/one-step-forward-from-gaussian-integral" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    One Step Forward from Gaussian Integral
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/268255/many-a-brave-man" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    &quot;Many a brave man...&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/51897/would-it-be-ethical-of-a-student-for-him-her-to-act-as-a-proofreader-editor-for" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Would it be ethical of a student for him/her to act as a proofreader/editor for other students&#39; essays and homework?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/23034/how-can-i-create-a-map-of-an-underground-city" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I create a map of an underground city?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/39090/how-does-myrcella-baratheon-know-that-she-is-the-daughter-of-jaime-lannister" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does Myrcella Baratheon know that she is the daughter of Jaime Lannister?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1404403/how-to-convert-a-decimal-to-a-fraction-easily" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to convert a decimal to a fraction easily?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/99468/which-star-trek-character-appeared-on-screen-with-the-most-unique-ranks" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which Star Trek character appeared on screen with the most unique ranks?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-skeptics" title="Skeptics Stack Exchange"></div><a href="http://skeptics.stackexchange.com/questions/28797/does-lebanon-ban-the-diary-of-anne-frank" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:212 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does Lebanon ban the diary of Anne Frank?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/22729/if-the-insects-declared-war-who-would-win" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If the insects declared war, who would win?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/268246/can-adjectives-be-placed-in-front-of-verbs-e-g-the-duck-was-busy-diving-for-f" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can adjectives be placed in front of verbs, e.g. “The duck was busy diving for food”?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/28513926" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/28513926/ivc/4210');});
+</script>
+<noscript>
+    <div><img src="/posts/28513926/ivc/4210" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="//expressionengine.stackexchange.com" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//movies.stackexchange.com" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="//chemistry.stackexchange.com" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="//biology.stackexchange.com" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.8.20.695
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('java,android,nullpointerexception,runtime');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|java|android|nullpointerexception|runtime|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>            
+    </body>
+</html>

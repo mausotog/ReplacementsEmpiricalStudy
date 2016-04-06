@@ -1,0 +1,33 @@
+While trying to close Database ```Manager``` in ```onDestroy()`` method of my Activity, I am getting this exception.
+
+I am instantiating it in ```LoginActivity``` and destroying it in ```AnotherActivity``` calling ```CustomDBManager```'s method which closes ```manager.close();```
+
+```
+        @Override
+	protected void onDestroy() {
+             if (mManager != null)
+			mManager.close();
+             super.onDestroy();
+	}
+```
+
+
+CBL Build: beta3 unofficial.
+Client Side: CBL.
+Server Side: CouchDB
+
+```
+05-02 12:27:49.115: E/AndroidRuntime(24329): Caused by: java.lang.IllegalArgumentException: Receiver not registered: com.couchbase.lite.android.AndroidNetworkReachabilityManager$ConnectivityBroadcastReceiver@41c92d90
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at android.app.LoadedApk.forgetReceiverDispatcher(LoadedApk.java:662)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at android.app.ContextImpl.unregisterReceiver(ContextImpl.java:1639)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at android.content.ContextWrapper.unregisterReceiver(ContextWrapper.java:452)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at com.couchbase.lite.android.AndroidNetworkReachabilityManager.stopListening(AndroidNetworkReachabilityManager.java:59)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at com.couchbase.lite.NetworkReachabilityManager.removeNetworkReachabilityListener(NetworkReachabilityManager.java:39)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at com.couchbase.lite.replicator.Replication.stopped(Replication.java:732)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at com.couchbase.lite.replicator.Puller.stopped(Puller.java:149)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at com.couchbase.lite.replicator.Replication.stop(Replication.java:489)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at com.couchbase.lite.replicator.Puller.stop(Puller.java:102)
+05-02 12:27:49.115: E/AndroidRuntime(24329): 	at com.couchbase.lite.Manager.close(Manager.java:188)
+```
+
+If I do not close DB Manager in onDestroy() method then Views in CBL are not indexed because on next run same database instance is retrieved rather than creating new at the launch of application.

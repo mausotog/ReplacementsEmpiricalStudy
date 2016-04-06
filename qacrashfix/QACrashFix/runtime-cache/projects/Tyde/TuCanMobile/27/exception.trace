@@ -1,0 +1,10 @@
+java.lang.IllegalArgumentException: View not attached to window manager
+at android.view.WindowManagerImpl.findViewLocked(WindowManagerImpl.java:355)
+at android.view.WindowManagerImpl.removeView(WindowManagerImpl.java:200)
+at android.view.Window$LocalWindowManager.removeView(Window.java:473)
+at android.app.Dialog.dismissDialog(Dialog.java:278)
+at android.app.Dialog.access$000(Dialog.java:71)
+at android.app.Dialog$1.run(Dialog.java:111)
+at android.app.Dialog.dismiss(Dialog.java:268)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:69)
+at com.dalthed.tucan.Connection.SimpleSecureBrowser.onPostExecute(SimpleSecureBrowser.java:1)

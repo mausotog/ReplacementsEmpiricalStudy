@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+    
+    <title>android - Getting the error &quot;Java.lang.IllegalStateException Activity has been destroyed&quot; when using tabs with ViewPager - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Getting the error &quot;Java.lang.IllegalStateException Activity has been destroyed&quot; when using tabs with ViewPager" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have an application that consists of using ActionBarSherlock in tab mode.I have 5 tabs and the content of each tab is handled using fragments. For tab2 though, I have a fragment the xml file of w..." />
+    <meta property="og:url" content="http://stackoverflow.com/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=7e66a1b227e7"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=689e41cd2883">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Getting the error &quot;Java.lang.IllegalStateException Activity has been destroyed&quot; when using tabs with ViewPager&#39;" href="/feeds/question/15207305">
+    <meta name="twitter:app:country" content="US" />
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:iphone" content="871299723" />
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed" />
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:ipad" content="871299723" />
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed" />
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:15207305});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '15207305');
+                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+        });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1428195209,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"a79554347e92cbc0695a04e1e8375545","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"a01c3030569e","js/moderator.en.js":"9be321ee4fdc","js/full-anon.en.js":"0e605e6101e2","js/full.en.js":"d86f58802e92","js/wmd.en.js":"89e46762f17e","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"a2341f691d0d","js/help.en.js":"637a173e1aa4","js/tageditor.en.js":"3f818f06656a","js/tageditornew.en.js":"f9c5a11452c0","js/inline-tag-editing.en.js":"f53885bdadce","js/revisions.en.js":"6c7265ea9fa1","js/review.en.js":"1305a2469a54","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"23eb1e4c85da","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"588492b46561","js/keyboard-shortcuts.en.js":"77412b2bfcc4","js/external-editor.en.js":"333f2972598f","js/external-editor.en.js":"333f2972598f","js/snippet-javascript.en.js":"d4699d4cc44f","js/snippet-javascript-codemirror.en.js":"5407f517dfab"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f15207305%2fgetting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f15207305%2fgetting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 140 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f15207305%2fgetting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f15207305%2fgetting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+	<link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+			<h1 itemprop="name"><a href="/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed" class="question-hyperlink">Getting the error &ldquo;Java.lang.IllegalStateException Activity has been destroyed&rdquo; when using tabs with ViewPager</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="15207305"  id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk288992210",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk288992210">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="15207305">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">46</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>37</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>I have an application that consists of using ActionBarSherlock in tab mode.I have 5 tabs and the content of each tab is handled using fragments. For tab2 though, I have a fragment the xml file of which holds a ViewPager element which in turn has some fragment pages. When I initially start the application the application, I am able to switch between tabs no problem but when I press on tab2 for the second time I get the error mentioned above. The main activity is as follows:</p>
+
+<pre><code>public class MainActivity extends SherlockFragmentActivity
+{
+    @Override
+    protected void onCreate(Bundle savedInstanceState) 
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        ActionBar.Tab tab1 = actionBar.newTab().setText("Tab1");
+        ActionBar.Tab tab3 = actionBar.newTab().setText("Tab3");
+        ActionBar.Tab tab2 = actionBar.newTab().setText("Tab2");
+        ActionBar.Tab tab4 = actionBar.newTab().setText("Tab4");
+        ActionBar.Tab tab5 = actionBar.newTab().setText("Tab5");
+
+        Fragment fragment1 = new Tab1();
+        Fragment fragment3 = new Tab3();
+        Fragment fragment2 = new Tab2();
+        Fragment fragment5 = new Tab5();
+        Fragment fragment4 = new Tab4();
+
+        tab1.setTabListener(new MyTabListener(fragment1));
+        tab3.setTabListener(new MyTabListener(fragment3));
+        tab2.setTabListener(new MyTabListener(fragment2));
+        tab5.setTabListener(new MyTabListener(fragment5));
+        tab4.setTabListener(new MyTabListener(fragment4));
+
+        actionBar.addTab(tab1);
+        actionBar.addTab(tab2);
+        actionBar.addTab(tab3);
+        actionBar.addTab(tab4);
+        actionBar.addTab(tab5); 
+
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+    }
+
+    class MyTabListener implements ActionBar.TabListener
+    {
+        Fragment fragment;
+
+        public MyTabListener(Fragment fragment)
+        {
+            this.fragment = fragment;
+        }
+
+        @Override
+        public void onTabSelected(com.actionbarsherlock.app.ActionBar.Tab tab,FragmentTransaction ft) 
+        {
+            ft.replace(R.id.fragment_container,fragment);
+        }
+
+        @Override
+        public void onTabUnselected(com.actionbarsherlock.app.ActionBar.Tab tab,FragmentTransaction ft) 
+        {
+
+        }
+
+        @Override
+        public void onTabReselected(com.actionbarsherlock.app.ActionBar.Tab tab,FragmentTransaction ft) 
+        {
+
+        }
+    }
+}
+</code></pre>
+
+<p>The fragment class without the ViewPager is as follows:</p>
+
+<pre><code>public class Tab1 extends Fragment 
+{
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+    {
+        return inflater.inflate(R.layout.activity_tab1, container, false);
+    }
+}
+</code></pre>
+
+<p>The fragment class with the ViewPager is as follows:</p>
+
+<pre><code>public class Tab2 extends Fragment 
+{
+    ViewPager mViewPager;
+    private MyFragmentPagerAdapter mMyFragmentPagerAdapter;  
+    private static int NUMBER_OF_PAGES = 5;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+    {
+        View view =  inflater.inflate(R.layout.activity_tab2, container, false); 
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view,Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+        mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        mMyFragmentPagerAdapter = new MyFragmentPagerAdapter(getChildFragmentManager());  
+        mViewPager.setAdapter(mMyFragmentPagerAdapter);  
+    }
+
+    private static class MyFragmentPagerAdapter extends FragmentPagerAdapter 
+    {    
+        public MyFragmentPagerAdapter(FragmentManager fm) 
+        {  
+             super(fm);  
+        }  
+
+        @Override  
+        public Fragment getItem(int index) 
+        {  
+             return PageFragment.newInstance("My Message " + index);
+        }  
+
+        @Override  
+        public int getCount() 
+        {  
+             return NUMBER_OF_PAGES;  
+        }  
+   }
+}
+</code></pre>
+
+<p>From what I've read in different places (and please correct me if I'm wrong), this happens because the fragment manager on the second pass tries to reuse the fragments from the activity which doesn't exist anymore thus giving the error.But I'm not sure why this happens over here since I'm not using  fragment activity. According to logcat the error is in the Tab2 class, onViewCreated method on the line that says mViewPager.setAdapter(mMyFragmentPagerAdapter). Any help is greatly appreciated...Thanks.</p>
+
+<pre><code>03-04 12:01:05.468: E/AndroidRuntime(2474): FATAL EXCEPTION: main
+03-04 12:01:05.468: E/AndroidRuntime(2474): java.lang.IllegalStateException: Activity has been destroyed
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1342)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.BackStackRecord.commitInternal(BackStackRecord.java:595)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.BackStackRecord.commitAllowingStateLoss(BackStackRecord.java:578)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.FragmentPagerAdapter.finishUpdate(FragmentPagerAdapter.java:139)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.view.ViewPager.populate(ViewPager.java:1011)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.view.ViewPager.populate(ViewPager.java:880)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.view.ViewPager.setAdapter(ViewPager.java:433)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at com.example.tabs.Tab2.onViewCreated(Tab2.java:31)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:925)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.FragmentManagerImpl.moveToState(FragmentManager.java:1088)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.BackStackRecord.run(BackStackRecord.java:682)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1444)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.support.v4.app.FragmentManagerImpl$1.run(FragmentManager.java:429)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.os.Handler.handleCallback(Handler.java:587)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.os.Handler.dispatchMessage(Handler.java:92)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.os.Looper.loop(Looper.java:123)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at android.app.ActivityThread.main(ActivityThread.java:3687)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at java.lang.reflect.Method.invokeNative(Native Method)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at java.lang.reflect.Method.invoke(Method.java:507)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:842)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:600)
+03-04 12:01:05.468: E/AndroidRuntime(2474):     at dalvik.system.NativeStart.main(Native Method)
+</code></pre>
+
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/android-fragments" class="post-tag" title="show questions tagged 'android-fragments'" rel="tag">android-fragments</a> <a href="/questions/tagged/android-viewpager" class="post-tag" title="show questions tagged 'android-viewpager'" rel="tag">android-viewpager</a> <a href="/questions/tagged/actionbarsherlock" class="post-tag" title="show questions tagged 'actionbarsherlock'" rel="tag">actionbarsherlock</a> <a href="/questions/tagged/android-nested-fragment" class="post-tag" title="show questions tagged 'android-nested-fragment'" rel="tag">android-nested-fragment</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/15207305" title="short permalink to this question" class="short-link" id="link-post-15207305">share</a><span class="lsep">|</span><a href="/posts/15207305/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/15207305/revisions" title="show all edits to this post">edited <span title="2014-04-19 00:14:10Z" class="relativetime">Apr 19 '14 at 0:14</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2668136/fllo"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/Xngzc.png?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2668136/fllo">Fllo</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5,975</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="33 bronze badges"><span class="badge3"></span><span class="badgecount">33</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2013-03-04 17:24:10Z" class="relativetime">Mar 4 '13 at 17:24</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1950599/user1950599"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/465d5a155054daf1ce1a89a79f6d1916?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1950599/user1950599">user1950599</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">260</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15207305" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-21728549" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">So I think I may have found the problem. When looking at the variable mMyFragmentPagerAdapter(class Tab2) through the eclipse debugger, I saw that it had a FragmentManager variable which when clicking on Tab2 for the first time had a field called mActivity which was pointing to MainActivity.But on switching from tab2 to some other tab and looking at mActivity again it had a value of null, which perhaps explains why its giving the error Activity has been destroyed.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1950599/user1950599"
+                       title="260 reputation"
+                       class="comment-user owner">user1950599</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-13 01:16:37Z" class="relativetime-clean">Mar 13 '13 at 1:16</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-15207305" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								8 Answers
+                                <span style="display:none;" itemprop="answerCount">8</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="15656428"></a>
+<div id="answer-15656428" class="answer accepted-answer" data-answerid="15656428"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="15656428">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">178</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This seems to be a bug in the newly added support for nested fragments. Basically, the child <code>FragmentManager</code> ends up with a broken internal state when it is detached from the activity. A short-term workaround that fixed it for me is to add the following to <code>onDetach()</code> of every <code>Fragment</code> which you call <code>getChildFragmentManager()</code> on:</p>
+
+<pre><code>@Override
+public void onDetach() {
+    super.onDetach();
+
+    try {
+        Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+        childFragmentManager.setAccessible(true);
+        childFragmentManager.set(this, null);
+
+    } catch (NoSuchFieldException e) {
+        throw new RuntimeException(e);
+    } catch (IllegalAccessException e) {
+        throw new RuntimeException(e);
+    }
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/15656428" title="short permalink to this answer" class="short-link" id="link-post-15656428">share</a><span class="lsep">|</span><a href="/posts/15656428/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-03-27 10:18:14Z" class="relativetime">Mar 27 '13 at 10:18</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1367472/marcus-forsell-stahre"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8cd543d6caa5f8d55688cb233c557be6?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1367472/marcus-forsell-stahre">Marcus Forsell Stahre</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,392</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="13 bronze badges"><span class="badge3"></span><span class="badgecount">13</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15656428" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="21"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-22441602" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">14</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">If you look at the implementation of Fragment, you&#39;ll see that when moving to the detached state, it&#39;ll reset its internal state. However, it doesn&#39;t reset mChildFragmentManager (this is a bug in the current version of the support library). This causes it to not reattach the child fragment manager when the Fragment is reattached, causing the exception you saw.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1367472/marcus-forsell-stahre"
+                       title="2392 reputation"
+                       class="comment-user">Marcus Forsell Stahre</a>
+                <span class="comment-date" dir="ltr"><span title="2013-04-03 10:32:35Z" class="relativetime-clean">Apr 3 '13 at 10:32</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-23379499" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="supernova">62</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Wow. That works. I was going to give up programming.</span>
+                &ndash;&nbsp;
+                    <a href="/users/326849/jul"
+                       title="6329 reputation"
+                       class="comment-user">jul</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-01 19:58:18Z" class="relativetime-clean">May 1 '13 at 19:58</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-25429673" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">8</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You have got to be kidding me. Glad you found posted this, but good grief.</span>
+                &ndash;&nbsp;
+                    <a href="/users/864069/secureboot"
+                       title="485 reputation"
+                       class="comment-user">secureboot</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-05 18:09:45Z" class="relativetime-clean">Jul 5 '13 at 18:09</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-29549202" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">7</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This bug is being tracked in the Android Open Source issue tracker: <a href="https://code.google.com/p/android/issues/detail?id=42601" rel="nofollow">code.google.com/p/android/issues/detail?id=42601</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/1175/kristopher-johnson"
+                       title="37363 reputation"
+                       class="comment-user">Kristopher Johnson</a>
+                <span class="comment-date" dir="ltr"><span title="2013-11-08 18:46:56Z" class="relativetime-clean">Nov 8 '13 at 18:46</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34394877" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">15</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">So after 1 year, this bug is still not fixed? I got the same error even the latest API and SDK updates...</span>
+                &ndash;&nbsp;
+                    <a href="/users/1724763/lucas"
+                       title="667 reputation"
+                       class="comment-user">Lucas</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-23 14:26:41Z" class="relativetime-clean">Mar 23 '14 at 14:26</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-15656428" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post, or add one of your own" href=# onclick="">show <b>21</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk676968445",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk676968445">
+            </div>
+  
+<a name="15512744"></a>
+<div id="answer-15512744" class="answer" data-answerid="15512744"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="15512744">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">8</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I'm having exactly the same problem.
+The only workaround I've found, is to replace the fragments by a new instance, each time the tabs are changed.</p>
+
+<pre><code>ft.replace(R.id.fragment_container, Fragment.instantiate(PlayerMainActivity.this, fragment.getClass().getName()));
+</code></pre>
+
+<p>Not a real solution, but i haven't found a way to reuse the previous fragment instance...</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/15512744" title="short permalink to this answer" class="short-link" id="link-post-15512744">share</a><span class="lsep">|</span><a href="/posts/15512744/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-03-19 23:53:46Z" class="relativetime">Mar 19 '13 at 23:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2154836/jekatt"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/d086da78f316b371af671011a1f6f2ae?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2154836/jekatt">jekatt</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">81</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15512744" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-22127475" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Wow thanks a lot...that fixed the problem.Is it possible to give a explanation why it works?I was breaking my head trying to fix the error using the FragmentManager.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1950599/user1950599"
+                       title="260 reputation"
+                       class="comment-user owner">user1950599</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-24 19:53:23Z" class="relativetime-clean">Mar 24 '13 at 19:53</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-42586050" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Have you analyzed your memory footprint? Because this workaround may increase it, at-least i suspect</span>
+                &ndash;&nbsp;
+                    <a href="/users/2781649/nmxprime"
+                       title="333 reputation"
+                       class="comment-user">nmxprime</a>
+                <span class="comment-date" dir="ltr"><span title="2014-11-20 05:07:19Z" class="relativetime-clean">Nov 20 '14 at 5:07</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-15512744" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="21047245"></a>
+<div id="answer-21047245" class="answer" data-answerid="21047245"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="21047245">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I had this error because I was using LocalBroadcastManager and I did:</p>
+
+<pre><code>unregisterReceiver(intentReloadFragmentReceiver);
+</code></pre>
+
+<p>instead of:</p>
+
+<pre><code>LocalBroadcastManager.getInstance(this).unregisterReceiver(intentReloadFragmentReceiver);
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/21047245" title="short permalink to this answer" class="short-link" id="link-post-21047245">share</a><span class="lsep">|</span><a href="/posts/21047245/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-10 14:47:38Z" class="relativetime">Jan 10 '14 at 14:47</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2075875/malachiasz"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e0b3e3d0b29b541cd13a60a9236f02ac?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2075875/malachiasz">Malachiasz</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,064</span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="22 bronze badges"><span class="badge3"></span><span class="badgecount">22</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21047245" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-42586259" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">this doesn&#39;t solve my prob. But Thanks it helped me to correct my mistakes on using BroadcastReceivers</span>
+                &ndash;&nbsp;
+                    <a href="/users/2781649/nmxprime"
+                       title="333 reputation"
+                       class="comment-user">nmxprime</a>
+                <span class="comment-date" dir="ltr"><span title="2014-11-20 05:21:28Z" class="relativetime-clean">Nov 20 '14 at 5:21</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-45570698" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">What if your Activity context is null.  Then &#39;this&#39; wouldn&#39;t be valid.</span>
+                &ndash;&nbsp;
+                    <a href="/users/238937/igor-ganapolsky"
+                       title="3668 reputation"
+                       class="comment-user">Igor Ganapolsky</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-20 18:07:22Z" class="relativetime-clean">Feb 20 at 18:07</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-45635773" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">when Activities context can be null? I think never.</span>
+                &ndash;&nbsp;
+                    <a href="/users/2075875/malachiasz"
+                       title="2064 reputation"
+                       class="comment-user">Malachiasz</a>
+                <span class="comment-date" dir="ltr"><span title="2015-02-23 09:56:04Z" class="relativetime-clean">Feb 23 at 9:56</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21047245" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="23623819"></a>
+<div id="answer-23623819" class="answer" data-answerid="23623819"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="23623819">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I got the very same error when trying to access the child <code>FragmentManager</code> before the fragment was fully initialized (i.e. attached to the Activity or at least <code>onCreateView()</code> called). Else the <code>FragmentManager</code> gets initialized with a <code>null</code> Activity causing the aforementioned exception.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/23623819" title="short permalink to this answer" class="short-link" id="link-post-23623819">share</a><span class="lsep">|</span><a href="/posts/23623819/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-05-13 06:03:05Z" class="relativetime">May 13 '14 at 6:03</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/304266/ubuntudroid"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/d1afc6ba8f38c177e12f0a432e6a8a61?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/304266/ubuntudroid">ubuntudroid</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">775</span><span title="10 silver badges"><span class="badge2"></span><span class="badgecount">10</span></span><span title="29 bronze badges"><span class="badge3"></span><span class="badgecount">29</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-23623819" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-23623819" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="24810946"></a>
+<div id="answer-24810946" class="answer" data-answerid="24810946"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="24810946">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Wanted to add that my problem was in an activity where I tried to make a fragment transaction in onCreate BEFORE I called super.onCreate(). I just moved super.onCreate() to top of function and was worked fine.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/24810946" title="short permalink to this answer" class="short-link" id="link-post-24810946">share</a><span class="lsep">|</span><a href="/posts/24810946/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-07-17 18:28:32Z" class="relativetime">Jul 17 '14 at 18:28</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/317862/sgarman"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/fe34cea77cf5d679df54e7210ce95e3e?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/317862/sgarman">sgarman</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">3,371</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="20 silver badges"><span class="badge2"></span><span class="badgecount">20</span></span><span title="35 bronze badges"><span class="badge3"></span><span class="badgecount">35</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-24810946" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-24810946" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="25218269"></a>
+<div id="answer-25218269" class="answer" data-answerid="25218269"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="25218269">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I encountered the same issue when calling super.onCreate() at the end of my method. The reason: attachActivity() is called in onCreate() of FragmentActivity. When overriding onCreate() and, for example, creating tabs, the Tab manager will try to switch to a fragment while not having the activity attached to the FragmentManager.</p>
+
+<p>Simple solution: Move the call to super.onCreate() to the head of the function body.</p>
+
+<p>In general, it seems there are loads of reasons this issue may occur. This is just another one ...</p>
+
+<p>Matthias</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/25218269" title="short permalink to this answer" class="short-link" id="link-post-25218269">share</a><span class="lsep">|</span><a href="/posts/25218269/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-08-09 11:50:43Z" class="relativetime">Aug 9 '14 at 11:50</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1050133/user1050133"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/327390380051b722cc08cc9d04b1b39a?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1050133/user1050133">user1050133</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">144</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="12 bronze badges"><span class="badge3"></span><span class="badgecount">12</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-25218269" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-25218269" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="22832394"></a>
+<div id="answer-22832394" class="answer" data-answerid="22832394"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="22832394">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I had this problem and I couldn't find the solution here, so I want to share my solution in case someone else has this problem again.</p>
+
+<p>I had this code:</p>
+
+<pre><code>public void finishAction() {
+  onDestroy();
+  finish();
+}
+</code></pre>
+
+<p>and solved the problem by deleting the line "onDestroy();"</p>
+
+<pre><code>public void finishAction() {
+  finish();
+}
+</code></pre>
+
+<p>The reason I wrote the initial code:
+I know that when you execute "finish()" the activity calls "onDestroy()", but I'm using threads and I wanted to ensure that all the threads are destroyed before starting the next activity, and it looks like "finish()" is not always immediate.
+I need to process/reduce a lot of “Bitmap” and display big “bitmaps” and I’m working on improving the use of the memory in my app</p>
+
+<p>Now I will kill the threads using a different method and I’ll execute this method from "onDestroy();" and when I think I need to kill all the threads.</p>
+
+<pre><code>public void finishAction() {
+  onDestroyThreads();
+  finish();
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/22832394" title="short permalink to this answer" class="short-link" id="link-post-22832394">share</a><span class="lsep">|</span><a href="/posts/22832394/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-04-03 08:48:33Z" class="relativetime">Apr 3 '14 at 8:48</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/713059/user713059"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/d563ab3250bdfca17638591825d3cd43?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/713059/user713059">user713059</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22832394" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-22832394" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="27560929"></a>
+<div id="answer-27560929" class="answer" data-answerid="27560929"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="27560929">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I encountered the same issue and lateron found out that, I have missed call to <code>super.onCreate( savedInstanceState );</code> in <code>onCreate()</code> of FragmentActivity.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/27560929" title="short permalink to this answer" class="short-link" id="link-post-27560929">share</a><span class="lsep">|</span><a href="/posts/27560929/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-12-19 06:41:53Z" class="relativetime">Dec 19 '14 at 6:41</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1606857/swapnil-chaudhari"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/b6b33e69c7a63154f5fbfc7df97f7a25?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1606857/swapnil-chaudhari">Swapnil Chaudhari</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">43</span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-27560929" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-27560929" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/15207305/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="15207305" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="a79554347e92cbc0695a04e1e8375545">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?returnurl=%2fquestions%2f15207305%2fgetting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f15207305%2fgetting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/android-fragments" class="post-tag" title="show questions tagged 'android-fragments'" rel="tag">android-fragments</a> <a href="/questions/tagged/android-viewpager" class="post-tag" title="show questions tagged 'android-viewpager'" rel="tag">android-viewpager</a> <a href="/questions/tagged/actionbarsherlock" class="post-tag" title="show questions tagged 'actionbarsherlock'" rel="tag">actionbarsherlock</a> <a href="/questions/tagged/android-nested-fragment" class="post-tag" title="show questions tagged 'android-nested-fragment'" rel="tag">android-nested-fragment</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-03-04 17:24:10Z"><b>2 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>32712 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-12-19 06:41:53Z">3 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+						
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1894672449",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1894672449">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(e){var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,r=setTimeout,h=document,q,b,m={},l=location.hash;if(l.length>1){l.substr(1).split("&").forEach(function(t){var u=t.split("=");this[g(u[0])]=g(u[1])},m)}b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(!m.tags){q=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(q.length>0){m.tags=Array.prototype.join.call(q,";")}}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(t){return a(t).html().replace(/\s+/g,"").length>0}function s(){var t=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(t.length===0){return true}return !j(t)}function n(){var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(z,y){return"d="+y.id}).get().join("&");var x=["l","ip","ac","eng","prov","tags","theme"];var u=Object.keys(m).filter(function(y){return x.indexOf(y)!==-1}).map(function(y){return i(y)+"="+i(m[y])}).join("&");if(u){v+="&"+u}var w=h.createElement("script");w.type="text/javascript";w.src=e+(e.indexOf("?")===-1?"?":"&")+v;h.body.appendChild(w)}}function o(){if(s()){d=r(o,f);return}if(m.abort){k()}n()}function k(){clearTimeout(d);a(c).each(function(){var t=a(this);if(!j(t)){var v=t;var u=t.parents(".everyonelovesstackoverflow").first();if(u.length>0){v=u}v.remove()}})}r(k,2000);var d=r(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);            </script>
+        </div>
+			<div style="margin-bottom: 10px;">
+        
+
+<style type="text/css">
+#newsletter-ad {
+    width: 190px;
+    height: 250px;
+    overflow: hidden;
+    background: url('//cdn.sstatic.net/stackoverflow/img/newsletter-ad.png');
+    padding: 0 15px 0 15px;
+}
+#newsletter-ad-header {
+    margin-top: 60px;
+}
+#newsletter-ad ul {
+    margin: 1em 0 1em 1.5em;
+}
+#newsletter-ad ul li {
+    margin-bottom: 5px;
+}
+#newsletter-signup-container {
+    text-align: center;
+}
+#newsletter-preview-container {
+    margin-top: 10px;
+    text-align: center;
+}
+#newsletter-email-input {
+    width: 200px;
+}
+</style>
+
+<script>
+    StackExchange.ready(function () {
+        StackExchange.newsletterAd.init();
+    });
+</script>
+
+<div id="newsletter-ad">
+    <p id="newsletter-ad-header">Get the <b>weekly newsletter!</b></p>
+    <ul>
+        <li>Top questions and answers</li>
+        <li>Important announcements</li>
+        <li>Unanswered questions</li>
+    </ul>
+    <div id="newsletter-signup-container"><input id="newsletter-signup" type="button" value="Sign up for the newsletter" /></div>
+    <p id="newsletter-preview-container">see an <a href="http://stackexchange.com/newsletters/newsletter?site=stackoverflow.com" id="newsletter-preview">example newsletter</a></p>
+    <div class="dno">
+        
+<p class="privacy-policy-agreement">
+By subscribing, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />
+    </div>
+</div>
+
+    </div>  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/19239175" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">5</div>
+	</a>
+	<a href="/questions/19239175/java-lang-illegalstateexception-activity-has-been-destroyed-using-fragments" class="question-hyperlink">java.lang.IllegalStateException: Activity has been destroyed using fragments</a>
+</div><div class="spacer">
+	<a href="/q/14565460" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">40</div>
+	</a>
+	<a href="/questions/14565460/error-opening-supportmapfragment-for-second-time" class="question-hyperlink">Error opening SupportMapFragment for second time</a>
+</div><div class="spacer">
+	<a href="/q/19888539" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="/questions/19888539/illegalargumentexception-no-view-found-for-id-for-fragment-viewpager-in-vie" class="question-hyperlink">IllegalArgumentException: No view found for id for fragment &mdash; ViewPager in ViewPager</a>
+</div><div class="spacer">
+	<a href="/q/18977923" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/18977923/viewpager-with-nested-fragments" class="question-hyperlink">ViewPager with Nested Fragments?</a>
+</div><div class="spacer">
+	<a href="/q/14321771" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">5</div>
+	</a>
+	<a href="/questions/14321771/android-nested-fragments-issue-java-lang-illegalstateexception-activity-has-be" class="question-hyperlink">Android Nested Fragments Issue &ldquo;java.lang.IllegalStateException: Activity has been destroyed&rdquo;</a>
+</div><div class="spacer">
+	<a href="/q/17638834" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">2</div>
+	</a>
+	<a href="/questions/17638834/app-crashes-when-i-navigate-second-time-to-nested-fragment" class="question-hyperlink">App crashes when I navigate second time to nested Fragment</a>
+</div><div class="spacer">
+	<a href="/q/17782131" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="/questions/17782131/fragmenttabhost-activity-has-been-destroyed" class="question-hyperlink">FragmentTabHost &ldquo;Activity has been destroyed&rdquo;</a>
+</div><div class="spacer">
+	<a href="/q/20004048" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/20004048/google-map-inside-a-fragment-with-custom-layout" class="question-hyperlink">Google Map inside a fragment with custom layout</a>
+</div><div class="spacer">
+	<a href="/q/19120556" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/19120556/viewpager-inside-tabhost-having-fragments-as-pages" class="question-hyperlink">ViewPager inside TabHost having Fragments as pages</a>
+</div><div class="spacer">
+	<a href="/q/18342303" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/18342303/listview-in-child-fragment-with-backstack-is-not-refreshing-but-appending" class="question-hyperlink">ListView in Child Fragment with backStack is not refreshing but appending</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/15207305">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/11656197" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="/questions/11656197/how-to-delete-a-tab-with-actionbar-viewpager-and-multiple-fragments" class="question-hyperlink">How to delete a tab with actionbar, viewpager, and multiple fragments?</a>
+</div>
+<div class="spacer">
+<a href="/q/12369825" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/12369825/viewpager-inside-tab-doesnt-display-items-properly" class="question-hyperlink">ViewPager inside Tab doesn&#39;t display items properly</a>
+</div>
+<div class="spacer">
+<a href="/q/12398525" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">5
+    </div>
+</a><a href="/questions/12398525/actionbarsherlock-tabbed-fragments-viewpager-insider-a-fragment" class="question-hyperlink">ActionBarSherlock + Tabbed Fragments + ViewPager insider a fragment</a>
+</div>
+<div class="spacer">
+<a href="/q/13334733" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">13
+    </div>
+</a><a href="/questions/13334733/viewpager-fragmentpageradapter-inside-a-dialogfragment-gets-illegalargumentex" class="question-hyperlink">ViewPager + FragmentPagerAdapter inside a DialogFragment gets &ldquo;IllegalArgumentException:No view found&hellip;&rdquo;</a>
+</div>
+<div class="spacer">
+<a href="/q/14277883" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">4
+    </div>
+</a><a href="/questions/14277883/actionbarsherlock-with-viewpager-not-calling-viewpager-fragments-lifecycle-metho" class="question-hyperlink">ActionBarSherlock with ViewPager not calling ViewPager fragments lifecycle methods when going to and returning from backstack</a>
+</div>
+<div class="spacer">
+<a href="/q/17034195" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/17034195/viewpager-tabs-fragment" class="question-hyperlink">Viewpager Tabs Fragment</a>
+</div>
+<div class="spacer">
+<a href="/q/17364401" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">3
+    </div>
+</a><a href="/questions/17364401/viewpager-inside-fragment-doesnt-show-despite-using-getchildfragmentmanager-wh" class="question-hyperlink">ViewPager inside Fragment doesnt show despite using getChildFragmentManager() when constructing FragmentPagerAdapter</a>
+</div>
+<div class="spacer">
+<a href="/q/19454107" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/19454107/replace-a-fragment-above-another-fragment-when-dialog-is-clicked-viewpager" class="question-hyperlink">Replace a fragment above another fragment when dialog is clicked (viewpager)</a>
+</div>
+<div class="spacer">
+<a href="/q/21125594" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/21125594/navigation-drawer-viewpager-fragments-viewpager-doesnt-destroy-nested-frag" class="question-hyperlink">Navigation Drawer + ViewPager + Fragments, ViewPager doesn&#39;t destroy nested fragments</a>
+</div>
+<div class="spacer">
+<a href="/q/23486087" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/23486087/viewpager-within-a-dialogfragment-does-not-change-tabs-onclick" class="question-hyperlink">ViewPager within a DialogFragment does not change tabs onClick</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/13805/why-do-airline-pilots-have-shoulder-harnesses" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do airline pilots have shoulder harnesses?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/194371/how-to-limit-the-running-time-of-a-program" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to limit the running time of a program?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/897841/apples-mail-showing-the-identity-of-smtp-gmail-com-cannot-be-verified" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Apple&#39;s Mail showing &quot;the identity of smtp.gmail.com cannot be verified&quot;
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/48355/find-the-next-1-sparse-binary-number" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Find the next 1-sparse binary number
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/194357/how-did-this-at-the-end-of-my-command-make-the-script-so-fast" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How did this &#39;&amp;&#39; at the end of my command, make the script SO fast?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/75694/should-i-avoid-using-abort-in-favor-of-its-synonyms" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I avoid using &quot;abort&quot; in favor of its synonyms?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/236830/table-of-contents-in-multicol-alignment-problem" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Table of contents in multicol alignment problem
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="http://stats.stackexchange.com/questions/144861/why-does-the-sum-of-true-positive-and-false-positive-not-have-to-equal-1" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    why does the sum of true positive and false positive not have to equal 1
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/236820/tikz-relative-positioning-with" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Tikz relative positioning with ++
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/85138/how-would-you-detect-an-evil-twin-attack-especially-in-a-new-environment" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How would you detect an Evil Twin attack, especially in a new environment?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/85524/did-voldemort-ever-learn-that-snape-was-dumbledores-guy" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Did Voldemort ever learn that Snape was Dumbledore&#39;s guy?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/75890/why-do-showers-have-hot-and-cold-knobs-rather-than-temperature-and-quanti" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do showers have &quot;hot&quot; and &quot;cold&quot; knobs rather than &quot;temperature&quot; and &quot;quantity&quot; knobs?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/46351/apartment-lease-renewal-is-this-rate-increase-normal" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Apartment lease renewal - is this rate increase normal?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1216125/why-is-the-construction-of-the-real-numbers-important" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is the construction of the real numbers important?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/79041/how-to-define-a-distribution-that-90-of-the-time-gives-me-0" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to define a distribution that 90% of the time gives me 0?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/43616/how-to-prevent-employees-from-escalating-issues-straight-to-the-ceo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to prevent employees from escalating issues straight to the CEO?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="http://music.stackexchange.com/questions/31381/why-are-conductors-required-at-orchestra-performances" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are conductors required at orchestra performances?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/29449606/does-c-sharp-operator-become-threadsafe-in-foreach-loop" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does C# ++ operator become threadsafe in foreach loop?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/174164/does-a-capacitor-ever-get-fully-charged" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does a capacitor ever get fully charged?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-softwarerecs" title="Software Recommendations Stack Exchange"></div><a href="http://softwarerecs.stackexchange.com/questions/18473/lock-mouse-pointer-to-first-screen-when-using-extended-display-and-two-screens" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:536 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Lock mouse pointer to first screen when using extended display and two screens
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/42918/does-one-need-a-masters-in-math-before-taking-a-phd-in-math" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does one need a master&#39;s in Math before taking a PhD in Math?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/212585/what-game-is-this" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What game is this?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/29450216/constant-definition-in-multiple-files" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Constant definition in multiple files
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/13364/if-magic-is-real-can-it-be-true-that-rational-scientific-thought-should-exclude" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If magic is real, can it be true that rational scientific thought should exclude it?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/15207305" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/15207305/ivc/9a29');});
+</script>
+<noscript>
+    <div><img src="/posts/15207305/ivc/9a29" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.4.3.2444
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('android,android-fragments,android-viewpager,actionbarsherlock,android-nested-fragment');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|android|android-fragments|android-viewpager|actionbarsherlock|android-nested-fragment|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>                
+    </body>
+</html>

@@ -1,0 +1,52 @@
+Hey all,
+
+I've been trying to track down an exception in my app so I've reproduced it in the unity plug in example code.  I added a button to call Application.Quit() and get this logcat...
+
+
+D/dalvikvm( 1283): GC_CONCURRENT freed 646K, 24% free 9815K/12796K, paused 2ms+3ms, total 37ms
+D/OpenIAB-unity-plugin( 6246): destroyBroadcasts
+D/OpenIAB-unity-plugin( 6246): destroyBroadcasts exception:
+D/OpenIAB-unity-plugin( 6246): Receiver not registered: com.openiab.OpenIAB$7@42083238
+D/AndroidRuntime( 6246): Shutting down VM
+W/dalvikvm( 6246): threadid=1: thread exiting with uncaught exception (group=0x418c1b90)
+E/AndroidRuntime( 6246): FATAL EXCEPTION: main
+E/AndroidRuntime( 6246): Process: org.onepf.angrybots, PID: 6246
+E/AndroidRuntime( 6246): java.lang.Error: FATAL EXCEPTION [main]
+E/AndroidRuntime( 6246): Unity version     : 4.3.0f4
+E/AndroidRuntime( 6246): Device model      : asus Nexus 7
+E/AndroidRuntime( 6246): Device fingerprint: google/nakasi/grouper:4.4/KRTXXS/XXXXXX:user/release-keys
+E/AndroidRuntime( 6246): 
+E/AndroidRuntime( 6246): Caused by: android.util.SuperNotCalledException: Activity {org.onepf.angrybots/com.openiab.BillingActivity} did not call through to super.onDestroy()
+E/AndroidRuntime( 6246): 	at android.app.ActivityThread.performDestroyActivity(ActivityThread.java:3467)
+E/AndroidRuntime( 6246): 	at android.app.ActivityThread.handleDestroyActivity(ActivityThread.java:3496)
+E/AndroidRuntime( 6246): 	at android.app.ActivityThread.access$1300(ActivityThread.java:135)
+E/AndroidRuntime( 6246): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1450)
+E/AndroidRuntime( 6246): 	at android.os.Handler.dispatchMessage(Handler.java:102)
+E/AndroidRuntime( 6246): 	at android.os.Looper.loop(Looper.java:137)
+E/AndroidRuntime( 6246): 	at android.app.ActivityThread.main(ActivityThread.java:4998)
+E/AndroidRuntime( 6246): 	at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime( 6246): 	at java.lang.reflect.Method.invoke(Method.java:515)
+E/AndroidRuntime( 6246): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:777)
+E/AndroidRuntime( 6246): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:593)
+E/AndroidRuntime( 6246): 	at dalvik.system.NativeStart.main(Native Method)
+
+
+
+I/Process ( 6246): Sending signal. PID: 6246 SIG: 9
+W/InputMethodManagerService(  501): Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@42659e38 attribute=null, token = android.os.BinderProxy@424f8f88
+I/ActivityManager(  501): Process org.onepf.angrybots (pid 6246) has died.
+I/WindowState(  501): WIN DEATH: Window{426f9f28 u0 org.onepf.angrybots/com.openiab.BillingActivity}
+W/WindowManager(  501): Force-removing child win Window{4289bfa0 u0 SurfaceView} from container Window{426f9f28 u0 org.onepf.angrybots/com.openiab.BillingActivity}
+W/WindowManager(  501): Failed looking up window
+W/WindowManager(  501): java.lang.IllegalArgumentException: Requested window android.os.BinderProxy@421ff188 does not exist
+W/WindowManager(  501): 	at com.android.server.wm.WindowManagerService.windowForClientLocked(WindowManagerService.java:7897)
+W/WindowManager(  501): 	at com.android.server.wm.WindowManagerService.windowForClientLocked(WindowManagerService.java:7888)
+W/WindowManager(  501): 	at com.android.server.wm.WindowState$DeathRecipient.binderDied(WindowState.java:1040)
+W/WindowManager(  501): 	at android.os.BinderProxy.sendDeathNotice(Binder.java:493)
+W/WindowManager(  501): 	at dalvik.system.NativeStart.run(Native Method)
+I/WindowState(  501): WIN DEATH: null
+
+
+I have no idea how to recompile the java, if anyone wants to give me a masterclass in it I can try to fix this myself.  Any help would be appreciated.
+
+Many thanks.

@@ -1,0 +1,229 @@
+body {
+    font-size: 15pt;
+    font-family: Times New Roman;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 1px; 
+    color: #000000;
+}
+
+#tutorial h3 {
+}
+
+#app {
+    background-color: #fefea0;
+}
+
+pre.c {
+}
+
+p.warning {
+    margin-left: 40px;
+    background-color: #FF9CA3;
+    border-style: solid;
+    border-width: thin;
+    border-color: #FF393C;
+}
+
+pre.shell { 
+    background-color: #dfdddf;
+		font-family: Courier;
+}
+
+pre.output {    
+    font-size: 7pt;
+    background-color: #dffdcf;
+    margin-left: 40px;
+}
+a{
+	color:blue;
+	text-decoration:none;
+}
+
+
+a:hover {
+    background: none;
+    border-bottom-width: thin;
+    text-decoration: none;
+	border-bottom: 1px dotted #800;
+    border-bottom-color: #000000;
+    color: #EE9816;
+}
+
+#dirlist {
+     border-left-style: solid; 
+     border-left-width: thin; 
+     margin-left: 40px;
+     font-size: 10pt;
+}
+
+#row_alt_2 {
+    background-color: #d0ffd0;
+    height: 50px;
+}
+
+#row_alt_1 {
+    height: 50px;
+}
+
+#dirlisttop {
+    margin-left: 80px;
+}
+
+
+#sidebar {
+    position: absolute;
+    left: 0px;
+    height: 1000px;
+    width: 200px;
+	text-align: center;
+}
+
+#logo {
+    font-size: 36pt;
+    margin-left: 210px;
+}
+
+#license {
+    font-size: 8pt;
+    font-style: italic;
+    font-weight: lighter;
+    bottom: 30px;
+    left: 200px;
+}
+
+#header img {
+    margin-left: 200px; 
+}
+
+#header{
+	padding-top: 10px;
+	text-align: center;
+}
+
+#header h1{
+	margin-top: 0px;
+	padding-left: 10px;
+    font-weight: bold;
+    letter-spacing: 1px; 
+    font-size: 24pt;
+}
+
+#header h4 {
+    margin-top: 0px;
+    margin-left: 260px;
+    letter-spacing: 1px; 
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+#sidebar2 {
+    padding: 0px;
+    height: 100%;
+	text-align: center;
+}
+
+p { 
+    margin-left: 40px;
+    max-width: 800px;
+    letter-spacing: 0px; 
+}
+
+
+ol { 
+    margin-left: 40px;
+    max-width: 800px;
+    letter-spacing: 0px; 
+}
+
+dl { 
+    margin-left: 45px;
+    max-width: 800px;
+    letter-spacing: 0px; 
+}
+
+#about p {
+    margin-left: 0px;
+    max-width: 900px;
+
+}
+
+#sidebar ul {
+    margin: 5px;
+    padding: 15px;
+    border-style: solid;
+    border-width: thin;
+}
+
+#sidebar li {
+    line-height: 2.5ex; 
+	list-style-type: none;
+	display: block; 
+	padding-top: 5px; 
+	margin-bottom: 5px;
+}
+
+#sidebar li a { 
+    color: black;
+}
+
+#sidebar li a:hover { 
+    background: none;
+    border-bottom-width: thin;
+    text-decoration: none;
+	border-bottom: 1px dotted #800;
+    border-bottom-color: #000000;
+    	color:#EE9816;
+}
+
+
+#main {
+    margin-left: 210px;
+}
+
+#main h3 {
+    font-size: 14pt;
+    margin-bottom: 0px; 
+    color: #010101;
+    font-weight: bold;
+}
+
+#citation {
+    font-style: italic;
+    font-size: 8pt;
+    font-weight: lighter;
+    letter-spacing: 0px; 
+}
+
+#paper {
+    font-style: normal;
+    font-weight: normal;
+}
+
+#main ul {
+    list-style: square outside;
+    margin-left: 20px;
+    width: 700px;
+}
+
+#c {
+    font-size: 10pt;
+    margin-left: 100px;
+}
+
+
+#wapper{  
+    font-size: 12pt;
+	text-align: center;
+    position: relative;   /*重要！保证footer是相对于wapper位置绝对*/  
+    height: auto;          /* 保证页面能撑开浏览器高度时显示正常*/  
+    min-height: 100%  /* IE6不支持，IE6要单独配置*/  
+}  
+#footer{  
+   position: absolute;  bottom: 0; /* 关键 */  
+   left:0; /* IE下一定要记得 */  
+   height: 60px;         /* footer的高度一定要是固定值*/  
+}  
+#main-content{  
+   padding-bottom: 10px; /*重要！给footer预留的空间*/  
+}  

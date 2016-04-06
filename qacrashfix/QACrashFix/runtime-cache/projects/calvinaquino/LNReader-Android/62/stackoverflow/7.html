@@ -1,0 +1,3221 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>java - What is the correct order of calling superclass methods in onPause, onStop and onDestroy methods? and Why? - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="What is the correct order of calling superclass methods in onPause, onStop and onDestroy methods? and Why?" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I was just going through the Android Developer Site, refreshing on the Activity Life cycle, and in each code example, there is a comment beside the super class methods that says &quot;Always call the " />
+    <meta property="og:url" content="http://stackoverflow.com/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=170fca19b264"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=3423b2dbb2d4">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;What is the correct order of calling superclass methods in onPause, onStop and onDestroy methods? and Why?&#39;" href="/feeds/question/18821481">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:2,shownCommentCount:2,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:18821481});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '18821481');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1431416024,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"bf60fd4d98f4795ca72d6f528a4006a2","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"b711670c6b2e","js/moderator.en.js":"75062b042101","js/full-anon.en.js":"e5947ae502a5","js/full.en.js":"770dd62b9281","js/wmd.en.js":"f35993d287d1","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"5faaefde3284","js/help.en.js":"b5f40fd81205","js/tageditor.en.js":"260ae44a356d","js/tageditornew.en.js":"55a1e89456e7","js/inline-tag-editing.en.js":"21223186b436","js/revisions.en.js":"255b536e5531","js/review.en.js":"ce8065ff2428","js/tagsuggestions.en.js":"bc2c996faeda","js/post-validation.en.js":"50b6f6d364df","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"2fa54a1ec36c","js/keyboard-shortcuts.en.js":"b564d9466f61","js/external-editor.en.js":"b04e37426de6","js/external-editor.en.js":"b04e37426de6","js/snippet-javascript.en.js":"49fc6920793f","js/snippet-javascript-codemirror.en.js":"fbf04318936a"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f18821481%2fwhat-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f18821481%2fwhat-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 143 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f18821481%2fwhat-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f18821481%2fwhat-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o" class="question-hyperlink">What is the correct order of calling superclass methods in onPause, onStop and onDestroy methods? and Why?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="18821481"  id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1208931744",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1208931744">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18821481">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">25</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>13</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I was just going through the Android Developer Site, refreshing on the Activity Life cycle, and in each code example, there is a comment beside the super class methods that says "Always call the superclass method first". </p>
+
+<p>Though this makes sense in the creation half cycle: onCreate, onStart and onResume, I'm a little confused as to what is the correct procedure on the destruction half cycle : onPause,onStop,onDestroy.</p>
+
+<p>Destroying the instance specific resources first, before destroying superclass resources that the instance specific resources may depend upon makes sense, not the other way round.But the comments suggest otherwise. What am I missing? </p>
+
+<p><strong>Edit</strong>: Since people seem to be getting confused as to the intent in the question, what I want to know is which of the following is correct? <strong>AND WHY ?</strong></p>
+
+<p><strong>1.Google suggests</strong></p>
+
+<pre><code>    @Override
+    protected void onStop() {
+      super.onStop();  // Always call the superclass method first
+
+      //my implementation here
+    }
+</code></pre>
+
+<p><strong>2.The other way</strong></p>
+
+<pre><code>    @Override
+    protected void onStop() {
+       //my implementation here
+
+       super.onStop();  
+    }
+</code></pre>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/java" class="post-tag" title="show questions tagged &#39;java&#39;" rel="tag">java</a> <a href="/questions/tagged/android" class="post-tag" title="show questions tagged &#39;android&#39;" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/android-lifecycle" class="post-tag" title="show questions tagged &#39;android-lifecycle&#39;" rel="tag">android-lifecycle</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/18821481" title="short permalink to this question" class="short-link" id="link-post-18821481">share</a><span class="lsep">|</span><a href="/posts/18821481/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/18821481/revisions" title="show all edits to this post">edited <span title="2013-09-16 07:10:32Z" class="relativetime">Sep 16 '13 at 7:10</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2013-09-16 06:17:40Z" class="relativetime">Sep 16 '13 at 6:17</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1277178/anudeep-bulla"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/08228a6520cad2b05ad6740044065a12?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1277178/anudeep-bulla">Anudeep Bulla</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">813</span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="17 bronze badges"><span class="badge3"></span><span class="badgecount">17</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18821481" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27984571" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I&#39;m in camp two for the shutdown methods.  I&#39;m in camp one for startup methods.</span>
+                &ndash;&nbsp;
+                    <a href="/users/2202675/danny117"
+                       title="3435 reputation"
+                       class="comment-user">danny117</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-22 23:40:47Z" class="relativetime-clean">Sep 22 '13 at 23:40</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27988796" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">That is pretty much the point. Just couldn&#39;t understand how using method 1 for shutdown methods made sense.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-23 05:31:15Z" class="relativetime-clean">Sep 23 '13 at 5:31</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18821481" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								8 Answers
+                                <span style="display:none;" itemprop="answerCount">8</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/18821481/what-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="18874519"></a>
+<div id="answer-18874519" class="answer accepted-answer" data-answerid="18874519"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18874519">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">22</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+<div class="bounty-award-container"><span class="bounty-award" title="This answer has been awarded bounties worth 50 reputation by Anudeep Bulla">+50</span></div>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>Destroying the instance specific resources first, before destroying
+  superclass resources that the instance specific resources may depend
+  upon makes sense, not the other way round. But the comments suggest
+  otherwise. <strong>What am I missing?</strong></p>
+</blockquote>
+
+<p>In my opinion: not a single thing.</p>
+
+<p>This answer from Mark (aka CommonsWare on SO) sheds light on the issue: <a href="http://stackoverflow.com/a/9626268">Link - Should the call to the superclass method be the first statement?</a>. But then, you can see the following comment left on his answer:</p>
+
+<blockquote>
+  <p>But why official doc says: "Always call the superclass method first" in onPause()?</p>
+</blockquote>
+
+<p>Back to square one. Okay, let's look at this from another angle. We know that Java Language Specification <strong>does not</strong> specify an order in which the call to <code>super.overridenMethod()</code> must be placed (or if the call must be placed at all). </p>
+
+<p>In case of class Activity, <code>super.overridenMethod()</code> calls are required and <em>enforced</em>:</p>
+
+<pre><code>if (!mCalled) {
+    throw new SuperNotCalledException(
+        "Activity " + mComponent.toShortString() +
+            " did not call through to super.onStop()");
+}
+</code></pre>
+
+<p><code>mCalled</code> is set to true in <code>Activity.onStop()</code>.</p>
+
+<p>Now, the only detail left to debate on is the ordering. </p>
+
+<p><code>I also know that both work</code></p>
+
+<p>Sure. Look at the method body for Activity.onPause():</p>
+
+<pre><code>protected void onPause() {
+    if (DEBUG_LIFECYCLE) Slog.v(TAG, "onPause " + this);
+
+    // This is to invoke 
+    // Application.ActivityLifecyleCallbacks.onActivityPaused(Activity)
+    getApplication().dispatchActivityPaused(this);
+
+    // The flag to enforce calling of this method
+    mCalled = true;
+}
+</code></pre>
+
+<p>Whichever way you sandwich the call to <code>super.onPause()</code>, you'll be ok. Activity.onStop() has a similar method body. But take a look at Activity.onDestroy():</p>
+
+<pre><code>protected void onDestroy() {
+    if (DEBUG_LIFECYCLE) Slog.v(TAG, "onDestroy " + this);
+    mCalled = true;
+
+    // dismiss any dialogs we are managing.
+    if (mManagedDialogs != null) {
+        final int numDialogs = mManagedDialogs.size();
+        for (int i = 0; i &lt; numDialogs; i++) {
+            final ManagedDialog md = mManagedDialogs.valueAt(i);
+            if (md.mDialog.isShowing()) {
+                md.mDialog.dismiss();
+            }
+        }
+        mManagedDialogs = null;
+    }
+
+    // close any cursors we are managing.
+    synchronized (mManagedCursors) {
+        int numCursors = mManagedCursors.size();
+        for (int i = 0; i &lt; numCursors; i++) {
+            ManagedCursor c = mManagedCursors.get(i);
+            if (c != null) {
+                c.mCursor.close();
+            }
+        }
+        mManagedCursors.clear();
+    }
+
+    // Close any open search dialog
+    if (mSearchManager != null) {
+        mSearchManager.stopSearch();
+    }
+
+    getApplication().dispatchActivityDestroyed(this);
+}
+</code></pre>
+
+<p>Here, the ordering could <em>possibly</em> matter depending on how your activity is setup, and whether calling <code>super.onDestroy()</code> would interfere with the code that follows. </p>
+
+<p>As a final word, the statement <code>Always call the superclass method first</code> doesn't seem to have much evidence to back it up. What's worse (for the statement) is that the following code has been taken from <code>android.app.ListActivity</code>: </p>
+
+<pre><code>public class ListActivity extends Activity {
+
+    ....
+
+    @Override
+    protected void onDestroy() {
+        mHandler.removeCallbacks(mRequestFocus);
+        super.onDestroy();
+    }
+    ....    
+}
+</code></pre>
+
+<p>And, from LunarLander sample application included in android sdk:</p>
+
+<pre><code>public class LunarLander extends Activity {
+
+    ....
+
+    @Override
+    protected void onPause() {
+        mLunarView.getThread().pause(); // pause game when Activity pauses
+        super.onPause();
+    }
+    ....
+}
+</code></pre>
+
+<p><strong>Summary and worthy mentions:</strong></p>
+
+<p><strong>User Philip Sheard</strong> : Provides a scenario where a call to <code>super.onPause()</code> must be delayed in case of an Activity started using <code>startActivityForResult(Intent)</code>. Setting the result using <code>setResult(...)</code> <em>after</em> <code>super.onPause()</code> will not work. He later clarifies on this in the comments to his answer.</p>
+
+<p><strong>User Sherif elKhatib</strong> : Explains why letting superclass initialize its resources first and destroy its resources last follows from logic:</p>
+
+<blockquote>
+  <p>Let us consider a library you downloaded which has a LocationActivity
+  that contains a getLocation() function that provides the location.
+  Most probably, <strong>this activity will need to initialize its stuff in the
+  onCreate() which will force you to call the super.onCreate first</strong>. You
+  already do that because you feel it makes sense. Now, in your
+  onDestroy, you decide you want to save the Location somewhere in the
+  SharedPreferences. If you call super.onDestroy first, it is to a
+  certain extent possible that getLocation will return a null value
+  after this call because the implementation of LocationActivity
+  nullifies the location value in the onDestroy. The idea is that you
+  wouldn't blame it if this happens. <strong>Therefore, you would call
+  super.onDestroy at the end after you're done with your own onDestroy.</strong></p>
+</blockquote>
+
+<p>He goes on to point out: if a child class is suitably isolated (in terms of resource dependency) from the parent class, the <code>super.X()</code> calls need not adhere to any order specification. </p>
+
+<p>See his answer on this page to read through a scenario where placement of <code>super.onDestroy()</code> call <em>does</em> affect the program logic.</p>
+
+<p><strong>From an answer by Mark</strong>:</p>
+
+<blockquote>
+  <p><strong>Methods you override that are part of component creation (onCreate(),
+  onStart(), onResume(), etc.), you should chain to the superclass as
+  the first statement</strong>, to ensure that Android has its chance to do its
+  work before you attempt to do something that relies upon that work
+  having been done. </p>
+  
+  <p><strong>Methods you override that are part of component
+  destruction (onPause(), onStop(), onDestroy(), etc.), you should do
+  your work first and chain to the superclass as the last thing</strong>. That
+  way, in case Android cleans up something that your work depends upon,
+  you will have done your work first. </p>
+  
+  <p>Methods that return something
+  other than void (onCreateOptionsMenu(), etc.), sometimes you chain to
+  the superclass in the return statement, assuming that you are not
+  specifically doing something that needs to force a particular return
+  value. </p>
+  
+  <p>Everything else -- such as onActivityResult() -- is up to you,
+  on the whole. I tend to chain to the superclass as the first thing,
+  but unless you are running into problems, chaining later should be
+  fine.</p>
+</blockquote>
+
+<p><strong>Bob Kerns</strong> from <a href="https://groups.google.com/d/msg/android-developers/ndsrBsIchFc/7dKbckrrnxYJ">this thread</a>:</p>
+
+<blockquote>
+  <p>It's a good pattern [(the pattern that Mark suggests above)], but I've found some exceptions. For example,
+  <strong>the theme I wanted to apply to my PreferenceActivity wouldn't take
+  effect unless I put it before the superclass's onCreate().</strong></p>
+</blockquote>
+
+<p><strong>User Steve Benett</strong> also brings attention to this: </p>
+
+<blockquote>
+  <p>I only know one situation, where the timing of the super call is
+  necessary. <strong>If you wanna alter the standard behavior of the theme or
+  the display and such in onCreate, you have to do it before you call
+  super to see an effect</strong>. Otherwise AFAIK there is no difference at
+  which time you call it.</p>
+</blockquote>
+
+<p><strong>User Sunil Mishra</strong> confirms that order (most likely) does not play a role when calling Activity class' methods. He also claims that <strong>calling superclass methods first is considered a best practice</strong>. However, I could not corroborate this. </p>
+
+<p><strong>User LOG_TAG</strong> : Explains why a call to superclass <em>constructor</em> needs to be the before everything else. In my opinion, this explanation does not add to the question being asked.</p>
+
+<p><strong>End note</strong>: Trust, <em>but</em> verify. Most of the answers on this page follow this approach to see if the statement <code>Always call the superclass method first</code> has logical backing. As it turns out, it does not; at least, not in the case of class Activity . Generally, one should read through the superclass' source code to determine if ordering calls to super's methods is a requirement. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18874519" title="short permalink to this answer" class="short-link" id="link-post-18874519">share</a><span class="lsep">|</span><a href="/posts/18874519/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/18874519/revisions" title="show all edits to this post">edited <span title="2014-09-21 19:59:14Z" class="relativetime">Sep 21 '14 at 19:59</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/105137/kostmo"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/253329f6f7506a5299db1cb608d8defd?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/105137/kostmo">kostmo</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,679</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="22 silver badges"><span class="badge2"></span><span class="badgecount">22</span></span><span title="36 bronze badges"><span class="badge3"></span><span class="badgecount">36</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-18 14:09:48Z" class="relativetime">Sep 18 '13 at 14:09</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2558882/vikram"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/1270e81982600f1e5dec3bca56cce739?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2558882/vikram">Vikram</a><br>
+        <span class="reputation-score" title="reputation score 23862" dir="ltr">23.9k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="23 silver badges"><span class="badge2"></span><span class="badgecount">23</span></span><span title="56 bronze badges"><span class="badge3"></span><span class="badgecount">56</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18874519" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27862586" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Wow. Thanks for the pointers. Both this and @Sherif&#39;s answers provide important context. If either of you can summarize the answers on this page, I&#39;d mark it as accepted. Kindly include: 1.Answers on this page.  2.@Philip&#39;s answer on this page 3.@CommonsWare&#39;s answer on <a href="http://stackoverflow.com/questions/9625920/should-the-call-to-the-superclass-method-be-the-first-statement/9626268#9626268">this page</a> 4.<a href="https://groups.google.com/forum/#!topic/android-developers/ndsrBsIchFc" rel="nofollow">This discussion</a> <i>I would, but I don&#39;t want the credits for your wonderful answers. Cheers &amp; Thanks</i></span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 17:54:38Z" class="relativetime-clean">Sep 18 '13 at 17:54</span></span>
+                    <span class="edited-yes" title="this comment was edited 3 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27988840" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hi. Could you please summarize , seeing as @Sherif doesn&#39;t want to?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-23 05:33:34Z" class="relativetime-clean">Sep 23 '13 at 5:33</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27990873" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@AnudeepBulla Hi Anudeep, give me until tomorrow. I&#39;ll add the relevant material to my answer and leave you a comment here.</span>
+                &ndash;&nbsp;
+                    <a href="/users/2558882/vikram"
+                       title="23862 reputation"
+                       class="comment-user">Vikram</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-23 07:07:24Z" class="relativetime-clean">Sep 23 '13 at 7:07</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-28020762" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@AnudeepBulla I have added a summary above. Please do let me know in case I missed anything.</span>
+                &ndash;&nbsp;
+                    <a href="/users/2558882/vikram"
+                       title="23862 reputation"
+                       class="comment-user">Vikram</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-24 00:16:52Z" class="relativetime-clean">Sep 24 '13 at 0:16</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18874519" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk130049222",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk130049222">
+            </div>
+  
+<a name="18871570"></a>
+<div id="answer-18871570" class="answer" data-answerid="18871570"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18871570">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Since (you say) it makes sense to call super onCreate first: Think about it. </p>
+
+<p>When I want to create, My super creates its resources > I create my resources. </p>
+
+<p><em><strong>Inversely: (sort of a stack)</em></strong></p>
+
+<p>When I want to destroy, I destroy my resources > My super destroys his resources.</p>
+
+<hr>
+
+<p>In this sense, it applies to any couple of functions (onCreate/onDestroy, onResume/onPause, onStart/onStop). Naturally, onCreate will create resources and onDestroy will free these resources. By the way, the same proof applies to the other couples.</p>
+
+<p>Let us consider a library you downloaded which has a LocationActivity that contains a getLocation() function that provides the location. Most probably, this activity will need to initialize its stuff in the onCreate() which will force you to call the super.onCreate first. You already do that because you feel it makes sense. Now, in your onDestroy, you decide you want to save the Location somewhere in the SharedPreferences. If you call super.onDestroy first, it is to a certain extent possible that getLocation will return a null value after this call because the implementation of LocationActivity nullifies the location value in the onDestroy. The idea is that you wouldn't blame it if this happens. Therefore, you would call super.onDestroy at the end after you're done with your own onDestroy. I hope this makes a bit sense.</p>
+
+<p>If the above makes sense, consider that at any moment we have an activity that abides by the above concept. If I want to extend this activity, I will probably feel the same way and follow the same ordering because of the same exact argument.</p>
+
+<p>By induction, any activity should do the same thing. Here is a good abstract class for an activity forced to follow these rules:</p>
+
+<pre><code>package mobi.sherif.base;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public abstract class BaseActivity extends Activity {
+    protected abstract void doCreate(Bundle savedInstanceState);
+    protected abstract void doDestroy();
+    protected abstract void doResume();
+    protected abstract void doPause();
+    protected abstract void doStart();
+    protected abstract void doStop();
+    protected abstract void doSaveInstanceState(Bundle outState);
+    @Override
+    protected final void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        doCreate(savedInstanceState);
+    }
+    @Override
+    protected final void onDestroy() {
+        doDestroy();
+        super.onDestroy();
+    }
+    @Override
+    protected final void onResume() {
+        super.onResume();
+        doResume();
+    }
+    @Override
+    protected final void onPause() {
+        doPause();
+        super.onPause();
+    }
+    @Override
+    protected final void onStop() {
+        doStop();
+        super.onStop();
+    }
+    @Override
+    protected final void onStart() {
+        super.onStart();
+        doStart();
+    }
+    @Override
+    protected final void onSaveInstanceState(Bundle outState) {
+        doSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
+}
+</code></pre>
+
+<p>Finally, what if your activity called <code>AnudeepBullaActivity</code> extends BaseActivity and later on, I want to create <code>SherifElKhatibActivity</code> that extends your activity? In what order should i call the <code>super.do</code> functions? It is ultimately the same thing.</p>
+
+<hr>
+
+<p>As for your question:</p>
+
+<p>I think that Google's intention is to tell us: Please call the super no matter where. As a general practice of course, call it in the beginning. Google of course has the brightest engineers and developers so they probably done a good job isolating their super calls and not interfering in the child calls.</p>
+
+<p>I tried a bit and it is probably not easy (since it is Google we are trying to prove wrong) to create an activity that would crash simple because of When is super being called.</p>
+
+<p>Why?</p>
+
+<p>Anything done in these functions is really private to the Activity class and would never cause any conflict with your subclass. For example (onDestroy)</p>
+
+<pre><code>protected void onDestroy() {
+    if (DEBUG_LIFECYCLE) Slog.v(TAG, "onDestroy " + this);
+    mCalled = true;
+
+    // dismiss any dialogs we are managing.
+    if (mManagedDialogs != null) {
+        final int numDialogs = mManagedDialogs.size();
+        for (int i = 0; i &lt; numDialogs; i++) {
+            final ManagedDialog md = mManagedDialogs.valueAt(i);
+            if (md.mDialog.isShowing()) {
+                md.mDialog.dismiss();
+            }
+        }
+        mManagedDialogs = null;
+    }
+
+    // close any cursors we are managing.
+    synchronized (mManagedCursors) {
+        int numCursors = mManagedCursors.size();
+        for (int i = 0; i &lt; numCursors; i++) {
+            ManagedCursor c = mManagedCursors.get(i);
+            if (c != null) {
+                c.mCursor.close();
+            }
+        }
+        mManagedCursors.clear();
+    }
+
+    // Close any open search dialog
+    if (mSearchManager != null) {
+        mSearchManager.stopSearch();
+    }
+
+    getApplication().dispatchActivityDestroyed(this);
+}
+</code></pre>
+
+<p>mManagedCursors and mManagedDialogs and mSearchManager are all private fields. And none of the public/protected api will be affected by what is done here.</p>
+
+<p>However, in API 14, dispatchActivityDestroyed was added to dispatch an onActivityDestroyed to the ActivityLifecycleCallbacks registered to your Application. Therefore, any code that would depend on some logic in your ActivityLifecycleCallbacks will have a different outcome based on when you are calling the super. For example:</p>
+
+<p>Create an Application Class that counts the number of currently running activities:</p>
+
+<pre><code>package mobi.shush;
+
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+
+public class SherifApplication extends Application implements ActivityLifecycleCallbacks {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        registerActivityLifecycleCallbacks(this);
+    }
+    public int getCount() {
+        return count;
+    }
+    int count = 0;
+    @Override
+    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+        count++;
+    }
+    @Override
+    public void onActivityDestroyed(Activity activity) {
+        count--;
+    }
+    @Override
+    public void onActivityPaused(Activity activity) {}
+    @Override
+    public void onActivityResumed(Activity activity) {}
+    @Override
+    public void onActivitySaveInstanceState(Activity activity, Bundle outState)           {}
+    @Override
+    public void onActivityStarted(Activity activity) {}
+    @Override
+    public void onActivityStopped(Activity activity) {}
+}
+</code></pre>
+
+<p>The following might not make sense or is not that of a good practice but it is just to prove a point (One might find a more real situation). Create the MainActivity that supposedly goes to GoodBye activity when it is finished and when it is the last activity:</p>
+
+<pre><code>@Override
+protected void onDestroy() {
+    super.onDestroy();
+    if(((SherifApplication) getApplication()).getCount() == 0) {
+        //i want to go to a certain activity when there are no other activities
+        startActivity(new Intent(this, GoodBye.class));
+    }
+}
+</code></pre>
+
+<p>If you call super.onDestroy in the beginning of your onDestroy, the GoodBye activity will be launched. If you call super.onDestroy at the end of your onDestroy, the GoodBye activity will not be launched.</p>
+
+<p>Of course, again, this is not the optimal example. However this shows that Google messed up a bit here. Any of the other variables would have not affected your app's behavior. However adding these dispatch to the onDestroy caused the super to somehow interfere with your subclass.</p>
+
+<p>I say they messed for a different reason as well. Not only did they (before api 14) only touch in the super calls what is final and/or private, but they also called different internal functions (private) that really then dispatched the onPause... functions.</p>
+
+<p>For example, <code>performStop</code> function is the function called that in turn calls the onStop function:</p>
+
+<pre><code>final void performStop() {
+    if (mLoadersStarted) {
+        mLoadersStarted = false;
+        if (mLoaderManager != null) {
+            if (!mChangingConfigurations) {
+                mLoaderManager.doStop();
+            } else {
+                mLoaderManager.doRetain();
+            }
+        }
+    }
+
+    if (!mStopped) {
+        if (mWindow != null) {
+            mWindow.closeAllPanels();
+        }
+
+        if (mToken != null &amp;&amp; mParent == null) {
+            WindowManagerGlobal.getInstance().setStoppedState(mToken, true);
+        }
+
+        mFragments.dispatchStop();
+
+        mCalled = false;
+        mInstrumentation.callActivityOnStop(this);
+        if (!mCalled) {
+            throw new SuperNotCalledException(
+                    "Activity " + mComponent.toShortString() +
+                    " did not call through to super.onStop()");
+        }
+
+        synchronized (mManagedCursors) {
+            final int N = mManagedCursors.size();
+            for (int i=0; i&lt;N; i++) {
+                ManagedCursor mc = mManagedCursors.get(i);
+                if (!mc.mReleased) {
+                    mc.mCursor.deactivate();
+                    mc.mReleased = true;
+                }
+            }
+        }
+
+        mStopped = true;
+    }
+    mResumed = false;
+}
+</code></pre>
+
+<p>Notice that they call the Activity's onStop somewhere in this function. Therefore, they might have as well put all the code (included in super.onStop) before or after the call to onStop and then just notify subclasses about the onStop using empty onStop super functions and without even adding the SuperNotCalledException or checking for this called.</p>
+
+<p>For this, if they called this dispatch to the ActivityLifeCycle in the performDestroy instead of calling it in the end of super.onDestroy, our activity's behavior would have been the same regardless of when we did call the super.</p>
+
+<p>Anyway this is the first thing they do (a bit wrong) and it is only in API 14.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18871570" title="short permalink to this answer" class="short-link" id="link-post-18871570">share</a><span class="lsep">|</span><a href="/posts/18871570/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/18871570/revisions" title="show all edits to this post">edited <span title="2013-09-18 13:42:54Z" class="relativetime">Sep 18 '13 at 13:42</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-09-18 11:54:41Z" class="relativetime">Sep 18 '13 at 11:54</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/833622/sherif-elkhatib"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/667ceb2bde7548ff392b8c4f1c7c72a4?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/833622/sherif-elkhatib">Sherif elKhatib</a><br>
+        <span class="reputation-score" title="reputation score 26621" dir="ltr">26.6k</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="56 silver badges"><span class="badge2"></span><span class="badgecount">56</span></span><span title="86 bronze badges"><span class="badge3"></span><span class="badgecount">86</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18871570" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27849411" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The question has never been why calling super.onDestroy() last makes sense. I love your library example. Exactly what I wanted to convey too. I couldn&#39;t agree more on calling super methods last on the destruction half cycles last, exactly like in a stack;to prevent accidental loss of data.   The problem is why does Google insist on calling super methods first, given the above premise? I asked the question because I thought that maybe I, and seemingly you too, maybe approaching it completely differently. Cheers</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 12:04:24Z" class="relativetime-clean">Sep 18 '13 at 12:04</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27850108" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Oh I didn&#39;t see the Google suggests and the Other way :p! Listen, I am gonna try to create an activity that will crash if you call onDestroy first. You should try that as well. Cheers</span>
+                &ndash;&nbsp;
+                    <a href="/users/833622/sherif-elkhatib"
+                       title="26621 reputation"
+                       class="comment-user">Sherif elKhatib</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 12:22:48Z" class="relativetime-clean">Sep 18 '13 at 12:22</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27851941" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Oh god, my English must have sounded pathetic. Sorry, was multitasking. And that is a good idea @Sherif</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 13:10:36Z" class="relativetime-clean">Sep 18 '13 at 13:10</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27853206" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@AnudeepBulla you can check my edits. And btw you can stop trying. <code>super.on</code> will probably never crash your activity.</span>
+                &ndash;&nbsp;
+                    <a href="/users/833622/sherif-elkhatib"
+                       title="26621 reputation"
+                       class="comment-user">Sherif elKhatib</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 13:44:21Z" class="relativetime-clean">Sep 18 '13 at 13:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27862667" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Wow. Thanks for the pointers. Both this and @User&#39;s answers provide important context. If either of you can summarize the answers on this page, I&#39;d mark it as accepted. Kindly include: 1.Answers on this page.  2.@Philip&#39;s answer on this page 3.@CommonsWare&#39;s answer on <a href="http://stackoverflow.com/questions/9625920/should-the-call-to-the-superclass-method-be-the-first-statement/9626268#9626268">this page</a> 4.<a href="https://groups.google.com/forum/#!topic/android-developers/ndsrBsIchFc" rel="nofollow">This discussion</a> <i>I would, but I don&#39;t want the credits for your wonderful answers. Cheers &amp; Thanks</i></span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 17:57:10Z" class="relativetime-clean">Sep 18 '13 at 17:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18871570" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="18876155"></a>
+<div id="answer-18876155" class="answer" data-answerid="18876155"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18876155">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The most important thing to bear in mind is that <code>super.onPause()</code> implicitly calls <code>setResult(Activity.RESULT_CANCELED)</code>. But <code>setResult</code> can only be called once, and all subsequent calls are ignored. So if you want to push any kind of result back to the parent activity, you have to call <code>setResult</code> yourself, <strong>before</strong> you call <code>super.onPause()</code>. That is the biggest gotcha, as far as I know.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18876155" title="short permalink to this answer" class="short-link" id="link-post-18876155">share</a><span class="lsep">|</span><a href="/posts/18876155/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-09-18 15:17:51Z" class="relativetime">Sep 18 '13 at 15:17</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/619852/philip-sheard"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/duGdU.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/619852/philip-sheard">Philip Sheard</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">3,968</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="36 bronze badges"><span class="badge3"></span><span class="badgecount">36</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18876155" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27862000" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Wow, this seems important. So there is a situation, when you definitely have to delay the call to the super methods. Thank you.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 17:37:48Z" class="relativetime-clean">Sep 18 '13 at 17:37</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27862722" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><code>super.onPause() implicitly calls setResult(Activity.RESULT_CANCELED)</code>. Could you say where you got this from?</span>
+                &ndash;&nbsp;
+                    <a href="/users/2558882/vikram"
+                       title="23862 reputation"
+                       class="comment-user">Vikram</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 17:58:51Z" class="relativetime-clean">Sep 18 '13 at 17:58</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27870186" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I was confused. It is actually finish() that calls setResult, and super.onBackPressed() calls finish(). So setResult definitely has to be called before super.onBackPressed(). I am not sure whether there are any circumstances in which super.onPause() could cause setResult to be called, but I prefer not to risk it.</span>
+                &ndash;&nbsp;
+                    <a href="/users/619852/philip-sheard"
+                       title="3968 reputation"
+                       class="comment-user">Philip Sheard</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 22:06:52Z" class="relativetime-clean">Sep 18 '13 at 22:06</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18876155" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="18821773"></a>
+<div id="answer-18821773" class="answer" data-answerid="18821773"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18821773">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><strong>BOTH are correct IMO</strong></p>
+
+<p>According to the docs</p>
+
+<blockquote>
+  <p>Derived classes must call through to the super class's implementation of this method.
+      If they do not, an exception will be thrown.</p>
+</blockquote>
+
+<p><code>Super</code> method should always be called when documentation explicitly says so.</p>
+
+<p>You can however choose when to call the super method.</p>
+
+<p>Looking at the source of <code>onPause</code></p>
+
+<pre><code>protected void onPause() {
+    getApplication().dispatchActivityPaused(this);
+    mCalled = true;
+}
+</code></pre>
+
+<p><strong>Hence no matter before or after it is called. You should be good.</strong></p>
+
+<p><strong>But for best practice, you should be calling it first.</strong> </p>
+
+<p>I recommend it mostly as a protection mechanism: if there is an exception then the <code>super</code> instance method will already have been called.</p>
+
+<p>Also putting these calls on the first line will help you avoid making mistakes in the future such as deleting code in the method and accidentally deleting the call to the super class.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18821773" title="short permalink to this answer" class="short-link" id="link-post-18821773">share</a><span class="lsep">|</span><a href="/posts/18821773/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/18821773/revisions" title="show all edits to this post">edited <span title="2013-09-20 20:07:27Z" class="relativetime">Sep 20 '13 at 20:07</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-09-16 06:40:36Z" class="relativetime">Sep 16 '13 at 6:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/983741/sunil-mishra"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/819Ko.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/983741/sunil-mishra">Sunil Mishra</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,381</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="25 bronze badges"><span class="badge3"></span><span class="badgecount">25</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18821773" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="1"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27762619" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I&#39;m sorry if the question was not entirely clear the first time around, but kindly have a look at it now.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 06:44:03Z" class="relativetime-clean">Sep 16 '13 at 6:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27764599" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@AnudeepBulla That is what I have explained you. You can use either of them. Both are valid.</span>
+                &ndash;&nbsp;
+                    <a href="/users/983741/sunil-mishra"
+                       title="2381 reputation"
+                       class="comment-user">Sunil Mishra</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 08:00:05Z" class="relativetime-clean">Sep 16 '13 at 8:00</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27766626" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It is my understanding that custom implementation of the methods onPause,onStop, and onDestroy is not strictly necessary. I have made ample apps without those. So what do you mean by Super methods should always be called? They are called implicitly, even without overriding.   I also know that both work. I wanna know why the docs say super should be called first. And in case the question is still not apparent, will you please explain WHY, when you say &quot;But for best practice, you should be calling it first&quot; ?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 09:11:23Z" class="relativetime-clean">Sep 16 '13 at 9:11</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27768600" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">If you don&#39;t override, the methods are called from <code>Base Class</code> but if you override, it is required that you call the <code>super</code> else you will have <code>android.app.SuperNotCalledException</code></span>
+                &ndash;&nbsp;
+                    <a href="/users/983741/sunil-mishra"
+                       title="2381 reputation"
+                       class="comment-user">Sunil Mishra</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 10:15:56Z" class="relativetime-clean">Sep 16 '13 at 10:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27769767" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You seem to misunderstand. The question is not whether to call or not to. Like you pointed out, you HAVE to, if you do override them. The question is, when?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 10:53:43Z" class="relativetime-clean">Sep 16 '13 at 10:53</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18821773" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>1</b> more comment</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="18825355"></a>
+<div id="answer-18825355" class="answer" data-answerid="18825355"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18825355">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The super of the callbacks is needed to put the Activity in the right state internally for the system. </p>
+
+<p>Let's say you start your Activity and onCreate is invoked by the system. Now you can override it and e.g. load your layout. But in sake of the system flow you have to call super, that the system can continue with the standard procedure. That's why an exception will be thrown if you don't call it.</p>
+
+<p>This happens independent of your implementation in onCreate. It's only importend for the system. If there would be no ANR you could have an endless loop in any callback and the Activity would be caught in that one. So, the system knows when the callback has been terminated and than calls the next one.</p>
+
+<p>I only know one situation, where the timing of the super call is necessary. If you wanna alter the standard behavior of the theme or the display and such in onCreate, you have to do it before you call super to see an effect. Otherwise AFAIK there is no difference at which time you call it.</p>
+
+<p>But to let the system do what it can best put the super in the first line of a callback followed by your code, if you don't have a good reason to break with it. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18825355" title="short permalink to this answer" class="short-link" id="link-post-18825355">share</a><span class="lsep">|</span><a href="/posts/18825355/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/18825355/revisions" title="show all edits to this post">edited <span title="2013-09-16 10:50:28Z" class="relativetime">Sep 16 '13 at 10:50</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-16 10:06:26Z" class="relativetime">Sep 16 '13 at 10:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1511951/steve-benett"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/VxHRi.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1511951/steve-benett">Steve Benett</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6,942</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="23 silver badges"><span class="badge2"></span><span class="badgecount">23</span></span><span title="42 bronze badges"><span class="badge3"></span><span class="badgecount">42</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18825355" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27769675" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The sequence in onCreate seems pretty much understandable. What happens in the destruction methods? Say onStop. Suppose my onStop implementation uses some of the resources the super method releases if called.It makes sense then, to call the super method after my implementation.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 10:50:32Z" class="relativetime-clean">Sep 16 '13 at 10:50</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27769683" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Ideally, this should be the case, right. Our activity will always have resources that the super class has, and some more.And the ones that are independent to my activity might, in most cases depend on the superclass resources, that are common. It makes more sense dealing with my resources first, and then calling the superclass to deal with the common ones. Why does Google then say we &quot;SHOULD&quot; call superclass methods first?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 10:50:52Z" class="relativetime-clean">Sep 16 '13 at 10:50</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27769713" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">What resource you talking about, which you can access in onCreate but not in onDestroy?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1511951/steve-benett"
+                       title="6942 reputation"
+                       class="comment-user">Steve Benett</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 10:51:46Z" class="relativetime-clean">Sep 16 '13 at 10:51</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27769948" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I don&#39;t have an use case. I&#39;m just wondering, how it varies with the OOP style. Super classes constructors are called first , before your implementation, and super class destructors are called last, after your implementation right?   onPause,onStop, and onDestroy are not strictly destructors, but they tend to do the same stuff, right? Atleast onDestroy and mostly onStop too.. no?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 10:59:44Z" class="relativetime-clean">Sep 16 '13 at 10:59</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27770235" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">See the callbacks in the state changing way not as a constructor/destructor. Every callback has it&#39;s need e.g. create (ready to use)/ destroy (your last chance to interact) an Activity or put it in the foreground/background. The callbacks are there that you can control your resources in the flow of the system. The system just checks in which state it is and handle accordingly. The resources you use and that one the system controls are independent from each other and there will be no intersection.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1511951/steve-benett"
+                       title="6942 reputation"
+                       class="comment-user">Steve Benett</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 11:08:45Z" class="relativetime-clean">Sep 16 '13 at 11:08</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18825355" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="18871814"></a>
+<div id="answer-18871814" class="answer" data-answerid="18871814"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18871814">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>From java perspective here is some solution for this confusion:</p>
+
+<p><em><a href="http://bit.ly/16ljMqh" rel="nofollow">Why does this() and super() have to be the first statement in a constructor?</a></em>  </p>
+
+<p>The parent class' constructor needs to be called before the subclass' constructor. This will ensure that if you call any methods on the parent class in your constructor, the parent class has already been set up correctly.</p>
+
+<p>What you are trying to do, pass args to the super constructor is perfectly legal, you just need to construct those args inline as you are doing, or pass them in to your constructor and then pass them to super:</p>
+
+<pre><code>public MySubClassB extends MyClass {
+        public MySubClassB(Object[] myArray) {
+                super(myArray);
+        }
+}
+</code></pre>
+
+<p>If the compiler did not enforce this you could do this:</p>
+
+<pre><code>public MySubClassB extends MyClass {
+        public MySubClassB(Object[] myArray) {
+                someMethodOnSuper(); //ERROR super not yet constructed
+                super(myArray);
+        }
+}
+</code></pre>
+
+<p>It shows that actually, subfields have to be inilialized before the supreclass! Meantime, java requirement "defends" us from specializing the class by specializing what the super constructor argument </p>
+
+<p>In cases where a parent class has a default constructor the call to super is inserted for you automatically by the compiler. Since every class in Java inherits from Object, objects constructor must be called somehow and it must be executed first. The automatic insertion of super() by the compiler allows this. Enforcing super to appear first, enforces that constructor bodies are executed in the correct order which would be: Object -> Parent -> Child -> ChildOfChild -> SoOnSoForth</p>
+
+<p>(1) Checking that super is the first statement is not sufficient to prevent that problem. For example, you could put "super(someMethodInSuper());" in your constructor. This attempts to access a method in the superclass before it is constructed, even though super is the first statement.</p>
+
+<p>(2) The compiler appears to implement a different check which is, by itself, sufficient to prevent this problem. The message is "cannot reference xxx before supertype constructor has been called". Therefore, checking that super is the first statement is not necessary</p>
+
+<p>Please go through this <a href="http://valjok.blogspot.in/2012/09/super-constructor-must-be-first.html" rel="nofollow">http://valjok.blogspot.in/2012/09/super-constructor-must-be-first.html</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18871814" title="short permalink to this answer" class="short-link" id="link-post-18871814">share</a><span class="lsep">|</span><a href="/posts/18871814/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-09-18 12:05:28Z" class="relativetime">Sep 18 '13 at 12:05</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1254536/log-tag"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/pSYHm.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1254536/log-tag">LOG_TAG</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6,535</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="31 silver badges"><span class="badge2"></span><span class="badgecount">31</span></span><span title="57 bronze badges"><span class="badge3"></span><span class="badgecount">57</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18871814" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27852195" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I perfectly understand what you are putting out there. You call super class constructors first, &#39;coz they may initialize resources the child may need; and the destructors last, &#39;coz you don&#39;t wanna probably erase all parents to the local resources, making them pointless.  That is my point exactly. And since onPause, onStop, and onDestroy have the job of saving state info and more or less making resources available to GC(so in a sense destroying them), I see them analogous to destructors and hence think calling them last makes sense. No?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 13:18:27Z" class="relativetime-clean">Sep 18 '13 at 13:18</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27852308" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Everything you said above is exactly what I meant when I said &quot;calling super methods first makes sense on the creation half cycle&quot;. I&#39;m concerned, and confused in the case of the destruction half cycle methods, which seem more analogous to destructors. Cheers</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-18 13:21:01Z" class="relativetime-clean">Sep 18 '13 at 13:21</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18871814" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="18893368"></a>
+<div id="answer-18893368" class="answer" data-answerid="18893368"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18893368">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You say that Google suggests method 1, however Dianne Hackborn, a well known Android framework engineer suggest otherwise see <a href="https://groups.google.com/forum/#!topic/android-developers/ndsrBsIchFc" rel="nofollow">Google Forum Link</a>. </p>
+
+<p>It makes intuitive sense to call the super class when <strong>destroying</strong> an instance in the <strong>onPause, onStop</strong> and <strong>onDestroy</strong> methods and vice versa  when <strong>creating</strong> an instance with the methods of <strong>onCreate, onResume</strong> and <strong>onStart</strong>.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18893368" title="short permalink to this answer" class="short-link" id="link-post-18893368">share</a><span class="lsep">|</span><a href="/posts/18893368/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-19 11:26:49Z" class="relativetime">Sep 19 '13 at 11:26</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/440010/nickt"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/1edde368dafb66670981591aefdcc46c?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/440010/nickt">NickT</a><br>
+        <span class="reputation-score" title="reputation score 15282" dir="ltr">15.3k</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="45 silver badges"><span class="badge2"></span><span class="badgecount">45</span></span><span title="87 bronze badges"><span class="badge3"></span><span class="badgecount">87</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18893368" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18893368" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="18821551"></a>
+<div id="answer-18821551" class="answer" data-answerid="18821551"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="18821551">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">-1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>onPause()->onStop()->onDestroy().
+Just the same order as in your title.:)</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18821551" title="short permalink to this answer" class="short-link" id="link-post-18821551">share</a><span class="lsep">|</span><a href="/posts/18821551/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-16 06:23:27Z" class="relativetime">Sep 16 '13 at 6:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2501319/twocode"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/711f3c65db60bac8afd068dc7bacc614?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2501319/twocode">TwoCode</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">50</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18821551" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27762364" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I meant whether the order is  onStop(){ super.onStop(); //my own inplementation }  or  onStop(){ //my own implementation super.onStop(); }</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 06:32:06Z" class="relativetime-clean">Sep 16 '13 at 6:32</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27762789" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The former one is always the case.</span>
+                &ndash;&nbsp;
+                    <a href="/users/2501319/twocode"
+                       title="50 reputation"
+                       class="comment-user">TwoCode</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 06:50:11Z" class="relativetime-clean">Sep 16 '13 at 6:50</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27763312" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Why though? what is the thinking behind it?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1277178/anudeep-bulla"
+                       title="813 reputation"
+                       class="comment-user owner">Anudeep Bulla</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 07:11:04Z" class="relativetime-clean">Sep 16 '13 at 7:11</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27763800" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This is specified in guideline. See here:<a href="http://developer.android.com/reference/android/app/Activity.html#SavingPersistentState" rel="nofollow">developer.android.com/reference/android/app/&hellip;</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/2501319/twocode"
+                       title="50 reputation"
+                       class="comment-user">TwoCode</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 07:29:13Z" class="relativetime-clean">Sep 16 '13 at 7:29</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27764028" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I think this is good for super class&#39; error handling when it throws an exception first. I cannot find official docs talking about this. They are only commenting://Always call the superclass method first</span>
+                &ndash;&nbsp;
+                    <a href="/users/2501319/twocode"
+                       title="50 reputation"
+                       class="comment-user">TwoCode</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-16 07:38:38Z" class="relativetime-clean">Sep 16 '13 at 7:38</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18821551" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href=# onclick="">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/18821481/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="18821481" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="bf60fd4d98f4795ca72d6f528a4006a2">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?returnurl=%2fquestions%2f18821481%2fwhat-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f18821481%2fwhat-is-the-correct-order-of-calling-superclass-methods-in-onpause-onstop-and-o%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/java" class="post-tag" title="show questions tagged &#39;java&#39;" rel="tag">java</a> <a href="/questions/tagged/android" class="post-tag" title="show questions tagged &#39;android&#39;" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/android-lifecycle" class="post-tag" title="show questions tagged &#39;android-lifecycle&#39;" rel="tag">android-lifecycle</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-09-16 06:17:40Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>3037 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-09-21 19:59:14Z">7 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2015/05/stack-exchange-podcast-64-not-recorded-in-ithaca/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2015/05/stack-exchange-podcast-64-not-recorded-in-ithaca/" class="question-hyperlink">Stack Exchange Podcast #64: Not Recorded in Ithaca</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1324641243",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1324641243">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(i){var a=window.$,d=20,m=2000,f="#sidebar [id^='adzerk'].everyonelovesstackoverflow",l="div#hireme,div.hireme",t=setTimeout,c=i.adurl,r=i.azw,g=i.azt,u=function(){return new Date().getTime()},s=u();function j(x){var y={},z=window.StackExchange,w=decodeURIComponent,A;if(x.length>1){x.substr(1).split("&").forEach(function(B){var C=B.split("=");this[w(C[0])]=w(C[1])},y)}var v=y.ac||y.accountid||(z&&z.options&&z.options.user&&z.options.user.accountId);if(v){y.ac=v}if(!y.tags){A=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(A.length>0){y.tags=Array.prototype.join.call(A,";")}}if(x==="#large"){y.l=1}if(x==="#abort"){y.abort=1}return y}function k(v){return a(v).html().replace(/\s+/g,"").length>0}var b=false;function o(A,w){if(b){return}b=true;var v=a(l),x=document,y=encodeURIComponent;clearTimeout(e);if(v.length>0){if(A.l||a("#careersadsdoublehigh").length>0){A.l=1}var C=v.map(function(G,F){return"d="+F.id}).get().join("&");var E=["l","ip","ac","eng","prov","tags","theme"];var B=Object.keys(A).filter(function(F){return E.indexOf(F)!==-1}).map(function(F){return y(F)+"="+y(A[F])}).join("&");if(B){C+="&"+B}if(w){C+="&azt=true"}var z=u()-s;C+="&lw="+z;var D=x.createElement("script");D.type="text/javascript";D.src=c+(c.indexOf("?")===-1?"?":"&")+C;x.body.appendChild(D);window.calculonPlacerStart=new Date().getTime()}}function q(w){var v=a(w);if(!k(v)){console.log(w);v.remove()}}var n=j(location.hash);if(n.abort){return}var h=null;if(r){h=t(o,g,n,true)}function p(v){if(k(f)){if(h){clearTimeout(h)}o(v)}else{e=t(p,d,v)}}var e=t(p,d,n);t(q,m,l)}).apply(null, [{"azw":false,"azt":2000,"adurl":"//clc.stackoverflow.com/j/p"}]);            </script>
+        </div>
+			<div class="module" id="chat-feature">
+    
+
+    
+<h4><a href="http://chat.stackoverflow.com" id="h-chat-link">Visit Chat</a></h4>
+
+<div class="related" id="ad502-rooms"></div>
+<script>
+// <!--
+    StackExchange.ready(
+    function () {
+        var options = {
+            chatUrl: 'http://chat.stackoverflow.com',
+            reloadUrl: '/api/recent-chat',
+            preloadData: {"activeUsers":103,"activeRooms":49,"rooms":[{"name":"JavaScript","id":17,"lastPost":1431408978,"posts":2590721,"users":[{"name":"Meredith","id":2125913,"emailhash":"!http://i.stack.imgur.com/vn9G9.png?s=128\u0026g=1","lastPost":1431408978},{"name":"royhowie","id":2476755,"emailhash":"!http://i.stack.imgur.com/nLRt0.jpg?s=128\u0026g=1","lastPost":1431408931},{"name":"CodeWarrior","id":281348,"emailhash":"!http://i.stack.imgur.com/KPGmC.jpg?s=128\u0026g=1","lastPost":1431408729},{"name":"Caprica Six","id":1839506,"emailhash":"!http://i.stack.imgur.com/Sej2t.jpg?s=128\u0026g=1","lastPost":1431408238},{"name":"SomeKittens","id":1216976,"emailhash":"8f10852a80ca4794f50a304254cb123b","lastPost":1431408236},{"name":"ivarni","id":957731,"emailhash":"!http://i.stack.imgur.com/tp9dK.jpg?s=128\u0026g=1","lastPost":1431407882},{"name":"Jan Dvorak","id":499214,"emailhash":"!http://i.stack.imgur.com/PObJM.png?s=128\u0026g=1","lastPost":1431407724}],"messages":[{"date":1431408978,"user":"Meredith","userid":2125913}],"singleImage":false,"tags":["cereal","ecmascript","es17","javascript","peter-programming","we-so-excited"]},{"name":"Lounge\u003cC++\u003e","id":10,"lastPost":1431408144,"posts":3677911,"users":[{"name":"Cicada","id":703016,"emailhash":"!http://i.stack.imgur.com/SLVfs.jpg?s=128\u0026g=1","lastPost":1431408144},{"name":"wilx","id":341065,"emailhash":"8e57fe4b0f7381288a8e1e4c6cd77a8e","lastPost":1431407781},{"name":"Mark Garcia","id":1619294,"emailhash":"!http://i.stack.imgur.com/fu56P.jpg?s=128\u0026g=1","lastPost":1431407726},{"name":"Jerry Coffin","id":179910,"emailhash":"d8962238339d771f0348967be6f97b1b","lastPost":1431407545},{"name":"Rapptz","id":1381108,"emailhash":"0a55e1b257487441cd435f66bfb413f1","lastPost":1431406634},{"name":"Mikhail","id":314290,"emailhash":"5ffde821f0f9670e601b19f1731a6849","lastPost":1431405801},{"name":"Dean Seo","id":921070,"emailhash":"f584b200a79f438d9092d7f76da7ede6","lastPost":1431396318}],"messages":[{"date":1431408144,"user":"Cicada","userid":703016}],"singleImage":false,"tags":["c++","c++11","c++14","c++-faq"]}]} 
+        };
+
+        StackExchange.chatAd.init(options);
+    });
+// -->
+</script>
+
+</div>  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/9625920" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">7</div>
+	</a>
+	<a href="/questions/9625920/should-the-call-to-the-superclass-method-be-the-first-statement" class="question-hyperlink">Should the call to the superclass method be the first statement?</a>
+</div><div class="spacer">
+	<a href="/q/18748036" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/18748036/how-to-apply-a-transparency-focus-on-pressing-any-item-as-google-does" class="question-hyperlink">How to apply a transparency (focus?) ON pressing any item (as Google does)?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/6879365" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/6879365/other-than-saving-variable-states-what-is-good-practice-for-onpause-onstop-on" class="question-hyperlink">Other than saving variable states, what is good practice for onPause, onStop, onDestroy?</a>
+</div>
+<div class="spacer">
+<a href="/q/9735234" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="/questions/9735234/calling-startactivityonresult-automatically-calls-onpause-onstop-and-onde" class="question-hyperlink">Calling startActivityOnResult() automatically calls onPause(), onStop() and onDestroy() methods of current activity</a>
+</div>
+<div class="spacer">
+<a href="/q/16507823" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">4
+    </div>
+</a><a href="/questions/16507823/wierd-behaviour-of-activity-lifecycle-after-onresume-also-onpause-called" class="question-hyperlink">Wierd behaviour of activity lifecycle - after onResume() also onPause() called &hellip;why?</a>
+</div>
+<div class="spacer">
+<a href="/q/17208246" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/17208246/how-to-save-the-data-of-my-activity-in-android" class="question-hyperlink">How to save the data of my Activity in android?</a>
+</div>
+<div class="spacer">
+<a href="/q/18189009" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/18189009/android-logout-system-and-the-android-lifecycle" class="question-hyperlink">Android: Logout system and the android lifecycle</a>
+</div>
+<div class="spacer">
+<a href="/q/18890360" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/18890360/xamarin-onstop-onpause-ondestroy-never-called" class="question-hyperlink">Xamarin: OnStop, OnPause, OnDestroy never called</a>
+</div>
+<div class="spacer">
+<a href="/q/19758136" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/19758136/onstop-onpause-ondestroy-not-called" class="question-hyperlink">OnStop() OnPause OnDestroy() not called</a>
+</div>
+<div class="spacer">
+<a href="/q/25766143" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/25766143/how-can-we-determine-in-onpause-if-an-application-activity-is-going-into-the-b" class="question-hyperlink">How can we determine in onPause() if an application/activity is going into the background (onStop) or will be destroyed (onDestroy)</a>
+</div>
+<div class="spacer">
+<a href="/q/27578708" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-2
+    </div>
+</a><a href="/questions/27578708/android-scenario-where-ondestroy-is-called-without-onpause-or-onstop" class="question-hyperlink">Android scenario where ondestroy() is called without onpause() or onstop()</a>
+</div>
+<div class="spacer">
+<a href="/q/27845728" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/27845728/what-android-methods-are-called-when-battery-dies" class="question-hyperlink">What Android methods are called when battery dies?</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/88947/prevention-measures-against-laptop-seizure-at-us-borders" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Prevention measures against laptop seizure at US borders
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/31234/for-a-given-element-do-heavier-isotopes-form-stronger-bonds-than-lighter-isotope" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    For a given element do heavier isotopes form stronger bonds than lighter isotopes?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-history" title="History Stack Exchange"></div><a href="http://history.stackexchange.com/questions/22727/did-a-japanese-medieval-castle-withstand-us-battleship-fire-during-the-pacific-w" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:324 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Did a Japanese medieval castle withstand US battleship fire during the Pacific War?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-matheducators" title="Mathematics Educators Stack Exchange"></div><a href="http://matheducators.stackexchange.com/questions/8052/justifications-for-why-learn-mathematics" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:548 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Justifications for: Why learn mathematics?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/49935/rearranging-a-set-of-numbers-into-order" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Rearranging a set of numbers into order
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/913536/where-is-value-coming-from-in-formula" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where is value coming from in formula?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/66015/do-floating-floorboards-still-shift-after-a-decade" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do floating floorboards still shift after a decade?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-history" title="History Stack Exchange"></div><a href="http://history.stackexchange.com/questions/22725/where-was-the-cultural-inheritance-of-the-greco-roman-world-antiquity-preserved" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:324 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where was the cultural inheritance of the Greco/Roman world/antiquity preserved?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/56561/first-person-pronouns-in-coordinate-subjects-bob-and-myself-are" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    First-person pronouns in coordinate subjects - &quot;Bob and myself are...&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/244368/tikz-draw-a-cooking-pot" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    TikZ- Draw a cooking pot
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-german" title="German Language Stack Exchange"></div><a href="http://german.stackexchange.com/questions/23229/what-is-the-name-of-the-dots-over-a-vowel-in-german-language" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:253 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the name of the dots over a vowel in German language?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/53408/how-do-i-ensure-that-an-image-with-a-heavy-color-overlay-will-be-visible-in-prof" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I ensure that an image with a heavy color overlay will be visible in professional print?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/88984/encrypting-with-passwords-encryption-of-key-vs-data" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Encrypting With Passwords - Encryption of Key vs. Data
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/622142/how-can-i-capitalize-letters-before-a-certain-character" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I capitalize letters before a certain character? (^)
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-woodworking" title="Woodworking Stack Exchange"></div><a href="http://woodworking.stackexchange.com/questions/1401/best-method-for-drilling-a-larger-diameter-hole-at-an-angle" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:603 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Best method for drilling a larger diameter hole at an angle
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/90470/finding-weight-on-various-different-planets" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Finding weight on various different planets
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/49950/capitalize-first-letter-of-each-word-of-input" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Capitalize first letter of each word of input
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/45230/author-wants-to-withdraw-or-insist-on-re-reviewing-at-proof-stage-of-publication" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Author wants to withdraw or insist on re-reviewing at proof stage of publication
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/691247/how-do-i-disable-tls-1-0-without-breaking-rdp" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I disable TLS 1.0 without breaking RDP?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-magento" title="Magento Stack Exchange"></div><a href="http://magento.stackexchange.com/questions/67491/the-use-of-mage-core-block-flush-block" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:479 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The use of Mage_Core_Block_Flush block
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/20061/should-i-try-to-protect-my-son-from-hearing-that-his-father-wants-nothing-to-do" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I try to protect my son from hearing that his father wants nothing to do with his two boys?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/49876/integer-mark-into-grade" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Integer mark into grade
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/16807/can-humans-interact-meaningfully-with-the-economy-when-robots-are-better-at-ever" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can humans interact meaningfully with the economy when robots are better at everything?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1278181/complementary-compactness" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Complementary compactness
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/18821481" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/18821481/ivc/ab9e');});
+</script>
+<noscript>
+    <div><img src="/posts/18821481/ivc/ab9e" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.5.12.2569
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('java,android,android-lifecycle');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|java|android|android-lifecycle|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>            
+    </body>
+</html>

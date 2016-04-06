@@ -1,0 +1,26 @@
+By email. Looks like a database entry is wrong. And Probably noone will know how did it get there?
+
+FATAL EXCEPTION: main
+java.lang.RuntimeException: Unable to start activity ComponentInfo{cgeo.geocaching/cgeo.geocaching.cgeopoint}: cgeo.geocaching.geopoint.Geopoint$MalformedCoordinateException: malformed latitude: 491.93333333333334
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2753)
+at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2769)
+at android.app.ActivityThread.access$2500(ActivityThread.java:129)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2117)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:143)
+at android.app.ActivityThread.main(ActivityThread.java:4717)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:521)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:860)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:618)
+at dalvik.system.NativeStart.main(Native Method)
+Caused by: cgeo.geocaching.geopoint.Geopoint$MalformedCoordinateException: malformed latitude: 491.93333333333334
+at cgeo.geocaching.geopoint.Geopoint.<init>(Geopoint.java:30)
+at cgeo.geocaching.cgData.loadHistoryOfSearchedLocations(cgData.java:2226)
+at cgeo.geocaching.cgeoapplication.getHistoryOfSearchedLocations(cgeoapplication.java:508)
+at cgeo.geocaching.cgeopoint.getHistoryOfSearchedLocations(cgeopoint.java:182)
+at cgeo.geocaching.cgeopoint.createHistoryView(cgeopoint.java:117)
+at cgeo.geocaching.cgeopoint.onCreate(cgeopoint.java:105)
+at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1047)
+at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2717)
+... 11 more

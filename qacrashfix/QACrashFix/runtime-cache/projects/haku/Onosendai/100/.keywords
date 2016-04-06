@@ -1,0 +1,1 @@
+java.lang.RuntimeException Unable to start receiver android.content.ReceiverCallNotAllowedException: IntentReceiver components are not allowed to register to receive intents

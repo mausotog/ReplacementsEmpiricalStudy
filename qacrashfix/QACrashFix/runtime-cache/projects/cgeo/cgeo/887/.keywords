@@ -1,0 +1,1 @@
+android.content.ActivityNotFoundException No Activity found to handle Intent { act=android.intent.action.VIEW typ=image/jpg }

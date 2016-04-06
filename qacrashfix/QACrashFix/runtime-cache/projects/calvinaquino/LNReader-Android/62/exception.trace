@@ -1,0 +1,23 @@
+This exception is being thrown when back button is pressed (after last update)
+
+06-25 05:04:20.633: D/class com.erakk.lnreader.activity.DisplayLightNovelContentActivity(3386): onStop Completed
+06-25 05:04:20.633: E/webview(3386): Error: WebView.destroy() called while still attached!
+06-25 05:04:20.643: D/webviewglue(3386): nativeDestroy view: 0xb9071470
+06-25 05:04:20.643: D/AndroidRuntime(3386): Shutting down VM
+06-25 05:04:20.643: W/dalvikvm(3386): threadid=1: thread exiting with uncaught exception (group=0xb4dde908)
+06-25 05:04:20.643: E/AndroidRuntime(3386): FATAL EXCEPTION: main
+06-25 05:04:20.643: E/AndroidRuntime(3386): android.app.SuperNotCalledException: Activity {com.erakk.lnreader/com.erakk.lnreader.activity.DisplayLightNovelContentActivity} did not call through to super.onDestroy()
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at android.app.ActivityThread.performDestroyActivity(ActivityThread.java:3440)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at android.app.ActivityThread.handleDestroyActivity(ActivityThread.java:3469)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at android.app.ActivityThread.access$1200(ActivityThread.java:141)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1287)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at android.os.Looper.loop(Looper.java:137)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at android.app.ActivityThread.main(ActivityThread.java:5039)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at java.lang.reflect.Method.invokeNative(Native Method)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at java.lang.reflect.Method.invoke(Method.java:511)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)
+06-25 05:04:20.643: E/AndroidRuntime(3386): 	at dalvik.system.NativeStart.main(Native Method)
+06-25 05:04:20.764: W/ActivityManager(1202):   Force finishing activity com.erakk.lnreader/.activity.DisplayLightNovelDetailsActivity
+06-25 05:04:20.893: D/dalvikvm(1202): GC_FOR_ALLOC freed 296K, 23% free 8680K/11196K, paused 32ms, total 34ms

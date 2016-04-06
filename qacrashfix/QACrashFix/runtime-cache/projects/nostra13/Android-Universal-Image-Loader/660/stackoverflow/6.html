@@ -1,0 +1,3839 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>android - java.lang.ClassNotFoundException on working app - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="java.lang.ClassNotFoundException on working app" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have created and published my first android app. It&#39;s very simple. It works fine on simulator and some phones, but I am getting this error:
+
+java.lang.RuntimeException: Unable to instantiate " />
+    <meta property="og:url" content="http://stackoverflow.com/questions/3781151/java-lang-classnotfoundexception-on-working-app"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/3781151/java-lang-classnotfoundexception-on-working-app" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=170fca19b264"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=3423b2dbb2d4">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;java.lang.ClassNotFoundException on working app&#39;" href="/feeds/question/3781151">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/3781151/java-lang-classnotfoundexception-on-working-app" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/3781151/java-lang-classnotfoundexception-on-working-app" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/3781151/java-lang-classnotfoundexception-on-working-app">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:4,shownCommentCount:4,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:3781151});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '3781151');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1431415968,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"bf60fd4d98f4795ca72d6f528a4006a2","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"b711670c6b2e","js/moderator.en.js":"75062b042101","js/full-anon.en.js":"e5947ae502a5","js/full.en.js":"770dd62b9281","js/wmd.en.js":"f35993d287d1","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"5faaefde3284","js/help.en.js":"b5f40fd81205","js/tageditor.en.js":"260ae44a356d","js/tageditornew.en.js":"55a1e89456e7","js/inline-tag-editing.en.js":"21223186b436","js/revisions.en.js":"255b536e5531","js/review.en.js":"ce8065ff2428","js/tagsuggestions.en.js":"bc2c996faeda","js/post-validation.en.js":"50b6f6d364df","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"2fa54a1ec36c","js/keyboard-shortcuts.en.js":"b564d9466f61","js/external-editor.en.js":"b04e37426de6","js/external-editor.en.js":"b04e37426de6","js/snippet-javascript.en.js":"49fc6920793f","js/snippet-javascript-codemirror.en.js":"fbf04318936a"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3781151%2fjava-lang-classnotfoundexception-on-working-app" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3781151%2fjava-lang-classnotfoundexception-on-working-app" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 143 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3781151%2fjava-lang-classnotfoundexception-on-working-app" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f3781151%2fjava-lang-classnotfoundexception-on-working-app" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+                <h1 itemprop="name"><a href="/questions/3781151/java-lang-classnotfoundexception-on-working-app" class="question-hyperlink">java.lang.ClassNotFoundException on working app</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="3781151"  id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1112352922",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1112352922">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3781151">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">33</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>9</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have created and published my first android app. It's very simple. It works fine on simulator and some phones, but I am getting this error:</p>
+
+<pre><code>java.lang.RuntimeException: Unable to instantiate application cz.teamnovak.droid.Novak ESC Track guide: java.lang.ClassNotFoundException: cz.teamnovak.droid.Novak ESC Track guide in loader dalvik.system.PathClassLoader[/data/app/cz.teamnovak.droid-1.apk]
+    at android.app.ActivityThread$PackageInfo.makeApplication(ActivityThread.java:649)
+    at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4232)
+    at android.app.ActivityThread.access$3000(ActivityThread.java:125)
+    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2071)
+    at android.os.Handler.dispatchMessage(Handler.java:99)
+    at android.os.Looper.loop(Looper.java:123)
+    at android.app.ActivityThread.main(ActivityThread.java:4627)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:521)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)
+    at dalvik.system.NativeStart.main(Native Method)
+Caused by: java.lang.ClassNotFoundException: cz.teamnovak.droid.Novak ESC Track guide in loader dalvik.system.PathClassLoader[/data/app/cz.teamnovak.droid-1.apk]
+    at dalvik.system.PathClassLoader.findClass(PathClassLoader.java:243)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:573)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:532)
+    at android.app.Instrumentation.newApplication(Instrumentation.java:942)
+    at android.app.ActivityThread$PackageInfo.makeApplication(ActivityThread.java:644)
+    ... 11 more
+</code></pre>
+
+<p>Any idea what can cause this?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/android" class="post-tag" title="show questions tagged &#39;android&#39;" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/classnotfoundexception" class="post-tag" title="show questions tagged &#39;classnotfoundexception&#39;" rel="tag">classnotfoundexception</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/3781151" title="short permalink to this question" class="short-link" id="link-post-3781151">share</a><span class="lsep">|</span><a href="/posts/3781151/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/3781151/revisions" title="show all edits to this post">edited <span title="2010-09-23 18:06:37Z" class="relativetime">Sep 23 '10 at 18:06</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/422597/colin-hebert"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/28d048fac5e3ee385b01370382a6e987?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/422597/colin-hebert">Colin Hebert</a><br>
+        <span class="reputation-score" title="reputation score 46475" dir="ltr">46.5k</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="83 silver badges"><span class="badge2"></span><span class="badgecount">83</span></span><span title="110 bronze badges"><span class="badge3"></span><span class="badgecount">110</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2010-09-23 17:49:23Z" class="relativetime">Sep 23 '10 at 17:49</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/456475/skoky"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/201670942b3c275687fd4c998ce4354d?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/456475/skoky">Skoky</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">166</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3781151" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-5697193" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hello well, I have exported by eclipse and I dont see any classes or jars inside. och, it does not work this export.... I have to find out why</span>
+                &ndash;&nbsp;
+                    <a href="/users/456475/skoky"
+                       title="166 reputation"
+                       class="comment-user owner">Skoky</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-22 22:37:22Z" class="relativetime-clean">Feb 22 '11 at 22:37</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-5697199" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Well, there is file classes.dex. It should contain compiled code. Right? The file is there.  So why do I get ClassNotFoundException?    Skoky.</span>
+                &ndash;&nbsp;
+                    <a href="/users/456475/skoky"
+                       title="166 reputation"
+                       class="comment-user owner">Skoky</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-22 22:37:41Z" class="relativetime-clean">Feb 22 '11 at 22:37</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-5697202" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hello,     one more cosideration. The error says &quot;java.lang.ClassNotFoundException: cz.teamnovak.droid.Novak ESC Track guide&quot;  -&gt; the problem is I dont have such a class. Its somehow mixed up. The &quot;Novak ESC Track guide&quot; is name of the application.    Pleas advice whats going on.    Thank you, Skoky.</span>
+                &ndash;&nbsp;
+                    <a href="/users/456475/skoky"
+                       title="166 reputation"
+                       class="comment-user owner">Skoky</a>
+                <span class="comment-date" dir="ltr"><span title="2011-02-22 22:37:53Z" class="relativetime-clean">Feb 22 '11 at 22:37</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-18120350" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">For me this topic resolved my problem: <a href="http://stackoverflow.com/a/9827569/372838">stackoverflow.com/a/9827569/372838</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/372838/dvtoever"
+                       title="1572 reputation"
+                       class="comment-user">dvtoever</a>
+                <span class="comment-date" dir="ltr"><span title="2012-11-08 13:44:23Z" class="relativetime-clean">Nov 8 '12 at 13:44</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3781151" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								21 Answers
+                                <span style="display:none;" itemprop="answerCount">21</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/3781151/java-lang-classnotfoundexception-on-working-app?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/3781151/java-lang-classnotfoundexception-on-working-app?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/3781151/java-lang-classnotfoundexception-on-working-app?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="5082977"></a>
+<div id="answer-5082977" class="answer" data-answerid="5082977"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="5082977">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">32</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Yep, I had this exact same problem. It was because I specified the <code>android:name</code> attribute in the application node in the manifest file.</p>
+
+<p>Your Android Manifest file probably looks something like this:</p>
+
+<pre><code>   &lt;application 
+       android:name="Novak ESC Track guide" 
+       android:icon="@drawable/icon" 
+       android:label="@string/app_name" 
+       android:description="@string/help_text" &gt;
+</code></pre>
+
+<h1>Do not use the <code>android:name</code> attribute! unless you've implemented a custom Application object.</h1>
+
+<p>The <code>application:name</code> attribute has nothing to do with the name of your app. This is the name of a specific class to load as your <code>Application</code> instance. That's why you would get the <code>ClassNotFoundException</code> if that class wouldn't exist. </p>
+
+<h2>For the name of the app use the <code>android:label</code> attribute on this same application node instead.</h2>
+
+<p>Remove it and it should work:</p>
+
+<pre><code>&lt;application 
+    android:icon="@drawable/icon" 
+    android:label="@string/app_name" 
+    android:description="@string/help_text" &gt;
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/5082977" title="short permalink to this answer" class="short-link" id="link-post-5082977">share</a><span class="lsep">|</span><a href="/posts/5082977/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/5082977/revisions" title="show all edits to this post">edited <span title="2015-05-08 12:09:29Z" class="relativetime">May 8 at 12:09</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/312743/hcpl"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/tcfdY.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/312743/hcpl">hcpl</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">8,305</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="39 silver badges"><span class="badge2"></span><span class="badgecount">39</span></span><span title="49 bronze badges"><span class="badge3"></span><span class="badgecount">49</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-02-22 19:34:55Z" class="relativetime">Feb 22 '11 at 19:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/473201/phreakhead"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/028566a6d9c6f09b0c01eb9949e9e7c5?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/473201/phreakhead">phreakhead</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">3,168</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="15 silver badges"><span class="badge2"></span><span class="badgecount">15</span></span><span title="17 bronze badges"><span class="badge3"></span><span class="badgecount">17</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-5082977" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-6508407" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks! Worked for me! :-)</span>
+                &ndash;&nbsp;
+                    <a href="/users/117260/philippe-gerber"
+                       title="7717 reputation"
+                       class="comment-user">Philippe Gerber</a>
+                <span class="comment-date" dir="ltr"><span title="2011-04-17 21:29:00Z" class="relativetime-clean">Apr 17 '11 at 21:29</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-6960335" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You are a live saver dude !!! Thanks.</span>
+                &ndash;&nbsp;
+                    <a href="/users/651232/tushar"
+                       title="832 reputation"
+                       class="comment-user">Tushar</a>
+                <span class="comment-date" dir="ltr"><span title="2011-05-16 17:46:42Z" class="relativetime-clean">May 16 '11 at 17:46</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-8739918" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="supernova">46</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">android:name is required if you have your own application class that extends Application. It is the name of your application, so android:name seems like the right terminology to me. I agree it is misleading, though, if you don&#39;t need your own application class.</span>
+                &ndash;&nbsp;
+                    <a href="/users/252631/ricknotfred"
+                       title="2437 reputation"
+                       class="comment-user">RickNotFred</a>
+                <span class="comment-date" dir="ltr"><span title="2011-08-31 20:01:24Z" class="relativetime-clean">Aug 31 '11 at 20:01</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-15039527" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">that worked thanks. @RickNotFred, I am confused though. I normally have done this in the past and have not had any problems. I created a class library and made a base application class that I will use on different projects, so I am extending this class and I got this error. How should I go about this?</span>
+                &ndash;&nbsp;
+                    <a href="/users/545657/pqsk"
+                       title="568 reputation"
+                       class="comment-user">pqsk</a>
+                <span class="comment-date" dir="ltr"><span title="2012-07-10 01:57:24Z" class="relativetime-clean">Jul 10 '12 at 1:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-5082977" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk557278672",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk557278672">
+            </div>
+  
+<a name="10001213"></a>
+<div id="answer-10001213" class="answer" data-answerid="10001213"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="10001213">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">12</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Something like this happened when I changed the build target to 3.2. After digging around I found that a had named the jar lib folder "lib" instead of "libs". I just renamed it to libs and updated the references on the java build path and everything was working again. Maybe this will help someone... </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10001213" title="short permalink to this answer" class="short-link" id="link-post-10001213">share</a><span class="lsep">|</span><a href="/posts/10001213/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-03 20:53:15Z" class="relativetime">Apr 3 '12 at 20:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1270336/hobbs"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/3d492f9d83c5cf344ccbf101c8cef845?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1270336/hobbs">hobbs</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">121</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10001213" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-15662548" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks.. I have same problem and resolve the problem after reading your post. keep it up...</span>
+                &ndash;&nbsp;
+                    <a href="/users/825949/amity"
+                       title="632 reputation"
+                       class="comment-user">amity</a>
+                <span class="comment-date" dir="ltr"><span title="2012-08-03 05:13:46Z" class="relativetime-clean">Aug 3 '12 at 5:13</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-16681476" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks, it solved the problem! I had to edit the libraries in Rightclick Project-&gt;Build Path and set them to the new &quot;libs&quot; folder also.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1306012/bruno-bieri"
+                       title="1232 reputation"
+                       class="comment-user">Bruno Bieri</a>
+                <span class="comment-date" dir="ltr"><span title="2012-09-13 17:31:43Z" class="relativetime-clean">Sep 13 '12 at 17:31</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10001213" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="7728131"></a>
+<div id="answer-7728131" class="answer" data-answerid="7728131"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="7728131">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>We have a couple of projects where this issue was logged from time to time on the Android Market. I found the following issues in the manifests:</p>
+
+<ol>
+<li><p>If the package name is com.test then activities names should be <code>.ActivityName</code> (with a leading dot), not just <code>ActivityName</code>.</p></li>
+<li><p>For some classes, those that appeared in the logs most often, the class name was specified as <code>com.test.Name</code> while it should have been <code>.Name</code>.</p></li>
+</ol>
+
+<p>I guess many implementations of android handle these minor issues successfully (this is why the exception never happened in testing), while others few are throwing the exception. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/7728131" title="short permalink to this answer" class="short-link" id="link-post-7728131">share</a><span class="lsep">|</span><a href="/posts/7728131/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-10-11 15:01:03Z" class="relativetime">Oct 11 '11 at 15:01</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/989791/alex"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c2d7739d28b3a8f6103f818c3911d893?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/989791/alex">Alex</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">91</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-7728131" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-16344595" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Good catch. I also had problems with the name attribute of application, where most devices worked just fine with &quot;MyApplicationSubclass&quot;, but some would crash on launch. Changing to &quot;my.package.MyApplicationSubclass&quot; fixed the issue. Some versions/vendors are more tolerant to others on these issues.</span>
+                &ndash;&nbsp;
+                    <a href="/users/338514/nobre"
+                       title="2394 reputation"
+                       class="comment-user">nobre</a>
+                <span class="comment-date" dir="ltr"><span title="2012-08-30 18:54:31Z" class="relativetime-clean">Aug 30 '12 at 18:54</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27584584" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Wow you are spot on. I can&#39;t believe this. Thanks for sorting this out, but I think this is something Google should fix</span>
+                &ndash;&nbsp;
+                    <a href="/users/882168/dirk-conrad-coetsee"
+                       title="364 reputation"
+                       class="comment-user">Dirk Conrad Coetsee</a>
+                <span class="comment-date" dir="ltr"><span title="2013-09-10 13:25:31Z" class="relativetime-clean">Sep 10 '13 at 13:25</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-7728131" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="17784973"></a>
+<div id="answer-17784973" class="answer" data-answerid="17784973"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="17784973">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This is my observation with respect to the Error. I recently Updated the ADT to 22.0.1. 
+I am getting following Error when i imported my previous Projects
+<strong>"E/AndroidRuntime(24807): Caused by: java.lang.ClassNotFoundException: com.sherl.sherlockfragmentsapp.StartActivity in loader dalvik.system.PathClassLoader[/data/app/com.sherl.sherlockfragmentsapp-1.apk]"</strong></p>
+
+<p>Then i changed "Properties->Java Build Path-> Order and Export" in the following manner
+[Unable to add the Image because of the Forum rules]</p>
+
+<ol>
+<li>Android Private Libraries - checked</li>
+<li>Android 4.2.2 - unchecked</li>
+<li>Android Dependencies - checked</li>
+<li>/src - selected</li>
+<li>/gen - selected</li>
+</ol>
+
+<p>It resolved the issue. hope this is Help you guys.</p>
+
+<p>Thanks</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/17784973" title="short permalink to this answer" class="short-link" id="link-post-17784973">share</a><span class="lsep">|</span><a href="/posts/17784973/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-07-22 10:15:29Z" class="relativetime">Jul 22 '13 at 10:15</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/864834/lakshman"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/HwPn8.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/864834/lakshman">lakshman</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">352</span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-17784973" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-25949091" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Worked for me. Thanks :)</span>
+                &ndash;&nbsp;
+                    <a href="/users/421372/ragunath-jawahar"
+                       title="7040 reputation"
+                       class="comment-user">Ragunath Jawahar</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-22 13:30:06Z" class="relativetime-clean">Jul 22 '13 at 13:30</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-25982308" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">If the above code is working fine, please accept this as Answer!</span>
+                &ndash;&nbsp;
+                    <a href="/users/864834/lakshman"
+                       title="352 reputation"
+                       class="comment-user">lakshman</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-23 10:19:49Z" class="relativetime-clean">Jul 23 '13 at 10:19</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-17784973" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="11772289"></a>
+<div id="answer-11772289" class="answer" data-answerid="11772289"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="11772289">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Had the same error: java.lang.RuntimeException: Unable to instantiate activity (classnotfound)
+FIRST try to change the build platform (2.3.3 -> 2.2 -> 2.3.3) worked for me.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/11772289" title="short permalink to this answer" class="short-link" id="link-post-11772289">share</a><span class="lsep">|</span><a href="/posts/11772289/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-08-02 06:40:19Z" class="relativetime">Aug 2 '12 at 6:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1303574/user1303574"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/97f232738bb913b71624771939826c07?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1303574/user1303574">user1303574</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">51</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-11772289" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-16357573" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Work for me too, no code change is needed.</span>
+                &ndash;&nbsp;
+                    <a href="/users/325314/tszming"
+                       title="1726 reputation"
+                       class="comment-user">tszming</a>
+                <span class="comment-date" dir="ltr"><span title="2012-08-31 08:47:53Z" class="relativetime-clean">Aug 31 '12 at 8:47</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-16682843" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Worked for me too, I had to remove some &quot;@Override&quot; annotations.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1306012/bruno-bieri"
+                       title="1232 reputation"
+                       class="comment-user">Bruno Bieri</a>
+                <span class="comment-date" dir="ltr"><span title="2012-09-13 18:23:50Z" class="relativetime-clean">Sep 13 '12 at 18:23</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-11772289" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="7287413"></a>
+<div id="answer-7287413" class="answer" data-answerid="7287413"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="7287413">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I know this question has been answered, and it likely wasn't the case. But I was getting this error, and figured I'd post why in case it can be helpful to anyone else.</p>
+
+<p>So I was getting this error, and after several hours sheepishly realized that I had unchecked 'Project > Build Automatically'. So although I had no compilation errors, this is why I was getting this error. Everything started working as soon as I realized that I wasn't actually building the project before deploying :-/</p>
+
+<p>Well, that's my story :-)</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/7287413" title="short permalink to this answer" class="short-link" id="link-post-7287413">share</a><span class="lsep">|</span><a href="/posts/7287413/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-09-02 17:56:33Z" class="relativetime">Sep 2 '11 at 17:56</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/5416/joel-martinez"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c7fbf557a6c37f0ae2b300f6799c767f?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/5416/joel-martinez">Joel Martinez</a><br>
+        <span class="reputation-score" title="reputation score 24713" dir="ltr">24.7k</span><span title="14 gold badges"><span class="badge1"></span><span class="badgecount">14</span></span><span title="90 silver badges"><span class="badge2"></span><span class="badgecount">90</span></span><span title="156 bronze badges"><span class="badge3"></span><span class="badgecount">156</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-7287413" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-7287413" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3781299"></a>
+<div id="answer-3781299" class="answer" data-answerid="3781299"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="3781299">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Well you have a java.lang.ClassNotFoundException. That means a class is missing in the application runtime. You should check wheather you have added all your libs to the build path.</p>
+
+<p>Right click on your project -> properties -> java build path -> libraries, add your libs or create one containing your classes and enable order export for your libs.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3781299" title="short permalink to this answer" class="short-link" id="link-post-3781299">share</a><span class="lsep">|</span><a href="/posts/3781299/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-09-23 18:11:41Z" class="relativetime">Sep 23 '10 at 18:11</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/401025/artworkad-%e3%82%b7"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/6eabb58afc778f457890ea96e32d4278?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/401025/artworkad-%e3%82%b7">artworkad シ</a><br>
+        <span class="reputation-score" title="reputation score 18540" dir="ltr">18.5k</span><span title="62 gold badges"><span class="badge1"></span><span class="badgecount">62</span></span><span title="181 silver badges"><span class="badge2"></span><span class="badgecount">181</span></span><span title="362 bronze badges"><span class="badge3"></span><span class="badgecount">362</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3781299" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3781299" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="7419406"></a>
+<div id="answer-7419406" class="answer" data-answerid="7419406"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="7419406">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>In my case I had to add <code>android:name=".activity.SkeletonAppActivity"</code>
+instead of <code>android:name=".SkeletonAppActivity"</code> in the manifest file for the main activity.
+<code>SkeletonAppActivity</code> was in a different package from the application class. Good luck!</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/7419406" title="short permalink to this answer" class="short-link" id="link-post-7419406">share</a><span class="lsep">|</span><a href="/posts/7419406/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/7419406/revisions" title="show all edits to this post">edited <span title="2011-09-15 12:29:52Z" class="relativetime">Sep 15 '11 at 12:29</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/72882/dandan78"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/9d17e71eae127205da470fffa2dba899?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/72882/dandan78">dandan78</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6,110</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="31 silver badges"><span class="badge2"></span><span class="badgecount">31</span></span><span title="58 bronze badges"><span class="badge3"></span><span class="badgecount">58</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-09-14 16:03:05Z" class="relativetime">Sep 14 '11 at 16:03</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/945027/tenesh"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/1e9b228159d9a40147e5252f6d2130f7?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/945027/tenesh">Tenesh</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">31</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-7419406" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-7419406" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="7855886"></a>
+<div id="answer-7855886" class="answer" data-answerid="7855886"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="7855886">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Had this sort of problem today after upgrading to latest ADT/SDK. Took me quite a while. Checked that i used google-apis (for maps), uses-library, cleaned the project etc.</p>
+
+<p>Deleting the .project and adding a fresh one (create new android project) finally solved it.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/7855886" title="short permalink to this answer" class="short-link" id="link-post-7855886">share</a><span class="lsep">|</span><a href="/posts/7855886/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-10-21 22:15:42Z" class="relativetime">Oct 21 '11 at 22:15</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/314089/icyerasor"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/3c209d48b516cb9e1c8d83ece5d7780e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/314089/icyerasor">icyerasor</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,654</span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="22 bronze badges"><span class="badge3"></span><span class="badgecount">22</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-7855886" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-7855886" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="8157450"></a>
+<div id="answer-8157450" class="answer" data-answerid="8157450"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="8157450">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Make sure that <code>android:hasCode</code> is not set to <code>false</code> in your manifest file. This is what solved the problem for me!</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/8157450" title="short permalink to this answer" class="short-link" id="link-post-8157450">share</a><span class="lsep">|</span><a href="/posts/8157450/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-11-16 19:24:41Z" class="relativetime">Nov 16 '11 at 19:24</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/864175/lost-bits1110"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/68b6e6de036cb601af35ea87b8abaf31?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/864175/lost-bits1110">lost_bits1110</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">762</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="31 bronze badges"><span class="badge3"></span><span class="badgecount">31</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-8157450" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-8157450" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="10046281"></a>
+<div id="answer-10046281" class="answer" data-answerid="10046281"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="10046281">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I have this problem sometimes with eclipse.  What has corrected it for me is to go to Project Properties / Android and change the build target API to a different version and republish.  I'll find that corrected it, then I can change it back to the desired build target.</p>
+
+<p>or </p>
+
+<p>You may need to check your <strong>proguard.cfg</strong>.</p>
+
+<p>Assuming you have linked your libraries properly and that your library projects have the code you need marked for export, the next step you might want to do is to check your proguard settings and make sure you are not stripping out the classes you need.</p>
+
+<p>I was struggling with this quite a bit after I had my app working going directly to the emulator or device from eclipse.  The problem I was having was after the app was published (i.e. gone through proguard) and run on the device it was missing classes that were contained in the project.  They were being stripped out somehow.</p>
+
+<p>My problem may have been caused when I had tried to use IntelliJ and have switched back to eclipse.  </p>
+
+<p>Here is the proguard file that worked for me:</p>
+
+<pre><code>-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class com.android.vending.licensing.ILicensingService
+
+-keepclasseswithmembers class * {
+    native &lt;methods&gt;;
+}
+
+-keepclasseswithmembers class * {
+    public &lt;init&gt;(android.content.Context, android.util.AttributeSet);
+}
+
+-keepclasseswithmembers class * {
+    public &lt;init&gt;(android.content.Context, android.util.AttributeSet, int);
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10046281" title="short permalink to this answer" class="short-link" id="link-post-10046281">share</a><span class="lsep">|</span><a href="/posts/10046281/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/10046281/revisions" title="show all edits to this post">edited <span title="2012-05-08 15:29:09Z" class="relativetime">May 8 '12 at 15:29</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-06 16:27:36Z" class="relativetime">Apr 6 '12 at 16:27</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1212832/righthandedmonkey"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/1eee06c83f56235ab6e236392c056be8?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1212832/righthandedmonkey">RightHandedMonkey</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">716</span><span title="7 silver badges"><span class="badge2"></span><span class="badgecount">7</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10046281" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-14177329" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">changing build target api worked for me . Thax</span>
+                &ndash;&nbsp;
+                    <a href="/users/623176/gaurav-gupta"
+                       title="376 reputation"
+                       class="comment-user">Gaurav Gupta</a>
+                <span class="comment-date" dir="ltr"><span title="2012-06-04 09:28:25Z" class="relativetime-clean">Jun 4 '12 at 9:28</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10046281" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="11497044"></a>
+<div id="answer-11497044" class="answer" data-answerid="11497044"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="11497044">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I got this error when I ran my app on earlier versions of android.  I thought <a href="http://developer.android.com/reference/android/widget/SearchView.html" rel="nofollow">SearchView</a> was backwards compatible to Android 1.5, but it was created in 3.0.  I removed its reference from the code and it worked.  </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/11497044" title="short permalink to this answer" class="short-link" id="link-post-11497044">share</a><span class="lsep">|</span><a href="/posts/11497044/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-07-16 01:11:03Z" class="relativetime">Jul 16 '12 at 1:11</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1322277/logan"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8d6c8f350f22a2f107b4ea812f3cb414?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1322277/logan">Logan</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">91</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-11497044" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-11497044" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="10982306"></a>
+<div id="answer-10982306" class="answer" data-answerid="10982306"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="10982306">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>In my case, the <strong>icon</strong> of the app was causing the error:</p>
+
+<pre><code>&lt;application
+    android:name="com.test.MyApp"
+    android:icon="@drawable/myicon"
+</code></pre>
+
+<p>Why? Because I put the icon only in the folder "drawable", and I'm using a high resolution testing device, so it looks in the folder "drawable-hdpi" for the icon. The default behaviour for everything else is use the icons from "drawable" if they aren't in "drawable-hdpi". But for the launching icon this doesn't seem to be valid.</p>
+
+<p>So the solution is to put a copy of the icon (with the same name, of course) in "drawable-hdpi" (or whichever supported resolutions the devices have).</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/10982306" title="short permalink to this answer" class="short-link" id="link-post-10982306">share</a><span class="lsep">|</span><a href="/posts/10982306/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/10982306/revisions" title="show all edits to this post">edited <span title="2012-06-11 14:46:12Z" class="relativetime">Jun 11 '12 at 14:46</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2012-06-11 14:41:00Z" class="relativetime">Jun 11 '12 at 14:41</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/930450/ixx"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/bh1od.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/930450/ixx">Ixx</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">8,490</span><span title="14 gold badges"><span class="badge1"></span><span class="badgecount">14</span></span><span title="57 silver badges"><span class="badge2"></span><span class="badgecount">57</span></span><span title="111 bronze badges"><span class="badge3"></span><span class="badgecount">111</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10982306" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-16138714" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Was this for the specific question asked related to the <code>java.lang.ClassNotFoundException</code> or was your error another error? I&#39;ve been trying to figure out why this is happening for our application when we clearly have it defined properly but haven&#39;t found anything useful until looking again today to find this... I know we don&#39;t have an LDPI resolution icon but we support LDPI devices (expecting to have the device scale down).</span>
+                &ndash;&nbsp;
+                    <a href="/users/407782/dallas"
+                       title="687 reputation"
+                       class="comment-user">Dallas</a>
+                <span class="comment-date" dir="ltr"><span title="2012-08-22 19:38:14Z" class="relativetime-clean">Aug 22 '12 at 19:38</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-16140852" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It is about this specific question, only happened testing on hdpi and xhdpi devices, and I haven&#39;t added icon for ldpi device. I&#39;m not even sure this fixes it, still got the exception, sometimes, after it, and usually clean the project and build again fixes it...</span>
+                &ndash;&nbsp;
+                    <a href="/users/930450/ixx"
+                       title="8490 reputation"
+                       class="comment-user">Ixx</a>
+                <span class="comment-date" dir="ltr"><span title="2012-08-22 21:04:22Z" class="relativetime-clean">Aug 22 '12 at 21:04</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10982306" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="11722935"></a>
+<div id="answer-11722935" class="answer" data-answerid="11722935"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="11722935">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I used a supertype method that was declared 'final' in one of my Activities (specifically the 'isResumed()' method).  The actual error showed in LogCat only after restarting my development device.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/11722935" title="short permalink to this answer" class="short-link" id="link-post-11722935">share</a><span class="lsep">|</span><a href="/posts/11722935/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-07-30 13:51:01Z" class="relativetime">Jul 30 '12 at 13:51</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/623640/waterbear"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e4d910997f9c81cc78a84763433a3ea0?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/623640/waterbear">Waterbear</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,048</span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="9 bronze badges"><span class="badge3"></span><span class="badgecount">9</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-11722935" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-23760864" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I implemented my own isResumed() - method wich caused the ClassDefNotFoundException, since it is a public final hidden method in the Android SDK. Simply rename my method worked and the Exception is was never thrown again.</span>
+                &ndash;&nbsp;
+                    <a href="/users/939248/jonathan"
+                       title="230 reputation"
+                       class="comment-user">Jonathan</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-14 12:33:39Z" class="relativetime-clean">May 14 '13 at 12:33</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-11722935" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="11771626"></a>
+<div id="answer-11771626" class="answer" data-answerid="11771626"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="11771626">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The Class Not Found Error shows that your class files are missing. Please go to  <strong>Properties > Java Build Path</strong>  and add your package containing your java files to the <strong>Source</strong> tab if found missing. Then build your project. This will create the missing .class files.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/11771626" title="short permalink to this answer" class="short-link" id="link-post-11771626">share</a><span class="lsep">|</span><a href="/posts/11771626/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-08-02 05:40:20Z" class="relativetime">Aug 2 '12 at 5:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/964640/rino"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e6d622190c23fe55585d2f7e1870d13b?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/964640/rino">rino</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">21</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-11771626" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-11771626" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="7326463"></a>
+<div id="answer-7326463" class="answer" data-answerid="7326463"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="7326463">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Are you using your code in different enviroments, let's say, by using Dropbox or something like that? Do you use any library or similar? I had a lot of troubles after sharing the workspace files and I fixed it reconfiguring dependences. Hope it helps somebody!</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/7326463" title="short permalink to this answer" class="short-link" id="link-post-7326463">share</a><span class="lsep">|</span><a href="/posts/7326463/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-09-06 21:36:46Z" class="relativetime">Sep 6 '11 at 21:36</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/715424/dani-bishop"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/341e41315a8419eb8a8fdecf40928813?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/715424/dani-bishop">Dani bISHOP</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">896</span><span title="7 silver badges"><span class="badge2"></span><span class="badgecount">7</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-7326463" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-24664930" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">How do u reconfigure dependences?</span>
+                &ndash;&nbsp;
+                    <a href="/users/1904504/dhasneem"
+                       title="814 reputation"
+                       class="comment-user">Dhasneem</a>
+                <span class="comment-date" dir="ltr"><span title="2013-06-12 04:41:25Z" class="relativetime-clean">Jun 12 '13 at 4:41</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24925591" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">In the IDE. You must go to Project Configuration and see if paths are the same. i.e.: Maybe you have your dropbox/copy/gdrive path in c:\users\me\blahblahblah in one PC but in another one you have it on d:\blahblahblah. You can have everything &#39;cloned&#39; in every machine so the paths match, or you have to modify the project each time in each machine.</span>
+                &ndash;&nbsp;
+                    <a href="/users/715424/dani-bishop"
+                       title="896 reputation"
+                       class="comment-user">Dani bISHOP</a>
+                <span class="comment-date" dir="ltr"><span title="2013-06-20 07:34:59Z" class="relativetime-clean">Jun 20 '13 at 7:34</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-7326463" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="9888602"></a>
+<div id="answer-9888602" class="answer" data-answerid="9888602"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="9888602">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Check if the package name in the class matches the package name in the manifest file. This worked for me</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/9888602" title="short permalink to this answer" class="short-link" id="link-post-9888602">share</a><span class="lsep">|</span><a href="/posts/9888602/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-03-27 11:21:22Z" class="relativetime">Mar 27 '12 at 11:21</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/629981/droidme"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8045a03a60156e2c276d14caef09b7ea?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/629981/droidme">Droidme</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">390</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="33 bronze badges"><span class="badge3"></span><span class="badgecount">33</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-9888602" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-9888602" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="13189600"></a>
+<div id="answer-13189600" class="answer" data-answerid="13189600"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="13189600">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>In my case it happen when i moved my launcher activity to different package without updating manifest file.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/13189600" title="short permalink to this answer" class="short-link" id="link-post-13189600">share</a><span class="lsep">|</span><a href="/posts/13189600/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-11-02 05:05:33Z" class="relativetime">Nov 2 '12 at 5:05</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1269058/kishore"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/64134da690762ab5ce7d7fdb5a7e86b2?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1269058/kishore">Kishore</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">481</span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="19 bronze badges"><span class="badge3"></span><span class="badgecount">19</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-13189600" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-13189600" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="14338782"></a>
+<div id="answer-14338782" class="answer" data-answerid="14338782"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="14338782">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I had a ClassNotFoundException pointing to my Application class.</p>
+
+<p>I found that I missed Java builder in my <strong>.project</strong></p>
+
+<p>If something is missing in your <em>buildSpec</em>, close Eclipse, make sure everything is in place and start Eclipse again</p>
+
+<pre><code>        &lt;buildSpec&gt;
+            &lt;buildCommand&gt;
+                    &lt;name&gt;com.android.ide.eclipse.adt.ResourceManagerBuilder&lt;/name&gt;
+                    &lt;arguments&gt;
+                    &lt;/arguments&gt;
+            &lt;/buildCommand&gt;
+            &lt;buildCommand&gt;
+                    &lt;name&gt;com.android.ide.eclipse.adt.PreCompilerBuilder&lt;/name&gt;
+                    &lt;arguments&gt;
+                    &lt;/arguments&gt;
+            &lt;/buildCommand&gt;
+            &lt;buildCommand&gt;
+                    &lt;name&gt;org.eclipse.jdt.core.javabuilder&lt;/name&gt;
+                    &lt;arguments&gt;
+                    &lt;/arguments&gt;
+            &lt;/buildCommand&gt;
+            &lt;buildCommand&gt;
+                    &lt;name&gt;com.android.ide.eclipse.adt.ApkBuilder&lt;/name&gt;
+                    &lt;arguments&gt;
+                    &lt;/arguments&gt;
+            &lt;/buildCommand&gt;
+    &lt;/buildSpec&gt;
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/14338782" title="short permalink to this answer" class="short-link" id="link-post-14338782">share</a><span class="lsep">|</span><a href="/posts/14338782/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-01-15 13:26:26Z" class="relativetime">Jan 15 '13 at 13:26</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1366471/doctoror-drive"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/bbfca7f22c1caa32b4b1fdf72c0816d2?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1366471/doctoror-drive">Doctoror Drive</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">8,341</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="28 silver badges"><span class="badge2"></span><span class="badgecount">28</span></span><span title="58 bronze badges"><span class="badge3"></span><span class="badgecount">58</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-14338782" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-14338782" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="22905649"></a>
+<div id="answer-22905649" class="answer" data-answerid="22905649"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="22905649">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For me, 'closing' the application from Eclipse and 'reopening' of the project, resolved the issue.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/22905649" title="short permalink to this answer" class="short-link" id="link-post-22905649">share</a><span class="lsep">|</span><a href="/posts/22905649/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-04-07 07:06:09Z" class="relativetime">Apr 7 '14 at 7:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2955151/arunjts"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/be30378c7a1d8bd191d17f5e50383c06?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2955151/arunjts">ArunJTS</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">155</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22905649" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-43749960" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This does not provide an answer to the question. To critique or request clarification from an author, leave a comment below their post.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1049475/erakitin"
+                       title="3059 reputation"
+                       class="comment-user">erakitin</a>
+                <span class="comment-date" dir="ltr"><span title="2014-12-27 13:25:32Z" class="relativetime-clean">Dec 27 '14 at 13:25</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-22905649" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="30125403"></a>
+<div id="answer-30125403" class="answer" data-answerid="30125403"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="30125403">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I recently invested some time in a similar error report that reached me through the play store error reports. </p>
+
+<p>An overview of some possible causes.</p>
+
+<h1>Missing Library</h1>
+
+<p><em>Since my app is tested before release and the issue only occurs approx. once a week I'm pretty sure mine isn’t a library issue. You should think in this direction if a build on your system fails and installing the app using ADB results in error on launch.</em> </p>
+
+<p>Cleaning and building your project could help if this is a local issue and make sure you have the latest version of both SDK and IDE.</p>
+
+<p>In these cases it’s one class of your app or a library used in your app that triggers the error. This is an important difference with the next point where the entry point (Activity with MAIN intent or your custom service/Application object) of your app is not found.</p>
+
+<p>If so look into the following questions &amp; answers I’ve selected. They all have an accepted answer.</p>
+
+<p><a href="http://stackoverflow.com/questions/17965707/unable-to-instantiate-application-classnotfoundexception">unable to instantiate application - ClassNotFoundException</a>
+<a href="http://stackoverflow.com/questions/10866431/android-activity-classnotfoundexception-tried-everything">Android Activity ClassNotFoundException - tried everything</a>
+<a href="http://stackoverflow.com/questions/4880489/android-classnotfoundexception">Android ClassNotFoundException</a></p>
+
+<h1>Main Activity or Application not found</h1>
+
+<h2>Misconfiguration of AndroidManifest.xml</h2>
+
+<p>More like a beginners mistake was quoted here before in one of the answers talking about the android manifest file. </p>
+
+<p><strong>Important here is that this error would always block your app from loading. It should build though but crash on the first use.</strong></p>
+
+<p>I’ve edited that answer, this is the important part:</p>
+
+<blockquote>
+  <p>Do not use the android:name attribute! unless you've implemented a
+  custom Application object.</p>
+  
+  <p>The application:name attribute has nothing to do with the name of your
+  app. This is the name of a specific class to load as your Application
+  instance. That's why you would get the ClassNotFoundException if that
+  class wouldn't exist.</p>
+  
+  <p>For the name of the app use the android:label attribute on this same
+  application node instead.</p>
+</blockquote>
+
+<h2>Suppressed: java.io.IOException: unable to open DEX file</h2>
+
+<p><em>Now it’s getting interesting! This was part of the stack trace logged in my case through the playstore. So I can create a build and execute that on my device without errors (whereas all previous errors would prevent any run).</em> </p>
+
+<p>An important comment was made to the following SO question <a href="http://stackoverflow.com/questions/22057555/android-application-classnotfoundexception-unable-to-instantiate-application">Android Application ClassNotFoundException, Unable to instantiate application</a> </p>
+
+<blockquote>
+  <p>Looks like the system has trouble opening your application dex file java.io.IOException: unable to open DEX file, this is before any of your classes are loaded, so it doesn't have anything to do with how you define your application class in the Manifest. –  user2046264 Feb 27 '14 at 2:25 </p>
+</blockquote>
+
+<p><strong>The important part here is the suppressed IOException. This indicates that an IO operation failed. Examples of IO operations are network and storage calls.</strong> </p>
+
+<p>Another error report that goes into that direction is listed at <a href="http://stackoverflow.com/questions/10311537/android-to-unable-to-instantiate-application-java-lang-classnotfoundexception">Android to Unable to instantiate Application java.lang.ClassNotFoundException:</a> where the role of the external storage provided by an sdcard is mentioned.</p>
+
+<blockquote>
+  <p>Some other similar questions indicate that this can be a user error. "/mnt/asec/..." indicates that the app is running from the sdcard. If the sdcard is removed it could cause this error. 3rd party apps or rooted devices can probably move an app to the sdcard even if its not allowed by the manifest.</p>
+</blockquote>
+
+<p>If you’re desperate read all the answers to that question since there are some other paths listed also. Think of full package specification, use of singletons and more.</p>
+
+<p>The point here is that both network and storage are IO. </p>
+
+<p><em>For my specific case I checked all the devices that reported this error and found that they all have external storage support. So a user could install the app and move it to external storage, have the SD card removed and get this error (just a theory, not tested).</em></p>
+
+<p>For more info on the installLocation options see <a href="http://developer.android.com/guide/topics/data/install-location.html" rel="nofollow">http://developer.android.com/guide/topics/data/install-location.html</a></p>
+
+<p>I also considered the network. On top of the stack trace detail page at the play store reports you get an overview of the occurrences of the error over time. </p>
+
+<p><em>It appeared to me that the error occurred more around the times an update was released. This could support the theory that the user gets an update of the app, downloads this update that somehow gets corrupted. The installation goes fine but the first execution of the app results in the error (again just a theory, not tested).</em></p>
+
+<h1>Other resources</h1>
+
+<p>Finally 2 non SO resources that might help you:</p>
+
+<p><a href="https://groups.google.com/forum/#!topic/android-developers/JC7_qqwBRjo" rel="nofollow">https://groups.google.com/forum/#!topic/android-developers/JC7_qqwBRjo</a>
+<a href="https://code.google.com/p/android/issues/detail?id=72121" rel="nofollow">https://code.google.com/p/android/issues/detail?id=72121</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/30125403" title="short permalink to this answer" class="short-link" id="link-post-30125403">share</a><span class="lsep">|</span><a href="/posts/30125403/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-05-08 13:44:04Z" class="relativetime">May 8 at 13:44</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/312743/hcpl"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/tcfdY.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/312743/hcpl">hcpl</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">8,305</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="39 silver badges"><span class="badge2"></span><span class="badgecount">39</span></span><span title="49 bronze badges"><span class="badge3"></span><span class="badgecount">49</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-30125403" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-30125403" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/3781151/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="3781151" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="bf60fd4d98f4795ca72d6f528a4006a2">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?returnurl=%2fquestions%2f3781151%2fjava-lang-classnotfoundexception-on-working-app%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f3781151%2fjava-lang-classnotfoundexception-on-working-app%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/android" class="post-tag" title="show questions tagged &#39;android&#39;" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/classnotfoundexception" class="post-tag" title="show questions tagged &#39;classnotfoundexception&#39;" rel="tag">classnotfoundexception</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2010-09-23 17:49:23Z"><b>4 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>61327 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-05-08 13:44:04Z">3 days ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2015/05/stack-exchange-podcast-64-not-recorded-in-ithaca/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2015/05/stack-exchange-podcast-64-not-recorded-in-ithaca/" class="question-hyperlink">Stack Exchange Podcast #64: Not Recorded in Ithaca</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk959180337",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk959180337">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(i){var a=window.$,d=20,m=2000,f="#sidebar [id^='adzerk'].everyonelovesstackoverflow",l="div#hireme,div.hireme",t=setTimeout,c=i.adurl,r=i.azw,g=i.azt,u=function(){return new Date().getTime()},s=u();function j(x){var y={},z=window.StackExchange,w=decodeURIComponent,A;if(x.length>1){x.substr(1).split("&").forEach(function(B){var C=B.split("=");this[w(C[0])]=w(C[1])},y)}var v=y.ac||y.accountid||(z&&z.options&&z.options.user&&z.options.user.accountId);if(v){y.ac=v}if(!y.tags){A=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(A.length>0){y.tags=Array.prototype.join.call(A,";")}}if(x==="#large"){y.l=1}if(x==="#abort"){y.abort=1}return y}function k(v){return a(v).html().replace(/\s+/g,"").length>0}var b=false;function o(A,w){if(b){return}b=true;var v=a(l),x=document,y=encodeURIComponent;clearTimeout(e);if(v.length>0){if(A.l||a("#careersadsdoublehigh").length>0){A.l=1}var C=v.map(function(G,F){return"d="+F.id}).get().join("&");var E=["l","ip","ac","eng","prov","tags","theme"];var B=Object.keys(A).filter(function(F){return E.indexOf(F)!==-1}).map(function(F){return y(F)+"="+y(A[F])}).join("&");if(B){C+="&"+B}if(w){C+="&azt=true"}var z=u()-s;C+="&lw="+z;var D=x.createElement("script");D.type="text/javascript";D.src=c+(c.indexOf("?")===-1?"?":"&")+C;x.body.appendChild(D);window.calculonPlacerStart=new Date().getTime()}}function q(w){var v=a(w);if(!k(v)){console.log(w);v.remove()}}var n=j(location.hash);if(n.abort){return}var h=null;if(r){h=t(o,g,n,true)}function p(v){if(k(f)){if(h){clearTimeout(h)}o(v)}else{e=t(p,d,v)}}var e=t(p,d,n);t(q,m,l)}).apply(null, [{"azw":false,"azt":2000,"adurl":"//clc.stackoverflow.com/j/p"}]);            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/10866431" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">48</div>
+	</a>
+	<a href="/questions/10866431/android-activity-classnotfoundexception-tried-everything" class="question-hyperlink">Android Activity ClassNotFoundException - tried everything</a>
+</div><div class="spacer">
+	<a href="/q/6168841" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">30</div>
+	</a>
+	<a href="/questions/6168841/unable-to-resolve-superclass-error-when-referencing-jar-library" class="question-hyperlink">Unable to resolve superclass error when referencing .jar library</a>
+</div><div class="spacer">
+	<a href="/q/4880489" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">25</div>
+	</a>
+	<a href="/questions/4880489/android-classnotfoundexception" class="question-hyperlink">Android ClassNotFoundException</a>
+</div><div class="spacer">
+	<a href="/q/6443091" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">8</div>
+	</a>
+	<a href="/questions/6443091/android-java-lang-runtimeexception-unable-to-instantiate-activity-componentinfo" class="question-hyperlink">Android java.lang.RuntimeException: Unable to instantiate activity ComponentInfo</a>
+</div><div class="spacer">
+	<a href="/q/10311537" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">24</div>
+	</a>
+	<a href="/questions/10311537/android-to-unable-to-instantiate-application-java-lang-classnotfoundexception" class="question-hyperlink">Android to Unable to instantiate Application java.lang.ClassNotFoundException:</a>
+</div><div class="spacer">
+	<a href="/q/17965707" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/17965707/unable-to-instantiate-application-classnotfoundexception" class="question-hyperlink">unable to instantiate application - ClassNotFoundException</a>
+</div><div class="spacer">
+	<a href="/q/11597707" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="/questions/11597707/it-got-the-java-lang-classnotfoundexception-error-when-run-the-export-apk" class="question-hyperlink">It got the &#39;java.lang.ClassNotFoundException&#39; error when run the export apk</a>
+</div><div class="spacer">
+	<a href="/q/22057555" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="/questions/22057555/android-application-classnotfoundexception-unable-to-instantiate-application" class="question-hyperlink">Android Application ClassNotFoundException, Unable to instantiate application</a>
+</div><div class="spacer">
+	<a href="/q/4781087" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/4781087/trouble-debugging-android-application-classnotfoundexception" class="question-hyperlink">Trouble debugging Android application: ClassNotFoundException</a>
+</div><div class="spacer">
+	<a href="/q/7304229" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/7304229/android-app-crashing-due-to-error-in-code-dont-understand-logcat-messages" class="question-hyperlink">Android App crashing due to error in code, don&#39;t understand logcat messages</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/3781151">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/4382973" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/4382973/issues-running-the-hello-jni-example-on-motodev-studio" class="question-hyperlink">issues running the hello-jni example on MotoDev studio</a>
+</div>
+<div class="spacer">
+<a href="/q/4443606" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="/questions/4443606/classnotfoundexception-on-galaxy-tab-only" class="question-hyperlink">ClassNotFoundException on Galaxy Tab (only)</a>
+</div>
+<div class="spacer">
+<a href="/q/5483947" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">5
+    </div>
+</a><a href="/questions/5483947/android-intermittent-class-not-found-run-time-exception" class="question-hyperlink">Android intermittent class not found run time exception</a>
+</div>
+<div class="spacer">
+<a href="/q/6016578" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/6016578/classnotfoundexception-when-install-the-application-admob" class="question-hyperlink">ClassNotFoundException when install the application (AdMob)</a>
+</div>
+<div class="spacer">
+<a href="/q/8912526" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/8912526/android-cnfexception" class="question-hyperlink">android cnfException</a>
+</div>
+<div class="spacer">
+<a href="/q/9240638" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/9240638/java-lang-classnotfoundexception-com-game-mrnom-mrnomgame-loader-dalvik-system" class="question-hyperlink">java.lang.ClassNotFoundException: com.game.mrnom.MrNomGame loader dalvik.system.PathClassLoader [/data/app/com.game.mrnom-1.apk]</a>
+</div>
+<div class="spacer">
+<a href="/q/9585186" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/9585186/adding-pushlink-jar-to-my-app-to-make-it-self-updating" class="question-hyperlink">Adding &ldquo;PushLink&rdquo; jar to my app to make it self-updating</a>
+</div>
+<div class="spacer">
+<a href="/q/11831603" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/11831603/unable-to-instantiate-activity-componentinfo-java-lang-classnotfoundexception" class="question-hyperlink">Unable to instantiate activity ComponentInfo{}: java.lang.ClassNotFoundException: in loader dalvik.system.PathClassLoader[/mnt/asec/com.-1/pkg.apk</a>
+</div>
+<div class="spacer">
+<a href="/q/12911377" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/12911377/cocos2dx-android-apk-crashes-on-start" class="question-hyperlink">Cocos2dx - android apk crashes on start</a>
+</div>
+<div class="spacer">
+<a href="/q/16654015" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/16654015/java-lang-classnotfoundexception-on-working-app" class="question-hyperlink">java.lang.ClassNotFoundException on working app?</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-woodworking" title="Woodworking Stack Exchange"></div><a href="http://woodworking.stackexchange.com/questions/1401/best-method-for-drilling-a-larger-diameter-hole-at-an-angle" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:603 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Best method for drilling a larger diameter hole at an angle
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="http://music.stackexchange.com/questions/32303/should-i-try-to-not-touch-unused-strings" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I try to not touch unused strings?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1277829/can-the-integers-be-made-into-a-vector-space-over-any-finite-field" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can the integers be made into a vector space over any Finite Field?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/47467/renting-a-manual-car-in-the-us" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Renting a Manual Car in the US
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/46469/should-i-tell-my-boss-im-leaving-before-going-job-hunting" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I tell my boss I&#39;m leaving before going job-hunting?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/61847/what-can-i-do-with-an-existing-feat-that-i-later-get-free-as-a-class-feature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What can I do with an existing feat that I later get free as a class feature?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/202797/does-bash-open-files-in-o-append-when-using-on-linux" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does bash open files in O_APPEND when using &quot;&gt;&gt;&quot; on linux?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/20061/should-i-try-to-protect-my-son-from-hearing-that-his-father-wants-nothing-to-do" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I try to protect my son from hearing that his father wants nothing to do with his two boys?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/30180352/replace-all-values-of-a-recursive-list-with-values-of-a-vector" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Replace all values of a recursive list with values of a vector
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/83206/test-if-directed-graph-is-connected" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Test if directed graph is connected
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/83181/how-to-find-a-length-of-a-curve-constructed-using-spline" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to find a length of a curve constructed using Spline?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/49962/draw-an-ascii-double-helix" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Draw An ASCII Double Helix
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/245488/site-hopping-non-related-subjects-wasting-time-on-the-internet" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Site hopping, non-related subjects, wasting time on the internet
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/244082/typesetting-before-tex-and-computers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Typesetting before TeX and computers?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/83118/hightlight-all-the-self-intersections-of-a-lissajous-figure" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Hightlight all the self-intersections of a Lissajous figure
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/61840/how-much-is-a-gold-piece-worth-in-modern-money" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How much is a Gold Piece worth in modern money?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/17053/how-long-can-a-medieval-siege-last" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How long can a medieval siege last?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-german" title="German Language Stack Exchange"></div><a href="http://german.stackexchange.com/questions/23229/what-is-the-name-of-the-dots-over-a-vowel-in-german-language" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:253 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the name of the dots over a vowel in German language?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/245569/what-do-you-call-a-person-who-chooses-to-ignore-someone-at-specific-periods-of-t" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What do you call a person who chooses to ignore someone at specific periods of time
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-matheducators" title="Mathematics Educators Stack Exchange"></div><a href="http://matheducators.stackexchange.com/questions/8052/justifications-for-why-learn-mathematics" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:548 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Justifications for: Why learn mathematics?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/46509/how-honest-to-be-in-a-resignation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How honest to be in a resignation
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/31234/for-a-given-element-do-heavier-isotopes-form-stronger-bonds-than-lighter-isotope" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    For a given element do heavier isotopes form stronger bonds than lighter isotopes?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/49935/rearranging-a-set-of-numbers-into-order" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Rearranging a set of numbers into order
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/61821/how-to-prevent-conflict-between-characters-from-becoming-conflict-between-player" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to prevent conflict between characters from becoming conflict between players?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/3781151" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/3781151/ivc/ab9e');});
+</script>
+<noscript>
+    <div><img src="/posts/3781151/ivc/ab9e" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.5.12.2569
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('android,classnotfoundexception');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|android|classnotfoundexception|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>            
+    </body>
+</html>

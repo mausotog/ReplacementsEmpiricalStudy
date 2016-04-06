@@ -1,0 +1,28 @@
+When i capture a screenshot, before the app shows any views the instrumentation Backend will crash:
+
+I/InstrumentationBackend( 2324): Added:'SetText', with key:'set_text'
+I/InstrumentationBackend( 2324): Added:'Touch', with key:'touch'
+I/System.out( 2324): URI: /ping
+I/System.out( 2324): URI: /
+I/System.out( 2324): header: {content-type=application/json, user-agent=python-requests/0.14.1 CPython/2.7.2 Linux/2.6.32-279.9.1.el6.x86_64, authorization=Basic amVua2luczozQjlSb2Y0TTZKcVlDZA==, accept-encoding=gzip, deflate, compress, host=localhost:34777, accept=*/*, content-length=63}
+I/System.out( 2324): params: {json={"command": "assert_text", "arguments": ["something", true]}
+I/System.out( 2324): }
+I/System.out( 2324): files: {}
+I/System.out( 2324): command: {"command": "assert_text", "arguments": ["something", true]}
+D/dalvikvm( 2324): GC_CONCURRENT freed 393K, 8% free 6792K/7303K, paused 3ms+2ms
+I/InstrumentationBackend( 2324): Got command:'Command:'Line:null,assert_text', arguments:'[somethig, true]'
+I/System.out( 2324): result:{"bonusInformation":[],"message":"","success":true}
+D/dalvikvm( 2324): GC_CONCURRENT freed 375K, 7% free 6836K/7303K, paused 4ms+3ms
+I/System.out( 2324): URI: /screenshot
+W/dalvikvm( 2324): threadid=14: thread exiting with uncaught exception (group=0xb3fd9180)
+E/AndroidRuntime( 2324): FATAL EXCEPTION: Thread-94
+E/AndroidRuntime( 2324): java.lang.NullPointerException
+E/AndroidRuntime( 2324): 	at android.graphics.Bitmap.createBitmap(Bitmap.java:455)
+E/AndroidRuntime( 2324): 	at sh.calaba.instrumentationbackend.actions.HttpServer.serve(HttpServer.java:90)
+E/AndroidRuntime( 2324): 	at sh.calaba.instrumentationbackend.actions.NanoHTTPD$HTTPSession.run(NanoHTTPD.java:412)
+E/AndroidRuntime( 2324): 	at java.lang.Thread.run(Thread.java:856)
+W/ActivityManager(  870): Error in app com.my.app running instrumentation ComponentInfo{sh.calaba.android.test/sh.calaba.instrumentationbackend.CalabashInstrumentationTestRunner}:
+W/ActivityManager(  870):   java.lang.NullPointerException
+W/ActivityManager(  870):   java.lang.NullPointerException
+I/ActivityManager(  870): Force stopping package com.my.app uid=10040
+I/ActivityManager(  870): Killing proc 2324:com.my.app/10040: force stop

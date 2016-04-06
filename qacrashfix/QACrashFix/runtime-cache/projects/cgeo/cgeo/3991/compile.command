@@ -1,0 +1,2 @@
+ant only-compile
+/main

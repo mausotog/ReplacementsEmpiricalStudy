@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+<Appenders>
+<File name = "MyFile" fileName="log4j2.log" append="false">
+</File>
+</Appenders>
+
+
+<Loggers>
+<Root level="debug">
+<AppenderRef ref="MyFile"/>
+</Root>
+</Loggers>
+</Configuration>

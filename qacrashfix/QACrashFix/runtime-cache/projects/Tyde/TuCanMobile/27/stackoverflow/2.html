@@ -1,0 +1,3075 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+    
+    <title>android - java.lang.IllegalArgumentException: View not attached to window manager - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="java.lang.IllegalArgumentException: View not attached to window manager" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have an activity that starts AsyncTask and shows progress dialog for the duration of operation. The activity is declared NOT be recreated by rotation or keyboard slide.
+
+    &amp;lt;activity " />
+    <meta property="og:url" content="http://stackoverflow.com/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=0eb95ef0243f"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=6628e6c62da3">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;java.lang.IllegalArgumentException: View not attached to window manager&#39;" href="/feeds/question/2745061">
+    <meta name="twitter:app:country" content="US" />
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:iphone" content="871299723" />
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager" />
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:ipad" content="871299723" />
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager" />
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:2745061});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '2745061');
+                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+        });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1428479469,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"a79554347e92cbc0695a04e1e8375545","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"41f0e33f16f8","js/moderator.en.js":"75062b042101","js/full-anon.en.js":"96cc6720bdb9","js/full.en.js":"e24e7afddc17","js/wmd.en.js":"736be19de739","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"1cb2a5eeaa36","js/help.en.js":"7a31c9feb96c","js/tageditor.en.js":"064c2f7dfae2","js/tageditornew.en.js":"cbe83d95be9c","js/inline-tag-editing.en.js":"21223186b436","js/revisions.en.js":"6c7265ea9fa1","js/review.en.js":"ccc3718553a1","js/tagsuggestions.en.js":"bb4721d888d2","js/post-validation.en.js":"c69da0075a04","js/explore-qlist.en.js":"4e6f969d97ee","js/events.en.js":"041145f2cc8d","js/keyboard-shortcuts.en.js":"4299556d4574","js/external-editor.en.js":"1eb5c5c11526","js/external-editor.en.js":"1eb5c5c11526","js/snippet-javascript.en.js":"b70d24a386a9","js/snippet-javascript-codemirror.en.js":"4d1069f72396"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f2745061%2fjava-lang-illegalargumentexception-view-not-attached-to-window-manager" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f2745061%2fjava-lang-illegalargumentexception-view-not-attached-to-window-manager" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 141 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f2745061%2fjava-lang-illegalargumentexception-view-not-attached-to-window-manager" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f2745061%2fjava-lang-illegalargumentexception-view-not-attached-to-window-manager" class="login-link">log in</a>
+
+                        <a href="/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+			<h1 itemprop="name"><a href="/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager" class="question-hyperlink">java.lang.IllegalArgumentException: View not attached to window manager</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="2745061"  id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk782679834",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk782679834">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="2745061">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">99</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>35</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>I have an activity that starts AsyncTask and shows progress dialog for the duration of operation. The activity is declared NOT be recreated by rotation or keyboard slide.</p>
+
+<pre><code>    &lt;activity android:name=".MyActivity" 
+              android:label="@string/app_name"
+              android:configChanges="keyboardHidden|orientation"
+              &gt;
+        &lt;intent-filter&gt;
+        &lt;/intent-filter&gt;
+    &lt;/activity&gt;
+</code></pre>
+
+<p>Once task completed, I dissmiss dialog, but on some phones (framework: 1.5, 1.6) such error is thrown:</p>
+
+<pre><code>java.lang.IllegalArgumentException: View not attached to window manager
+    at android.view.WindowManagerImpl.findViewLocked(WindowManagerImpl.java:356)
+    at android.view.WindowManagerImpl.removeView(WindowManagerImpl.java:201)
+    at android.view.Window$LocalWindowManager.removeView(Window.java:400)
+    at android.app.Dialog.dismissDialog(Dialog.java:268)
+    at android.app.Dialog.access$000(Dialog.java:69)
+    at android.app.Dialog$1.run(Dialog.java:103)
+    at android.app.Dialog.dismiss(Dialog.java:252)
+    at xxx.onPostExecute(xxx$1.java:xxx)
+</code></pre>
+
+<p>My code is:</p>
+
+<pre><code>final Dialog dialog = new AlertDialog.Builder(context)
+    .setTitle("Processing...")
+    .setCancelable(true)
+    .create();
+
+final AsyncTask&lt;MyParams, Object, MyResult&gt; task = new AsyncTask&lt;MyParams, Object, MyResult&gt;() {
+
+    @Override
+    protected MyResult doInBackground(MyParams... params) {
+        // Long operation goes here
+    }
+
+    @Override
+    protected void onPostExecute(MyResult result) {
+        dialog.dismiss();
+        onCompletion(result);
+    }
+};
+
+task.execute(...);
+
+dialog.setOnCancelListener(new OnCancelListener() {
+    @Override
+    public void onCancel(DialogInterface arg0) {
+        task.cancel(false);
+    }
+});
+
+dialog.show();
+</code></pre>
+
+<p>From what I have read (<a href="http://bend-ing.blogspot.com/2008/11/properly-handle-progress-dialog-in.html">http://bend-ing.blogspot.com/2008/11/properly-handle-progress-dialog-in.html</a>) and seen in Android sources, it looks like the only possible situation to get that exception is when activity was destroyed. But as I have mentioned, I forbid activity recreation for basic events.</p>
+
+<p>So any suggestions are very appreciated.</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/2745061" title="short permalink to this question" class="short-link" id="link-post-2745061">share</a><span class="lsep">|</span><a href="/posts/2745061/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2010-04-30 14:15:23Z" class="relativetime">Apr 30 '10 at 14:15</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/62192/alex2k8"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e1e2dd8c03c8e9e0680cfd802df0a04b?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/62192/alex2k8">alex2k8</a><br>
+        <span class="reputation-score" title="reputation score 14231" dir="ltr">14.2k</span><span title="30 gold badges"><span class="badge1"></span><span class="badgecount">30</span></span><span title="110 silver badges"><span class="badge2"></span><span class="badgecount">110</span></span><span title="184 bronze badges"><span class="badge3"></span><span class="badgecount">184</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2745061" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2745061" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								13 Answers
+                                <span style="display:none;" itemprop="answerCount">13</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="5102572"></a>
+<div id="answer-5102572" class="answer" data-answerid="5102572"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="5102572">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">162</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I too get this error <strong>sometimes</strong> when I dismiss dialog and finish activity from onPostExecute method. I guess sometimes activity gets finished before dialog successfully dismisses.</p>
+
+<p>Simple, yet effective solution that works for me</p>
+
+<pre><code>@Override
+protected void onPostExecute(MyResult result) {
+    try {
+        if ((this.mDialog != null) &amp;&amp; this.mDialog.isShowing()) {
+            this.mDialog.dismiss();
+        }
+    } catch (final IllegalArgumentException e) {
+        // Handle or log or ignore
+    } catch (final Exception e) {
+        // Handle or log or ignore
+    } finally {
+        this.mDialog = null;
+    }  
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/5102572" title="short permalink to this answer" class="short-link" id="link-post-5102572">share</a><span class="lsep">|</span><a href="/posts/5102572/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/5102572/revisions" title="show all edits to this post">edited <span title="2014-07-26 16:14:07Z" class="relativetime">Jul 26 '14 at 16:14</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/950427/jared-burrows"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/7759dcf56c547ce213a3d977f88a74d3?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/950427/jared-burrows">Jared Burrows</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">8,672</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="37 silver badges"><span class="badge2"></span><span class="badgecount">37</span></span><span title="59 bronze badges"><span class="badge3"></span><span class="badgecount">59</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-02-24 09:12:43Z" class="relativetime">Feb 24 '11 at 9:12</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/622828/damjan"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8aa48b6c5dd21699dd6b112d9bc57320?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/622828/damjan">Damjan</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,969</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-5102572" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="9"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-20245064" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">24</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Simple solution? Yes. Effective? Perhaps in this case. Would I recommend it? NO! Don&#39;t swallow <b>ALL</b> exceptions like that! I would not even catch the IllegalArgumentException, but look for another solution.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1310566/simon-andr%c3%a9-forsberg"
+                       title="7960 reputation"
+                       class="comment-user">Simon Andr&#233; Forsberg</a>
+                <span class="comment-date" dir="ltr"><span title="2013-01-25 11:11:19Z" class="relativetime-clean">Jan 25 '13 at 11:11</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-21743556" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Because usually empty try-catches is a bad idea... Although it sometimes can be the right thing to do.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1140962/thomas"
+                       title="1131 reputation"
+                       class="comment-user">Thomas</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-13 11:55:25Z" class="relativetime-clean">Mar 13 '13 at 11:55</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-24485784" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Damjan By your response you suggest catch type Exception. Well, this is a bad practice by Google. You can read about it here: <a href="http://source.android.com/source/code-style.html#dont-catch-generic-exception" rel="nofollow">Don&#39;t Catch Generic Exception</a>.</span>
+                &ndash;&nbsp;
+                    <a href="/users/727116/yaniv"
+                       title="668 reputation"
+                       class="comment-user">Yaniv</a>
+                <span class="comment-date" dir="ltr"><span title="2013-06-06 07:23:28Z" class="relativetime-clean">Jun 6 '13 at 7:23</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-26967474" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="warm">7</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I believe this an effective fix. In general cases, we should not do this, but since the Android Framework does not provide any easy check for us, we have to use unusual way. Also, if a dialog&#39;s isShowing() call working as we expect, we do not need this kind of hack.</span>
+                &ndash;&nbsp;
+                    <a href="/users/732197/simon-xin-cheng"
+                       title="106 reputation"
+                       class="comment-user">Simon Xin Cheng</a>
+                <span class="comment-date" dir="ltr"><span title="2013-08-21 20:10:49Z" class="relativetime-clean">Aug 21 '13 at 20:10</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-40054820" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">quick fix until something better is found</span>
+                &ndash;&nbsp;
+                    <a href="/users/3120659/rohit-tigga"
+                       title="391 reputation"
+                       class="comment-user">Rohit Tigga</a>
+                <span class="comment-date" dir="ltr"><span title="2014-09-03 04:23:26Z" class="relativetime-clean">Sep 3 '14 at 4:23</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-5102572" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post, or add one of your own" href=# onclick="">show <b>9</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1718520611",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1718520611">
+            </div>
+  
+<a name="4754932"></a>
+<div id="answer-4754932" class="answer" data-answerid="4754932"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="4754932">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">8</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I may have a workaround.</p>
+
+<p>Was having the same issue, where I am loading lots of items (via the file system) into a ListView via an AsyncTask.  Had the onPreExecute() firing up a ProgressDialog, and then both onPostExecute() and onCancelled() (called when the task is cancelled explicitly via AsyncTask.cancel()) closing it via .cancel().  </p>
+
+<p>Got the same "java.lang.IllegalArgumentException: View not attached to window manager" error when I was killing the dialog in the onCancelled() method of the AsyncTask (I'd seen this done in the excellent <a href="http://code.google.com/p/shelves/">Shelves app</a>).  </p>
+
+<p>The workaround was to create a public field in the AsyncTask that contains the ProgressDialog:</p>
+
+<pre><code>public ProgressDialog mDialog;
+</code></pre>
+
+<p>Then, in onDestroy() when I cancel my AsyncTask, I can also kill the associated dialog via:</p>
+
+<pre><code>AsyncTask.mDialog.cancel();
+</code></pre>
+
+<p>Calling AsyncTask.cancel() DOES trigger onCancelled() in the AsyncTask, but for some reason by the time that method is called, the View has already been destroyed and thus cancelling the dialog is failing.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/4754932" title="short permalink to this answer" class="short-link" id="link-post-4754932">share</a><span class="lsep">|</span><a href="/posts/4754932/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-01-21 02:50:36Z" class="relativetime">Jan 21 '11 at 2:50</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/357801/paul-mennega"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/b02d69f3dd9e6f32457cbe7c8e694e69?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/357801/paul-mennega">Paul Mennega</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,304</span><span title="10 gold badges"><span class="badge1"></span><span class="badgecount">10</span></span><span title="41 silver badges"><span class="badge2"></span><span class="badgecount">41</span></span><span title="77 bronze badges"><span class="badge3"></span><span class="badgecount">77</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4754932" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-22808361" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I find the UserTask implementation just excellent as @Paul mentioned. Source code is here:     <a href="http://code.google.com/p/shelves/source/browse/trunk/Shelves/src/org/curiouscreature/android/shelves/util/UserTask.java" rel="nofollow">code.google.com/p/shelves/source/browse/trunk/Shelves/src/org/&hellip;</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/245345/evi-song"
+                       title="191 reputation"
+                       class="comment-user">Evi Song</a>
+                <span class="comment-date" dir="ltr"><span title="2013-04-14 05:25:33Z" class="relativetime-clean">Apr 14 '13 at 5:25</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-22808373" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">While the use case can be found in the same project:  <a href="http://code.google.com/p/shelves/source/browse/trunk/Shelves/src/org/curiouscreature/android/shelves/activity/ShelvesActivity.java#613" rel="nofollow">code.google.com/p/shelves/source/browse/trunk/Shelves/src/org/&hellip;</a></span>
+                &ndash;&nbsp;
+                    <a href="/users/245345/evi-song"
+                       title="191 reputation"
+                       class="comment-user">Evi Song</a>
+                <span class="comment-date" dir="ltr"><span title="2013-04-14 05:26:45Z" class="relativetime-clean">Apr 14 '13 at 5:26</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-40551252" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This is probably the only right answer.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1000640/r41n"
+                       title="56 reputation"
+                       class="comment-user">r41n</a>
+                <span class="comment-date" dir="ltr"><span title="2014-09-18 08:24:04Z" class="relativetime-clean">Sep 18 '14 at 8:24</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4754932" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="12595328"></a>
+<div id="answer-12595328" class="answer" data-answerid="12595328"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="12595328">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Use this.</p>
+
+<blockquote>
+<pre><code>if(_dialog!=null &amp;&amp; _dialog.isShowing())
+_dialog.dismiss();
+</code></pre>
+</blockquote>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/12595328" title="short permalink to this answer" class="short-link" id="link-post-12595328">share</a><span class="lsep">|</span><a href="/posts/12595328/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/12595328/revisions" title="show all edits to this post">edited <span title="2012-10-11 11:39:47Z" class="relativetime">Oct 11 '12 at 11:39</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/716216/0x7fffffff"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/69048899f6f0b580e0ef03d5c9ffabae?s=32&d=identicon&r=PG&f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/716216/0x7fffffff">0x7fffffff</a><span class="mod-flair" title="moderator">&#9830;</span><br>
+        <span class="reputation-score" title="reputation score 49949" dir="ltr">49.9k</span><span title="18 gold badges"><span class="badge1"></span><span class="badgecount">18</span></span><span title="111 silver badges"><span class="badge2"></span><span class="badgecount">111</span></span><span title="159 bronze badges"><span class="badge3"></span><span class="badgecount">159</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-09-26 05:54:48Z" class="relativetime">Sep 26 '12 at 5:54</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/952105/pralabh-jain"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/2b9f1346153833cd86ec773025549fd0?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/952105/pralabh-jain">Pralabh Jain</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">78</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-12595328" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="1"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-16990421" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It&#39;s almost the same solution that @Damjan proposed.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1108213/yury"
+                       title="11659 reputation"
+                       class="comment-user">Yury</a>
+                <span class="comment-date" dir="ltr"><span title="2012-09-26 15:18:05Z" class="relativetime-clean">Sep 26 '12 at 15:18</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-17849534" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="hot">21</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This is not enough, the IllegalArgumentException still happens with this check.</span>
+                &ndash;&nbsp;
+                    <a href="/users/540990/murphy"
+                       title="2232 reputation"
+                       class="comment-user">Murphy</a>
+                <span class="comment-date" dir="ltr"><span title="2012-10-29 17:14:06Z" class="relativetime-clean">Oct 29 '12 at 17:14</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-18809471" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Not working, still crashes.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1597833/meh"
+                       title="6880 reputation"
+                       class="comment-user">meh</a>
+                <span class="comment-date" dir="ltr"><span title="2012-12-04 07:29:55Z" class="relativetime-clean">Dec 4 '12 at 7:29</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-25845077" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I did same solution, but still not know if it is effective. Only difference, i nested two if&#39;s to be sure that second part .isShowing() will not be evaluated if is null.</span>
+                &ndash;&nbsp;
+                    <a href="/users/964080/nick"
+                       title="904 reputation"
+                       class="comment-user">Nick</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-18 17:17:39Z" class="relativetime-clean">Jul 18 '13 at 17:17</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-31020649" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This is not sufficient.</span>
+                &ndash;&nbsp;
+                    <a href="/users/429938/trante"
+                       title="5975 reputation"
+                       class="comment-user">trante</a>
+                <span class="comment-date" dir="ltr"><span title="2013-12-20 18:12:13Z" class="relativetime-clean">Dec 20 '13 at 18:12</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-12595328" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post, or add one of your own" href=# onclick="">show <b>1</b> more comment</a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="15330408"></a>
+<div id="answer-15330408" class="answer" data-answerid="15330408"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="15330408">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>i agree a opinion of 'Damjan'.<br>
+if you use many dialogs, should close all dialog in onDestroy() or onStop().<br>
+then you may be able to reduce the frequency 'java.lang.IllegalArgumentException: View not attached to window manager' exception occurs.</p>
+
+<pre><code>@Override
+protected void onDestroy() {
+    Log.d(TAG, "called onDestroy");
+    mDialog.dismiss();
+    super.onDestroy();
+}
+</code></pre>
+
+<p><br><br>
+but little exceed...<br>
+to make it more clear, you prevent to show any dialog after onDestroy called.<Br>
+i don't use as below. but it's clear.<br></p>
+
+<pre><code>private boolean mIsDestroyed = false;
+
+private void showDialog() {
+    closeDialog();
+
+    if (mIsDestroyed) {
+        Log.d(TAG, "called onDestroy() already.");
+        return;
+    }
+
+    mDialog = new AlertDialog(this)
+        .setTitle("title")
+        .setMessage("This is DialogTest")
+        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        })
+        .create();
+    mDialog.show();
+}
+
+private void closeDialog() {
+    if (mDialog != null) {
+        mDialog.dismiss();
+    }
+}
+
+@Override
+protected void onDestroy() {
+    Log.d(TAG, "called onDestroy");
+    mIsDestroyed = true;
+    closeDialog();
+    super.onDestroy();
+}
+</code></pre>
+
+<p><br></p>
+
+<p>good luck!</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/15330408" title="short permalink to this answer" class="short-link" id="link-post-15330408">share</a><span class="lsep">|</span><a href="/posts/15330408/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/15330408/revisions" title="show all edits to this post">edited <span title="2013-03-11 03:28:30Z" class="relativetime">Mar 11 '13 at 3:28</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-03-11 02:46:48Z" class="relativetime">Mar 11 '13 at 2:46</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1676616/hogun"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/65020aed4f2f4b78fa9ac5b79d729f27?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1676616/hogun">Hogun</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">126</span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15330408" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-21740684" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I&#39;ll always prefer avoiding empty catch blocks. worth a try, but since this error is hard to produce - only time will tell if it&#39;s actually working. thanks anyway.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1928327/dror-fichman"
+                       title="342 reputation"
+                       class="comment-user">Dror Fichman</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-13 10:33:51Z" class="relativetime-clean">Mar 13 '13 at 10:33</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-22218019" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">what is empty catch blocks? i don&#39;t use try/catch. a mIsDestroyed variable is exceeded working. but if you write to code that dialog show after some working in other thread, you might need this variable. when other thread is working, if activity is finished, you can look at this exception.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1676616/hogun"
+                       title="126 reputation"
+                       class="comment-user">Hogun</a>
+                <span class="comment-date" dir="ltr"><span title="2013-03-27 09:57:32Z" class="relativetime-clean">Mar 27 '13 at 9:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-37602939" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I had the same prob and when i added @Override     public void onPause(){          if(dialog != null)         	dialog.dismiss();         super.onPause();     } till present i dont have this error ... so I think its the same like your answer and its really useful</span>
+                &ndash;&nbsp;
+                    <a href="/users/1085360/chris-sim"
+                       title="469 reputation"
+                       class="comment-user">Chris Sim</a>
+                <span class="comment-date" dir="ltr"><span title="2014-06-20 11:57:35Z" class="relativetime-clean">Jun 20 '14 at 11:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-15330408" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="2827827"></a>
+<div id="answer-2827827" class="answer" data-answerid="2827827"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="2827827">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I think your code is correct unlike the other answer suggested. onPostExecute will run on the UI thread.  That's the whole point of AsyncTask - you don't have to worry about calling runOnUiThread or deal with handlers.  Furthermore, according to the docs, dismiss() can be safely called from any thread (not sure they made this the exception).</p>
+
+<p>Perhaps it's a timing issue where dialog.dismiss() is getting called after the activity is no longer displayed?</p>
+
+<p>What about testing what happens if you comment out the setOnCancelListener and then exit the activity while the background task is running?  Then your onPostExecute will try to dismiss an already dismissed dialog.  If the app crashes you can probably just check if the dialog is open before dismissing it.</p>
+
+<p>I'm having the exact same problem so I'm going to try it out in code.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/2827827" title="short permalink to this answer" class="short-link" id="link-post-2827827">share</a><span class="lsep">|</span><a href="/posts/2827827/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-05-13 15:02:51Z" class="relativetime">May 13 '10 at 15:02</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/135199/brandon-orourke"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/R0j4V.jpg?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/135199/brandon-orourke">Brandon O&#39;Rourke</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">8,635</span><span title="11 gold badges"><span class="badge1"></span><span class="badgecount">11</span></span><span title="36 silver badges"><span class="badge2"></span><span class="badgecount">36</span></span><span title="51 bronze badges"><span class="badge3"></span><span class="badgecount">51</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2827827" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2874833" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I also looked into dimiss() code, and indeed, it can be safely called from any thread. BTW, I have a problem with testing, as this issue happens on users phones, and I was never able to reproduce by myself :-( So trying to figure out by analyzing code... According to timing. I was thinking on this, but can&#39;t imagine a situation how the Activity can be closed before Dialog. If BACK pressed, than it will cancel Dialog first. And the activity automatic recreation is forbidden by manifest file, but may be it still can be recreated some how? Let me know if you find some thing!</span>
+                &ndash;&nbsp;
+                    <a href="/users/62192/alex2k8"
+                       title="14231 reputation"
+                       class="comment-user owner">alex2k8</a>
+                <span class="comment-date" dir="ltr"><span title="2010-05-14 10:55:53Z" class="relativetime-clean">May 14 '10 at 10:55</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2827827" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="3364716"></a>
+<div id="answer-3364716" class="answer" data-answerid="3364716"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="3364716">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>alex, </p>
+
+<p>I could be wrong here, but I suspect that multiple phones 'in the wild' have a bug that causes  them to switch orientation on applications that are marked as statically oriented. This happens quite a bit on my personal phone, and on many of the test phones our group uses (including droid, n1, g1, hero). Typically an app marked as statically oriented (perhaps vertically) will lay itself out for a second or two using a horizontal orientation, and then immediately switch back. End result is that even though you don't want your app to switch orientation, you have to be prepared that it may. I don't know under what exact conditions this behavior can be reproduced, I don't know if it is specific to a version of Android. All I know is that I have seen it happen plenty of times :(</p>
+
+<p>I would recommend using the solution provided <a href="http://bend-ing.blogspot.com/2008/11/properly-handle-progress-dialog-in.html" rel="nofollow">in the link you posted</a> that suggests overriding the Activity onCreateDialog method and letting the Android OS manage the lifecycle of your Dialogs. It looks to me like even though you don't want your activity to switch orientations, it is switching orientation somewhere. You can try to track down a method that will always prevent orientation switching, but I am trying to tell you that I personally don't believe there is a foolproof way that works on all current Android phones in the market. </p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/3364716" title="short permalink to this answer" class="short-link" id="link-post-3364716">share</a><span class="lsep">|</span><a href="/posts/3364716/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-07-29 16:17:51Z" class="relativetime">Jul 29 '10 at 16:17</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/119592/hamy"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/6c0b439309cc9b90aa74f89f82416ef5?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/119592/hamy">Hamy</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6,379</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="31 silver badges"><span class="badge2"></span><span class="badgecount">31</span></span><span title="60 bronze badges"><span class="badge3"></span><span class="badgecount">60</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-3364716" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-15479458" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You can keep your device from switching orientations, but there are a bunch of other config changes that destroy/recreate your Activity - a common one is sliding a keyboard in or out.</span>
+                &ndash;&nbsp;
+                    <a href="/users/574859/maximumgoat"
+                       title="1674 reputation"
+                       class="comment-user">MaximumGoat</a>
+                <span class="comment-date" dir="ltr"><span title="2012-07-26 19:57:07Z" class="relativetime-clean">Jul 26 '12 at 19:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-3364716" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="26828858"></a>
+<div id="answer-26828858" class="answer" data-answerid="26828858"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="26828858">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Here is the correct solution to solving this problem:</p>
+
+<pre><code>public void hideProgress() {
+    if(mProgressDialog != null) {
+        if(mProgressDialog.isShowing()) { //check if dialog is showing.
+
+            //get the Context object that was used to great the dialog
+            Context context = ((ContextWrapper)mProgressDialog.getContext()).getBaseContext();
+
+            //if the Context used here was an activity AND it hasn't been finished or destroyed
+            //then dismiss it
+            if(context instanceof Activity) { 
+                if(!((Activity)context).isFinishing() &amp;&amp; !((Activity)context).isDestroyed()) 
+                    mProgressDialog.dismiss();
+            } else //if the Context used wasnt an Activity, then dismiss it too
+                mProgressDialog.dismiss();
+        }
+        mProgressDialog = null;
+    }
+}
+</code></pre>
+
+<p>Instead of blindly catching all exceptions, this solution addresses the root of the problem: trying to dimiss a dialog when the activity used to initialize the dialog has already been finished. Working on my Nexus 4 running KitKat, but should work for all versions of Android.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/26828858" title="short permalink to this answer" class="short-link" id="link-post-26828858">share</a><span class="lsep">|</span><a href="/posts/26828858/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-11-09 13:47:01Z" class="relativetime">Nov 9 '14 at 13:47</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/613356/kachi"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/4db57f5edce35625e4ce830261190f0f?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/613356/kachi">Kachi</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,010</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-26828858" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-47045811" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><code>isDestroyed</code> requires API 17+</span>
+                &ndash;&nbsp;
+                    <a href="/users/770467/exception-al"
+                       title="5060 reputation"
+                       class="comment-user">Exception Al</a>
+                <span class="comment-date" dir="ltr"><span title="2015-04-03 19:36:50Z" class="relativetime-clean">Apr 3 at 19:36</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-26828858" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="16657603"></a>
+<div id="answer-16657603" class="answer" data-answerid="16657603"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="16657603">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I had the same problem  while using a button to sync a list from the server:
+1) I click the button
+2) A progress dialog shows up while dowloading the list from server
+3) I turn the device to another orientation
+4) java.lang.IllegalArgumentException: View not attached to window manager on postExecute() of the AsyncTask during progress.dismiss().</p>
+
+<p>As I tried the fix I figured that even if the problem doesn't occur my list wasn't showing all items.</p>
+
+<p>I figured that what I wanted was for the AsyncTask to finish (and dismiss the dialog) before the activity beign destroyed, so I made the asynctask object an attribute and overrided the onDestroy() method.</p>
+
+<p>If the asynctask takes a lot of time the user maybe will feel that the device is slow, but I think that's the price he pays for trying to change the device orientation while the progress dialog is showing up. And even if it takes some time the app doesn't crash.</p>
+
+<pre><code>private AsyncTask&lt;Boolean, Void, Boolean&gt; atask;
+
+@Override
+protected void onDestroy() {
+    if (atask!=null)
+        try {
+            atask.get();
+        } catch (InterruptedException e) {
+        } catch (ExecutionException e) {
+        }
+    super.onDestroy();
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/16657603" title="short permalink to this answer" class="short-link" id="link-post-16657603">share</a><span class="lsep">|</span><a href="/posts/16657603/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-05-20 20:14:24Z" class="relativetime">May 20 '13 at 20:14</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1769873/shadowglas"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/176b8d1186bc3735e38aa9f9d3b584ee?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1769873/shadowglas">shadowglas</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">26</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16657603" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-16657603" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="18983346"></a>
+<div id="answer-18983346" class="answer" data-answerid="18983346"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="18983346">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>What worked for me most of the time is to verify whether the Activity is not finishing.</p>
+
+<pre><code>if (!mActivity.isFinishing()) {
+    dialog.dismiss();
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/18983346" title="short permalink to this answer" class="short-link" id="link-post-18983346">share</a><span class="lsep">|</span><a href="/posts/18983346/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-24 13:43:04Z" class="relativetime">Sep 24 '13 at 13:43</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1910719/herve-thu"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/62c1dc8940107155b5a69d82fa9a8878?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1910719/herve-thu">Herve Thu</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">90</span><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18983346" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18983346" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="24776410"></a>
+<div id="answer-24776410" class="answer" data-answerid="24776410"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="24776410">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I had the same problem, you can solve it by:</p>
+
+<pre><code>@Override
+protected void onPostExecute(MyResult result) {
+    try {
+        if ((this.mDialog != null) &amp;&amp; this.mDialog.isShowing()) {
+            this.mDialog.dismiss();
+        }
+    } catch (final IllegalArgumentException e) {
+        // Handle or log or ignore
+    } catch (final Exception e) {
+        // Handle or log or ignore
+    } finally {
+        this.mDialog = null;
+    }  
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/24776410" title="short permalink to this answer" class="short-link" id="link-post-24776410">share</a><span class="lsep">|</span><a href="/posts/24776410/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/24776410/revisions" title="show all edits to this post">edited <span title="2014-07-26 16:12:37Z" class="relativetime">Jul 26 '14 at 16:12</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/950427/jared-burrows"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/7759dcf56c547ce213a3d977f88a74d3?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/950427/jared-burrows">Jared Burrows</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">8,672</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="37 silver badges"><span class="badge2"></span><span class="badgecount">37</span></span><span title="59 bronze badges"><span class="badge3"></span><span class="badgecount">59</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-07-16 08:55:04Z" class="relativetime">Jul 16 '14 at 8:55</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1114732/spacebiker"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/8202a9c983521e56adbd7a8952e09ce4?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1114732/spacebiker">spacebiker</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1,434</span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="21 bronze badges"><span class="badge3"></span><span class="badgecount">21</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-24776410" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-24776410" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="2746467"></a>
+<div id="answer-2746467" class="answer" data-answerid="2746467"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="2746467">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>What you might want to do is use a handler in you actual activity and use a background thread that can pass messages to the handler which can in turn handle these messages and control the dialogs.</p>
+
+<p>It will look something like this. Change it to suit your needs.</p>
+
+<pre><code>    public class MainActivity extends Activity {
+
+    private ProgressThread progressThread;
+    private static AlertDialog mDialog;
+
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.location);
+
+// code for starting the thread and showing dialog
+        AlertDialog.Builder builder;
+        Context ctx = this;     
+        LayoutInflater inflater = (LayoutInflater)ctx.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.your_dialog_layout, (ViewGroup)findViewById(R.id.your_layout_id));
+        builder = new AlertDialog.Builder(ctx);
+        builder.setView(layout);
+        mDialog = builder.create();
+        mDialog.show();
+        MyHandler handler = new MyHandler();
+        progressThread = new ProgressThread(handler);
+        progressThread.start();
+   }
+
+        private class MyHandler extends Handler{
+            public void handleMessage(Message msg){
+                int total = msg.getData().getInt("total");
+                if(total == 100){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setMessage("Your message here");
+                    builder.show();
+                }
+            }
+        }
+
+       private class ProgressThread extends Thread{
+            Handler mHandler;
+
+            ProgressThread(Handler h){
+                mHandler = h;
+            }
+
+            public synchronized void run(){
+                int count = 0;
+                while(count &lt;= 100){
+                    try{
+                        Thread.sleep(100);
+         // Do your background tasks here
+                    }catch(InterruptedException e){
+                        Log.e("ERROR: ", "Thread Interrupted");
+                    }
+                    Message msg = mHandler.obtainMessage();
+                    Bundle b = new Bundle();
+                    b.putInt("total", count);
+                    msg.setData(b);
+                    mHandler.sendMessage(msg);
+                }
+            }
+    }
+</code></pre>
+
+<p>I did not do any syntax checking but am posting snippets from my code. So please check for syntactical errors.
+Hope it helps you.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/2746467" title="short permalink to this answer" class="short-link" id="link-post-2746467">share</a><span class="lsep">|</span><a href="/posts/2746467/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/2746467/revisions" title="show all edits to this post">edited <span title="2010-08-14 06:16:43Z" class="relativetime">Aug 14 '10 at 6:16</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-04-30 17:34:07Z" class="relativetime">Apr 30 '10 at 17:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/229266/achie"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/43d7dc6c514ca8f1c7ae954b4364b3ce?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/229266/achie">achie</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,297</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="21 silver badges"><span class="badge2"></span><span class="badgecount">21</span></span><span title="46 bronze badges"><span class="badge3"></span><span class="badgecount">46</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2746467" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2776731" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">According to docs: AsyncTask enables proper and easy use of the UI thread. This class allows to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.</span>
+                &ndash;&nbsp;
+                    <a href="/users/62192/alex2k8"
+                       title="14231 reputation"
+                       class="comment-user owner">alex2k8</a>
+                <span class="comment-date" dir="ltr"><span title="2010-04-30 19:37:05Z" class="relativetime-clean">Apr 30 '10 at 19:37</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3494753" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">ditto! I am fairly certain that AsyncTask was created to allow interaction w/UI thread and that the progress methods such as onPostExecute() are run on the UI thread</span>
+                &ndash;&nbsp;
+                    <a href="/users/119592/hamy"
+                       title="6379 reputation"
+                       class="comment-user">Hamy</a>
+                <span class="comment-date" dir="ltr"><span title="2010-07-29 16:07:49Z" class="relativetime-clean">Jul 29 '10 at 16:07</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2746467" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="25620181"></a>
+<div id="answer-25620181" class="answer" data-answerid="25620181"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="25620181">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<pre><code>@Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+            if (progressDialog != null &amp;&amp; progressDialog.isShowing()) {
+                Log.i(TAG, "onPostexucte");
+                progressDialog.dismiss();
+}
+}
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/25620181" title="short permalink to this answer" class="short-link" id="link-post-25620181">share</a><span class="lsep">|</span><a href="/posts/25620181/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-09-02 09:32:15Z" class="relativetime">Sep 2 '14 at 9:32</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2466169/vikseln"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/mUXOD.jpg?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2466169/vikseln">vikseln</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">71</span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-25620181" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-40026276" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">While this code snippet may answer the question providing some explanation of how it solves the problem will help future visitors to the site understand your answer</span>
+                &ndash;&nbsp;
+                    <a href="/users/107591/robv"
+                       title="15481 reputation"
+                       class="comment-user">RobV</a>
+                <span class="comment-date" dir="ltr"><span title="2014-09-02 10:00:46Z" class="relativetime-clean">Sep 2 '14 at 10:00</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-25620181" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="26085165"></a>
+<div id="answer-26085165" class="answer" data-answerid="26085165"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="26085165">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>The activity is declared NOT be recreated by rotation or keyboard slide.</p>
+</blockquote>
+
+<p>Just got the same problem. Fix for API level 13 or higer.
+<br>From Android docs:</p>
+
+<blockquote>
+  <p>Note: If your application targets API level 13 or higher (as declared by the minSdkVersion and targetSdkVersion attributes), then you should also declare the "screenSize" configuration, because it also changes when a device switches between portrait and landscape orientations.</p>
+</blockquote>
+
+<p>So i've changed my manifest to this:</p>
+
+<pre><code>&lt;activity
+        android:name="MyActivity"
+        android:configChanges="orientation|screenSize"
+        android:label="MyActivityName" &gt;
+&lt;/activity&gt;
+</code></pre>
+
+<p>And now it works fine. Activity is not recreating when i rotate the phone, progress dialog and view stay the same. No error for me.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/26085165" title="short permalink to this answer" class="short-link" id="link-post-26085165">share</a><span class="lsep">|</span><a href="/posts/26085165/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="/posts/26085165/revisions" title="show all edits to this post">edited <span title="2014-09-28 13:15:10Z" class="relativetime">Sep 28 '14 at 13:15</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-09-28 13:10:10Z" class="relativetime">Sep 28 '14 at 13:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2758504/shunt"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ee109b465789fca4ec58f34c1ff252fb?s=32&d=identicon&r=PG&f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2758504/shunt">Shunt</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">23</span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-26085165" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-26085165" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+				        <div class="question-status">
+        <h2>                    <b>protected</b> by <a href="/users/250260/elenasys">Elenasys</a> <span dir="ltr"><span title="2014-04-03 01:42:50Z" class="relativetime">Apr 3 '14 at 1:42</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality answers, posting an answer now requires 10 <a href="/help/whats-reputation">reputation</a> on this site.
+<br /><br />
+Would you like to answer one of these <a href="/unanswered?fromProtectedNotice=true">unanswered questions</a> instead?
+</p>
+    </div>
+
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2010-04-30 14:15:23Z"><b>4 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>58412 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2014-11-09 13:47:01Z">4 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Upcoming Events
+                </div>
+                <hr />
+    <div class="spacer bulletin-item-important">
+        
+    <div class="bulletin-item-type"><a href="http://stackoverflow.com/election" class="question-hyperlink"><div class="favicon favicon-stackoverflow" title="Stack Overflow"></div></a></div>
+    <div class="bulletin-item-content">
+        <a href="http://stackoverflow.com/election" class="question-hyperlink">2015 Community Moderator Election</a>
+        <div>ends <span title="2015-04-21 20:00:00Z">Apr 21</span></div>
+    </div>
+    <br class="cbt" />
+</div>
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2015/04/stack-overflow-developer-survey-2015-the-results/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2015/04/stack-overflow-developer-survey-2015-the-results/" class="question-hyperlink">Stack Overflow Developer Survey 2015: The Results</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1725989134",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1725989134">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(e){var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,r=setTimeout,h=document,q,b,m={},l=location.hash;if(l.length>1){l.substr(1).split("&").forEach(function(t){var u=t.split("=");this[g(u[0])]=g(u[1])},m)}b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(!m.tags){q=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(q.length>0){m.tags=Array.prototype.join.call(q,";")}}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(t){return a(t).html().replace(/\s+/g,"").length>0}function s(){var t=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(t.length===0){return true}return !j(t)}function n(){var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(z,y){return"d="+y.id}).get().join("&");var x=["l","ip","ac","eng","prov","tags","theme"];var u=Object.keys(m).filter(function(y){return x.indexOf(y)!==-1}).map(function(y){return i(y)+"="+i(m[y])}).join("&");if(u){v+="&"+u}var w=h.createElement("script");w.type="text/javascript";w.src=e+(e.indexOf("?")===-1?"?":"&")+v;h.body.appendChild(w)}}function o(){if(s()){d=r(o,f);return}if(m.abort){k()}n()}function k(){clearTimeout(d);a(c).each(function(){var t=a(this);if(!j(t)){var v=t;var u=t.parents(".everyonelovesstackoverflow").first();if(u.length>0){v=u}v.remove()}})}r(k,2000);var d=r(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);            </script>
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/16188961" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/16188961/progress-dialogue-box-giving-exception-in-asynchtask" class="question-hyperlink">progress dialogue box giving exception in asynchtask</a>
+</div><div class="spacer">
+	<a href="/q/24759082" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="/questions/24759082/logcat-analize-issue" class="question-hyperlink">Logcat analize issue</a>
+</div><div class="spacer">
+	<a href="/q/19538282" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">6</div>
+	</a>
+	<a href="/questions/19538282/view-not-attached-to-window-manager-dialog-dismiss" class="question-hyperlink">View not attached to window manager, dialog dismiss</a>
+</div><div class="spacer">
+	<a href="/q/11246996" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">7</div>
+	</a>
+	<a href="/questions/11246996/view-not-attached-to-window-manager-whats-the-solution" class="question-hyperlink">View not attached to window manager (whats the solution?)</a>
+</div><div class="spacer">
+	<a href="/q/4998616" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="/questions/4998616/illegalargumentexception-why" class="question-hyperlink">IllegalArgumentException? Why?</a>
+</div><div class="spacer">
+	<a href="/q/13103237" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">4</div>
+	</a>
+	<a href="/questions/13103237/android-rare-runtime-exception-that-does-not-point-to-any-class-where-it-start" class="question-hyperlink">Android - rare runtime exception that does not point to any class where it starts</a>
+</div><div class="spacer">
+	<a href="/q/12161388" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">-1</div>
+	</a>
+	<a href="/questions/12161388/very-unusual-error-while-dismissing-progressdialog-in-asynctask" class="question-hyperlink">Very unusual error while dismissing ProgressDialog in AsyncTask</a>
+</div><div class="spacer">
+	<a href="/q/17045601" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/17045601/deezer-sdk-for-android-how-to-give-access-token-to-a-deezerrequest" class="question-hyperlink">Deezer SDK for Android, how to give access_token to a DeezerRequest?</a>
+</div><div class="spacer">
+	<a href="/q/14055018" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">7</div>
+	</a>
+	<a href="/questions/14055018/the-view-is-not-attached-to-a-window" class="question-hyperlink">The view is not attached to a window</a>
+</div><div class="spacer">
+	<a href="/q/8065066" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">5</div>
+	</a>
+	<a href="/questions/8065066/is-there-a-way-to-determine-whether-it-is-possible-to-call-a-dialog-dismiss-wi" class="question-hyperlink">Is there a way to determine whether it is possible to call a dialog.dismiss() without empty try-catch block?</a>
+</div>					<div class="spacer more">
+				<a href="/questions/linked/2745061">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/2224676" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">58
+    </div>
+</a><a href="/questions/2224676/android-view-not-attached-to-window-manager" class="question-hyperlink">android View not attached to window manager</a>
+</div>
+<div class="spacer">
+<a href="/q/6264439" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="/questions/6264439/java-lang-illegalargumentexception-view-not-attached-to-window-manager" class="question-hyperlink">java.lang.IllegalArgumentException: View not attached to window manager</a>
+</div>
+<div class="spacer">
+<a href="/q/10898771" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">3
+    </div>
+</a><a href="/questions/10898771/android-java-lang-illegalargumentexception-view-not-attached-to-window-manager" class="question-hyperlink">Android java.lang.IllegalArgumentException: View not attached to window manager</a>
+</div>
+<div class="spacer">
+<a href="/q/13647750" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/13647750/java-lang-illegalargumentexception-view-not-attached-to-window-manager-when-c" class="question-hyperlink">&ldquo;java.lang.IllegalArgumentException: View not attached to window manager&rdquo; when calling Toast</a>
+</div>
+<div class="spacer">
+<a href="/q/15580988" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="/questions/15580988/java-lang-illegalargumentexception-view-not-attached-to-window-manager-no-act" class="question-hyperlink">java.lang.IllegalArgumentException: View not attached to window manager - no activity listed</a>
+</div>
+<div class="spacer">
+<a href="/q/16099703" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/16099703/android-application-crashes-java-lang-illegalargumentexception-view-not-attach" class="question-hyperlink">Android- application crashes java.lang.IllegalArgumentException: View not attached to window manager</a>
+</div>
+<div class="spacer">
+<a href="/q/22119824" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/22119824/view-not-attached-to-window-manager" class="question-hyperlink">View not attached to window manager</a>
+</div>
+<div class="spacer">
+<a href="/q/22924825" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">18
+    </div>
+</a><a href="/questions/22924825/view-not-attached-to-window-manager-crash" class="question-hyperlink">View not attached to window manager crash</a>
+</div>
+<div class="spacer">
+<a href="/q/26570802" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/26570802/android-java-lang-illegalargumentexception-view-not-attached-to-window-manager" class="question-hyperlink">android -java.lang.IllegalArgumentException: View not attached to window manager</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/19310/how-to-nurture-my-child-to-be-fearless" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to nurture my child to be fearless
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-boardgames" title="Board &amp; Card Games Stack Exchange"></div><a href="http://boardgames.stackexchange.com/questions/23707/carcassonne-completed-city" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:147 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Carcassonne Completed City
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/174658/drying-clothes-with-the-suns-heat-without-any-air" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Drying clothes with the sun&#39;s heat, without any air
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/75890/why-do-showers-have-hot-and-cold-knobs-rather-than-temperature-and-quanti" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do showers have &quot;hot&quot; and &quot;cold&quot; knobs rather than &quot;temperature&quot; and &quot;quantity&quot; knobs?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/194914/script-tries-to-create-files-even-though-it-shouldnt-have-to" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Script tries to create files even though it shouldn&#39;t have to?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/54285/why-do-we-say-the-earth-and-not-an-earth" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do we say &#39;The earth&#39; and not &#39;An earth&#39;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/43164/why-do-reviews-of-articles-often-start-with-a-summary-of-the-article" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do reviews of articles often start with a summary of the article?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1224717/could-such-a-polynomial-rational-function-exist" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Could such a polynomial/rational function exist?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/45740/where-is-this-on-highway-24-highway-12-in-utah" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where is this on highway 24/highway 12 in Utah?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-outdoors" title="The Great Outdoors Stack Exchange"></div><a href="http://outdoors.stackexchange.com/questions/8106/how-far-would-you-need-to-fall-for-it-to-be-fatal" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:395 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How far would you need to fall for it to be fatal?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/237403/how-to-colour-branch-edge-on-a-tree-using-tikz" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to colour branch/edge on a tree using tikz?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/86126/project-euler-problem-1" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Project Euler -problem 1
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/29507454/eric-lippert-and-neal-gafter-c-sharp-puzzle" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Eric Lippert and Neal Gafter C# puzzle
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/43140/should-referees-assume-that-authors-will-see-the-full-report-if-their-paper-is-r" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should referees assume that authors will see the full report if their paper is rejected?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/43122/to-what-extent-is-reviewing-work-beneficial-for-young-researchers-career" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    To what extent is reviewing work beneficial for young researcher&#39;s career?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/46548/what-is-the-full-formula-for-calculating-a-fico-9-credit-score" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the full formula for calculating a FICO 9 credit score?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/174479/how-can-the-contact-point-of-rolling-body-have-zero-velocity" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can the contact point of rolling body have zero velocity?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/43733/employer-has-changed-offer-after-i-already-accepted" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Employer has changed offer after I already accepted
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/13794/how-would-cities-be-designed-that-were-threatened-by-dragons" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How would cities be designed that were threatened by dragons?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="http://music.stackexchange.com/questions/31509/difference-between-equal-temperament-and-just-intonation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Difference between equal temperament and just intonation
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-anime" title="Anime &amp; Manga Stack Exchange"></div><a href="http://anime.stackexchange.com/questions/20696/what-do-servants-expect-will-happen-at-the-end-of-the-holy-grail-war" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:477 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What do servants expect will happen at the end of the Holy Grail war?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/194936/how-to-drop-characters-from-in-front-of-a-string" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to &#39;drop&#39; characters from in front of a string?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-cooking" title="Seasoned Advice"></div><a href="http://cooking.stackexchange.com/questions/56418/how-can-i-tell-the-difference-between-a-rabbit-and-a-cat" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:49 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I tell the difference between a rabbit and a cat?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-bicycles" title="Bicycles Stack Exchange"></div><a href="http://bicycles.stackexchange.com/questions/29885/pedals-hits-the-ground-too-often-while-turning-at-relatively-high-speed" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:126 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Pedals hits the ground too often while turning at relatively high speed
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/2745061" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/2745061/ivc/8c9c');});
+</script>
+<noscript>
+    <div><img src="/posts/2745061/ivc/8c9c" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.4.8.2455
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('android');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|android|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>                
+    </body>
+</html>
