@@ -12,6 +12,9 @@ NUMBEROFPROJECTSTODOWNLOAD="$1"
 
 #The link is hardcoded, and it is the link of the java projects in github sorted by the number of stars
 pythonArgs="https://github.com/search?utf8=%E2%9C%93&q=language%3AJava+stars%3A%3E1000&type=Repositories&ref=searchresults $NUMBEROFPROJECTSTODOWNLOAD"
+
+#WHEN RUNNING THE ACTUAL THING, REMOVE ALL THESE COMMENTS UNTIL INE 31, AND PUT A COMMENT ON LINE 34
+
 #python ExtractGitHubRepos.py $pythonArgs > sampleRepos.txt
 
 #repoFile=../sampleRepos.txt
