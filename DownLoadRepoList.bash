@@ -15,40 +15,43 @@ pythonArgs="https://github.com/search?utf8=%E2%9C%93&q=language%3AJava+stars%3A%
 
 #WHEN RUNNING THE ACTUAL THING, REMOVE ALL THESE COMMENTS UNTIL INE 31, AND PUT A COMMENT ON LINE 34
 
-#python ExtractGitHubRepos.py $pythonArgs > sampleRepos.txt
+python ExtractGitHubRepos.py $pythonArgs > sampleRepos.txt
 
-#repoFile=../sampleRepos.txt
-#rm -rf GitRepos
-#mkdir GitRepos
-#cd GitRepos/
-#while read line
-#do
-#	echo "git clone $line"
-#	CLONECOMMAND="git clone $line"
-#	eval $CLONECOMMAND
-#	echo ""  	
-	#sleep 1
-#done < $repoFile
-
-#REMOVE THIS LINE
+repoFile=../sampleRepos.txt
+rm -rf GitRepos
+mkdir GitRepos
 cd GitRepos/
-
-#create a file with all the project folders
-rm -f folders.txt
-ls > foldersTmp.txt
-grep -vwE "foldersTmp.txt" foldersTmp.txt > foldersTmp2.txt
-rm foldersTmp.txt
-grep -vwE "projectFolders.txt" foldersTmp2.txt > foldersTmp3.txt
-rm foldersTmp2.txt
-grep -vwE "logResult.txt" foldersTmp3.txt >projectFolders.txt
-rm foldersTmp3.txt
-
-#creates commitList.txt with pairs of the hashs of the bug fixing commits
-projectFolders=projectFolders.txt
 while read projectFolder
 do
-  echo "Working on project $projectFolder"
-  cd $projectFolder
+	echo "git clone $projectFolder"
+	CLONECOMMAND="git clone $projectFolder"
+	eval $CLONECOMMAND
+	echo ""  	
+	#sleep 1
+
+
+#REMOVE THIS LINE
+#cd GitRepos/
+
+#create a file with all the project folders
+#rm -f folders.txt
+#ls > foldersTmp.txt
+#grep -vwE "foldersTmp.txt" foldersTmp.txt > foldersTmp2.txt
+#rm foldersTmp.txt
+#grep -vwE "projectFolders.txt" foldersTmp2.txt > foldersTmp3.txt
+#rm foldersTmp2.txt
+#grep -vwE "logResult.txt" foldersTmp3.txt > projectFolders.txt
+#rm foldersTmp3.txt
+
+#creates commitList.txt with pairs of the hashs of the bug fixing commits
+#projectFolders=projectFolders.txt
+#while read projectFolder
+#do
+
+  folderNameTmp=$(echo $projectFolder | sed 's#.*/##g')
+  folderName=$(echo "${folderNameTmp::-4}")
+  echo "Working on project $folderName"
+  cd $folderName
   git log > logResult.txt
   python ../../readLogData.py logResult.txt commitList.txt
 
@@ -113,12 +116,14 @@ do
   done < $commitList
 
   cd .. #bugFixingCommitVersions
-  cd .. #projectFolder
-  rm -f projectFolders.txt
+  mv BugFixingCommitVersions ../"$folderName"BugFixingCommitVersions
+  cd .. #folderName
+  rm -r $folderName #remove the cloned project
+  #rm -f projectFolders.txt
   echo ""
-done < $projectFolders
+#done < $projectFolders
 
-
+done < $repoFile 
 
 
 
