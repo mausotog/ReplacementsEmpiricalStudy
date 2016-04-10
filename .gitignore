@@ -1,10 +1,11 @@
-syntax:glob
 *.class
 bin/*
 tmp/
 *~
 .*\.orig$
+<<<<<<< HEAD
 GitRepos/*
 *.log
 logResul.txt
 sampleRepos.txt
+
