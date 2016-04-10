@@ -1,0 +1,10 @@
+syntax:glob
+*.class
+bin/*
+tmp/
+*~
+.*\.orig$
+GitRepos/*
+*.log
+logResul.txt
+sampleRepos.txt
