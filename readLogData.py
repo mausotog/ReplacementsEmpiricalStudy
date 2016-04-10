@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#readLogData.py is the file I used to find commits which had the workd "fix" in them and it then prints out the commits that were before and after that change.  Look into the results a little bit before you use it because I may have the labels switched around for some reason.
+
 
 #This file exports the commits before and after finding the word fix in the 
 #git logs.
@@ -16,11 +16,11 @@ def main(argv=None):
     fixCount=0
     totalCount=0
     containsAFixBool = True
-    pattern = re.compile('[Ff]ix') # - used for gzip, also for libtiff
-    pattern = re.compile('[Bb]ug')
-    pattern = re.compile('#\d+')
-    pattern = re.compile('[Bb]ug #\d+')
-    pattern = re.compile('[Ff]ix(ed|es|ing)? [Bb]ug #\d+') # - used for php
+    pattern = re.compile('[Ff]ix(ed|es|ing)?(\s)*([Bb]ug|[Ii]ssue)(s)?') # - used for gzip, also for libtiff
+    #pattern = re.compile('([Bb]ug|[Ii]ssue)(s)?')
+    #pattern = re.compile('#\d+')
+    #pattern = re.compile('[Bb]ug #\d+')
+    #pattern = re.compile('[Ff]ix(ed|es|ing)? [Bb]ug #\d+') # - used for php
     fin = open(sys.argv[1],'r')
     fout = open(sys.argv[2],'w')
     hashArray = []
@@ -41,7 +41,7 @@ def main(argv=None):
            else:
 	     hashArray.pop(-1)  # removes last element
 	   #fout.write("\n")
-           fout.write(line+"\n")
+           #fout.write(line+"\n") # Uncomment this line if you want to see the full message being saved in commitList.txt
            #fout.write("\n")
            fixCount=fixCount+1
 

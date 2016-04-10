@@ -1,6 +1,9 @@
 #!/usr/bin/python
 
-#This program scrapes the github search results for java and prints the github clone link for the respositories.  Be aware that GitHub does not produce the same results every time when the user searches for java.  Also, 
+#How to use: python ExtractGitHubRepos.py "githubUrl" 10 > sampleRepos.txt
+#param 2 can only be a multiple of 10. Ex:10,20,100,120, etc.
+
+#This program scrapes the github search results for java and prints the github clone link for the respositories.  Be aware that GitHub does not produce the same results every time when the user searches for java. 
 
 from bs4 import BeautifulSoup
 import urllib2
