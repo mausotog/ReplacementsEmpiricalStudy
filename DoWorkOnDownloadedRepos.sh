@@ -5,31 +5,30 @@
 
 #This program reads a list of git respositories and clones each respository in the #list in the current directory
 
-# Example usage: ./DownLoadRepoList.bash 10
+# Example usage: ./DoWorkOnDownloadedRepos.sh /home/mau/Research/replacements/ReplacementsEmpiricalStudy/qacrashfix/QACrashFix/
 
 
-NUMBEROFPROJECTSTODOWNLOAD="$1"
+QACRASHFIXDIRECTORY="$1"
 
 #The link is hardcoded, and it is the link of the java projects in github sorted by the number of stars
-pythonArgs="https://github.com/search?utf8=%E2%9C%93&q=language%3AJava+stars%3A%3E1000&type=Repositories&ref=searchresults $NUMBEROFPROJECTSTODOWNLOAD"
+#pythonArgs="https://github.com/search?utf8=%E2%9C%93&q=language%3AJava+stars%3A%3E1000&type=Repositories&ref=searchresults $NUMBEROFPROJECTSTODOWNLOAD"
 
-#WHEN RUNNING THE ACTUAL THING, REMOVE ALL THESE COMMENTS UNTIL INE 31, AND PUT A COMMENT ON LINE 34
+#echo "Calling ExtractGitHubRepos"
+#python ExtractGitHubRepos.py $pythonArgs > sampleRepos.txt
+#echo "Finishing ExtractGitHubRepos"
 
-echo "Calling ExtractGitHubRepos"
-python ExtractGitHubRepos.py $pythonArgs > sampleRepos.txt
-echo "Finishing ExtractGitHubRepos"
 
-repoFile=../sampleRepos.txt
-rm -rf GitRepos
-echo "Creating GitRepos"
-mkdir GitRepos
+#rm -rf GitRepos
+#echo "Creating GitRepos"
+#mkdir GitRepos
 cd GitRepos/
+repoFile=../sampleRepos.txt
 while read projectFolder
 do
-  echo "git clone $projectFolder"
-  CLONECOMMAND="git clone $projectFolder"
-  eval $CLONECOMMAND
-  echo ""  	
+  #echo "git clone $projectFolder"
+  #CLONECOMMAND="git clone $projectFolder"
+  #eval $CLONECOMMAND
+  #echo ""  	
   #sleep 1
 
 
@@ -52,7 +51,7 @@ do
 #do
 
   folderNameTmp=$(echo $projectFolder | sed 's#.*/##g')
-  folderName=$(echo "${folderNameTmp::-4}")
+  folderName=$(echo "${folderNameTmp::-4}") #take the folder name from the url
   echo "Working on project $folderName"
   cd $folderName
   git log > logResult.txt
@@ -61,7 +60,7 @@ do
 
   #THIS IS A TEMPORAL SOLUTION TO REDUCE THE TIME IT TAKES TO RUN THE SCRIPT. IT TAKES ONLY THE LAST 10 COMMITS. REMOVE IT
   head -10 commitList.txt > commitListSmall.txt 
-  #REMOVE WHATS ABOVE
+  #REMOVE WHATS ABOVE. ALSO CHANGE BELOW commitListSmall.txt FOR commitList.txt
 
   rm -rf BugFixingCommitVersions
   mkdir BugFixingCommitVersions
@@ -129,8 +128,8 @@ do
 	  nameOfFile=${fileName##*/} #name of the file with the .java extension. Example: example.java
           currentDirectory=$(pwd)
           nameOfFileWithoutExtension="${nameOfFile%.*}"
-          echo "Calling QACrashFix with $nameOfFile"
-	  /usr/lib/jvm/java-7-oracle/bin/java -Dfile.encoding=UTF-8 -classpath /home/mau/workspaceReplacements/Test/bin:/home/mau/Research/replacements/ReplacementsEmpiricalStudy/qacrashfix/QACrashFix/target/exception-fix-0.0.1-SNAPSHOT.jar:/home/mau/workspaceReplacements/Test/lib/log4j-api-2.5.jar:/home/mau/workspaceReplacements/Test/lib/log4j-core-2.5.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.resources_3.10.1.v20150725-1910.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.osgi_3.10.102.v20160118-1700.jar Test $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory"$nameOfFileWithoutExtension.txt
+          echo "Calling QACrashFix for project $folderName in commit $commitNumber with file $nameOfFile"
+	  /usr/lib/jvm/java-7-oracle/bin/java -Dfile.encoding=UTF-8 -classpath $QACRASHFIXDIRECTORY/test/Test/bin:$QACRASHFIXDIRECTORY/target/exception-fix-0.0.1-SNAPSHOT.jar:$QACRASHFIXDIRECTORY/test/Test/lib/log4j-api-2.5.jar:$QACRASHFIXDIRECTORY/test/Test/lib/log4j-core-2.5.jar:$QACRASHFIXDIRECTORY/test/Test/lib/org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:$QACRASHFIXDIRECTORY/test/Test/lib/org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:$QACRASHFIXDIRECTORY/test/Test/lib/org.eclipse.core.resources_3.10.1.v20150725-1910.jar:$QACRASHFIXDIRECTORY/test/Test/lib/org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:$QACRASHFIXDIRECTORY/test/Test/lib/org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:$QACRASHFIXDIRECTORY/test/Test/lib/org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar:$QACRASHFIXDIRECTORY/test/Test/lib/org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:$QACRASHFIXDIRECTORY/test/Test/lib/org.eclipse.osgi_3.10.102.v20160118-1700.jar Test $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory"$nameOfFileWithoutExtension.txt
 
         done < $fileNames
       fi
@@ -140,7 +139,6 @@ do
   cd .. #bugFixingCommitVersions
   mv BugFixingCommitVersions ../"$folderName"BugFixingCommitVersions
   cd .. #folderName
-  #UNCOMMENT THIS LINE BELOW  
   #rm -r $folderName #remove the cloned project
 
   #rm -f projectFolders.txt

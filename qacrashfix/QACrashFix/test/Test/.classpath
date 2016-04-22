@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 8 [1.8.0_60]"/>
 	<classpathentry kind="lib" path="../../target/exception-fix-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-api-2.5.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-core-2.5.jar"/>
@@ -13,5 +12,6 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.jdt.core_3.11.1.v20150902-1521.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.osgi_3.10.102.v20160118-1700.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

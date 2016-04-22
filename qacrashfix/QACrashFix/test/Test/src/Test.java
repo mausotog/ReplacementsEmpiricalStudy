@@ -166,7 +166,7 @@ public class Test {
 
 	public static void main(String[] args) throws Exception, IOException
 	{
-		String pathPrefix = "/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/";
+		String pathPrefix = "/home/mau/Research/replacements/ReplacementsEmpiricalStudy/";
 		String fileName = "TransportPercolateAction.java";
 		byte[] beforeBytes = Files.readAllBytes(Paths.get(
 				args[0]));
