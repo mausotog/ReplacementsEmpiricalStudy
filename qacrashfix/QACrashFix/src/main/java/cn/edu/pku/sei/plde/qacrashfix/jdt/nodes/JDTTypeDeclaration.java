@@ -19,15 +19,20 @@ public class JDTTypeDeclaration extends JDTTreeNode {
 		_listListChildren.add(_typeDeclaration.bodyDeclarations());
 		_listListChildren.add(_typeDeclaration.modifiers());
 	}
-	
+
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
+		if (referenceNode == null) return false;
 		TypeDeclaration other = (TypeDeclaration) referenceNode.getParent();
+		if (other == null) return false;
+		if (_typeDeclaration == null) return false;
 		if (referenceNode == other.getSuperclassType()){
+			if (!(node instanceof Type)) return false;
 			_typeDeclaration.setSuperclassType((Type) node);
 			return true;
 		}
 		if (referenceNode == other.getName()){
+			if (!(node instanceof SimpleName)) return false;
 			_typeDeclaration.setName((SimpleName) node);
 			return true;
 		}

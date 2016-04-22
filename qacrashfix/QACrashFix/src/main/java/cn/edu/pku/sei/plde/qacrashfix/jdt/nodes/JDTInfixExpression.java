@@ -26,11 +26,13 @@ public class JDTInfixExpression extends JDTTreeNode {
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		InfixExpression other = (InfixExpression) referenceNode.getParent();
+		if (other == null) return false;
 		if (referenceNode == other.getLeftOperand()){
 			_infixExpr.setLeftOperand((Expression) node);
 			return true;
 		}
 		if (referenceNode == other.getRightOperand()){
+			if (node == null) return false;
 			_infixExpr.setRightOperand((Expression) node);
 			return true;
 		}

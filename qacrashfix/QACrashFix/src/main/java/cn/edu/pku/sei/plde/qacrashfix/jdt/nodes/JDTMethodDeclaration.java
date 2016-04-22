@@ -23,15 +23,19 @@ public class JDTMethodDeclaration extends JDTTreeNode {
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		MethodDeclaration other= (MethodDeclaration) referenceNode.getParent();
+		if (other == null) return false;
 		if (referenceNode==other.getName()){
+			if (!(node instanceof SimpleName)) return false;
 			_methodDeclaration.setName((SimpleName) node);
 			return true;
 		}
 		if (referenceNode == other.getReturnType2()){
+			if (!(node instanceof Type)) return false;
 			_methodDeclaration.setReturnType2((Type) node);
 			return true;
 		}
 		if (referenceNode == other.getBody()){
+			if (!(node instanceof Block)) return false;
 			_methodDeclaration.setBody((Block) node);
 			return true;
 		}

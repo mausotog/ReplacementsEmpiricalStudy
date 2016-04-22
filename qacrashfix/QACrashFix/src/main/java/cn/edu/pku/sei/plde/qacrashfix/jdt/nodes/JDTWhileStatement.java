@@ -20,6 +20,7 @@ public class JDTWhileStatement extends JDTTreeNode {
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		WhileStatement other = (WhileStatement) referenceNode.getParent();
+		if (other == null) return false;
 		if (referenceNode == other.getExpression()){
 			_while.setExpression((Expression) node);
 			return true;

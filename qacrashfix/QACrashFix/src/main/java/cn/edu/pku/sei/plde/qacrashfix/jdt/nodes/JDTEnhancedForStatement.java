@@ -21,15 +21,18 @@ public class JDTEnhancedForStatement extends JDTTreeNode {
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		EnhancedForStatement other = (EnhancedForStatement) referenceNode.getParent();
+		if (other == null) return false;
 		if (referenceNode == other.getParameter()){
 			_enhancedFor.setParameter((SingleVariableDeclaration) node);
 			return true;
 		}
 		if (referenceNode == other.getExpression()){
+			if (!(node instanceof Expression)) return false;
 			_enhancedFor.setExpression((Expression) node);
 			return true;
 		}
 		if (referenceNode == other.getBody()){
+			if (node == null) return false;
 			_enhancedFor.setBody((Statement) node);
 			return true;
 		}

@@ -19,6 +19,7 @@ public class JDTArrayType extends JDTTreeNode {
 	}
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
+		if (node == null) return false;
 		_arrayType.setComponentType((Type) node);
 		return true;
 	}

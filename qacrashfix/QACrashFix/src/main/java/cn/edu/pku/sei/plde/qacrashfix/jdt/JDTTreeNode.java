@@ -150,6 +150,7 @@ public class JDTTreeNode extends TreeNode {
 	private final boolean replaceInList(List list, ASTNode node, ASTNode newNode){
 		if (! list.contains(node))
 			return false;
+		if (node.getClass() != newNode.getClass()) return false;
 		list.set(list.indexOf(node), newNode);
 		return true;
 	}
@@ -160,5 +161,4 @@ public class JDTTreeNode extends TreeNode {
 		list.remove(node);
 		return true;
 	}
-	
 }

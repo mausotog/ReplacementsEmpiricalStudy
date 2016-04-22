@@ -23,11 +23,13 @@ public class JDTSingleVariableDeclaration extends JDTTreeNode {
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		SingleVariableDeclaration parentThat  = (SingleVariableDeclaration) referenceNode.getParent();
+		if (parentThat == null) return false;
 		if (referenceNode == parentThat.getInitializer()){
 			_singleVariableDeclaration.setInitializer((Expression) node);
 			return true;
 		}
 		if (referenceNode == parentThat.getName() ){
+			if (node == null) return false;
 			_singleVariableDeclaration.setName((SimpleName) node);
 			return true;
 		}
