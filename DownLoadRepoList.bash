@@ -57,6 +57,11 @@ do
   cd $folderName
   git log > logResult.txt
   python ../../readLogData.py logResult.txt commitList.txt
+  echo "commitList.txt created"
+
+  #THIS IS A TEMPORAL SOLUTION TO REDUCE THE TIME IT TAKES TO RUN THE SCRIPT. IT TAKES ONLY THE LAST 10 COMMITS. REMOVE IT
+  head -10 commitList.txt > commitListSmall.txt 
+  #REMOVE WHATS ABOVE
 
   rm -rf BugFixingCommitVersions
   mkdir BugFixingCommitVersions
@@ -64,9 +69,9 @@ do
   commitNumber=0
 
   #saves the before and after versions for each of the modified files
-  commitList=../commitList.txt
+  commitList=../commitListSmall.txt
   while read commitHashs
-    do
+  do
       beforeHash=$(echo $commitHashs| cut -d' ' -f 1)
       afterHash=$(echo $commitHashs| cut -d' ' -f 2)
       #beforeHash=${commitHashs:0:40}
@@ -99,35 +104,35 @@ do
       if [ -n "$stringFilesModifiedInThisCommit" ]; then
         mkdir before
         cd before
-          fileNames=../filesModifiedInThisCommit.txt
-         while read fileName
-          do
-	    nameOfFile=${fileName##*/}
-	    git show $beforeHash:$fileName > $nameOfFile
-          done < $fileNames
+        fileNames=../filesModifiedInThisCommit.txt
+        while read fileName
+        do
+	  nameOfFile=${fileName##*/}
+	  git show $beforeHash:$fileName > $nameOfFile
+        done < $fileNames
         cd .. #get out from before folder
 
         mkdir after
         cd after
-          fileNames=../filesModifiedInThisCommit.txt
-          while read fileName
-          do
-	    nameOfFile=${fileName##*/}
-            git show $afterHash:$fileName > $nameOfFile
-          done < $fileNames
+        fileNames=../filesModifiedInThisCommit.txt
+        while read fileName
+        do
+	  nameOfFile=${fileName##*/}
+          git show $afterHash:$fileName > $nameOfFile
+        done < $fileNames
         cd .. #get out from after folder
       
 
-      fileNames=./filesModifiedInThisCommit.txt
-          while read fileName
-          do
-	    nameOfFile=${fileName##*/} #name of the file with the .java extension. Example: example.java
-            currentDirectory=$(pwd)
-   	    nameOfFileWithoutExtension="${nameOfFile%.*}"
-            echo "Calling QACrashFix with $nameOfFile"
-	    /usr/lib/jvm/java-7-oracle/bin/java -Dfile.encoding=UTF-8 -classpath /home/mau/workspaceReplacements/Test/bin:/home/mau/Research/replacements/ReplacementsEmpiricalStudy/qacrashfix/QACrashFix/target/exception-fix-0.0.1-SNAPSHOT.jar:/home/mau/workspaceReplacements/Test/lib/log4j-api-2.5.jar:/home/mau/workspaceReplacements/Test/lib/log4j-core-2.5.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.resources_3.10.1.v20150725-1910.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.osgi_3.10.102.v20160118-1700.jar Test $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory"$nameOfFileWithoutExtension.txt
+        fileNames=./filesModifiedInThisCommit.txt
+        while read fileName
+        do
+	  nameOfFile=${fileName##*/} #name of the file with the .java extension. Example: example.java
+          currentDirectory=$(pwd)
+          nameOfFileWithoutExtension="${nameOfFile%.*}"
+          echo "Calling QACrashFix with $nameOfFile"
+	  /usr/lib/jvm/java-7-oracle/bin/java -Dfile.encoding=UTF-8 -classpath /home/mau/workspaceReplacements/Test/bin:/home/mau/Research/replacements/ReplacementsEmpiricalStudy/qacrashfix/QACrashFix/target/exception-fix-0.0.1-SNAPSHOT.jar:/home/mau/workspaceReplacements/Test/lib/log4j-api-2.5.jar:/home/mau/workspaceReplacements/Test/lib/log4j-core-2.5.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.resources_3.10.1.v20150725-1910.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:/home/mau/workspaceReplacements/Test/lib/org.eclipse.osgi_3.10.102.v20160118-1700.jar Test $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory"$nameOfFileWithoutExtension.txt
 
-          done < $fileNames
+        done < $fileNames
       fi
     cd .. #get out from $commitFolderName folder
   done < $commitList
@@ -135,12 +140,14 @@ do
   cd .. #bugFixingCommitVersions
   mv BugFixingCommitVersions ../"$folderName"BugFixingCommitVersions
   cd .. #folderName
-  rm -r $folderName #remove the cloned project
+  #UNCOMMENT THIS LINE BELOW  
+  #rm -r $folderName #remove the cloned project
+
   #rm -f projectFolders.txt
   echo ""
 #done < $projectFolders
 
-  cd "$folderName"BugFixingCommitVersions
+  #cd "$folderName"BugFixingCommitVersions
 
 done < $repoFile 
 
