@@ -169,13 +169,15 @@ public class Test {
 		String pathPrefix = "/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/";
 		String fileName = "TransportPercolateAction.java";
 		byte[] beforeBytes = Files.readAllBytes(Paths.get(
-				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit1/before/" + fileName));
+				args[0]));
+//				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit1/before/" + fileName));
 //				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/before.java"));
 		JDTTreeGenerator beforeTree1 = new JDTTreeGenerator(new String(beforeBytes));
 		JDTTreeGenerator beforeTree2 = new JDTTreeGenerator(new String(beforeBytes));
 
 		byte[] afterBytes = Files.readAllBytes(Paths.get(
-				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit1/after/" + fileName));
+				args[1]));
+//				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit1/after/" + fileName));
 //				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/after.java"));
 		JDTTreeGenerator afterTree = new JDTTreeGenerator(new String(afterBytes));
 
