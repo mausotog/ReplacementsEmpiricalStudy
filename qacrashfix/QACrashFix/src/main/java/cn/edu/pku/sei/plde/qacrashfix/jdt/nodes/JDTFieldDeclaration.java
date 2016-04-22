@@ -20,6 +20,7 @@ public class JDTFieldDeclaration extends JDTTreeNode {
 	
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
+		if (node == null) return false;
 		if (referenceNode == ((FieldDeclaration)referenceNode.getParent()).getType()){
 			_fieldDec.setType((Type) node);
 			return true;
@@ -29,7 +30,7 @@ public class JDTFieldDeclaration extends JDTTreeNode {
 	
 	@Override
 	protected JDTTreeNode createNewInAST(AST ast) {
-		return new JDTFieldDeclaration(ast.newFieldDeclaration(null));
+		return new JDTFieldDeclaration(ast.newFieldDeclaration(ast.newVariableDeclarationFragment()));
 	}
 
 }

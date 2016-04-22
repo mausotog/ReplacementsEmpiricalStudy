@@ -21,6 +21,7 @@ public class JDTVariableDeclarationFragment extends JDTTreeNode {
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		VariableDeclarationFragment other = (VariableDeclarationFragment) referenceNode.getParent();
+		if (other == null) return false;
 		if (referenceNode == other.getName()){
 			_variableDeclarationFragment.setName((SimpleName) node);
 			return true;

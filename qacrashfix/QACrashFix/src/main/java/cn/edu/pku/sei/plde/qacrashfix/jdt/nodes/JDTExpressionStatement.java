@@ -22,6 +22,7 @@ public class JDTExpressionStatement extends JDTTreeNode {
 	
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
+		if (!(node instanceof Expression)) return false;
 		_exprStmt.setExpression((Expression) node);
 		return true;
 	}

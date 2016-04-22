@@ -84,7 +84,8 @@ public class Test {
 				return 21;
 
 			default:
-				throw new Exception("Unexpected statement type encountered: " + statementType);
+				return -1;
+//				throw new Exception("Unexpected statement type encountered: " + statementType);
 		}
 	}
 
@@ -165,13 +166,17 @@ public class Test {
 
 	public static void main(String[] args) throws Exception, IOException
 	{
+		String pathPrefix = "/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/";
+		String fileName = "TransportPercolateAction.java";
 		byte[] beforeBytes = Files.readAllBytes(Paths.get(
-				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/before.java"));
+				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit1/before/" + fileName));
+//				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/before.java"));
 		JDTTreeGenerator beforeTree1 = new JDTTreeGenerator(new String(beforeBytes));
 		JDTTreeGenerator beforeTree2 = new JDTTreeGenerator(new String(beforeBytes));
 
 		byte[] afterBytes = Files.readAllBytes(Paths.get(
-				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/after.java"));
+				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit1/after/" + fileName));
+//				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/after.java"));
 		JDTTreeGenerator afterTree = new JDTTreeGenerator(new String(afterBytes));
 
 		QuestionSourceMapper qsMapper = new QuestionSourceMapper(beforeTree1.getTree(), beforeTree2.getTree());
@@ -187,10 +192,13 @@ public class Test {
 			if (editAction instanceof ReplaceAction)
 			{
 				ReplaceAction replaceAction = (ReplaceAction)editAction;
-				
+
 				int fromIndex = getStatementTypeIndex(replaceAction.getReplacedNode().getClass().getSimpleName());
 				int toIndex = getStatementTypeIndex(replaceAction.getNewNode().getClass().getSimpleName());
-				++replacementCounts[fromIndex][toIndex];
+				if ((fromIndex >= 0) && (toIndex >= 0))
+				{
+					++replacementCounts[fromIndex][toIndex];
+				}
 			}
 		}
 

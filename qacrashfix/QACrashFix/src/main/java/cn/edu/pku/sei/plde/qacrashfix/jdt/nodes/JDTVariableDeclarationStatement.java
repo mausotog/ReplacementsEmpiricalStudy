@@ -21,6 +21,8 @@ public class JDTVariableDeclarationStatement extends JDTTreeNode {
 	
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
+		if (referenceNode == null) return false;
+		if (referenceNode.getParent() == null) return false;
 		if (((VariableDeclarationStatement)referenceNode.getParent()).getType() == referenceNode){
 			_variableDeclarationStatement.setType((Type) node);
 			return true;
@@ -30,7 +32,7 @@ public class JDTVariableDeclarationStatement extends JDTTreeNode {
 	
 	@Override
 	protected JDTTreeNode createNewInAST(AST ast) {
-		return new JDTVariableDeclarationStatement(ast.newVariableDeclarationStatement(null));
+		return new JDTVariableDeclarationStatement(ast.newVariableDeclarationStatement(ast.newVariableDeclarationFragment()));
 	}
 
 }

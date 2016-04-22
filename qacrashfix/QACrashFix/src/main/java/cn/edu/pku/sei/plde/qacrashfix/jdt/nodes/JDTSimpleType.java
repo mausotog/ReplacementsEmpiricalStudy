@@ -20,6 +20,7 @@ public class JDTSimpleType extends JDTTreeNode {
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		SimpleType parentThat = (SimpleType) referenceNode.getParent();
+		if (parentThat == null) return false;
 		if (referenceNode == parentThat.getName()){
 			_simpleType.setName((Name) node);
 			return true;

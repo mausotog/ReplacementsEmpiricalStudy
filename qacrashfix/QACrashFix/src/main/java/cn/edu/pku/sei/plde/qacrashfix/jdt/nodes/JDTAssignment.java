@@ -21,6 +21,7 @@ public class JDTAssignment extends JDTTreeNode {
 		Assignment other = (Assignment) referenceNode.getParent();
 		
 		if (referenceNode == other.getLeftHandSide()){
+			if (!(node instanceof Expression)) return false;
 			_assign.setLeftHandSide((Expression) node);
 			return true;
 		}

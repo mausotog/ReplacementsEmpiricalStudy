@@ -106,6 +106,7 @@ public abstract class TreeNode{
 	}
 	
 	public boolean doInsert(InsertAction insertion){
+		if (_children.size() < (insertion.getIndex() + 1)) return false;
 		_children.add(insertion.getIndex(), insertion.getInsertedNode());
 		insertion.getInsertedNode().setParent(this);
 		return true;
@@ -113,6 +114,7 @@ public abstract class TreeNode{
 	
 	public boolean doMove(MoveAction move){
 		move.getMovedNode().remove();
+		if (getChildren().size() < (move.getIndex() + 1)) return false;
 		getChildren().add(move.getIndex(), move.getMovedNode());
 		move.getMovedNode().setParent(this);
 		return true;
@@ -125,6 +127,8 @@ public abstract class TreeNode{
 	}
 	
 	public boolean doCopy(CopyAction copy){
+		if (_children.size() < (copy.getIndex() + 1)) return false;
+
 		_children.add(copy.getIndex(), copy.getCopiedNode());
 		copy.getCopiedNode().setParent(this);
 		return true;

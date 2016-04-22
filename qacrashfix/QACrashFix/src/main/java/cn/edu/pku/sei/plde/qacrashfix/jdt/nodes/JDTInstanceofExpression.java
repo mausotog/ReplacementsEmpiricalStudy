@@ -20,11 +20,13 @@ public class JDTInstanceofExpression extends JDTTreeNode {
 	@Override
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		InstanceofExpression other = (InstanceofExpression) referenceNode.getParent();
+		if (other == null) return false;
 		if (referenceNode == other.getLeftOperand()){
 			_instanceOf.setLeftOperand((Expression) node);
 			return true;
 		}
 		if (referenceNode == other.getRightOperand()){
+			if (node == null) return false;
 			_instanceOf.setRightOperand((Type) node);
 			return true;
 		}

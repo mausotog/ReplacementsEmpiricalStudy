@@ -26,6 +26,8 @@ public class Example {
 		final List<WebElement> elements = driver.findElements(By
 				.className("adLinkSB"));
 
+		System.out.println("count: " + elements.size());
+
 		final ApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "applicationContext.xml" });
 
@@ -34,7 +36,7 @@ public class Example {
 
 		matcher.keyword(pattern1).keyword(pattern2).keyword("Krakowska");
 
-		System.out.println("Just testing add");
+//		System.out.println("Just testing add");
 
 		int i = 1;
 		for (final WebElement el : elements) {
@@ -42,7 +44,10 @@ public class Example {
 			process(e, matcher);
 		}
 
-		System.out.println("Finish");
+		if (i == 1)
+		{
+			i = 0;
+		}
 	}
 
 	private static void process(final WebElement e, final ContentMatcher matcher) {

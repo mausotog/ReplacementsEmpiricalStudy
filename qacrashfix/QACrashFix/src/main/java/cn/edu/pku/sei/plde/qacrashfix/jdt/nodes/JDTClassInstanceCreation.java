@@ -25,6 +25,7 @@ public class JDTClassInstanceCreation extends JDTTreeNode {
 	protected boolean setChildWithReference(ASTNode node, ASTNode referenceNode) {
 		ClassInstanceCreation other = (ClassInstanceCreation) referenceNode.getParent();
 		if (referenceNode == other.getAnonymousClassDeclaration()){
+			if (!(node instanceof AnonymousClassDeclaration)) return false;
 			_classInstanceCreation.setAnonymousClassDeclaration((AnonymousClassDeclaration) node);
 			return true;
 		}
