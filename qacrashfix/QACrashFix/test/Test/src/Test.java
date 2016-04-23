@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import cn.edu.pku.sei.plde.qacrashfix.jdt.JDTTreeGenerator;
-import cn.edu.pku.sei.plde.qacrashfix.jdt.JDTTreeNode;
 import cn.edu.pku.sei.plde.qacrashfix.tree.AnswerQuestionMapper;
 import cn.edu.pku.sei.plde.qacrashfix.tree.QuestionSourceMapper;
 import cn.edu.pku.sei.plde.qacrashfix.tree.edits.ReplaceAction;
@@ -166,18 +165,18 @@ public class Test {
 
 	public static void main(String[] args) throws Exception, IOException
 	{
-		String pathPrefix = "/home/mau/Research/replacements/ReplacementsEmpiricalStudy/";
-		String fileName = "TransportPercolateAction.java";
+//		String pathPrefix = "/Users/ssamuel/Documents/CMU/Semester2/15-819O/project/code/ReplacementsEmpiricalStudy/";
+//		String fileName = "SearchQueryIT.java";
 		byte[] beforeBytes = Files.readAllBytes(Paths.get(
 				args[0]));
-//				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit1/before/" + fileName));
+//				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit2/before/" + fileName));
 //				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/before.java"));
 		JDTTreeGenerator beforeTree1 = new JDTTreeGenerator(new String(beforeBytes));
 		JDTTreeGenerator beforeTree2 = new JDTTreeGenerator(new String(beforeBytes));
 
 		byte[] afterBytes = Files.readAllBytes(Paths.get(
 				args[1]));
-//				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit1/after/" + fileName));
+//				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit2/after/" + fileName));
 //				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/after.java"));
 		JDTTreeGenerator afterTree = new JDTTreeGenerator(new String(afterBytes));
 
