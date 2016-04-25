@@ -1,0 +1,8 @@
+Mar 10, 2016  Chu-Pan  <chupanw@cs.cmu.edu>
+
+Related work:
+* As requested by reviewer 1 and reviewer 3, briefly mentioned three new citations in the related work of Section 1.
+* As requested by reviewer 1, added a paragraph in the end of Section 4 to compare our results with related work.
+
+Discussion:
+* Try to stress the fact that direct translation of approaches for C is not likely to work for Java. 

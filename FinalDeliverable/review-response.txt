@@ -1,0 +1,17 @@
+We thank the reviewers for their helpful feedback and appreciate the opportunity
+to improve our work in preparation for publication.
+
+The chairs specifically asked for us to:
+
+(1) Correct the description of Zhong and Su.  We have done so in section 1.  We
+also added reference to the other suggested work, LHDiff, to the same section.
+In the interest of full disclosure, note that we only added one of the two
+LHDiff citations (for the research track paper, ommitting the tool description)
+because of space pressure.
+
+(2) Add reference to Martinez and Monperrus, 2015.  We have done so, and added a
+paragraph to the end of section 4 to specifically compare our results.  Although
+we do not have the space to add examples of replacements as suggested by
+reviewer 1 (it's a great suggestion!) and agree that the results in Table 4 are
+noisy, we hope that the correspondance between our results and those of Martinez
+and Monperrus alleviates concerns about imprecision somewhat.
