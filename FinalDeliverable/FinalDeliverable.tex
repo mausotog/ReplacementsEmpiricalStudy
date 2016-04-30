@@ -97,7 +97,7 @@
 %\crdata{0-12345-67-8/90/01}  % Allows default copyright data (0-89791-88-6/97/05) to be over-ridden - IF NEED BE.
 % --- End of Author Metadata ---
 
-\title{Building a probabilistic model of statement replacements based on an empirical study of real Java bug fixes}
+\title{Building a probabilistic model of statement replacements for automatic bug fixing based on an empirical study of real Java bug fixes}
 
 %
 % You need the command \numberofauthors to handle the 'placement
@@ -159,7 +159,12 @@ Mauricio Soto, Selva Samuel\\
 
 \maketitle
 \begin{abstract}
-  Here goes the abstract
+
+With the rise of automated program repair in the last couple of years, there are a lot of questions to remain unanswered. We performed a study on 100 open source projects, in which we analyzed the 20 most recent bug fixing commits of this dataset, and found all the replacements made in these 62,470 commits from real life projects in Github.
+
+We found very valuable information to guide automatic software repair, such as the most common and least common replacements made by human developers in order to build a successful patch; we analyzed the most and least common statement to replace others, and the most and least likely statement to get replaced by other. We also analyzed, once you have a statement that you want to replace (a faulty statement), what are the most likely statements to replace it for. These information will help automatic program repair tools to be more maintainable and user friendly, taking it one step closer to what humans developers do to repair their code.
+We performed an evaluation for our model, that shows via 10-fold cross validation that our model can predict replacements in a 78.52\% of the times in the first 3 guesses. Finally we also performed a study to validate the accuracy of the regular expression being normally use to find bug fixing commits.
+
 \end{abstract}
 
 
@@ -211,51 +216,135 @@ Mauricio Soto, Selva Samuel\\
 \section{Introduction}
 
 
+
+Automatic bug repair is the branch of computer science that deals with automated ways to repair errors in software(e.g.,~\cite{kim2013,legoues2012,
+  Mechtaev15,Long2016}). There have been several approaches taken towards improving the different methodologies to repair bugs in software automatically \cite{dongsun}\cite{weimer}\cite{claire} \cite{kai}, one of the most accepted approaches so far has been GenProg \cite{weimer}\cite{claire}, a tool which combines stochastic search methods like genetic programming with lightweight program analyses to find patches for real bugs in existing software. This evolutionary program repair tool applies four different kinds of possible changes to code in order to find a patch for a given bug. These changes are the following: Delete, Replace, Swap and Append.
+
+Our research aims to provide guidelines to improve one of these possible changes. The one which remains to be unstudied since it is probably the hardest of them: Replace. It will provide the data necessary for this tool and other approaches to have a guide on what is the way in which human programmers change their code when coding a fix for a bug. This way it will make it more likely for automatic error repair approaches to succeed in finding a patch for a particular error, and also, to provide automatic error repair software with heuristics to make the patches more human-like and therefore more readable and maintainable by human developers.
+
+In this article we perform an empirical study that consists of mining 100 open source projects, and determining the frequency with which human programmers replace different statements to their source code in order to fix a bug.
+
+
+
+In this paper, we study bug-fixing commits to Java programs, 
+taken from several thousand human-made bug fixes from Github. We make
+observations to directly guide future research in automatic repair of Java
+programs, to increase the success rate of such techniques and the degree to
+which the patches are human-like and therefore more readable and maintainable by
+human developers. This is important, because patch quality is an important
+concern in this area~\cite{Qi15}.
+
+% On the other hand, some approaches~\cite{kim2013} search for specific patterns
+% and modify source code according to predefined templates. A well known approach
+% is PAR~\cite{kim2013}, which creates 10 different repair templates and applies
+% them to the buggy code in an effort to repair it. In this paper we have taken 8
+% out of the 10 PAR templates and tested how common they are in the repairs made
+% by programmers in the latest official data dump of Github as of September 2015
+% provided by~\cite{dyer2013}.  Our results provide evidence of how common those
+% patterns are in practice. We take as reference the study performed by Dongsun
+% Kim et al.~\cite{kim2013} in which they look for the most common ways in which
+% programmers patch bugs in software. The researchers developed a variation of the
+% tool Genprog~\cite{weimer2009,legoues2012} with several different templates
+% resembling patterns programmers use to patch bugs, and then performed an
+% empirical study to evaluate which patches do human programmers prefer.
+
+\vspace{1ex} \noindent\textbf{Related work.} Zhong and Su~\cite{zhong2015} ask
+some of the same questions we do, on 6 projects. We study a mutation operation that these researchers left out due to its complexity, which is the operator Replace, and we also look at more statement types than the previous work.. Similar to our study in
+Section~\ref{sec:stmtstudy}, researchers have 
+studied AST-level~\cite{Martinez:2015ez} and line-level
+changes~\cite{Asaduzzaman:2013df} across bug fixing commits.
+Although it is worth notice that so far none of these approaches have studied in depth the Replace operator.
+An important study was done in this subject by Soto et al [CITATION] in which they count the number of statements in the before-fix and after-fix versions of the code and try to infer a correlation between the two number of statements. This study avoids this assumption, and instead creates a direct comparison between the two abstract syntax trees to be able to infer more accurately when replacements are being made and create the model with this data.
+
 \section{Dataset and Characteristics}
-How we have mined Github, the regex, etc
+For the dataset of this project we picked the 100 Java projects in Github with the most stars. In Github when a user stars a project it means that the user is:
+\begin{itemize}
+  \item Creating a bookmark for easier access
+  \item Showing appreciation to the repository maintainer for their work
+\end{itemize}
+
+Therefore, by picking the projects with more stars we are taking the Java projects more liked and supported by the community and developers of Github, which may have a correlation with having a lot of followers, contributors and activity; and this diversity benefits our study since having a larger diversity of bug fixes, makes the model being built from this data more reliable and more diverse.
+
+From each of these 100 projects we picked the last 20 bug fixing commits for two reasons. First, we had time restrictions, and making it with more than 20 commits became very time consuming. As a sample of this, for the first project, we tried getting all the bug fixing commits and cloning the before-fix and after-fix versions of each of the commits. We had to stop this process when the commits were taking 65 gigs of space just for the first project. Therefore we considered that taking the last 20 commits would be a good balance between depth of each project and would also allow us to get the breadth we were looking by in analyzing 100 different projects. 
+
+The problem of categorizing which commits are actually bug fixing commits or not is an open problem in the literature. This is usually performed by applying a regular expression to the commit message, and this way inferring if a commit is a bug fixing commit or not depending on the words the commit message has. We used as inspiration the regular expression used by Boa [CITATION] to find bug fixing commits. We used a very similar regular expression to determine this, which is the following:
+\begin{itemize}
+  \item "[Ff]ix(ed|es|ing)?(\textbackslash s)*([Bb]ug|[Ii]ssue|[Pp]roblem)?(s)?"
+\end{itemize}
+
+To address the concern of knowing if this regular expression would get the commits that are actually bug fixing commits or not, we made the study in the following section.
+
+\subsection{Commit validation}
 
 
-\subsection{Replacements and QACrashFix}
+\section{Replacements and QACrashFix}
 
 
 \section{Building the model}
+
+In order to build the probabilistic model we gather the data from the 100 projects. From each of these projects we took the 20 latest bug fixing commits, and each of these bug fixing commits consists of a variable number of files, which can vary between 1 to even a couple of hundreds.
+We ran the scripts to gather the data to build the model for 4 days straight on a laptop with an Intel i7 processor and 8 gigs of RAM. We added all the instances of replacements that we found in our dataset and with these, we modeled the distribution of replacements performed by human programmers when patching bugs.
+
+According to The Eclipse Java development tools (JDT) \footnote{http://www.eclipse.org/jdt/}, the java language contains 22 different kinds of statements. We based our model and results on these 22 statement types. Since the names of the statement types are very long, we created abbreviations for all of them so that the table of the model is clearer. The abbreviations for the statement types are the following:
+
+\begin{verbatim}
+As: AssertStatement
+Bl: Block
+Br: BreakStatement
+CI: ConstructorInvocation
+Co: ContinueStatement
+Do: DoStatement
+Em: EmptyStatement
+EF: EnhancedForStatement
+Ex: ExpressionStatement
+Fo: ForStatement
+If: IfStatement
+La: LabeledStatement
+Re: ReturnStatement
+SC: SuperConstructorInvocation
+Ca: SwitchCase
+Sw: SwitchStatement
+Sy: SynchronizedStatement
+Th: ThrowStatement
+Tr: TryStatement
+TD: TypeDeclarationStatement
+VD: VariableDeclarationStatement
+Wh: WhileStatement
+\end{verbatim}
+
+
+
 \begin{table*}
 	\centering
 	\resizebox{\textwidth}{!}{
 	%\renewcommand{\arraystretch}{0.9}% Tighter
-		\begin{tabular}{l|rrrrrrrrrrrrrrr} \toprule
-			&\texttt{Assert}&\texttt{Break}&\texttt{Continue}&\texttt{Do}&\texttt{For}&\texttt{If}&\texttt{Label}&\texttt{Return}&\texttt{Case}&\texttt{Switch}& \texttt{Synch}&\texttt{Throw}&\texttt{Try}&\texttt{TypeDecl}&\texttt{While}
+		\begin{tabular}{l|rrrrrrrrrrrrrrrrrrrrrr} \toprule
+ 				&\texttt{As}&\texttt{Bl}&\texttt{Br}&\texttt{CI}&\texttt{Co}&\texttt{Do}&\texttt{Em}&\texttt{EF}&\texttt{Ex}&\texttt{Fo}&\texttt{If}&\texttt{La}&\texttt{Re}&\texttt{SC}&\texttt{Ca}&\texttt{Sw}&\texttt{Sy}&\texttt{Th}&\texttt{Tr}&\texttt{TD}&\texttt{VD}&\texttt{Wh}
+		
+
 			\\ \midrule
-			
-\texttt{Assert}	&-&7.48&3.76&0.53&8.30&23.05&0.31&20.04&4.90&4.62&1.30&13.50&7.23&0.03&4.95
-\\
-\texttt{Break} &1.00&-&4.08&0.60&9.93&26.03&0.13&25.39&2.48&1.57&1.79&8.39&11.73&0.10&6.77
-\\
-\texttt{Continue} &1.74&9.42&-&1.28&11.39&18.25&0.35&22.60&3.80&2.85&2.17&8.98&9.42&0.11&7.63
-\\
-\texttt{Do} &0.81&5.26&6.60&-&9.44&14.21&0.18&15.86&3.73&1.67&1.97&5.88&6.39&0.03&27.98
-\\
-\texttt{For} &0.86&6.28&3.19&0.79&-&22.89&0.09&21.08&5.01&3.34&1.87&10.01&10.71&0.08&13.79
-\\
-\texttt{If}&1.64&8.43&2.87&0.60&13.49&-&0.24&26.46&7.45&4.80&2.85&9.89&15.11&0.08&6.11
-\\
-\texttt{Label} &1.30&8.33&7.86&1.11&5.18&22.85&-&15.17&3.05&2.04&14.62&10.45&4.16&0.09&3.79
-\\
-\texttt{Return} &1.13&9.41&3.11&0.49&13.33&27.24&0.24&-&5.59&3.65&2.55&14.91&12.61&0.12&5.61
-\\
-\texttt{Case} &0.78&2.84&2.84&0.39&10.27&31.79&0.16&22.40&-&0.46&2.07&7.37&11.69&0.08&6.87
-\\
-\texttt{Switch}&1.14&2.72&3.80&0.55&11.07&34.14&0.13&21.86&0.75&-&1.53&8.65&9.02&0.05&4.58
-\\
-\texttt{Synch} &0.80&6.57&2.28&0.43&10.21&24.18&0.05&19.77&6.35&2.07&-&9.16&12.16&0.04&5.93
-\\
-\texttt{Throw} &2.11&6.57&2.58&0.48&11.87&18.84&0.17&32.28&4.64&3.30&2.74&-&10.08&0.07&4.27
-\\
-\texttt{Try}&0.71&7.41&3.02&0.66&11.73&27.75&0.11&23.24&5.63&2.65&2.58&8.99&-&0.09&5.42
-\\
-\texttt{TypeDecl} &0.00&4.51&7.52&1.00&10.28&21.05&0.50&17.79&6.02&1.75&2.01&9.27&11.53&-&6.77
-\\
-\texttt{While}& 0.72&8.02&3.82&1.96&23.16&19.78&0.12&16.48&6.56&3.09&1.64&6.81&7.80&0.04&-
+\texttt{As}	&0&	0&	0&	0&	0&	0&	0&	0&	25&	0&	25&	0&	25&	0&	0&	0&	0&	0&	0&	0&	25&	0\\
+\texttt{Bl}	&0&	0&	0&	1&	0&	0&	0&	0&	33&	0&	15&	0&	31&	0&	0&	0&	0&	0&	0&	0&	19&	0\\
+\texttt{Br}	&0&	0&	0&	0&	0&	0&	0&	0&	48&	0&	12&	0&	0&	0&	40&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{CI}	&0&	10&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	10&	80&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Co}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	100&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Do}	&0&	0&	0&	0&	0&	0&	0&	0&	100&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Em}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{EF}	&0&	12&	0&	0&	0&	0&	0&	0&	54&	4&	12&	0&	0&	0&	0&	0&	0&	0&	12&	0&	8&	0\\
+\texttt{Ex}	&0&	26&	3&	0&	0&	0&	0&	1&	0&	0&	13&	0&	3&	0&	0&	0&	0&	1&	3&	0&	50&	0\\
+\texttt{Fo}	&0&	8&	0&	0&	0&	0&	0&	17&	0&	0&	0&	0&	75&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{If}	&0&	19&	2&	0&	0&	0&	0&	1&	52&	0&	0&	0&	9&	0&	0&	0&	0&	0&	3&	0&	14&	0\\
+\texttt{La}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Re}	&0&	2&	0&	2&	5&	0&	0&	0&	43&	0&	22&	0&	0&	2&	2&	0&	0&	3&	2&	0&	19&	0\\
+\texttt{SC}	&0&	8&	0&	54&	0&	0&	0&	0&	23&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	15&	0\\
+\texttt{Ca}	&0&	0&	30&	0&	0&	0&	0&	0&	20&	0&	10&	0&	30&	0&	0&	0&	0&	0&	0&	0&	10&	0\\
+\texttt{Sw}	&0&	33&	0&	0&	0&	0&	0&	0&	0&	0&	67&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Sy}	&0&	0&	0&	0&	0&	0&	0&	0&	10&	0&	20&	0&	0&	0&	0&	0&	0&	0&	70&	0&	0&	0\\
+\texttt{Th}	&0&	0&	0&	0&	0&	0&	0&	0&	71&	0&	0&	0&	29&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Tr}	&0&	0&	0&	0&	0&	0&	0&	0&	26&	0&	9&	0&	4&	0&	0&	0&	30&	0&	0&	0&	30&	0\\
+\texttt{TD}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{VD}	&0&	6&	0&	0&	0&	0&	0&	1&	81&	1&	6&	0&	2&	0&	0&	0&	0&	0&	2&	0&	0&	0\\
+\texttt{Wh}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
 			\\ \bottomrule
 		\end{tabular}
 		}
@@ -264,14 +353,14 @@ How we have mined Github, the regex, etc
 \end{table*}
 
 
-
-
 \section{Evaluation}\label{sec:stmtstudy}
-
+For the evaluation section we wanted to know how likely is it that our model can predict the behavior of real bug fixes performed by humans.
+Therefore we decided to evaluate our model using 10-fold cross validation.
 
 
 
 \section{Discussion and Future work}
+Our work is publicly available to be downloaded, extended and reproduced by anyone.\footnote{https://github.com/mausotog/ReplacementsEmpiricalStudy}
 
 
 \section{Acknowledgments}
