@@ -217,8 +217,7 @@ We performed an evaluation for our model, that shows via 10-fold cross validatio
 
 
 
-Automatic bug repair is the branch of computer science that deals with automated ways to repair errors in software(e.g.,~\cite{kim2013,legoues2012,
-  Mechtaev15,Long2016}). There have been several approaches taken towards improving the different methodologies to repair bugs in software automatically \cite{dongsun}\cite{weimer}\cite{claire} \cite{kai}, one of the most accepted approaches so far has been GenProg \cite{weimer}\cite{claire}, a tool which combines stochastic search methods like genetic programming with lightweight program analyses to find patches for real bugs in existing software. This evolutionary program repair tool applies four different kinds of possible changes to code in order to find a patch for a given bug. These changes are the following: Delete, Replace, Swap and Append.
+Automatic bug repair is the branch of computer science that deals with automated ways to repair errors in software(e.g.,~\cite{kim2013,legoues2012,Mechtaev15,Long2016}). There have been several approaches taken towards improving the different methodologies to repair bugs in software automatically \cite{dongsun}\cite{weimer}\cite{claire} \cite{kai}, one of the most accepted approaches so far has been GenProg \cite{weimer}\cite{claire}, a tool which combines stochastic search methods like genetic programming with lightweight program analyses to find patches for real bugs in existing software. This evolutionary program repair tool applies four different kinds of possible changes to code in order to find a patch for a given bug. These changes are the following: Delete, Replace, Swap and Append.
 
 Our research aims to provide guidelines to improve one of these possible changes. The one which remains to be unstudied since it is probably the hardest of them: Replace. It will provide the data necessary for this tool and other approaches to have a guide on what is the way in which human programmers change their code when coding a fix for a bug. This way it will make it more likely for automatic error repair approaches to succeed in finding a patch for a particular error, and also, to provide automatic error repair software with heuristics to make the patches more human-like and therefore more readable and maintainable by human developers.
 
@@ -254,7 +253,7 @@ Section~\ref{sec:stmtstudy}, researchers have
 studied AST-level~\cite{Martinez:2015ez} and line-level
 changes~\cite{Asaduzzaman:2013df} across bug fixing commits.
 Although it is worth notice that so far none of these approaches have studied in depth the Replace operator.
-An important study was done in this subject by Soto et al [CITATION] in which they count the number of statements in the before-fix and after-fix versions of the code and try to infer a correlation between the two number of statements. This study avoids this assumption, and instead creates a direct comparison between the two abstract syntax trees to be able to infer more accurately when replacements are being made and create the model with this data.
+An important study was done in this subject by Soto et al~\cite{soto} in which they count the number of statements in the before-fix and after-fix versions of the code and try to infer a correlation between the two number of statements. This study avoids this assumption, and instead creates a direct comparison between the two abstract syntax trees to be able to infer more accurately when replacements are being made and create the model with this data.
 
 \section{Dataset and Characteristics}
 For the dataset of this project we picked the 100 Java projects in Github with the most stars. In Github when a user stars a project it means that the user is:
@@ -267,7 +266,7 @@ Therefore, by picking the projects with more stars we are taking the Java projec
 
 From each of these 100 projects we picked the last 20 bug fixing commits for two reasons. First, we had time restrictions, and making it with more than 20 commits became very time consuming. As a sample of this, for the first project, we tried getting all the bug fixing commits and cloning the before-fix and after-fix versions of each of the commits. We had to stop this process when the commits were taking 65 gigs of space just for the first project. Therefore we considered that taking the last 20 commits would be a good balance between depth of each project and would also allow us to get the breadth we were looking by in analyzing 100 different projects. 
 
-The problem of categorizing which commits are actually bug fixing commits or not is an open problem in the literature. This is usually performed by applying a regular expression to the commit message, and this way inferring if a commit is a bug fixing commit or not depending on the words the commit message has. We used as inspiration the regular expression used by Boa [CITATION] to find bug fixing commits. We used a very similar regular expression to determine this, which is the following:
+The problem of categorizing which commits are actually bug fixing commits or not is an open problem in the literature. This is usually performed by applying a regular expression to the commit message, and this way inferring if a commit is a bug fixing commit or not depending on the words the commit message has. We used as inspiration the regular expression used by Boa [robert] to find bug fixing commits. We used a very similar regular expression to determine this, which is the following:
 \begin{itemize}
   \item "[Ff]ix(ed|es|ing)?(\textbackslash s)*([Bb]ug|[Ii]ssue|[Pp]roblem)?(s)?"
 \end{itemize}
@@ -435,6 +434,7 @@ As a next step for this study, it would be interesting to insert this model into
 %
 %APPENDICES are optional
 %\balancecolumns
+
 
 
 %\balancecolumns % GM June 2007
