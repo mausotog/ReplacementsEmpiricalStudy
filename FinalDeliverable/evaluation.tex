@@ -1,0 +1,58 @@
+% !TEX root = FinalDeliverable.tex
+
+\section{Evaluation}\label{sec:stmtstudy}
+For the evaluation section we wanted to know how likely is it that our model can predict the behavior of real bug fixes performed by humans.
+Therefore we decided to evaluate our model using 10-fold cross validation. By using this technique we randomly divided our 100 projects into 10 different groups (called folds), and then we make 10 runs, each run picking one of the folds as the testing data, and the rest of them being the training data.
+
+For example, in the first run, we take the 10 projects in fold 1 and we are going to use those as the testing data. Meanwhile, we will build a pseudo probabilistic model from the remaining 9 folds, and then we will test how likely is it that the pseudo probabilistic model is capable of predicting the behavior of the testing data. We do this 10 times, each of them taking a different fold as the testing set.
+
+Our interpretation of "predicting" for this study is the following:
+The model "predicts" an instance of a replacement in the testing dataset when given the statement to replace (replacee) it is able to guess with which statement it was replaced by (replacer) correctly within the first three guesses (the three highest percentages of probabilistic replacement for that statement type in the model).
+
+As an example, consider the row "Re" (short for "Return") in the model shown in Table 1. As you may notice, the three highest probabilities of statements that can replace a Return statement are:
+\begin{itemize}
+  \item Expression Statement (43\%)
+  \item If Statement (22\%)
+  \item Variable Declaration Statement (19\%)
+\end{itemize}
+These would be the top three guesses of the model when trying to predict the testing dataset.
+So if, for example, the testing dataset would be
+\begin{itemize}
+  \color{ForestGreen}  
+  \item Expression Statement: 4
+  \item If Statement: 2
+  \item Variable declaration Statement: 2
+    \color{red}  
+  \item Do Statement: 1
+  \item Continue Statement: 1
+\end{itemize}
+
+In this example, we would get 8 instances of replacements correctly guessed by the model in the first 3 guesses, and 2 instances of replacements incorrectly guessed by the model in the first 3 guesses. Which means that the prediction of this model with this testing dataset had a success rate of 80\%.
+
+Following this approach, we performed a 10 fold cross validation in our model and the result of each of the runs taking a different fold as testing data is detailed in Table 2.
+
+
+\begin{table*}
+	\centering
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{| c | c | c | c |}
+		 \hline
+    Testing in Fold &  Instances correctly predicted & Instances incorrectly predicted & Success rate \\ \hline
+	1&72&11&86.75\%\\ \hline
+	2&82&43&65.60\%\\ \hline
+	3&64&23&73.56\%\\ \hline
+	4&752&423&64.00\%\\ \hline
+	5&83&42&66.40\%\\ \hline
+	6&81&18&81.82\%\\ \hline
+	7&713&6&99.17\%\\ \hline
+	8&186&25&88.15\%\\ \hline
+	9&37&9&80.43\%\\ \hline
+	10&23&6&79.31\%\\ 
+    \hline
+		\end{tabular}
+		}
+		\caption{10 Fold cross validation of the probabilistic model}\label{tab:likeliness}
+\end{table*}
+
+The mean of the 10 different success rates per each of the 10 folds gives us a mean success rate of 78.52\% of success in predictability of the model being able to guess the correct statement by which each statement is being replaced.  
+The authors of this paper think that if we analyze the how likely the model is to predict the 10 different folds using the first 5 guesses of the model instead of the first 3 guesses, then the success rate of the model would have been closer to a 95\%. But this couldn't be done due to time restrictions, and it is advised to be done as future work.

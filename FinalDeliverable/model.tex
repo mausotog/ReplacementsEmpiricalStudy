@@ -1,0 +1,73 @@
+% !TEX root = FinalDeliverable.tex
+
+\section{Building the model}
+
+In order to build the probabilistic model we gather the data from the 100 projects. From each of these projects we took the 20 latest bug fixing commits, and each of these bug fixing commits consists of a variable number of files, which can vary between 1 to even a couple of hundreds.
+We ran the scripts to gather the data to build the model for 4 days straight on a laptop with an Intel i7 processor and 8 gigs of RAM. We added all the instances of replacements that we found in our dataset and with these, we modeled the distribution of replacements performed by human programmers when patching bugs.
+
+According to The Eclipse Java development tools (JDT) \footnote{http://www.eclipse.org/jdt/}, the java language contains 22 different kinds of statements. We based our model and results on these 22 statement types. Since the names of the statement types are very long, we created abbreviations for all of them so that the table of the model is clearer. The abbreviations for the statement types are the following:
+
+\begin{verbatim}
+As: AssertStatement
+Bl: Block
+Br: BreakStatement
+CI: ConstructorInvocation
+Co: ContinueStatement
+Do: DoStatement
+Em: EmptyStatement
+EF: EnhancedForStatement
+Ex: ExpressionStatement
+Fo: ForStatement
+If: IfStatement
+La: LabeledStatement
+Re: ReturnStatement
+SC: SuperConstructorInvocation
+Ca: SwitchCase
+Sw: SwitchStatement
+Sy: SynchronizedStatement
+Th: ThrowStatement
+Tr: TryStatement
+TD: TypeDeclarationStatement
+VD: VariableDeclarationStatement
+Wh: WhileStatement
+\end{verbatim}
+
+
+
+\begin{table*}
+	\centering
+	\resizebox{\textwidth}{!}{
+	%\renewcommand{\arraystretch}{0.9}% Tighter
+		\begin{tabular}{l|rrrrrrrrrrrrrrrrrrrrrr} \toprule
+ 				&\texttt{As}&\texttt{Bl}&\texttt{Br}&\texttt{CI}&\texttt{Co}&\texttt{Do}&\texttt{Em}&\texttt{EF}&\texttt{Ex}&\texttt{Fo}&\texttt{If}&\texttt{La}&\texttt{Re}&\texttt{SC}&\texttt{Ca}&\texttt{Sw}&\texttt{Sy}&\texttt{Th}&\texttt{Tr}&\texttt{TD}&\texttt{VD}&\texttt{Wh}
+		
+
+			\\ \midrule
+\texttt{As}	&0&	0&	0&	0&	0&	0&	0&	0&	25&	0&	25&	0&	25&	0&	0&	0&	0&	0&	0&	0&	25&	0\\
+\texttt{Bl}	&0&	0&	0&	1&	0&	0&	0&	0&	33&	0&	15&	0&	31&	0&	0&	0&	0&	0&	0&	0&	19&	0\\
+\texttt{Br}	&0&	0&	0&	0&	0&	0&	0&	0&	48&	0&	12&	0&	0&	0&	40&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{CI}	&0&	10&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	10&	80&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Co}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	100&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Do}	&0&	0&	0&	0&	0&	0&	0&	0&	100&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Em}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{EF}	&0&	12&	0&	0&	0&	0&	0&	0&	54&	4&	12&	0&	0&	0&	0&	0&	0&	0&	12&	0&	8&	0\\
+\texttt{Ex}	&0&	26&	3&	0&	0&	0&	0&	1&	0&	0&	13&	0&	3&	0&	0&	0&	0&	1&	3&	0&	50&	0\\
+\texttt{Fo}	&0&	8&	0&	0&	0&	0&	0&	17&	0&	0&	0&	0&	75&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{If}	&0&	19&	2&	0&	0&	0&	0&	1&	52&	0&	0&	0&	9&	0&	0&	0&	0&	0&	3&	0&	14&	0\\
+\texttt{La}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Re}	&0&	2&	0&	2&	5&	0&	0&	0&	43&	0&	22&	0&	0&	2&	2&	0&	0&	3&	2&	0&	19&	0\\
+\texttt{SC}	&0&	8&	0&	54&	0&	0&	0&	0&	23&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	15&	0\\
+\texttt{Ca}	&0&	0&	30&	0&	0&	0&	0&	0&	20&	0&	10&	0&	30&	0&	0&	0&	0&	0&	0&	0&	10&	0\\
+\texttt{Sw}	&0&	33&	0&	0&	0&	0&	0&	0&	0&	0&	67&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Sy}	&0&	0&	0&	0&	0&	0&	0&	0&	10&	0&	20&	0&	0&	0&	0&	0&	0&	0&	70&	0&	0&	0\\
+\texttt{Th}	&0&	0&	0&	0&	0&	0&	0&	0&	71&	0&	0&	0&	29&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{Tr}	&0&	0&	0&	0&	0&	0&	0&	0&	26&	0&	9&	0&	4&	0&	0&	0&	30&	0&	0&	0&	30&	0\\
+\texttt{TD}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+\texttt{VD}	&0&	6&	0&	0&	0&	0&	0&	1&	81&	1&	6&	0&	2&	0&	0&	0&	0&	0&	2&	0&	0&	0\\
+\texttt{Wh}	&0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0&	0\\
+			\\ \bottomrule
+		\end{tabular}
+		}
+		\caption{Likelihood of replacing a statement type (row) by a statement of
+          another type (column), for Java.}\label{tab:likeliness}
+\end{table*}
