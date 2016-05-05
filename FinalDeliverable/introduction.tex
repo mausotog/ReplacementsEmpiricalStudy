@@ -2,13 +2,11 @@
 
 \section{Introduction}
 
-Automatic bug repair is the branch of computer science that deals with automated ways to repair errors in software(e.g.,~\cite{kim2013, legoues2012, Mechtaev15, Long2016}). There have been several approaches taken towards improving the different methodologies to repair bugs in software automatically~\cite{kim2013, weimer2009, legoues2012, kai}, one of the most accepted approaches so far has been GenProg~\cite{weimer2009, legoues2012}, a tool which combines stochastic search methods like genetic programming with lightweight program analyses to find patches for real bugs in existing software. This evolutionary program repair tool applies four different kinds of possible changes to code in order to find a patch for a given bug. These changes are the following: Delete, Replace, Swap and Append.
+Automatic bug repair is the branch of software engineering that deals with automated ways to repair errors in software without requiring human intervention~\cite{kim2013, legoues2012, Mechtaev15, Long2016}. There have been several approaches taken towards improving the different methodologies to repair bugs in software automatically~\cite{kim2013, weimer2009, legoues2012, kai}. One of the more successful approaches so far has been GenProg~\cite{weimer2009, legoues2012}, a tool which combines stochastic search methods like genetic programming with lightweight program analyses to find patches for real bugs in software. Based on evolutionary computation, GenProg applies four different kinds of possible changes to code in order to find a patch for a given bug. These changes are: (1) delete, (2) replace, (4) swap, and (4) append.
 
 Our research aims to provide guidelines to improve one of these possible changes. The one which remains to be unstudied since it is probably the hardest of them: Replace. It will provide the data necessary for this tool and other approaches to have a guide on what is the way in which human programmers change their code when coding a fix for a bug. This way it will make it more likely for automatic error repair approaches to succeed in finding a patch for a particular error, and also, to provide automatic error repair software with heuristics to make the patches more human-like and therefore more readable and maintainable by human developers.
 
 In this article we perform an empirical study that consists of mining 100 open source projects, and determining the frequency with which human programmers replace different statements to their source code in order to fix a bug.
-
-
 
 In this paper, we study bug-fixing commits to Java programs, 
 taken from several thousand human-made bug fixes from Github. We make
