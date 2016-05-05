@@ -1,70 +1,66 @@
 % !TEX root = FinalDeliverable.tex
 
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa
-
 \subsection{Commit Validation}
 
 In order to build the probabilistic model for statement replacements, it is necessary to ensure that
 the commits selected using the regular expression specified above were
-truly bug-fixing commits.
+truly bug-fixing commits. In particular, some of the commits whose commit
+messages matched the regular expression included changes to more
+than five Java source code files. But prior studies of bug fixes~\cite{zhong2015}
+have shown that programmers modify less than five files in order to fix
+a bug. So, it became necessary to check if these commits which involved
+modifications to five or more source code files were bug-fixing commits indeed.
+
+We examined if commits that modified five or more Java files were bug-fixing
+commits or not by manually inspecting such commits. We selected the 50 most recent
+commits from the commit history of each of the 100 projects in our dataset. Some projects had less than
+50 commits in total. We included all of the commits that were made to these projects.
+Among these commits, we then proceeded to select the ones that involved modification
+to five or more Java source files. We then manually inspected the commit messages
+of the selected commits to determine if the changes were being made in order to
+fix a bug. We included the commits which indicated that they were fixing issues
+such as a crash, NullPointerException or some other issue identified using a project-specific ID.
+We excluded the other commits. For example, if the commit message contains the words
+``prefix" or ``suffix", it would match the regular expression that we have used, even though
+it is not fixing a bug. We excluded all such commits.
+
+The 100 projects that we have used in our study have a total of 62,470 commits.
+We selected 1,353 of them for performing commit validation. These commits are
+the ones among the 50 most recent commits for each of the 100 projects in which five or more source code files have been changed. We discovered that 847 out of these 1,353 commits
+were actually bug-fixing commits. The remaining 506 commits were made for
+other reasons. Majority of the commits that we have included for building the
+probabilistic model are indeed bug-fixing commits. Table \ref{CommitValidationTable}
+shows the distribution of bug-fixing commits in the 50 most recent commits for
+the top 10 projects in terms of the total number of commits.
 
 \begin{table}
 \centering
-\label{CommitValidationTable}
 \begin{tabular}{ |l|c|c| }
 \hline
-Project & Bug fixing commits    & Other commits \\
+\thead{Project} & \thead{Bug-fixing \\ commits}    & \thead{Other \\ commits} \\
 \hline
-react-native    & 18    & 6 \\
+platform\_frameworks\_base	& 18	& 1	\\
 \hline
-elasticsearch   & 23    & 6 \\
+kotlin		& 12	& 2	\\
 \hline
-RxJava  & 22    & 10    \\
+elasticsearch	& 23	& 6	\\
 \hline
-okhttp  & 11    & 19    \\
+netty	& 9	& 4	\\
 \hline
-picasso & 16    & 9 \\
+libgdx & 8	& 3	\\
 \hline
-MPAndroidChart  & 15    & 1 \\
+spring-boot	& 15	& 9	\\
 \hline
-android-async-http  & 11    & 6 \\
+spring-framework	& 12	& 22	\\
 \hline
-guava   & 14    & 11    \\
+presto	& 17	& 7	\\
 \hline
-spring-framework    & 12    & 22    \\
+RxJava	& 22	& 10	\\
 \hline
-libgdx  & 8 & 3 \\
+titan	& 12	& 5	\\
 \hline
 \end{tabular}
-\caption{}
+\caption{Distribution of bug-fixing commits in the 50 most recent commits for the top 10 projects with the highest number of commits}
+\label{CommitValidationTable}
 
 \end{table}
