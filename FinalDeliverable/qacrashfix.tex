@@ -2,7 +2,7 @@
 
 \section{Statement Replacements}
 
-As we have stated earlier, we build our probabilistic model at the granularity level of statements.
+We build our probabilistic model at the granularity level of statements.
 So, for each pair of statement kinds, we count the number of times a statement of the first kind
 has been replaced with a statement of the second kind in the bug-fixing commits. In order to do this, we have used a tool named QACrashFix~\cite{Gao2015}. QACrashFix generates patches to bugs, particularly ones that result in crashes due to exceptions, by analyzing Q\&A sites or programmer forums. It makes use of the fact that programmers working on projects using the same framework (e.g., Android, Hadoop, Spring, etc.) make similar kinds of mistakes related to the use of the framework. If a bug causes an exception, more often than not, programmers get the help of experts in fixing it by posting to Q\&A sites. These posts usually include the exception message and stack trace as well. When another programmer encounters a similar exception, they can use QACrashFix which searches for posts made by other programmers on Q\&A sites and constructs patches from the solutions posted on the page.
 

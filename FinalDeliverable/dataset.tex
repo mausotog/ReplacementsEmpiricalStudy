@@ -1,17 +1,17 @@
 % !TEX root = FinalDeliverable.tex
 
 \section{Dataset and Characteristics}
-For the dataset of this project we picked the 100 Java projects in Github with the most stars. In Github when a user stars a project it means that the user is:
+For the dataset of this study, we selected the top 100 Java projects in GitHub ranked according to the number of stars. In GitHub, when a user stars a project, it means that the user is:
 \begin{itemize}
   \item Creating a bookmark for easier access
   \item Showing appreciation to the repository maintainer for their work
 \end{itemize}
 
-Therefore, by picking the projects with more stars we are taking the Java projects more liked and supported by the community and developers of Github, which may have a correlation with having a lot of followers, contributors and activity; and this diversity benefits our study since having a larger diversity of bug fixes, makes the model being built from this data more reliable and more diverse.
+Therefore, by selecting the projects with higher number of stars, we are including those Java projects which are more liked and supported by the community of developers in GitHub, which may have a correlation with having a lot of followers, contributors and activity; and this diversity benefits our study since having a larger diversity of bug fixes, makes the model being built from this data more reliable and more diverse.
 
-From each of these 100 projects we picked the last 20 bug fixing commits for two reasons. First, we had time restrictions, and making it with more than 20 commits became very time consuming. As a sample of this, for the first project, we tried getting all the bug fixing commits and cloning the before-fix and after-fix versions of each of the commits. We had to stop this process when the commits were taking 65 gigs of space just for the first project. Therefore we considered that taking the last 20 commits would be a good balance between depth of each project and would also allow us to get the breadth we were looking by in analyzing 100 different projects. 
+From each of these 100 projects, we picked the last 20 bug-fixing commits for two reasons. First, we had time restrictions, and making it with more than 20 commits became very time consuming. As a sample of this, for the first project, we tried getting all the bug fixing commits and cloning the before-fix and after-fix versions of each of the commits. We had to stop this process when the commits were taking 65GB space just for the first project. Therefore we considered that taking the last 20 commits would be a good balance between depth of each project and would also allow us to get the breadth we were looking by in analyzing 100 different projects. 
 
-The problem of categorizing which commits are actually bug fixing commits or not is an open problem in the literature. This is usually performed by applying a regular expression to the commit message, and this way inferring if a commit is a bug fixing commit or not depending on the words the commit message has. We used as inspiration the regular expression used by Boa [robert] to find bug fixing commits. We used a very similar regular expression to determine this, which is the following:
+The problem of categorizing which commits are actually bug fixing commits or not is an open problem in the literature. This is usually performed by applying a regular expression to the commit message, and this way inferring if a commit is a bug fixing commit or not depending on the words the commit message has. We used as inspiration the regular expression used by Boa~\cite{Dyer2013} to find bug fixing commits. We used a very similar regular expression to determine this, which is the following:
 \begin{itemize}
   \item "[Ff]ix(ed|es|ing)?(\textbackslash s)*([Bb]ug|[Ii]ssue|[Pp]roblem)?(s)?"
 \end{itemize}

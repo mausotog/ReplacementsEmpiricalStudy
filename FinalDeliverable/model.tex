@@ -2,8 +2,8 @@
 
 \section{Building the model}
 
-In order to build the probabilistic model we gather the data from the 100 projects. From each of these projects we took the 20 latest bug fixing commits, and each of these bug fixing commits consists of a variable number of files, which can vary between 1 to even a couple of hundreds.
-We ran the scripts to gather the data to build the model for 4 days straight on a laptop with an Intel i7 processor and 8 gigs of RAM. We added all the instances of replacements that we found in our dataset and with these, we modeled the distribution of replacements performed by human programmers when patching bugs.
+In order to build the probabilistic model, we gather the data from the 100 projects. From each of these projects we took the 20 latest bug fixing commits, and each of these bug fixing commits consists of a variable number of files, which can vary between 1 to even a couple of hundreds.
+We ran the scripts to gather the data to build the model for 4 days straight on a laptop with an Intel i7 processor and 8GB RAM. We added all the instances of replacements that we found in our dataset and with these, we modeled the distribution of replacements performed by human programmers when patching bugs.
 
 According to The Eclipse Java development tools (JDT) \footnote{http://www.eclipse.org/jdt/}, the java language contains 22 different kinds of statements. We based our model and results on these 22 statement types. Since the names of the statement types are very long, we created abbreviations for all of them so that the table of the model is clearer. The abbreviations for the statement types are the following:
 
@@ -68,6 +68,6 @@ Wh: WhileStatement
 			\\ \bottomrule
 		\end{tabular}
 		}
-		\caption{Likelihood of replacing a statement type (row) by a statement of
-          another type (column), for Java.}\label{tab:likeliness}
+\caption{Likelihood of replacing a statement type (row) by a statement of another type (column), for Java. [Numbers in the table are percentages.]}
+\label{tab:likelihood}
 \end{table*}

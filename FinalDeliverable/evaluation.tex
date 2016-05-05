@@ -1,15 +1,19 @@
 % !TEX root = FinalDeliverable.tex
 
 \section{Evaluation}\label{sec:stmtstudy}
-For the evaluation section we wanted to know how likely is it that our model can predict the behavior of real bug fixes performed by humans.
-Therefore we decided to evaluate our model using 10-fold cross validation. By using this technique we randomly divided our 100 projects into 10 different groups (called folds), and then we make 10 runs, each run picking one of the folds as the testing data, and the rest of them being the training data.
+We have evaluated our model by determining how likely it is that the model can predict the behavior of real bug fixes that are performed by humans.
+We have done this by using 10-fold cross validation. By using this technique, we randomly partitioned the 100 projects that we have used into 10 different groups (called folds). Each fold is of the same size and contains 10 projects. We then divided the 10 folds into two sets, namely the training set and the test set. The test set consists of one fold. The remaining nine folds constitute the training set. The model is built using the folds in the training set. This model is validated against the test set by checking how successfully it predicts the data in the test set. This process is repeated 10 times. In each iteration, a different fold is selected for the test set.
 
-For example, in the first run, we take the 10 projects in fold 1 and we are going to use those as the testing data. Meanwhile, we will build a pseudo probabilistic model from the remaining 9 folds, and then we will test how likely is it that the pseudo probabilistic model is capable of predicting the behavior of the testing data. We do this 10 times, each of them taking a different fold as the testing set.
+In order to measure the prediction performance of the model built from the training set, we select a pair of replacee-replacer statements from the test set. The replacee statement is the statement being replaced and the replacer statement is the one with which the replacee statement is replaced. From the model, we get the top 3 statements which are most likely to be used in place of the replacee statement while a programmer is fixing a bug. If the replacer statement is included in these 3 statements then we consider the model to have made a successful prediction about the statement the programmer has used in place of the replacee statement. Otherwise, the prediction made by the model is considered to be unsuccessful. This process is repeated for each pair of replacee-replacer statements in the test set. We counted the number of times the model was able to make a successful prediction as well as the number of times in which it failed.
 
-Our interpretation of "predicting" for this study is the following:
-The model "predicts" an instance of a replacement in the testing dataset when given the statement to replace (replacee) it is able to guess with which statement it was replaced by (replacer) correctly within the first three guesses (the three highest percentages of probabilistic replacement for that statement type in the model).
+For example, suppose that the 10 projects in fold 1 are to be used as the test set in the first run.
+So in this case, folds 2 to 10 (which are the remaining 9 folds) form the training set and would be used to build the probabilistic model.
+%Meanwhile, we will build a pseudo probabilistic model from the remaining 9 folds, and then we will test how likely is it that the pseudo probabilistic model is capable of predicting the behavior of the testing data. We do this 10 times, each of them taking a different fold as the testing set.
 
-As an example, consider the row "Re" (short for "Return") in the model shown in Table 1. As you may notice, the three highest probabilities of statements that can replace a Return statement are:
+%Our interpretation of "predicting" for this study is the following:
+%The model "predicts" an instance of a replacement in the testing dataset when given the statement to replace (replacee) it is able to guess with which statement it was replaced by (replacer) correctly within the first three guesses (the three highest percentages of probabilistic replacement for that statement type in the model).
+
+As an example, consider the row "Re" (short for "Return") in the model shown in Table~\ref{tab:likelihood}. As you may notice, the three highest probabilities of statements that can replace a Return statement are:
 \begin{itemize}
   \item Expression Statement (43\%)
   \item If Statement (22\%)
@@ -29,7 +33,7 @@ So if, for example, the testing dataset would be
 
 In this example, we would get 8 instances of replacements correctly guessed by the model in the first 3 guesses, and 2 instances of replacements incorrectly guessed by the model in the first 3 guesses. Which means that the prediction of this model with this testing dataset had a success rate of 80\%.
 
-Following this approach, we performed a 10 fold cross validation in our model and the result of each of the runs taking a different fold as testing data is detailed in Table 2.
+Following this approach, we performed a 10 fold cross validation in our model and the result of each of the runs taking a different fold as testing data is detailed in Table~\ref{tab:cross-validation}.
 
 
 \begin{table*}
@@ -51,7 +55,8 @@ Following this approach, we performed a 10 fold cross validation in our model an
     \hline
 		\end{tabular}
 		}
-		\caption{10 Fold cross validation of the probabilistic model}\label{tab:likeliness}
+\caption{10 Fold cross validation of the probabilistic model}
+\label{tab:cross-validation}
 \end{table*}
 
 The mean of the 10 different success rates per each of the 10 folds gives us a mean success rate of 78.52\% of success in predictability of the model being able to guess the correct statement by which each statement is being replaced.  
