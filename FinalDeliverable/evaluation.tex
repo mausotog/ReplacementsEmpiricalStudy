@@ -7,33 +7,43 @@ We have done this by using 10-fold cross validation. By using this technique, we
 In order to measure the prediction performance of the model built from the training set, we select a pair of replacee-replacer statements from the test set. The replacee statement is the statement being replaced and the replacer statement is the one with which the replacee statement is replaced. From the model, we get the top 3 statements which are most likely to be used in place of the replacee statement while a programmer is fixing a bug. If the replacer statement is included in these 3 statements then we consider the model to have made a successful prediction about the statement the programmer has used in place of the replacee statement. Otherwise, the prediction made by the model is considered to be unsuccessful. This process is repeated for each pair of replacee-replacer statements in the test set. We counted the number of times the model was able to make a successful prediction as well as the number of times in which it failed.
 
 For example, suppose that the 10 projects in fold 1 are to be used as the test set in the first run.
-So in this case, folds 2 to 10 (which are the remaining 9 folds) form the training set and would be used to build the probabilistic model.
+So in this case, folds 2 to 10 (which are the remaining 9 folds) form the training set and would be used to build the probabilistic model. Let us suppose that we obtained the model shown in Table~\ref{tab:likelihood}. Suppose now that in the test set an expression statement (\texttt{Ex}) is replaced with an ``if" statement (\texttt{If}) for fixing a bug. From the model, the three most likely statements that can replace an expression statement are:
+
+\begin{itemize}
+  \item Variable Declaration Statement (\texttt{VD}): 50\%
+  \item Block Statement (\texttt{Bl}): 26\%
+  \item If Statement (\texttt{If}): 13\%
+\end{itemize}
+
+Since ``if" statements are one of the top three statement types that can replace an expression statement, our model has made a successful prediction in this case. On the other hand, if an expression statement was being replaced with, say, a try statement, then in this case, the model would have failed to correctly predict programmer behavior in fixing the bug.
+
 %Meanwhile, we will build a pseudo probabilistic model from the remaining 9 folds, and then we will test how likely is it that the pseudo probabilistic model is capable of predicting the behavior of the testing data. We do this 10 times, each of them taking a different fold as the testing set.
 
 %Our interpretation of "predicting" for this study is the following:
 %The model "predicts" an instance of a replacement in the testing dataset when given the statement to replace (replacee) it is able to guess with which statement it was replaced by (replacer) correctly within the first three guesses (the three highest percentages of probabilistic replacement for that statement type in the model).
 
-As an example, consider the row "Re" (short for "Return") in the model shown in Table~\ref{tab:likelihood}. As you may notice, the three highest probabilities of statements that can replace a Return statement are:
-\begin{itemize}
-  \item Expression Statement (43\%)
-  \item If Statement (22\%)
-  \item Variable Declaration Statement (19\%)
-\end{itemize}
-These would be the top three guesses of the model when trying to predict the testing dataset.
-So if, for example, the testing dataset would be
-\begin{itemize}
-  \color{ForestGreen}  
-  \item Expression Statement: 4
-  \item If Statement: 2
-  \item Variable declaration Statement: 2
-    \color{red}  
-  \item Do Statement: 1
-  \item Continue Statement: 1
-\end{itemize}
+%As an example, consider the row "Re" (short for "Return") in the model shown in Table~\ref{tab:likelihood}. As you may notice, the three highest probabilities of statements that can replace a Return statement are:
+%\begin{itemize}
+%  \item Expression Statement (43\%)
+%  \item If Statement (22\%)
+%  \item Variable Declaration Statement (19\%)
+%\end{itemize}
 
-In this example, we would get 8 instances of replacements correctly guessed by the model in the first 3 guesses, and 2 instances of replacements incorrectly guessed by the model in the first 3 guesses. Which means that the prediction of this model with this testing dataset had a success rate of 80\%.
+%These would be the top three guesses of the model when trying to predict the testing dataset.
+%So if, for example, the testing dataset would be
+%\begin{itemize}
+%  \color{ForestGreen}  
+%  \item Expression Statement: 4
+%  \item If Statement: 2
+%  \item Variable declaration Statement: 2
+%    \color{red}  
+%  \item Do Statement: 1
+%  \item Continue Statement: 1
+%\end{itemize}
 
-Following this approach, we performed a 10 fold cross validation in our model and the result of each of the runs taking a different fold as testing data is detailed in Table~\ref{tab:cross-validation}.
+%In this example, we would get 8 instances of replacements correctly guessed by the model in the first 3 guesses, and 2 instances of replacements incorrectly guessed by the model in the first 3 guesses. Which means that the prediction of this model with this testing dataset had a success rate of 80\%.
+
+Following this approach, we performed a 10-fold cross validation of our model. The result of each of the iterations taking a different fold as test set is shown in Table~\ref{tab:cross-validation}.
 
 
 \begin{table*}
