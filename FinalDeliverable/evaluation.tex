@@ -43,8 +43,7 @@ Since ``if" statements are one of the top three statement types that can replace
 
 %In this example, we would get 8 instances of replacements correctly guessed by the model in the first 3 guesses, and 2 instances of replacements incorrectly guessed by the model in the first 3 guesses. Which means that the prediction of this model with this testing dataset had a success rate of 80\%.
 
-Following this approach, we performed a 10-fold cross validation of our model. The result of each of the iterations taking a different fold as test set is shown in Table~\ref{tab:cross-validation}.
-
+Following this approach, we performed a 10-fold cross validation of our model. The result of each of the iterations taking a different fold as test set is shown in Table~\ref{tab:cross-validation}. The mean of the 10 different success rates in each of the 10 folds gives us a mean success rate of 78.52\% for the model's ability to predict which statement is likely to be used by a programmer to replace a particular statement with when they are fixing a bug. We suspect that the success rate of the model would have been higher if we had used the top five statements instead of three to make the prediction. But we were not able to do this because of time limitations and plan to do this as future work.
 
 \begin{table*}
 	\centering
@@ -68,6 +67,3 @@ Following this approach, we performed a 10-fold cross validation of our model. T
 \caption{10-fold cross validation of the probabilistic model}
 \label{tab:cross-validation}
 \end{table*}
-
-The mean of the 10 different success rates per each of the 10 folds gives us a mean success rate of 78.52\% of success in predictability of the model being able to guess the correct statement by which each statement is being replaced.  
-The authors of this paper think that if we analyze the how likely the model is to predict the 10 different folds using the first 5 guesses of the model instead of the first 3 guesses, then the success rate of the model would have been closer to a 95\%. But this couldn't be done due to time restrictions, and it is advised to be done as future work.
