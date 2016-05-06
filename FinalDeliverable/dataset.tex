@@ -7,15 +7,16 @@ For the dataset of this study, we selected the top 100 Java projects in GitHub r
   \item Showing appreciation to the repository maintainer for their work
 \end{itemize}
 
-Therefore, by selecting the projects with higher number of stars, we are including those Java projects which are more liked and supported by the community of developers in GitHub, which may have a correlation with having a lot of followers, contributors and activity; and this diversity benefits our study since having a larger diversity of bug fixes, makes the model being built from this data more reliable and more diverse.
+Therefore, by selecting the projects with higher number of stars, we are including those Java projects which are more liked and supported by the community of developers in GitHub. This includes projects like the Spring framework with which a lot of good developers are associated. As a result, building the probabilistic model based on a study of these projects would provide the benefit of making the model more reliable.
+%, which may have a correlation with having a lot of followers, contributors and activity; and this diversity benefits our study since having a larger diversity of bug fixes, makes the model being built from this data more reliable and more diverse.
 
-From each of these 100 projects, we picked the last 20 bug-fixing commits for two reasons. First, we had time restrictions, and making it with more than 20 commits became very time consuming. As a sample of this, for the first project, we tried getting all the bug fixing commits and cloning the before-fix and after-fix versions of each of the commits. We had to stop this process when the commits were taking 65GB space just for the first project. Therefore we considered that taking the last 20 commits would be a good balance between depth of each project and would also allow us to get the breadth we were looking by in analyzing 100 different projects. 
+We restricted ourselves to studying only 20 recent commits because of time and storage limitations. Analyzing just 20 commits per project took a total of four days. Moreover, storing the before-fix and after-fix versions of each file in every commit for one project with about a 1000 commits required approximately 65GB of disk space. For these reasons, we have deferred a study of the full commit history of each of the projects as future work.
 
-The problem of categorizing which commits are actually bug fixing commits or not is an open problem in the literature. This is usually performed by applying a regular expression to the commit message, and this way inferring if a commit is a bug fixing commit or not depending on the words the commit message has. We used as inspiration the regular expression used by Boa~\cite{Dyer2013} to find bug fixing commits. We used a very similar regular expression to determine this, which is the following:
+Determining whether a commit is a bug-fixing commit or not is usually done by applying a regular expression to the commit message. This method relies on the presence of certain words (that indicate that this commit might be related to a bug fix) and their order in the the commit message. We have used a regular expression that is similar to the one used by Boa~\cite{Dyer2013} in order to find bug-fixing commits. The regular expression that we have used is as follows:
 \begin{itemize}
   \item "[Ff]ix(ed|es|ing)?(\textbackslash s)*([Bb]ug|[Ii]ssue|[Pp]roblem)?(s)?"
 \end{itemize}
 
-To address the concern of knowing if this regular expression would get the commits that are actually bug fixing commits or not, we made the study in the following section.
+In order to ensure that the commits whose messages matched the above regular expression are actually bug-fixing commits, we performed the study in the following section.
 
 \input{commit_validation}
