@@ -18,7 +18,7 @@ python ExtractGitHubRepos.py $pythonArgs > sampleRepos.txt
 echo "Finishing ExtractGitHubRepos"
 
 repoFile=../sampleRepos.txt
-rm -rf GitRepos
+#rm -rf GitRepos
 echo "Creating GitRepos"
 mkdir GitRepos
 cd GitRepos/
