@@ -66,7 +66,7 @@ do
       fi
     done
 
-    if [ $count -ge 5 ]
+    if [ $count -ge 3 ]
     then
       commit_msg=$(git log --format=%B -n 1 $afterHash)
       echo "$folderName: $commitNumber of $num_commits: $afterHash: $commit_msg" >> ../../../../commitLogs.txt

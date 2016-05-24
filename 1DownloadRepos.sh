@@ -17,11 +17,11 @@ echo "Calling ExtractGitHubRepos"
 python ExtractGitHubRepos.py $pythonArgs > sampleRepos.txt
 echo "Finishing ExtractGitHubRepos"
 
-repoFile=../sampleRepos.txt
 #rm -rf GitRepos
 echo "Creating GitRepos"
 mkdir GitRepos
 cd GitRepos/
+repoFile=../sampleRepos.txt
 while read projectFolder
 do
   echo "git clone $projectFolder"
