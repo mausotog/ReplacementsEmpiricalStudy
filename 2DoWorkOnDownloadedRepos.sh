@@ -17,7 +17,7 @@ do
   #folderName=$(echo "${folderNameTmp::${#folderNameTmp}-4}") # remove extension
   echo "Working on project $folderName"
   cd $folderName
-  git log -300 --all -- '*.java' > logResult.txt # look only for commits that look into java files
+  git log -100 --all -- '*.java' > logResult.txt # look only for commits that look into java files
   python ../../readLogData.py logResult.txt commitList.txt
   echo "commitList.txt created"
   
