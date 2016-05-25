@@ -3,9 +3,18 @@
 # Example usage: ./DoWorkOnDownloadedRepos.sh
 
 QACRASHFIXDIRECTORY=$(pwd)
+JAVALOCATION=$(which java)
+JAVACLOCATION=$(which javac)
 
 #uname -v | grep -qi Darwin && JAVA_PATH=`/usr/libexec/java_home -v 1.7`/bin
 #uname -v | grep -qi Ubuntu && JAVA_PATH="/usr/lib/jvm/java-7-oracle/bin"
+
+#compile Test.java
+cd qacrashfix/QACrashFix/test/Test/
+mkdir bin/
+$JAVACLOCATION -cp ../../target/exception-fix-0.0.1-SNAPSHOT.jar:log4j-api-2.5.jar:org.eclipse.core.resources_3.10.1.v20150725-1910.jar:org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:log4j-core-2.5.jar:org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:org.eclipse.osgi_3.10.102.v20160118-1700.jar:org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar -d bin/ src/Test.java
+cd ../../../..
+
 
 cd GitRepos/
 repoFile=../sampleRepos.txt
@@ -118,8 +127,7 @@ do
           git show $afterHash:$fileName > $nameOfFile
         done < $fileNames
         cd .. #get out from after folder
-
-	JAVALOCATION=$(which java)
+	
         fileNames=./filesModifiedInThisCommit.txt
         while read fileName
         do
