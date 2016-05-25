@@ -119,6 +119,7 @@ do
         done < $fileNames
         cd .. #get out from after folder
 
+	JAVALOCATION=$(which java)
         fileNames=./filesModifiedInThisCommit.txt
         while read fileName
         do
@@ -126,7 +127,7 @@ do
           currentDirectory=$(pwd)
           nameOfFileWithoutExtension="${nameOfFile%.*}"
           echo "Calling QACrashFix for project $folderName in commit $commitNumber with file $nameOfFile"
-	  timeout -k 1m 5m /usr/lib/jvm/java-7-oracle/bin/java -Dfile.encoding=UTF-8 -classpath $QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/bin:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/target/exception-fix-0.0.1-SNAPSHOT.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/log4j-api-2.5.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/log4j-core-2.5.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.core.resources_3.10.1.v20150725-1910.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.osgi_3.10.102.v20160118-1700.jar Test $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory"$nameOfFileWithoutExtension.txt
+	  timeout -k 1m 5m $JAVALOCATION -Dfile.encoding=UTF-8 -classpath $QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/bin:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/target/exception-fix-0.0.1-SNAPSHOT.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/log4j-api-2.5.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/log4j-core-2.5.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.core.resources_3.10.1.v20150725-1910.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:$QACRASHFIXDIRECTORY/qacrashfix/QACrashFix/test/Test/lib/org.eclipse.osgi_3.10.102.v20160118-1700.jar Test $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory"$nameOfFileWithoutExtension.txt
 
 
         done < $fileNames
