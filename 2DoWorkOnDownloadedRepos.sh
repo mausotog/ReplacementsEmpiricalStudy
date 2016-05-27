@@ -147,7 +147,7 @@ do
   rm -r ../"$folderName"BugFixingCommitVersions
   mv BugFixingCommitVersions ../"$folderName"BugFixingCommitVersions
   cd .. #folderName
-  #rm -r $folderName #remove the cloned project
+  rm -r $folderName #remove the cloned project
 
   #rm -f projectFolders.txt
   echo ""
