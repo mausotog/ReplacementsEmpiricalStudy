@@ -18,7 +18,6 @@ cd GitRepos/
 
 
 
-
 ls -d *BugFixingCommitVersions > GithubProjects.txt
 
 projectsLeft=$1
@@ -27,10 +26,9 @@ for folder in {1..10}
 do
   currentFolder="tier$folder"
   mkdir $currentFolder
-  tenthOfProjectNumber=$(($1/10))
-  for project in {1..$tenthOfProjectNumber}
-  do
-
+  tenthOfProjectNumber=$((($1+9)/10))
+  for ((project=1; project<=$tenthOfProjectNumber; project++)); do
+#FIXME: when the random matches the projectsLeft, and projectsLeft > 9, it behaves weird
     lineNumber=$[ ( $RANDOM % $projectsLeft )  + 1 ]
     echo "Line selected at random from $projectsLeft possible projects: $lineNumber"
     projectName=$(sed -n "${lineNumber}p" < GithubProjects.txt)
@@ -40,6 +38,7 @@ do
     param="/$projectName/d"
     sed -i $param GithubProjects.txt
     let projectsLeft-=1
+    echo ""
   done 
 done
 

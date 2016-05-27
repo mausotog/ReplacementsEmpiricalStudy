@@ -1,8 +1,11 @@
 #!/bin/bash 
 
-#./CountTotalNumberOfReplacements.sh
+#./4CountTotalNumberOfReplacements.sh
 
-containerFolderName="$1"
+for (( tierNumber=1; tierNumber<=10; tierNumber++ ))
+do
+
+containerFolderName="tier$tierNumber"
 
 declare -ia replacementCounter
 for i in `seq 1 484`; # 484 = 22*22 all possible combinations of replacements
@@ -63,6 +66,6 @@ do
   fi
 done 
 
-
+done
 
 
