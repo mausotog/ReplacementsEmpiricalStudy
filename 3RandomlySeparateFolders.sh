@@ -1,6 +1,7 @@
 #!/bin/bash 
+#1st parameter: how many projects are there
 
-#./RandomlySeparateFolders.sh
+#./RandomlySeparateFolders.sh 200
 
 cd GitRepos/
 
@@ -20,13 +21,14 @@ cd GitRepos/
 
 ls -d *BugFixingCommitVersions > GithubProjects.txt
 
-projectsLeft=100
+projectsLeft=$1
 
 for folder in {1..10}
 do
   currentFolder="tier$folder"
   mkdir $currentFolder
-  for project in {1..10}
+  tenthOfProjectNumber=$(($1/10))
+  for project in {1..$tenthOfProjectNumber}
   do
 
     lineNumber=$[ ( $RANDOM % $projectsLeft )  + 1 ]
