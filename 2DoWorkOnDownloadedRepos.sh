@@ -26,7 +26,7 @@ do
   #folderName=$(echo "${folderNameTmp::${#folderNameTmp}-4}") # remove extension
   echo "Working on project $folderName"
   cd $folderName
-  git log -100 --all -- '*.java' > logResult.txt # look only for commits that look into java files
+  git log --all -- '*.java' > logResult.txt # look only for commits that look into java files # add -100 to look just for the last 100 commits
   python ../../readLogData.py logResult.txt commitList.txt
   echo "commitList.txt created"
   
@@ -57,7 +57,8 @@ do
         fi
       done
 
-      if [ $count -le 3 ] && [ $count -ge 1 ];
+      #if [ $count -le 3 ] && [ $count -ge 1 ]; #If the number of files modified is between 1 and 3
+      if [ $count -ge 1 ];
       then
         #echo "before and after, right before introducing it to commitListAfter3FileFilter.txt: $commitHashs"
         echo "$commitHashs" >> ../commitListAfter3FileFilter.txt
