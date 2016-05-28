@@ -38,7 +38,7 @@ done
 #print the replacementCounter array into a file here: Model.txt
 printf "%s\n" "${replacementCounter[@]}" > AllButTier"$FOLDTOOMIT"Model.txt
 
-touch summaryOfModel.txt
+#touch summaryOfModel.txt
 for i in `seq 1 484`; # 484 = 22*22 all possible combinations of replacements
 do
   if [ ${replacementCounter[$i]} -ne 0 ]; then
