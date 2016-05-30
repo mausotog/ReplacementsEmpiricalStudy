@@ -26,10 +26,10 @@ do
         mostLikely4=0
         mostLikely5=0
         lineNumberOfMostLikely1=$counterModel
-        lineNumberOfMostLikely2=$counterModel+1
-        lineNumberOfMostLikely3=$counterModel+2
-        lineNumberOfMostLikely4=$counterModel+3
-        lineNumberOfMostLikely5=$counterModel+4
+        lineNumberOfMostLikely2=$(($counterModel+1))
+        lineNumberOfMostLikely3=$(($counterModel+2)
+        lineNumberOfMostLikely4=$(($counterModel+3))
+        lineNumberOfMostLikely5=$(($counterModel+4))
 
         for modelReplacer in `seq 1 22;
         do
@@ -74,7 +74,7 @@ do
             mostLikely5=${model[$counterModel]}
             lineNumberOfMostLikely5=$counterModel
           fi
-          counterModel=$counterModel+1
+          counterModel=$(($counterModel+1))
         done
 
         #see how many can the model correctly predict
@@ -89,7 +89,7 @@ do
             didNotPredictIt=$(($didNotPredictIt+${testingData[$counterTesting]})) 
 	    echo "NOT predicted so far: $didNotPredictIt"
           fi
-          counterTesting=$counterTesting+1
+          counterTesting=$(($counterTesting+1))
         done
 
       done
