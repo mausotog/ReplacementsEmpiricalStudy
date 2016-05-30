@@ -26,10 +26,10 @@ do
         mostLikely4=0
         mostLikely5=0
         lineNumberOfMostLikely1=$counterModel
-        lineNumberOfMostLikely2=$counterModel+1
-        lineNumberOfMostLikely3=$counterModel+2
-        lineNumberOfMostLikely4=$counterModel+3
-        lineNumberOfMostLikely5=$counterModel+4
+        lineNumberOfMostLikely2=$(($counterModel+1))
+        lineNumberOfMostLikely3=$(($counterModel+2))
+        lineNumberOfMostLikely4=$(($counterModel+3))
+        lineNumberOfMostLikely5=$(($counterModel+4))
 
         for modelReplacer in `seq 1 22;
         do
@@ -74,7 +74,7 @@ do
             mostLikely5=${model[$counterModel]}
             lineNumberOfMostLikely5=$counterModel
           fi
-          counterModel=$counterModel+1
+          counterModel=$(($counterModel+1))
         done
 
         #see how many can the model correctly predict
@@ -89,56 +89,10 @@ do
             didNotPredictIt=$(($didNotPredictIt+${testingData[$counterTesting]})) 
 	    echo "NOT predicted so far: $didNotPredictIt"
           fi
-          counterTesting=$counterTesting+1
+          counterTesting=$(($counterTesting+1))
         done
 
       done
-
-      
-
-
-
-
-
-
-
-
-
-  #for tierNumber in {1..10}
-  #do
-  #  if [ $tierNumber -ne $FOLDTOOMIT ]; then
-  #    cd tier"$tierNumber"
-  #    for i in `seq 1 484`; # 484 = 22*22 all possible combinations of replacements
-  #      do
-  #        commandToGetSpecificLine="sed '$i!d' tier"$tierNumber"Model.txt" # take number in line i
-  #        numberOfReplacementsOfThisLine=$(eval $commandToGetSpecificLine)
-  #        (( replacementCounter[$i]+=$numberOfReplacementsOfThisLine ))
-  #        #if [ ${replacementCounter[$i]} -ne 0 ]; then
-  #          #echo "Total counter for iterator $i: ${replacementCounter[$i]}"
-  #        #fi
-  #    done 
-  #    cd .. # out of tier folder
-  #  fi
-  #done
-
-  #print the replacementCounter array into a file here: Model.txt
-  #printf "%s\n" "${replacementCounter[@]}" > AllButTier"$FOLDTOOMIT"Model.txt
-
-  #touch summaryOfModel.txt
-  #for i in `seq 1 484`; # 484 = 22*22 all possible combinations of replacements
-  #do
-  #  if [ ${replacementCounter[$i]} -ne 0 ]; then
-  #    echo "Total counter for iterator $i: ${replacementCounter[$i]}" >> summaryOfAllButTier"$FOLDTOOMIT"Model$
-  #  fi
-  #done 
-
-
-
-
-
-
-
-
 
     cd .. #out of tier$FOLDTOTEST
   cd .. # out of GitRepos
