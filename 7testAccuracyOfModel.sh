@@ -1,5 +1,7 @@
 #!/bin/bash 
 
+declare -ia successRates
+
 for FOLDTOTEST in {1..10}
 do
 
@@ -31,7 +33,7 @@ do
         lineNumberOfMostLikely4=$(($counterModel+3))
         lineNumberOfMostLikely5=$(($counterModel+4))
 
-        for modelReplacer in `seq 1 22;
+        for modelReplacer in `seq 1 22`;
         do
           if [ ${model[$counterModel]} -ge $mostLikely1 ]
           then
@@ -76,25 +78,33 @@ do
           fi
           counterModel=$(($counterModel+1))
         done
+        #echo "Most likelies in row $replacee are: $mostLikely1 in line $(($lineNumberOfMostLikely1+1)), $mostLikely2 in line $(($lineNumberOfMostLikely2+1)), $mostLikely3 in line $(($lineNumberOfMostLikely3+1)), $mostLikely4 in line $(($lineNumberOfMostLikely4+1)), $mostLikely5 in line $(($lineNumberOfMostLikely5+1))"
 
         #see how many can the model correctly predict
-        for testingReplacer in `seq 1 22;
+        for testingReplacer in `seq 1 22`;
         do
           #to get the data with less guesses comment the remaining OR's from this condition
           if [ $counterTesting -eq $lineNumberOfMostLikely1 ] || [ $counterTesting -eq $lineNumberOfMostLikely2 ] || [ $counterTesting -eq $lineNumberOfMostLikely3 ] || [ $counterTesting -eq $lineNumberOfMostLikely4 ] || [ $counterTesting -eq $lineNumberOfMostLikely5 ]
           then
-            didPredictIt=$(($didPredictIt+${testingData[$counterTesting]}))   
-	    echo "predicted so far: $didPredictIt"
+            didPredictIt=$(($didPredictIt+${testingData[$counterTesting]}))
           else
             didNotPredictIt=$(($didNotPredictIt+${testingData[$counterTesting]})) 
-	    echo "NOT predicted so far: $didNotPredictIt"
           fi
           counterTesting=$(($counterTesting+1))
         done
-
+        #echo "Testing Fold: $FOLDTOTEST, For line: $replacee, we have $didPredictIt predicted, and $didNotPredictIt NOT predicted." 
       done
-
+      totalInstances=$(($didPredictIt + $didNotPredictIt))
+      successRate=$(($didPredictIt*100/$totalInstances))
+      successRates[$FOLDTOTEST]=$successRate
+      echo "tier$FOLDTOTEST as testing data: $didPredictIt instances predicted, and $didNotPredictIt instances NOT predicted. Success Rate: $successRate%"
     cd .. #out of tier$FOLDTOTEST
   cd .. # out of GitRepos
 done
 
+mean=$(echo ${successRates[@]} | awk '{for(i=1;i<=NF;i++){sum+=$i};print sum/NF}')
+echo "Mean: $mean"
+variance=$(echo ${successRates[@]} | awk -vM=5 '{for(i=1;i<=NF;i++){sum+=($i-'"$mean"')*($i-'"$mean"')};print sum/NF}')
+echo "Variance: $variance"
+stdDev=$(echo ${successRates[@]} | awk -vM=5 '{for(i=1;i<=NF;i++){sum+=($i-'"$mean"')*($i-'"$mean"')};print sqrt(sum/NF)}')
+echo "Standard deviation: $stdDev"
