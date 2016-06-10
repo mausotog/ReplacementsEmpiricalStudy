@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Example usage: ./DoWorkOnDownloadedRepos.sh
+# Example usage: ./2DoWorkOnDownloadedRepos.sh
 
 QACRASHFIXDIRECTORY=$(pwd)
 JAVALOCATION=$(which java)

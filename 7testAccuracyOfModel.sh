@@ -14,8 +14,8 @@ do
       declare -ia testingData
       readarray testingData < tier"$FOLDTOTEST"Model.txt
 
-      counterModel=1
-      counterTesting=1
+      counterModel=0
+      counterTesting=0
       didPredictIt=0
       didNotPredictIt=0
       for replacee in `seq 1 22`; # 484 = 22*22 all possible combinations of replacements
