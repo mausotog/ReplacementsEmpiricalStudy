@@ -20,7 +20,8 @@ do
         numberOfReplacementsOfThisLine=$(eval $commandToGetSpecificLine)
         (( replacementCounter[$i]+=$numberOfReplacementsOfThisLine ))
         #if [ ${replacementCounter[$i]} -ne 0 ]; then
-          #echo "Total counter for iterator $i: ${replacementCounter[$i]}"
+          #echo "Total countclear
+er for iterator $i: ${replacementCounter[$i]}"
         #fi
     done 
     cd .. # out of tier folder
