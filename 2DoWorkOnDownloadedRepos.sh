@@ -9,7 +9,7 @@ JAVACLOCATION=$(which javac)
 #uname -v | grep -qi Darwin && JAVA_PATH=`/usr/libexec/java_home -v 1.7`/bin
 #uname -v | grep -qi Ubuntu && JAVA_PATH="/usr/lib/jvm/java-7-oracle/bin"
 
-compile Test.java
+#compile Test.java
 cd qacrashfix/QACrashFix/test/Test/
 mkdir bin/
 $JAVACLOCATION -cp ../../target/exception-fix-0.0.1-SNAPSHOT.jar:log4j-api-2.5.jar:org.eclipse.core.resources_3.10.1.v20150725-1910.jar:org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:log4j-core-2.5.jar:org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:org.eclipse.osgi_3.10.102.v20160118-1700.jar:org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar -d bin/ src/Test.java
@@ -27,7 +27,7 @@ do
   echo "Working on project $folderName"
   if [ -d "$folderName" ]; then
     cd $folderName
-    git log --all -- '*.java' > logResult.txt # look only for commits that look into java files # add -100 to look just for the last 100 commits
+    git log -100 --all -- '*.java' > logResult.txt # look only for commits that look into java files # add -100 to look just for the last 100 commits
     python ../../readLogData.py logResult.txt commitList.txt
     echo "commitList.txt created"
   
@@ -58,8 +58,8 @@ do
           fi
         done
 
-      #if [ $count -le 3 ] && [ $count -ge 1 ]; #If the number of files modified is between 1 and 3
-      if [ $count -ge 1 ];
+      if [ $count -le 3 ] && [ $count -ge 1 ]; #If the number of files modified is between 1 and 3
+      #if [ $count -ge 1 ];
       then
         #echo "before and after, right before introducing it to commitListAfter3FileFilter.txt: $commitHashs"
         echo "$commitHashs" >> ../commitListAfter3FileFilter.txt

@@ -190,7 +190,8 @@ public class Test {
 
 		for (TreeEditAction editAction : editScript)
 		{
-			if (editAction instanceof ReplaceAction)
+			System.out.println(editAction.toString());
+			/*if (editAction instanceof ReplaceAction)
 			{
 				ReplaceAction replaceAction = (ReplaceAction)editAction;
 
@@ -200,7 +201,7 @@ public class Test {
 				{
 					++replacementCounts[fromIndex][toIndex];
 				}
-			}
+			}*/
 		}
 
 		for (int i = 0; i < 22; ++i)
