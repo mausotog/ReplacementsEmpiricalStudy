@@ -9,6 +9,8 @@ import cn.edu.pku.sei.plde.qacrashfix.jdt.JDTTreeGenerator;
 import cn.edu.pku.sei.plde.qacrashfix.tree.AnswerQuestionMapper;
 import cn.edu.pku.sei.plde.qacrashfix.tree.QuestionSourceMapper;
 import cn.edu.pku.sei.plde.qacrashfix.tree.edits.ReplaceAction;
+import cn.edu.pku.sei.plde.qacrashfix.tree.edits.InsertAction;
+import cn.edu.pku.sei.plde.qacrashfix.tree.edits.DeleteAction;
 import cn.edu.pku.sei.plde.qacrashfix.tree.edits.TreeEditAction;
 
 public class Test {
@@ -165,19 +167,13 @@ public class Test {
 
 	public static void main(String[] args) throws Exception, IOException
 	{
-//		String pathPrefix = "/Users/ssamuel/Documents/CMU/Semester2/15-819O/project/code/ReplacementsEmpiricalStudy/";
-//		String fileName = "SearchQueryIT.java";
 		byte[] beforeBytes = Files.readAllBytes(Paths.get(
 				args[0]));
-//				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit2/before/" + fileName));
-//				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/before.java"));
 		JDTTreeGenerator beforeTree1 = new JDTTreeGenerator(new String(beforeBytes));
 		JDTTreeGenerator beforeTree2 = new JDTTreeGenerator(new String(beforeBytes));
 
 		byte[] afterBytes = Files.readAllBytes(Paths.get(
 				args[1]));
-//				pathPrefix + "GitRepos/elasticsearch/BugFixingCommitVersions/Commit2/after/" + fileName));
-//				"/Users/ssamuel/Documents/CMU/Semester 2/15-819O/project/code/ReplacementsEmpiricalStudy/GitRepos/testingGumtree/after.java"));
 		JDTTreeGenerator afterTree = new JDTTreeGenerator(new String(afterBytes));
 
 		QuestionSourceMapper qsMapper = new QuestionSourceMapper(beforeTree1.getTree(), beforeTree2.getTree());
@@ -187,11 +183,13 @@ public class Test {
 		List<TreeEditAction> editScript = aqMapper.getEditingScripts();
 
 		int[][] replacementCounts = new int[22][22];
+		int appends = 0;
+		int deletes = 0;
 
 		for (TreeEditAction editAction : editScript)
 		{
-			System.out.println(editAction.toString());
-			/*if (editAction instanceof ReplaceAction)
+			System.out.println("EDIT ACTION: " + editAction.toString());
+			if (editAction instanceof ReplaceAction)
 			{
 				ReplaceAction replaceAction = (ReplaceAction)editAction;
 
@@ -201,9 +199,19 @@ public class Test {
 				{
 					++replacementCounts[fromIndex][toIndex];
 				}
-			}*/
+			}
+
+  			if (editAction instanceof CopyAction || editAction instanceof MoveAction)
+			{
+				++appends;	
+			}
+			if (editAction instanceof DeleteAction)
+			{
+				++deletes;
+			}
 		}
 
+//Print results
 		for (int i = 0; i < 22; ++i)
 		{
 			String fromStatementType = getStatementType(i);
@@ -215,20 +223,8 @@ public class Test {
 				System.out.println(replacementCounts[i][j] + ": " + fromStatementType + " -> " + toStatementType);
 			}
 		}
+		System.out.println("Appends:"+appends);
+		System.out.println("Deletes"+deletes);
 
-/*		System.out.println("EDIT SCRIPT");
-		for (TreeEditAction editAction : editScript)
-		{
-			System.out.println(editAction);
-		}
-
-		System.out.println(beforeTree1.getFormalizedCode());
-//		System.out.println(afterTree.getFormalizedCode());
-
-		qsMapper.applyScriptsToSource(editScript);
-		beforeTree2.setRoot((JDTTreeNode) qsMapper.getDestinationTree());
-
-		System.out.println("AFTER PATCHING");
-		System.out.println(beforeTree2.getFormalizedCode());*/
 	}
 }
