@@ -1,7 +1,7 @@
 #!/bin/bash 
 #1st parameter: how many projects are there
 
-#./RandomlySeparateFolders.sh 200
+#./RandomlySeparateFolders.sh
 
 cd GitRepos/
 
@@ -20,7 +20,7 @@ cd GitRepos/
 
 ls -d *BugFixingCommitVersions > GithubProjects.txt
 
-projectsLeft=$1
+projectsLeft=$(cat GithubProjects.txt | wc -l)
 
 for folder in {1..10}
 do

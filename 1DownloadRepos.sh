@@ -7,6 +7,10 @@
 
 # Example usage: ./DowloadRepos.sh 10
 
+if [ "$#" -ne 1 ]; then
+    echo "This script should be run with 1 parameters: The number of projects to clone. It must be a multiple of 10 (Ex: 10,20,30,100,etc)"
+
+else
 
 NUMBEROFPROJECTSTODOWNLOAD="$1"
 
@@ -33,4 +37,5 @@ do
 
 done < $repoFile 
 
+fi #Correct number of params
 

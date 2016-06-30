@@ -14,7 +14,7 @@ import com.github.gumtreediff.matchers.Matchers;
 import com.github.gumtreediff.tree.ITree;
 
 
-public class testGumtree {
+public class TestGumtree {
 
     public static void main(String[] args) {
 	/*Run.initGenerators();
@@ -40,7 +40,7 @@ public class testGumtree {
 	}catch(IOException e){
 	
 	}
-     }
+    }
 
 }
 
