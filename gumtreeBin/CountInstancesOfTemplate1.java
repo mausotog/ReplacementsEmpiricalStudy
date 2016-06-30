@@ -14,7 +14,7 @@ import com.github.gumtreediff.matchers.Matchers;
 import com.github.gumtreediff.tree.ITree;
 
 
-public class TestGumtree {
+public class CountInstancesOfTemplate1 {
 
     public static void main(String[] args) {
 	/*Run.initGenerators();

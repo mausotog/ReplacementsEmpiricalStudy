@@ -11,13 +11,7 @@ JAVACLOCATION=$(which javac)
 cd qacrashfix/QACrashFix/test/Test/
 rm -fr bin/
 mkdir bin/
-$JAVACLOCATION -cp ../../target/exception-fix-0.0.1-SNAPSHOT.jar:log4j-api-2.5.jar:org.eclipse.core.resources_3.10.1.v20150725-1910.jar:org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:log4j-core-2.5.jar:org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:org.eclipse.osgi_3.10.102.v20160118-1700.jar:org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar -d bin/ src/CountNumberOfAParticularReplacement.java
-
-$JAVACLOCATION -cp ../../target/exception-fix-0.0.1-SNAPSHOT.jar:log4j-api-2.5.jar:org.eclipse.core.resources_3.10.1.v20150725-1910.jar:org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:log4j-core-2.5.jar:org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:org.eclipse.osgi_3.10.102.v20160118-1700.jar:org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar -d bin/ src/CountAppends.java
-
-$JAVACLOCATION -cp ../../target/exception-fix-0.0.1-SNAPSHOT.jar:log4j-api-2.5.jar:org.eclipse.core.resources_3.10.1.v20150725-1910.jar:org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:log4j-core-2.5.jar:org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:org.eclipse.osgi_3.10.102.v20160118-1700.jar:org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar -d bin/ src/CountDeletes.java
-
-$JAVACLOCATION -cp ../../target/exception-fix-0.0.1-SNAPSHOT.jar:log4j-api-2.5.jar:org.eclipse.core.resources_3.10.1.v20150725-1910.jar:org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:log4j-core-2.5.jar:org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:org.eclipse.osgi_3.10.102.v20160118-1700.jar:org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar -d bin/ src/CountReplacements.java
+$JAVACLOCATION -cp ../../target/exception-fix-0.0.1-SNAPSHOT.jar:log4j-api-2.5.jar:org.eclipse.core.resources_3.10.1.v20150725-1910.jar:org.eclipse.jdt.core_3.11.1.v20150902-1521.jar:log4j-core-2.5.jar:org.eclipse.core.runtime_3.11.1.v20150903-1804.jar:org.eclipse.osgi_3.10.102.v20160118-1700.jar:org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar:org.eclipse.equinox.common_3.7.0.v20150402-1709.jar:org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar -d bin/ src/CountNumberOfGenProgMutations.java
 cd ../../../..
 
 #compile files in Gumtree
