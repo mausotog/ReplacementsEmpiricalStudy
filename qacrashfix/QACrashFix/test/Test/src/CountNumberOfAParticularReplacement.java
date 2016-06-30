@@ -11,9 +11,11 @@ import cn.edu.pku.sei.plde.qacrashfix.tree.QuestionSourceMapper;
 import cn.edu.pku.sei.plde.qacrashfix.tree.edits.ReplaceAction;
 import cn.edu.pku.sei.plde.qacrashfix.tree.edits.InsertAction;
 import cn.edu.pku.sei.plde.qacrashfix.tree.edits.DeleteAction;
+import cn.edu.pku.sei.plde.qacrashfix.tree.edits.CopyAction;
+import cn.edu.pku.sei.plde.qacrashfix.tree.edits.MoveAction;
 import cn.edu.pku.sei.plde.qacrashfix.tree.edits.TreeEditAction;
 
-public class Test {
+public class CountNumberOfAParticularReplacement {
 	
 	public static void main(String[] args) throws Exception, IOException
 	{
@@ -32,52 +34,31 @@ public class Test {
 		AnswerQuestionMapper aqMapper = new AnswerQuestionMapper(afterTree.getTree(), beforeTree1.getTree());
 		List<TreeEditAction> editScript = aqMapper.getEditingScripts();
 
-		int[][] replacementCounts = new int[22][22];
-		int appends = 0;
-		int deletes = 0;
-		int replacements = 0;
+		int replacement = 0;
 
 		for (TreeEditAction editAction : editScript)
 		{
-			System.out.println("EDIT ACTION: " + editAction.toString());
+			//System.out.println("EDIT ACTION: " + editAction.toString());
 			if (editAction instanceof ReplaceAction)
 			{
 				ReplaceAction replaceAction = (ReplaceAction)editAction;
 
 				int fromIndex = getStatementTypeIndex(replaceAction.getReplacedNode().getClass().getSimpleName());
 				int toIndex = getStatementTypeIndex(replaceAction.getNewNode().getClass().getSimpleName());
-				if ((fromIndex >= 0) && (toIndex >= 0))
+				if ((fromIndex == args[2]) && (toIndex == args[3]))
 				{
-					++replacementCounts[fromIndex][toIndex];
-					++replacements;
+					++replacement;
 				}
 			}
 
-  			if (editAction instanceof CopyAction || editAction instanceof MoveAction)
-			{
-				++appends;	
-			}
-			if (editAction instanceof DeleteAction)
-			{
-				++deletes;
-			}
+  			
 		}
 
 		//Print results
-		for (int i = 0; i < 22; ++i)
-		{
-			String fromStatementType = getStatementType(i);
 
-			for (int j = 0; j < 22; ++j)
-			{
-				String toStatementType = getStatementType(j);
-
-				System.out.println(replacementCounts[i][j] + ": " + fromStatementType + " -> " + toStatementType);
-			}
-		}
-		System.out.println(replacements + ": Overall Replacements");
-		System.out.println(appends + ": Overall Appends");
-		System.out.println(deletes + ": Overall Deletes");
+		String fromStatementType = getStatementType(i);
+		String toStatementType = getStatementType(j);
+		System.out.println(replacementCounts[i][j] + ": " + fromStatementType + " -> " + toStatementType);
 
 	}
 

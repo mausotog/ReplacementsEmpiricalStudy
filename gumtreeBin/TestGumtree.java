@@ -37,6 +37,7 @@ public class TestGumtree {
 		ActionGenerator g = new ActionGenerator(src, dst, m.getMappings());
 		g.generate();
 		List<Action> actions = g.getActions(); // return the actions
+		System.out.println("Looks like TestGrumtree works");
 	}catch(IOException e){
 	
 	}
