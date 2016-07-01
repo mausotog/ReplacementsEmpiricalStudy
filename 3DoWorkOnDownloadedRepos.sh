@@ -145,7 +145,7 @@ do
     done < $commitListSmall
 
     cd .. #bugFixingCommitVersions
-    rm -r ../"$folderName"BugFixingCommitVersions
+    rm -fr ../"$folderName"BugFixingCommitVersions
     mv BugFixingCommitVersions ../"$folderName"BugFixingCommitVersions
     cd .. #folderName
     #rm -r $folderName #remove the cloned project

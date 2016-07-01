@@ -41,7 +41,7 @@ public class CountNumberOfGenProgMutations {
  
 		for (TreeEditAction editAction : editScript)
 		{
-			System.out.println("EDIT ACTION: " + editAction.toString());
+			//System.out.println("EDIT ACTION: " + editAction.toString());
 			if (editAction instanceof ReplaceAction)
 			{
 				ReplaceAction replaceAction = (ReplaceAction)editAction;
