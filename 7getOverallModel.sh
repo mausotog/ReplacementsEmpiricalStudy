@@ -38,7 +38,7 @@ do
         #fi
     done 
     cd .. # out of tier folder
- 
+    echo "Done with tier $tierNumber"
 done
 
 
@@ -46,20 +46,25 @@ done
 
 #print the replacementCounter array into a file here: Model.txt
 #printf "%s\n" "${replacementCounter[@]}" > OVERALLModel.txt
+rm OVERALLModel.txt
 index=0
 for i in `seq 1 22`; # 484 = 22*22 all possible combinations of replacements
 do
   for e in `seq 1 22`;
-    ((index+=1))
+  do
+    (( index+=1 ))
     line+="${replacementCounter[$index]} "
-  do 
+   
+  done
   echo $line >> OVERALLModel.txt
+  line=""
 done
   echo $replacementCount >> OVERALLModel.txt
   echo $appendCount >> OVERALLModel.txt
   echo $deleteCount >> OVERALLModel.txt
 
 #touch summaryOfModel.txt
+rm summaryOfOVERALLModel.txt
 for i in `seq 1 484`; # 484 = 22*22 all possible combinations of replacements
 do
   if [ ${replacementCounter[$i]} -ne 0 ]; then

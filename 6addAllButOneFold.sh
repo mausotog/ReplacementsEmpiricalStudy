@@ -44,6 +44,7 @@ do
       done 
       cd .. # out of tier folder
     fi
+    echo "Done with tier $tierNumber"
   done
 
   #print the replacementCounter array into a file here: Model.txt
