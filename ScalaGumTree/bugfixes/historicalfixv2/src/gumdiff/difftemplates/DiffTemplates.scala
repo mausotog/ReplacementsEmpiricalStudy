@@ -601,13 +601,21 @@ class DiffTemplates {
   def match2ParameterReplacer(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {
-      if (actionName(ac) == "Update") {
-          if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
-	    var exp = nodeClassName(ac.getNode)
-            if (isExpression(exp)) {
-	      res += 1
-	    }
+        if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
+          if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
+	  var exp = nodeClassName(ac.getNode)
+          if (isExpression(exp)) {
+            if (actionName(ac) == "Update" || actionName(ac) == "Insert" ) {
+	      if(ac.getNode.getParent.getChildren.get(1).toShortString != ac.getNode.toShortString){
+	        res += 1
+	      }
+	    }else if(actionName(ac) == "Delete"){
+	      if(nodeClassName(ac.getNode) == "MethodInvocation"){
+		res += 1
+	      }
+  	    }
           } 
+        }
       }
     }
     res
@@ -630,17 +638,39 @@ class DiffTemplates {
   def match4ParameterAdderRemover(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {
-       if (actionName(ac) == "Insert" || actionName(ac) == "Delete") {
-        if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
-          if (isExpression(nodeClassName(ac.getNode))) {
-            res += 1
-	    if (nodeClassName(ac.getNode) == "MethodInvocation") {
-	      //when it is a method invocation inside of a method invocation it counts two so I have to remove one
-	      res-=1
-	    }
+      if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
+        if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
+ 	  if (isExpression(nodeClassName(ac.getNode))) {          
+	    if (actionName(ac) == "Insert" || actionName(ac) == "Move"){
+	      var foundMatchingDelete = false
+  	      for (ac2 <- actions) {
+                if(ac.getNode.getParent.getChildren.get(1).toShortString == ac2.getNode.getParent.getChildren.get(1).toShortString && actionName(ac2) == "Delete"){
+		  foundMatchingDelete = true
+	        }
+	      }
+	      if(!foundMatchingDelete){
+                res += 1
+	      }
+            }else if (actionName(ac) == "Delete") {            
+	      var foundMatchingInsert = false
+  	      for (ac2 <- actions) {
+		//println("Comparing: " + ac.getNode.getParent.getChildren.get(1).toShortString + " with " + ac2.getNode.getParent.getChildren.get(1).toShortString)
+                if(ac.getNode.getParent.getChildren.get(1).toShortString == ac2.getNode.getParent.getChildren.get(1).toShortString && (actionName(ac2) == "Insert" || actionName(ac2) == "Move") ){
+		  //println("Match found!")
+		  foundMatchingInsert = true
+		 // break
+	        }
+	      }
+	      if(!foundMatchingInsert){
+		//println("ac.getNode.getParent.getChildren.get(1).toShortString: " + ac.getNode.getParent.getChildren.get(1).toShortString + " ac.getNode.toShortString: " + ac.getNode.toShortString)
+		//if(ac.getNode.getParent.getChildren.get(1).toShortString != ac.getNode.toShortString){                
+		  res += 1
+		//}
+	      }
+            }
           }
-         } 
         }
+      }
     }
     res
   }
@@ -709,11 +739,11 @@ class DiffTemplates {
 	      if((nodeClassName(condition) == "InfixExpression")){ 
 		//only checks one bound
 		if(nodeClassName(condition.getChildren.get(0)) != "InfixExpression" ){
-		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName" ){
+		  /*if(nodeClassName(condition.getChildren.get(0)) == "SimpleName" ){
 		    if(condition.getShortLabel == "<" || condition.getShortLabel == "<=" || condition.getShortLabel == ">" || condition.getShortLabel == ">="){
 		      res += 1
 		    }
-		  }
+		  }*/
 		//checks both bounds
 		}else{
 		  if(nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "SimpleName" ){
@@ -731,31 +761,6 @@ class DiffTemplates {
 	  }
     }
     res
-
-
-
-/*
-    var res = false
-    var lowerCheck = false
-    var upperCheck = false
-    val arrActions = actions.toArray(Array.ofDim[Action](actions.size))
-    if (nodeClassName(arrActions(0).getNode.getParent) == "Block") {
-      if (nodeClassName(arrActions(0).getNode) == "IfStatement") {
-        if (actionName(arrActions(0)) != "Insert") return false
-        for (ac <- actions if nodeClassName(ac.getNode) == "InfixExpression") {
-          if (ac.getNode.getShortLabel == "<" || ac.getNode.getShortLabel == "<=") {
-            upperCheck = true
-          }
-          if (ac.getNode.getShortLabel == ">=" || ac.getNode.getShortLabel == ">") {
-            lowerCheck = true
-          }
-          if (lowerCheck && upperCheck) {
-            res = true
-          }
-        }
-      }
-    }
-    res*/
   }
 
   def match8AddColectionSizeChecker(actions: List[Action]): Int = {
@@ -781,25 +786,6 @@ class DiffTemplates {
 	  }
     }
     res
-
-
-/*
-    var res = false
-    val arrActions = actions.toArray(Array.ofDim[Action](actions.size))
-    if (nodeClassName(arrActions(0).getNode.getParent) == "Block") {
-      if (nodeClassName(arrActions(0).getNode) == "IfStatement") {
-        if (actionName(arrActions(0)) != "Insert") return false
-        for (ac <- actions if nodeClassName(ac.getNode) == "InfixExpression") {
-          if (ac.getNode.getShortLabel == "<" || ac.getNode.getShortLabel == "<=") {
-            res = true
-          }
-          if (ac.getNode.getShortLabel == ">" || ac.getNode.getShortLabel == ">=") {
-            res = if (res) false else true
-          }
-        }
-      }
-    }
-    res*/
   }
 
 
@@ -891,19 +877,6 @@ class DiffTemplates {
 	  }
     }
     res
-
-
-/*
-    var res = false
-    val arrActions = actions.toArray(Array.ofDim[Action](actions.size))
-    if (nodeClassName(arrActions(0).getNode.getParent) == "Block") {
-      if (nodeClassName(arrActions(0).getNode) == "IfStatement") {
-        if (actionName(arrActions(0)) != "Insert") return false
-        for (ac <- actions if nodeClassName(ac.getNode) == "InstanceofExpression" 
-            if nodeClassName(ac.getNode.getChild(1)) == "SimpleType") res = true
-      }
-    }
-    res*/
   }
 
   def match13CasterMutator(actions: List[Action]): Int = {
@@ -953,22 +926,25 @@ class DiffTemplates {
   def match15ExpressionChanger(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {   
-        if (actionName(ac) == "Update") { // (var == null) -> (var != null)
-	  if (nodeClassName(ac.getNode.getParent) == "IfStatement" || 
+	if (nodeClassName(ac.getNode.getParent) == "IfStatement" || 
           nodeClassName(ac.getNode.getParent) == "WhileStatement" || 
           nodeClassName(ac.getNode.getParent) == "DoStatement") {
-	    if (nodeClassName(ac.getNode) == "InfixExpression") {
-              res += 1
-            }
-	  }
-        }else if (actionName(ac) == "Insert"){ //or Delete, but if we count both it would count them twice
-	  var exp = nodeClassName(ac.getNode)
-	  if(isExpression(exp)){	  
-	    if (nodeClassName(ac.getNode.getParent) == "InfixExpression" && nodeClassName(ac.getNode.getParent.getParent) != "InfixExpression") { // (var == null) -> (var == var2)
-                res += 1
-	    }
-	  }
-	}
+	    if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
+	      if (actionName(ac) == "Update") { // (var == null) -> (var != null)
+		if (nodeClassName(ac.getNode) == "InfixExpression") {
+                  res += 1
+		}
+	      }else if (actionName(ac) == "Insert"){ //or Delete, but if we count both it would count them twice
+	        var exp = nodeClassName(ac.getNode)
+	        if(isExpression(exp)){	  
+	          //if (nodeClassName(ac.getNode.getParent) == "InfixExpression" && nodeClassName(ac.getNode.getParent.getParent) != "InfixExpression") { // (var == null) -> (var == var2)
+                    res += 1
+	          //}
+	        }
+	      }
+            }	  
+        }
+   
     }
     res
   }
@@ -976,20 +952,61 @@ class DiffTemplates {
   def match16ExpressionAdder(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {
-        if (nodeClassName(ac.getNode.getParent) == "IfStatement") {
-          if(nodeClassName(ac.getNode) == "InfixExpression"){
-	    if (actionName(ac) == "Insert"){
-		if (ac.getNode.getChildren.get(0) != null && ac.getNode.getChildren.get(1) != null && nodeClassName(ac.getNode.getChildren.get(0)) == "InfixExpression" && nodeClassName(ac.getNode.getChildren.get(1)) == "InfixExpression") {
+      if (nodeClassName(ac.getNode.getParent) == "InfixExpression") {
+	//println("nodeClassName(ac.getNode.getParent.getParent): "+nodeClassName(ac.getNode.getParent.getParent))
+        if (nodeClassName(ac.getNode.getParent.getParent) == "IfStatement") {
+	  if(statementAlreadyExisted(ac.getNode.getParent.getParent, actions)){ //parent already existed
+	    if(!statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
+              var exp = nodeClassName(ac.getNode)
+	      if(isExpression(exp)){	  
+	        if (actionName(ac) == "Insert"){
+		println("ac.getNode.getChildren.get(0): "+ac.getNode.getChildren.get(0))
+		 // if (ac.getNode.getChildren.get(0) != null && ac.getNode.getChildren.get(1) != null && nodeClassName(ac.getNode.getChildren.get(0)) == "InfixExpression" && nodeClassName(ac.getNode.getChildren.get(1)) == "InfixExpression") {
                   res += 1
-		}
-            }
-	  }
+		  //}
+              }
+	    }
+          }}
         }
+      }
+    }
+    res
+
+
+
+
+
+
+/*
+    var res = 0
+    for (ac <- actions) {
+        if (nodeClassName(ac.getNode.getParent) == "IfStatement") {
+          if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
+            if(nodeClassName(ac.getNode) == "InfixExpression"){
+	      if (actionName(ac) == "Insert"){
+		  if (ac.getNode.getChildren.get(0) != null && ac.getNode.getChildren.get(1) != null && nodeClassName(ac.getNode.getChildren.get(0)) == "InfixExpression" && nodeClassName(ac.getNode.getChildren.get(1)) == "InfixExpression") {
+                  res += 1
+		  }
+              }
+	    }
+          }
+        }
+    }
+    res*/
+  }
+
+
+  def statementAlreadyExisted(nodeToLookFor: ITree, actions: List[Action]): Boolean = {
+    var res = true
+    for (ac <- actions) {
+      if (actionName(ac) == "Insert"){
+        if(ac.getNode == nodeToLookFor){
+	  return false
+	}
+      }
     }
     res
   }
-
-  
 
   def isExpression(exp: String): Boolean = {
     return (exp == "SimpleName" || exp == "MethodInvocation" || exp == "Annotation" || exp == "ArrayAccess" || exp == "ArrayCreation" || exp == "ArrayInitializer" || exp == "Assignment" || exp == "BooleanLiteral" || exp == "CastExpression" || exp == "CharacterLiteral" || exp == "ClassInstanceCreation" || exp == "ConditionalExpression" || exp == "FieldAccess" || exp == "InfixExpression" || exp == "InstanceofExpression" || exp == "LambdaExpression" || exp == "MethodReference" || exp == "Name" || exp == "NullLiteral" || exp == "NumberLiteral" || exp == "ParenthesizedExpression" || exp == "PostfixExpression" || exp == "PrefixExpression" || exp == "StringLiteral" || exp == "SuperFieldAccess" || exp == "SuperMethodInvocation" || exp == "ThisExpression" || exp == "TypeLiteral" || exp == "VariableDeclarationExpression" || exp == "MarkerAnnotation" || exp == "NormalAnnotation" || exp == "SingleMemberAnnotation" || exp == "CreationReference" || exp == "ExpressionMethodReference" || exp == "SuperMethodReference" || exp == "TypeMethodReference" || exp == "QualifiedName")
