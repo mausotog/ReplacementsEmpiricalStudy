@@ -562,16 +562,6 @@ class DiffTemplates {
     }
     currentInfor
   }
-/*
-  def match1ParameterReplacer(actions: List[Action],stg: JdtTreeGenerator, dtg: JdtTreeGenerator ) : Boolean ={
-    for(ac <- actions){
-      if(nodeClassName(ac.getNode) == "SimpleName"){
-        val realName = extractRealSimpleName(ac.getNode.getShortLabel)
-      }
-    }
-    true
-  }
-*/
 
   def match1AddNullChecker(actions: List[Action]): Int = {
     var res = 0
@@ -585,17 +575,6 @@ class DiffTemplates {
 	  }
     }
     res
-
-/*
-    var res = false
-    val arrActions = actions.toArray(Array.ofDim[Action](actions.size))
-    if (nodeClassName(arrActions(0).getNode.getParent) == "Block") {
-      if (nodeClassName(arrActions(0).getNode) == "IfStatement") {
-        if (actionName(arrActions(0)) != "Insert") return false
-        for (ac <- actions if nodeClassName(ac.getNode) == "InfixExpression" if nodeClassName(ac.getNode.getChild(1)) == "NullLiteral") res = true
-      }
-    }
-    res*/
   }
 
   def match2ParameterReplacer(actions: List[Action]): Int = {
@@ -605,9 +584,18 @@ class DiffTemplates {
           if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
 	  var exp = nodeClassName(ac.getNode)
           if (isExpression(exp)) {
-            if (actionName(ac) == "Update" || actionName(ac) == "Insert" ) {
+            if (actionName(ac) == "Update"){
+	       if(ac.getNode.getParent.getChildren.size >1 && ac.getNode.getParent.getChildren.get(1)!=ac.getNode && ac.getNode.getParent.getChildren.get(0)!=ac.getNode){
+		res += 1
+	       }
+	     }else if( actionName(ac) == "Insert" ) {
 	      if(ac.getNode.getParent.getChildren.get(1).toShortString != ac.getNode.toShortString){
-	        res += 1
+		for (ac2 <- actions) {
+                if(actionName(ac2) == "Delete" && ac.getNode.getParent.getChildren.size > 1 && ac2.getNode.getParent.getChildren.size > 1 && ac.getNode.getParent.getChildren.get(1).toShortString == ac2.getNode.getParent.getChildren.get(1).toShortString){
+		   res += 1
+	        }
+	      }
+	       
 	      }
 	    }else if(actionName(ac) == "Delete"){
 	      if(nodeClassName(ac.getNode) == "MethodInvocation"){
@@ -627,7 +615,17 @@ class DiffTemplates {
       if (nodeClassName(ac.getNode) == "SimpleName"){
 	if (nodeClassName(ac.getNode.getParent) == "MethodInvocation"){
           if (actionName(ac) == "Update") {
-            res += 1
+	    if(ac.getNode.getParent.getChildren.size >1 && ac.getNode.getParent.getChildren.get(1)==ac.getNode){
+		var itChangedTheCallerObject = false		
+		for (ac2 <- actions) {
+                  if(actionName(ac2) == "Update" && ac2.getNode == ac.getNode.getParent.getChildren.get(0) ){
+		    itChangedTheCallerObject = true	
+		  }
+		}
+		if(!itChangedTheCallerObject){
+        	  res += 1
+		}
+	    }
 	  }
 	}
       }
@@ -643,29 +641,30 @@ class DiffTemplates {
  	  if (isExpression(nodeClassName(ac.getNode))) {          
 	    if (actionName(ac) == "Insert" || actionName(ac) == "Move"){
 	      var foundMatchingDelete = false
+	      var itIsAParameterReplacer=false
   	      for (ac2 <- actions) {
-                if(ac.getNode.getParent.getChildren.get(1).toShortString == ac2.getNode.getParent.getChildren.get(1).toShortString && actionName(ac2) == "Delete"){
+                if(ac.getNode.getParent.getChildren.size > 1 && ac2.getNode.getParent.getChildren.size > 1 && ac.getNode.getParent.getChildren.get(1).toShortString == ac2.getNode.getParent.getChildren.get(1).toShortString && (actionName(ac2) == "Delete" || actionName(ac2) == "Update")){
 		  foundMatchingDelete = true
 	        }
 	      }
-	      if(!foundMatchingDelete){
+	      for (ac2 <- actions) {
+                if(ac.getNode.getParent.getChildren.size > 1 && ac.getNode.toShortString == ac2.getNode.getParent.toShortString && actionName(ac2) == "Move"){
+		  itIsAParameterReplacer = true
+	        }
+	      }
+	      if(!foundMatchingDelete && !itIsAParameterReplacer){
                 res += 1
 	      }
             }else if (actionName(ac) == "Delete") {            
 	      var foundMatchingInsert = false
   	      for (ac2 <- actions) {
-		//println("Comparing: " + ac.getNode.getParent.getChildren.get(1).toShortString + " with " + ac2.getNode.getParent.getChildren.get(1).toShortString)
-                if(ac.getNode.getParent.getChildren.get(1).toShortString == ac2.getNode.getParent.getChildren.get(1).toShortString && (actionName(ac2) == "Insert" || actionName(ac2) == "Move") ){
-		  //println("Match found!")
+
+                if(ac.getNode.getParent.getChildren.size > 1 && ac2.getNode.getParent.getChildren.size > 1 && ac.getNode.getParent.getChildren.get(1).toShortString == ac2.getNode.getParent.getChildren.get(1).toShortString && (actionName(ac2) == "Insert" || actionName(ac2) == "Move") ){
 		  foundMatchingInsert = true
-		 // break
 	        }
 	      }
 	      if(!foundMatchingInsert){
-		//println("ac.getNode.getParent.getChildren.get(1).toShortString: " + ac.getNode.getParent.getChildren.get(1).toShortString + " ac.getNode.toShortString: " + ac.getNode.toShortString)
-		//if(ac.getNode.getParent.getChildren.get(1).toShortString != ac.getNode.toShortString){                
 		  res += 1
-		//}
 	      }
             }
           }
@@ -678,37 +677,23 @@ class DiffTemplates {
   def match5ObjectInitializer(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {
-	for (ac1 <- actions) {
         if (nodeClassName(ac.getNode.getParent) == "VariableDeclarationFragment") {
-          if(nodeClassName(ac.getNode) == "ClassInstanceCreation"){
-	    if (actionName(ac) == "Insert" && actionName(ac1) == "Delete"){
-              if (nodeClassName(ac1.getNode.getParent) == "VariableDeclarationFragment") {
-                if(nodeClassName(ac1.getNode) == "NullLiteral"){
-                  res += 1
+          if(nodeClassName(ac.getNode) == "ClassInstanceCreation" || nodeClassName(ac.getNode) == "ArrayCreation"){
+	    if (actionName(ac) == "Insert"){ 
+              for (ac1 <- actions) {
+		if(actionName(ac1) == "Delete"){
+                  if (nodeClassName(ac1.getNode.getParent) == "VariableDeclarationFragment") {
+                    if(nodeClassName(ac1.getNode) == "NullLiteral"){
+                      res += 1
+		    }
+		  }
   	        }
 	      }
             }
 	  }
-        }
 	}
     }
     res
-
-
-
-
-   /* var res = false
-    val arrActions = actions.toArray(new Array[Action](actions.size))
-    if (nodeClassName(arrActions(0).getNode.getParent) == "VariableDeclarationFragment" || 
-      nodeClassName(arrActions(0).getNode.getParent) == "Block") {
-      for (ac <- actions) {
-        if (actionName(ac) != "Insert") return false
-        if (nodeClassName(ac.getNode) == "ClassInstanceCreation") {
-          res = true
-        }
-      }
-    }
-    res*/
   }
 
 
@@ -746,9 +731,11 @@ class DiffTemplates {
 		  }*/
 		//checks both bounds
 		}else{
-		  if(nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "SimpleName" ){
+		  if(nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "SimpleName" || nodeClassName(condition.getChildren.get(0).getChildren.get(0)) =="ArrayAccess" ||
+nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "MethodInvocation"){
 		    if(condition.getChildren.get(0).getShortLabel == "<" || condition.getChildren.get(0).getShortLabel == "<=" || condition.getChildren.get(0).getShortLabel == ">" || condition.getChildren.get(0).getShortLabel == ">="){
-		      if(nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "SimpleName" ){
+		      if(nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "SimpleName" || nodeClassName(condition.getChildren.get(1).getChildren.get(0)) =="ArrayAccess" ||
+nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocation"){
 		        if(condition.getChildren.get(0).getShortLabel == "<" || condition.getChildren.get(0).getShortLabel == "<=" || condition.getChildren.get(0).getShortLabel == ">" || condition.getChildren.get(0).getShortLabel == ">="){
 		          res += 1
 		        }
@@ -774,10 +761,13 @@ class DiffTemplates {
 	      if((nodeClassName(condition) == "InfixExpression")){ 
 		//only checks one bound
 		if(nodeClassName(condition.getChildren.get(0)) != "InfixExpression" ){
-		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName" && nodeClassName(condition.getChildren.get(1)) == "MethodInvocation"){
-		    if(condition.getShortLabel == "<" || condition.getShortLabel == "<=" || condition.getShortLabel == ">" || condition.getShortLabel == ">="){
+		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName" || 
+		    nodeClassName(condition.getChildren.get(0)) == "ArrayAccess" || 
+		    nodeClassName(condition.getChildren.get(0)) == "MethodInvocation"){
+		    if(nodeClassName(condition.getChildren.get(1)) == "MethodInvocation"){
+		      if(condition.getShortLabel == "<" || condition.getShortLabel == "<=" || condition.getShortLabel == ">" || condition.getShortLabel == ">="){
 		        res += 1
-		      
+		      }
 		    }
 		  }
 		}
@@ -796,12 +786,15 @@ class DiffTemplates {
 	    if (actionName(ac) == "Insert"){
 	      val condition = ac.getNode.getChildren.get(0)
 	      if((nodeClassName(condition) == "InfixExpression")){ 
-		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName"){
+		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName" ||
+		  nodeClassName(condition.getChildren.get(0)) == "ArrayAccess" ||
+		  nodeClassName(condition.getChildren.get(0)) == "MethodInvocation"){
 		        if(condition.getShortLabel == "<" || condition.getShortLabel == "<="){
 		            val ifBody = ac.getNode.getChildren.get(1)
 			     if((nodeClassName(ifBody.getChildren.get(0).getChildren.get(0)) == "Assignment")){ 
 			       val assig = ifBody.getChildren.get(0).getChildren.get(0)
-			       if(nodeClassName(assig.getChildren.get(0)) == "SimpleName"){
+			       if(nodeClassName(assig.getChildren.get(0)) == "SimpleName" ||
+				nodeClassName(assig.getChildren.get(0)) == "ArrayAccess"){
 			       if(nodeClassName(condition.getChildren.get(1)) == nodeClassName(assig.getChildren.get(1))){
 				  res += 1
 		       	        }
@@ -823,12 +816,15 @@ class DiffTemplates {
 	    if (actionName(ac) == "Insert"){
 	      val condition = ac.getNode.getChildren.get(0)
 	      if((nodeClassName(condition) == "InfixExpression")){ 
-		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName"){
+		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName"||
+		  nodeClassName(condition.getChildren.get(0)) == "ArrayAccess" ||
+		  nodeClassName(condition.getChildren.get(0)) == "MethodInvocation"){
 		        if(condition.getShortLabel == ">" || condition.getShortLabel == ">="){
 		            val ifBody = ac.getNode.getChildren.get(1)
 			    if((nodeClassName(ifBody.getChildren.get(0).getChildren.get(0)) == "Assignment")){ 
 			       val assig = ifBody.getChildren.get(0).getChildren.get(0)
-			       if(nodeClassName(assig.getChildren.get(0)) == "SimpleName"){
+			       if(nodeClassName(assig.getChildren.get(0)) == "SimpleName"||
+				nodeClassName(assig.getChildren.get(0)) == "ArrayAccess"){
 			       if(nodeClassName(condition.getChildren.get(1)) == nodeClassName(assig.getChildren.get(1))){
 				  res += 1
 		       	        }
@@ -846,14 +842,31 @@ class DiffTemplates {
   def match11OffByOneMutator(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {
-      if(nodeClassName(ac.getNode) == "PostfixExpression"){
-	if(nodeClassName(ac.getNode.getParent) == "ArrayAccess"){	
-	    if (actionName(ac) == "Insert"){
+      if (nodeClassName(ac.getNode.getParent) == "ArrayAccess") {
+        if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
+          if (actionName(ac) == "Insert"){
+	    if(nodeClassName(ac.getNode) == "PostfixExpression"){
 	      if((nodeClassName(ac.getNode.getChildren.get(0)) == "SimpleName")){ 
 		 res += 1 
 	      }
-            }
-	  }
+	    }else if(nodeClassName(ac.getNode) == "InfixExpression"){
+	      if(ac.getNode.getShortLabel == "+" || ac.getNode.getShortLabel == "-"){
+		if(nodeClassName(ac.getNode.getChildren.get(1))=="NumberLiteral"){
+		  if(ac.getNode.getChildren.get(1).hasLabel && ac.getNode.getChildren.get(1).getLabel == "1"){
+	            for (ac2 <- actions) {
+                      if(actionName(ac2) == "Delete" && ac.getNode.getParent.getChildren.size > 1 && ac2.getNode.getParent.getChildren.size > 1 && ac.getNode.getParent.getChildren.get(0).toShortString == ac2.getNode.getParent.getChildren.get(0).toShortString){
+		        res += 1
+	              }
+	            }
+		  }
+		}
+	       }
+	     }
+ 	   }
+
+	}
+
+
 	}
     }
     res
@@ -925,26 +938,59 @@ class DiffTemplates {
 
   def match15ExpressionChanger(actions: List[Action]): Int = {
     var res = 0
-    for (ac <- actions) {   
+    var alreadyCounted: List[Int] = Nil
+
+    for (ac <- actions) {
+
+	//changing a methodinvocation for another
+	/*if (nodeClassName(ac.getNode.getParent.getParent) == "IfStatement" || 
+          nodeClassName(ac.getNode.getParent.getParent) == "WhileStatement" || 
+          nodeClassName(ac.getNode.getParent.getParent) == "DoStatement") { 
+	  if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
+   	    if (actionName(ac) == "Update") {
+  	      if(ac.getNode.getParent.getPos != null){
+	       if(!alreadyCounted.contains(ac.getNode.getParent.getPos)){
+ 		 res += 1
+println(ac.getNode.getParent.getPos)
+	         alreadyCounted += ac.getNode.getParent.getPos
+	       }
+	      }
+	    }
+	  }
+	}*/
+
+   
 	if (nodeClassName(ac.getNode.getParent) == "IfStatement" || 
           nodeClassName(ac.getNode.getParent) == "WhileStatement" || 
-          nodeClassName(ac.getNode.getParent) == "DoStatement") {
-	    if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
-	      if (actionName(ac) == "Update") { // (var == null) -> (var != null)
-		if (nodeClassName(ac.getNode) == "InfixExpression") {
+          nodeClassName(ac.getNode.getParent) == "DoStatement") {  
+          if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
+	      var exp = nodeClassName(ac.getNode)
+	      if(isExpression(exp)){
+	        if (actionName(ac) == "Update") { // (var == null) -> (var != null)
                   res += 1
-		}
-	      }else if (actionName(ac) == "Insert"){ //or Delete, but if we count both it would count them twice
-	        var exp = nodeClassName(ac.getNode)
-	        if(isExpression(exp)){	  
-	          //if (nodeClassName(ac.getNode.getParent) == "InfixExpression" && nodeClassName(ac.getNode.getParent.getParent) != "InfixExpression") { // (var == null) -> (var == var2)
-                    res += 1
-	          //}
+	        }else if (actionName(ac) == "Insert"){ 
+		  for(child<-ac.getNode.getParent.getChildren)
+			println("Child: " + child)
+
+		  if(ac.getNode.getParent.getChildren.size < 2){
+		    res += 1
+		   }
+
+
+	          for (ac2 <- actions) {
+		    if(actionName(ac2) == "Delete" && ac.getNode.getParent.getPos == ac2.getNode.getParent.getPos){
+		      res += 1
+	            }
+/*		    if(ac.getNode.toShortString == ac2.getNode.getParent.toShortString && actionName(ac2) == "Move"){
+		      res += 1
+	            }*/
+	          } 
+
+
 	        }
-	      }
+ 	      }
             }	  
         }
-   
     }
     res
   }
@@ -952,47 +998,44 @@ class DiffTemplates {
   def match16ExpressionAdder(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {
-      if (nodeClassName(ac.getNode.getParent) == "InfixExpression") {
-	//println("nodeClassName(ac.getNode.getParent.getParent): "+nodeClassName(ac.getNode.getParent.getParent))
-        if (nodeClassName(ac.getNode.getParent.getParent) == "IfStatement") {
-	  if(statementAlreadyExisted(ac.getNode.getParent.getParent, actions)){ //parent already existed
-	    if(!statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
-              var exp = nodeClassName(ac.getNode)
-	      if(isExpression(exp)){	  
-	        if (actionName(ac) == "Insert"){
-		println("ac.getNode.getChildren.get(0): "+ac.getNode.getChildren.get(0))
-		 // if (ac.getNode.getChildren.get(0) != null && ac.getNode.getChildren.get(1) != null && nodeClassName(ac.getNode.getChildren.get(0)) == "InfixExpression" && nodeClassName(ac.getNode.getChildren.get(1)) == "InfixExpression") {
-                  res += 1
-		  //}
-              }
-	    }
-          }}
-        }
-      }
-    }
-    res
-
-
-
+      if (nodeClassName(ac.getNode) == "InfixExpression") {
+        if (nodeClassName(ac.getNode.getParent) == "IfStatement" || 
+          nodeClassName(ac.getNode.getParent) == "WhileStatement" || 
+          nodeClassName(ac.getNode.getParent) == "DoStatement") {
+	  if(statementAlreadyExisted(ac.getNode.getParent, actions)){ 
+	    if(!statementAlreadyExisted(ac.getNode, actions)){ 
+	  
+	        if (actionName(ac) == "Insert" || actionName(ac) == "Move"){
+   	          if(ac.getNode.getChildren.size >= 2){
+		    res += 1
+		  }
+	
 
 
 
 /*
-    var res = 0
-    for (ac <- actions) {
-        if (nodeClassName(ac.getNode.getParent) == "IfStatement") {
-          if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
-            if(nodeClassName(ac.getNode) == "InfixExpression"){
-	      if (actionName(ac) == "Insert"){
-		  if (ac.getNode.getChildren.get(0) != null && ac.getNode.getChildren.get(1) != null && nodeClassName(ac.getNode.getChildren.get(0)) == "InfixExpression" && nodeClassName(ac.getNode.getChildren.get(1)) == "InfixExpression") {
-                  res += 1
-		  }
-              }
-	    }
-          }
+		  var foundMatchingDelete = false
+	          var itIsAExpressionChanger=false
+  	          for (ac2 <- actions) {
+                    if(actionName(ac2) == "Delete" && ac.getNode.getParent.getChildren.size > 1 && ac2.getNode.getParent.getChildren.size > 1 && ac.getNode.getParent.getChildren.get(1).getId == ac2.getNode.getParent.getChildren.get(1).getId){
+		      foundMatchingDelete = true
+	            }
+		    if(ac.getNode.toShortString == ac2.getNode.getParent.toShortString && actionName(ac2) == "Move"){
+		      itIsAExpressionChanger = true
+	            }
+	          }
+	          
+	          if(!foundMatchingDelete && !itIsAExpressionChanger){
+                    res += 1
+	          }*/
+                }
+	      
+            }
+ 	  }
         }
+      }
     }
-    res*/
+    res
   }
 
 
