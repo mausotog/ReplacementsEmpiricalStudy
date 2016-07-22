@@ -14,6 +14,8 @@ import com.github.gumtreediff.gen.jdt.JdtTreeGenerator
 import com.github.gumtreediff.matchers.{MappingStore, Matchers}
 import com.github.gumtreediff.tree.{TreeContext, ITree, Tree}
 import org.w3c.dom.NodeList
+import scala.util.control.Breaks._
+import scala.collection.mutable.ListBuffer
 
 
 import scala.collection.mutable.ArrayBuffer
@@ -106,13 +108,13 @@ object DiffTemplates {
     val (actions,srcTC,dstTC) = diff.getDiffActions(file1, file2)
     diff.gatherAllInforX(actions,srcTC, dstTC)
     for(action <- actions){
-      println("ACTION: " + action)
-	println("Node: "+ diff.nodeClassName(action.getNode))
-        println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
-	println()
+      //println("ACTION: " + action)
+	//println("Node: "+ diff.nodeClassName(action.getNode))
+        //println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
+	//println()
     }
     if(actions.isEmpty)
-      println("Bachle: Warning in match Template: actions size is zero!!!")
+      //println("Bachle: Warning in match Template: actions size is zero!!!")
 
     println(diff.match1AddNullChecker(actions)+": 1AddNullChecker")
     println(diff.match2ParameterReplacer(actions)+": 2ParameterReplacer")
@@ -936,30 +938,102 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
     res
   }
 
+def numberOfChildren(ac: List[ITree]): Int = {
+  var ret = 0
+  for(des<-ac){
+    if(nodeClassName(des) == "InfixExpression" && des.getHeight >= 2){
+      ret += numberOfChildren(des.getChildren)
+    }else if(nodeClassName(des) == "Block"){
+
+    }else{
+      //println(nodeClassName(des)+" "+des.toShortString)  
+      ret += 1
+    }
+  }
+return ret
+}
+
+def childrenInCondition(ac: List[ITree]): List[ITree] = {
+  val ret = new ListBuffer[ITree]()
+  for(des<-ac){
+    if(nodeClassName(des) == "InfixExpression" && des.getHeight >= 2){
+      ret ++= childrenInCondition(des.getChildren)
+    }else if(nodeClassName(des) == "Block"){
+
+    }else{
+      //println(nodeClassName(des)+" "+des.toShortString)  
+      ret += des
+    }
+  }
+return ret.toList
+}
+
+def howManyChildrenAreDifferent(l1: List[ITree], l2: List[ITree]): Int = {
+  var ret = 0
+  for(i <- 0 to (l1.length-1)){
+    if(!l1(i).isSimilar(l2(i))){
+      ret+=1
+    }
+  }
+ret
+}
+
+def closestIf(acParam: ITree): ITree = {
+  var ac = acParam
+  while(!ac.isRoot){
+    if(nodeClassName(ac) == "IfStatement"){
+      return ac
+    }else{
+      ac=ac.getParent
+    }
+  }
+ac
+}
+
   def match15ExpressionChanger(actions: List[Action]): Int = {
     var res = 0
-    var alreadyCounted: List[Int] = Nil
-
     for (ac <- actions) {
+	var target = closestIf(ac.getNode)
 
-	//changing a methodinvocation for another
-	/*if (nodeClassName(ac.getNode.getParent.getParent) == "IfStatement" || 
-          nodeClassName(ac.getNode.getParent.getParent) == "WhileStatement" || 
-          nodeClassName(ac.getNode.getParent.getParent) == "DoStatement") { 
-	  if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
-   	    if (actionName(ac) == "Update") {
-  	      if(ac.getNode.getParent.getPos != null){
-	       if(!alreadyCounted.contains(ac.getNode.getParent.getPos)){
- 		 res += 1
-println(ac.getNode.getParent.getPos)
-	         alreadyCounted += ac.getNode.getParent.getPos
-	       }
-	      }
+	if(!target.isRoot){
+	  if(statementAlreadyExisted(target, actions)){ 
+
+	        if (actionName(ac) == "Update") {
+                  res += 1
+	        }else if (actionName(ac) == "Insert" || actionName(ac) == "Delete"){ 
+		  breakable {
+	          for (ac2 <- actions.reverse) {
+		  var target2 = closestIf(ac2.getNode)
+
+	            if(target.isSimilar(target2) && ac!=ac2){
+		
+		      var childrenEnd = childrenInCondition(target.getChildren) 
+		      var childrenBeginning = childrenInCondition(target2.getChildren) 
+
+		      if(childrenBeginning.length == childrenEnd.length){
+			if(howManyChildrenAreDifferent(childrenBeginning,childrenEnd) != 0){
+		          res += 1
+		          break
+			}
+		      }
+	            }
+	          }
+		  }
+ 	      
 	    }
 	  }
-	}*/
+        }
+    }
+    res
 
-   
+
+
+
+
+
+/*
+    var res = 0
+    for (ac <- actions) {
 	if (nodeClassName(ac.getNode.getParent) == "IfStatement" || 
           nodeClassName(ac.getNode.getParent) == "WhileStatement" || 
           nodeClassName(ac.getNode.getParent) == "DoStatement") {  
@@ -969,71 +1043,82 @@ println(ac.getNode.getParent.getPos)
 	        if (actionName(ac) == "Update") { // (var == null) -> (var != null)
                   res += 1
 	        }else if (actionName(ac) == "Insert"){ 
-		  for(child<-ac.getNode.getParent.getChildren)
-			println("Child: " + child)
+		  
+		  var addOne = false
+  
+		  var foundMatchingDelete = false
+	          var itIsAExpressionChanger=false
+  	          for (ac2 <- actions) {
 
-		  if(ac.getNode.getParent.getChildren.size < 2){
-		    res += 1
+                    if(actionName(ac2) == "Delete" && ((ac.getNode.getParent.getId == ac2.getNode.getParent.getId) || (ac.getNode.getParent.getPos == ac2.getNode.getParent.getPos))){
+		      addOne = true
+	            }
+		    if(ac.getNode.toShortString == ac2.getNode.getParent.toShortString && actionName(ac2) == "Move"){
+		      addOne = true
+	            }
+	          }
+		//println(ac.getNode.getParent.getChildren.get(0).getChildren.size)
+		//println(ac.getNode.getParent.getChildren.get(0).getChildren.get(0))
+		//println(ac.getNode.getParent.getChildren.get(0).getChildren.get(1))
+		if(ac.getNode.getParent.getChildren.get(0).getChildren.size >= 2){
+		    addOne = false
 		   }
 
+	          
+	          if(addOne){
+                    res += 1
+	          }
 
+
+/*
 	          for (ac2 <- actions) {
 		    if(actionName(ac2) == "Delete" && ac.getNode.getParent.getPos == ac2.getNode.getParent.getPos){
 		      res += 1
 	            }
-/*		    if(ac.getNode.toShortString == ac2.getNode.getParent.toShortString && actionName(ac2) == "Move"){
+		    if(ac.getNode.toShortString == ac2.getNode.getParent.toShortString && actionName(ac2) == "Move"){
 		      res += 1
-	            }*/
+	            }
 	          } 
-
+*/
 
 	        }
  	      }
             }	  
         }
     }
-    res
+    res*/
   }
+
 
   def match16ExpressionAdder(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {
-      if (nodeClassName(ac.getNode) == "InfixExpression") {
         if (nodeClassName(ac.getNode.getParent) == "IfStatement" || 
           nodeClassName(ac.getNode.getParent) == "WhileStatement" || 
           nodeClassName(ac.getNode.getParent) == "DoStatement") {
 	  if(statementAlreadyExisted(ac.getNode.getParent, actions)){ 
-	    if(!statementAlreadyExisted(ac.getNode, actions)){ 
-	  
-	        if (actionName(ac) == "Insert" || actionName(ac) == "Move"){
-   	          if(ac.getNode.getChildren.size >= 2){
-		    res += 1
-		  }
-	
 
-
-
-/*
-		  var foundMatchingDelete = false
-	          var itIsAExpressionChanger=false
-  	          for (ac2 <- actions) {
-                    if(actionName(ac2) == "Delete" && ac.getNode.getParent.getChildren.size > 1 && ac2.getNode.getParent.getChildren.size > 1 && ac.getNode.getParent.getChildren.get(1).getId == ac2.getNode.getParent.getChildren.get(1).getId){
-		      foundMatchingDelete = true
-	            }
-		    if(ac.getNode.toShortString == ac2.getNode.getParent.toShortString && actionName(ac2) == "Move"){
-		      itIsAExpressionChanger = true
+              var exp = nodeClassName(ac.getNode)
+	      if(isExpression(exp)){
+	        if (actionName(ac) == "Insert"){ 
+		  breakable {
+	          for (ac2 <- actions.reverse) {
+	            if(ac.getNode.getParent.isSimilar(ac2.getNode.getParent) && ac!=ac2){
+		
+		      var numberOfChildrenEnd = numberOfChildren(ac.getNode.getParent.getChildren) 
+		      var numberOfChildrenBeginning = numberOfChildren(ac2.getNode.getParent.getChildren) 
+ 
+		      if(numberOfChildrenBeginning < numberOfChildrenEnd){
+		        res += (numberOfChildrenEnd - numberOfChildrenBeginning)
+		        break
+		      }
 	            }
 	          }
-	          
-	          if(!foundMatchingDelete && !itIsAExpressionChanger){
-                    res += 1
-	          }*/
-                }
-	      
-            }
- 	  }
+		  }
+ 	      }
+	    }
+	  }
         }
-      }
     }
     res
   }

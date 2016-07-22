@@ -136,8 +136,11 @@ do
 
 	    rm -f "$currentDirectory""$nameOfFileWithoutExtension"ParMutationsCounts.txt
 	    echo "Calling Gumtree for project $folderName in commit $commitNumber with file $nameOfFile"
-	    timeout -k 1m 5m $SCRIPTSDIRECTORY/gumtreeBin/bin/gumtree adhocdiff $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory""$nameOfFileWithoutExtension"ParMutationsCounts.txt
-	
+	    #timeout -k 1m 5m $SCRIPTSDIRECTORY/gumtreeBin/bin/gumtree adhocdiff $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory""$nameOfFileWithoutExtension"ParMutationsCounts.txt
+
+	    cd $SCRIPTSDIRECTORY/ScalaGumTree/bugfixes/historicalfixv2/bin/
+ 	    timeout -k 1m 5m scala -classpath .:../allLibs/*:../allLibs/*/*:gumdiff/handlejdt/*:gumdiff/jdtgum/*:gumdiff/customLib/*:gumdiff/handlecommits/*:gumdiff/difftemplates/* gumdiff.difftemplates.DiffTemplates $currentDirectory/before/$nameOfFile $currentDirectory/after/$nameOfFile > "$currentDirectory""$nameOfFileWithoutExtension"ParMutationsCounts.txt
+	    cd $SCRIPTSDIRECTORY/GitRepos/$folderName/BugFixingCommitVersions/$commitFolderName
 
           done < $fileNames
         fi
