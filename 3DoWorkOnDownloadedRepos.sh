@@ -73,7 +73,7 @@ do
         commitNumber=$[$commitNumber+1]
         commitFolderName="Commit"$commitNumber
         echo ""
-        echo "Working on $commitFolderName of commitListSmall.txt"
+        echo "Working on $commitFolderName of $folderName"
         mkdir $commitFolderName
         cd $commitFolderName
         rm -f filesModifiedInThisCommit.txt

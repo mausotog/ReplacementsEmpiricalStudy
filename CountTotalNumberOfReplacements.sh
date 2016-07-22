@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-#./4CountTotalNumberOfReplacements.sh
+#./4CountTotalNumberOfReplacements.sh tier1
 
 containerFolderName="$1"
 
@@ -25,15 +25,15 @@ do
 
   #echo "current directory:"
   #pwd
-  echo "Working on project $projectName"
+  echo "Counting GenProg mutations on project $projectName"
   cd $projectName
 #  cd BugFixingCommitVersions
 
-  ls -d Commit[1234567890]*.txt | grep -v / > CommitFiles.txt
+  ls -d Commit[1234567890]*GenProgMutationsCounts.txt | grep -v / > CommitFilesGenProg.txt
 
-  if [ -e "CommitFiles.txt" ] 
+  if [ -e "CommitFilesGenProg.txt" ] 
   then
-    commitFilesNames=./CommitFiles.txt
+    commitFilesNames=./CommitFilesGenProg.txt
     while read commitFileName 
     do
       if [ -s $commitFileName ] #if it is not empty
@@ -73,7 +73,7 @@ echo $replacementCount >> "$containerFolderName"Model.txt
 echo $appendCount >> "$containerFolderName"Model.txt
 echo $deleteCount >> "$containerFolderName"Model.txt
 
-touch summaryOfModel.txt
+#touch summaryOfModel.txt
 for i in `seq 1 484`; # 484 = 22*22 all possible combinations of replacements
 do
   if [ ${replacementCounter[$i]} -ne 0 ]; then

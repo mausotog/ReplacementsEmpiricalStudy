@@ -113,8 +113,9 @@ object DiffTemplates {
         //println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
 	//println()
     }
-    if(actions.isEmpty)
+    if(actions.isEmpty){
       //println("Bachle: Warning in match Template: actions size is zero!!!")
+    }
 
     println(diff.match1AddNullChecker(actions)+": 1AddNullChecker")
     println(diff.match2ParameterReplacer(actions)+": 2ParameterReplacer")
