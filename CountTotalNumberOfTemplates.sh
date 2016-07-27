@@ -41,6 +41,7 @@ do
         do
           commandToGetSpecificLine="sed '$i!d' $commitFileName | cut -f1 -d':'" # take only the number before the colon
           numberOfTemplatesOfThisLine=$(eval $commandToGetSpecificLine)
+echo "numberOfTemplatesOfThisLine: $numberOfTemplatesOfThisLine"
           (( templateCounter[$i]+=$numberOfTemplatesOfThisLine ))
 	 
         done 

@@ -108,10 +108,10 @@ object DiffTemplates {
     val (actions,srcTC,dstTC) = diff.getDiffActions(file1, file2)
     diff.gatherAllInforX(actions,srcTC, dstTC)
     for(action <- actions){
-      println("ACTION: " + action)
-	println("Node: "+ diff.nodeClassName(action.getNode))
-        println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
-	println()
+      //println("ACTION: " + action)
+	//println("Node: "+ diff.nodeClassName(action.getNode))
+        //println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
+	//println()
     }
     if(actions.isEmpty){
       //println("Bachle: Warning in match Template: actions size is zero!!!")
@@ -994,12 +994,22 @@ ret
 		  }*/
 		//checks both bounds
 		}else{
-		  if(nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "SimpleName" || nodeClassName(condition.getChildren.get(0).getChildren.get(0)) =="ArrayAccess" ||
-nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "MethodInvocation"){
-		    if(condition.getChildren.get(0).getShortLabel == "<" || condition.getChildren.get(0).getShortLabel == "<=" || condition.getChildren.get(0).getShortLabel == ">" || condition.getChildren.get(0).getShortLabel == ">="){
-		      if(nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "SimpleName" || nodeClassName(condition.getChildren.get(1).getChildren.get(0)) =="ArrayAccess" ||
-nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocation"){
-		        if(condition.getChildren.get(0).getShortLabel == "<" || condition.getChildren.get(0).getShortLabel == "<=" || condition.getChildren.get(0).getShortLabel == ">" || condition.getChildren.get(0).getShortLabel == ">="){
+		  if(nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "SimpleName" 
+			|| nodeClassName(condition.getChildren.get(0).getChildren.get(0)) =="ArrayAccess" 
+			|| nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "MethodInvocation" 
+			|| nodeClassName(condition.getChildren.get(0).getChildren.get(0)) == "QualifiedName"){
+		    if(condition.getChildren.get(0).getShortLabel == "<" 
+			|| condition.getChildren.get(0).getShortLabel == "<=" 
+			|| condition.getChildren.get(0).getShortLabel == ">" 
+			|| condition.getChildren.get(0).getShortLabel == ">="){
+		      if(nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "SimpleName" 
+			|| nodeClassName(condition.getChildren.get(1).getChildren.get(0)) =="ArrayAccess" 
+			|| nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocation"
+			|| nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "QualifiedName"){
+		        if(condition.getChildren.get(0).getShortLabel == "<" 
+			  || condition.getChildren.get(0).getShortLabel == "<=" 
+			  || condition.getChildren.get(0).getShortLabel == ">" 
+			  || condition.getChildren.get(0).getShortLabel == ">="){
 		          res += 1
 		        }
 		      }
@@ -1025,7 +1035,8 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
 
 		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName" || 
 		    nodeClassName(condition.getChildren.get(0)) == "ArrayAccess" || 
-		    nodeClassName(condition.getChildren.get(0)) == "MethodInvocation"){
+		    nodeClassName(condition.getChildren.get(0)) == "MethodInvocation" ||
+		    nodeClassName(condition.getChildren.get(0)) == "QualifiedName"){
 		    if(nodeClassName(condition.getChildren.get(1)) == "MethodInvocation" || nodeClassName(condition.getChildren.get(1)) == "QualifiedName"){
 		      if(condition.getShortLabel == "<" || condition.getShortLabel == "<=" || condition.getShortLabel == ">" || condition.getShortLabel == ">="){
 		        res += 1
@@ -1083,7 +1094,8 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
 	      if((nodeClassName(condition) == "InfixExpression")){ 
 		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName"||
 		  nodeClassName(condition.getChildren.get(0)) == "ArrayAccess" ||
-		  nodeClassName(condition.getChildren.get(0)) == "MethodInvocation"){
+		  nodeClassName(condition.getChildren.get(0)) == "MethodInvocation" ||
+		  nodeClassName(condition.getChildren.get(0)) == "QualifiedName"){
 		        if(condition.getShortLabel == ">" || condition.getShortLabel == ">="){
 		            val ifBody = ac.getNode.getChildren.get(1)
 			    if((nodeClassName(ifBody.getChildren.get(0).getChildren.get(0)) == "Assignment")){ 
@@ -1120,7 +1132,10 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
 		if(nodeClassName(ac.getNode.getChildren.get(1))=="NumberLiteral"){
 		  if(ac.getNode.getChildren.get(1).hasLabel && ac.getNode.getChildren.get(1).getLabel == "1"){
 	            for (ac2 <- actions) {
-                      if(actionName(ac2) == "Delete" && ac.getNode.getParent.getChildren.size > 1 && ac2.getNode.getParent.getChildren.size > 1 && ac.getNode.getParent.getChildren.get(0).toShortString == ac2.getNode.getParent.getChildren.get(0).toShortString){
+                      if(actionName(ac2) == "Delete" 
+			&& ac.getNode.getParent.getChildren.size > 1 
+			&& ac2.getNode.getParent.getChildren.size > 1 
+			&& ac.getNode.getParent.getChildren.get(0).toShortString == ac2.getNode.getParent.getChildren.get(0).toShortString){
 		        res += 1
 	              }
 	            }
@@ -1188,9 +1203,15 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
     var res = 0
     for (ac <- actions) {
       if (actionName(ac) == "Insert"){
-      if(isExpression(nodeClassName(ac.getNode)) && !(nodeClassName(ac.getNode) == "SimpleType") && !(nodeClassName(ac.getNode) == "PrimitiveType") && !(nodeClassName(ac.getNode.getParent) == "SimpleType") && !(nodeClassName(ac.getNode.getParent.getParent) == "PrimitiveType")){
+      if(isExpression(nodeClassName(ac.getNode)) 
+	&& !(nodeClassName(ac.getNode) == "SimpleType") 
+	&& !(nodeClassName(ac.getNode) == "PrimitiveType") 
+	&& !(nodeClassName(ac.getNode.getParent) == "SimpleType") 
+	&& !(nodeClassName(ac.getNode.getParent.getParent) == "PrimitiveType")){
 
-	  if((nodeClassName(ac.getNode) == "SimpleName" && nodeClassName(ac.getNode.getParent) == "CastExpression") || (nodeClassName(ac.getNode) == "ArrayAccess" && nodeClassName(ac.getNode.getParent) == "CastExpression") || (nodeClassName(ac.getNode) == "MethodInvocation" && nodeClassName(ac.getNode.getParent) == "CastExpression")){	
+	  if((nodeClassName(ac.getNode) == "SimpleName" && nodeClassName(ac.getNode.getParent) == "CastExpression") 
+		|| (nodeClassName(ac.getNode) == "ArrayAccess" && nodeClassName(ac.getNode.getParent) == "CastExpression") 
+		|| (nodeClassName(ac.getNode) == "MethodInvocation" && nodeClassName(ac.getNode.getParent) == "CastExpression")){	
 	    res += 1 
 	  }
 	}
@@ -1311,7 +1332,11 @@ ac
 
 	if(!target.isRoot){
 	  if(statementAlreadyExisted(target, actions)){ 
-	    if(ac.getNode==target.getChildren.get(0) || ac.getNode.getParent==target.getChildren.get(0) ||ac.getNode.getParent.getParent==target.getChildren.get(0) ||ac.getNode.getParent.getParent.getParent==target.getChildren.get(0) ||ac.getNode.getParent.getParent.getParent.getParent==target.getChildren.get(0)){
+	    if(ac.getNode==target.getChildren.get(0) 
+		|| ac.getNode.getParent==target.getChildren.get(0) 
+		||ac.getNode.getParent.getParent==target.getChildren.get(0) 
+		||ac.getNode.getParent.getParent.getParent==target.getChildren.get(0) 
+		||ac.getNode.getParent.getParent.getParent.getParent==target.getChildren.get(0)){
 	        if (actionName(ac) == "Update") {
                   res += 1
 	        }else if (actionName(ac) == "Insert" || actionName(ac) == "Delete"){ 
