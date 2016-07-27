@@ -108,31 +108,50 @@ object DiffTemplates {
     val (actions,srcTC,dstTC) = diff.getDiffActions(file1, file2)
     diff.gatherAllInforX(actions,srcTC, dstTC)
     for(action <- actions){
-      //println("ACTION: " + action)
-	//println("Node: "+ diff.nodeClassName(action.getNode))
-        //println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
-	//println()
+      println("ACTION: " + action)
+	println("Node: "+ diff.nodeClassName(action.getNode))
+        println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
+	println()
     }
     if(actions.isEmpty){
       //println("Bachle: Warning in match Template: actions size is zero!!!")
     }
 
-    println(diff.match1AddNullChecker(actions)+": 1AddNullChecker")
-    println(diff.match2ParameterReplacer(actions)+": 2ParameterReplacer")
-    println(diff.match3MethodReplacer(actions)+": 3MethodReplacer")
-    println(diff.match4ParameterAdderRemover(actions)+": 4ParameterAdderRemover")
-    println(diff.match5ObjectInitializer(actions)+": 5ObjectInitializer")
-    println(diff.match6SequenceExchanger(actions)+": 6SequenceExchanger")
-    println(diff.match7AddRangeChecker(actions)+": 7AddRangeChecker")
-    println(diff.match8AddColectionSizeChecker(actions)+": 8AddColectionSizeChecker")
-    println(diff.match9LowerBoundSetter(actions)+": 9LowerBoundSetter")
-    println(diff.match10UpperBoundSetter(actions)+": 10UpperBoundSetter")
-    println(diff.match11OffByOneMutator(actions)+": 11OffByOneMutator")
-    println(diff.match12AddCastChecker(actions)+": 12AddCastChecker")
-    println(diff.match13CasterMutator(actions)+": 13CasterMutator")
-    println(diff.match14CasteeMutator(actions)+": 14CasteeMutator")
-    println(diff.match15ExpressionChanger(actions)+": 15ExpressionChanger")
-    println(diff.match16ExpressionAdder(actions)+": 16ExpressionAdder")
+    var res1 = diff.match1AddNullChecker(actions)
+    var res2 = diff.match2ParameterReplacer(actions)
+    var res3 = diff.match3MethodReplacer(actions)
+    var res4 = diff.match4ParameterAdderRemover(actions)
+    var res5 = diff.match5ObjectInitializer(actions)
+    var res7 = diff.match7AddRangeChecker(actions)
+    var res8 = diff.match8AddColectionSizeChecker(actions)
+    var res9 = diff.match9LowerBoundSetter(actions)
+    var res10 = diff.match10UpperBoundSetter(actions)
+    var res11 = diff.match11OffByOneMutator(actions)
+    var res12 = diff.match12AddCastChecker(actions)
+    var res13 = diff.match13CasterMutator(actions)
+    var res14 = diff.match14CasteeMutator(actions)
+    var res15 = diff.match15ExpressionChanger(actions)
+    var res16 = diff.match16ExpressionAdder(actions)
+    var res6 = diff.match6SequenceExchanger(actions)
+ 
+
+
+    println(res1+": 1AddNullChecker")
+    println(res2+": 2ParameterReplacer")
+    println(res3+": 3MethodReplacer")
+    println(res4+": 4ParameterAdderRemover")
+    println(res5+": 5ObjectInitializer")
+    println(res6+": 6SequenceExchanger")
+    println(res7+": 7AddRangeChecker")
+    println(res8+": 8AddColectionSizeChecker")
+    println(res9+": 9LowerBoundSetter")
+    println(res10+": 10UpperBoundSetter")
+    println(res11+": 11OffByOneMutator")
+    println(res12+": 12AddCastChecker")
+    println(res13+": 13CasterMutator")
+    println(res14+": 14CasteeMutator")
+    println(res15+": 15ExpressionChanger")
+    println(res16+": 16ExpressionAdder")
     
     
     
@@ -142,10 +161,29 @@ object DiffTemplates {
   }
 }
 
+
 class DiffTemplates {
   var allInfor = new ArrayBuffer[(String, String, ArrayBuffer[String])] // var name, method name, args name
   var classInstanceInfor = new ArrayBuffer[(String, ArrayBuffer[String])] // class name, args name
   var arrayAccess = new ArrayBuffer[(String, ArrayBuffer[String])] // var name, index name
+
+
+  var res1:Int = 0
+  var res2:Int = 0
+  var res3:Int = 0
+  var res4:Int = 0
+  var res5:Int = 0
+  var res6:Int = 0
+  var res7:Int = 0
+  var res8:Int = 0
+  var res9:Int = 0
+  var res10:Int = 0
+  var res11:Int = 0
+  var res12:Int = 0
+  var res13:Int = 0
+  var res14:Int = 0
+  var res15:Int = 0
+  var res16:Int = 0
 
   def printActions(actions: List[Action], cu: CompilationUnit): Unit ={
     for(ac<-actions) {
@@ -192,20 +230,23 @@ class DiffTemplates {
     Run.initGenerators()
     val srcTC = new JdtTreeGenerator().generateFromFile(file1)
     val dstTC = new JdtTreeGenerator().generateFromFile(file2)
-    val src = srcTC.getRoot
-    val dst = dstTC.getRoot
+    src = srcTC.getRoot
+    dst = dstTC.getRoot
     val m = Matchers.getInstance.getMatcher(src, dst)
     m.`match`()
     return m.getMappings()
   }
+
+  var src:ITree =_ ;
+  var dst:ITree =_;
 
   def getDiffActions(file1: String, file2: String): (List[Action], MyJdtTreeGenerator, MyJdtTreeGenerator) = {
     val srcTG = new MyJdtTreeGenerator()
     val srcTC = srcTG.generateFromFile(file1)
     val dstTG = new MyJdtTreeGenerator()
     val dstTC = dstTG.generateFromFile(file2)
-    val src = srcTC.getRoot
-    val dst = dstTC.getRoot
+    src = srcTC.getRoot
+    dst = dstTC.getRoot
     val m = Matchers.getInstance.getMatcher(src, dst)
     m.`match`()
     val g = new ActionGenerator(src, dst, m.getMappings)
@@ -577,12 +618,151 @@ class DiffTemplates {
             }
 	  }
     }
+    res1=res
     res
   }
 
+def closestMethodInvocation(acParam: ITree): ITree = {
+  var ac = acParam.getParent
+  while(!ac.isRoot){
+    if(nodeClassName(ac) == "MethodInvocation"){
+      return ac
+    }else{
+      ac=ac.getParent
+    }
+  }
+ac
+}
+
+var pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9 = false
+
+def cleanPosVars(): Boolean = {
+pos2 = false
+pos3 = false
+pos4 = false
+pos5 = false
+pos6 = false
+pos7 = false
+pos8 = false
+pos9 = false
+true
+}
+
+def alreadyCounted(pos: Int): Boolean = {
+  var ac = false
+  pos match {
+  case 2  => return pos2
+  case 3  => return pos3
+  case 4  => return pos4
+  case 5  => return pos5
+  case 6  => return pos6
+  case 7  => return pos7
+  case 8  => return pos8
+  case 9  => return pos9
+  case _  => 
+  }
+ac
+}
+
+
+def isVerySimilar(node: ITree, node2: ITree): Boolean = {
+  var ret = true
+  if(!node.isSimilar(node2))ret=false
+//  if(!node.isRoot && !node2.isRoot){
+//println(nodeClassName(node.getParent) + " " + nodeClassName(node2.getParent))
+//    if(node.getParent.toShortString!=node2.getParent.toShortString)ret=false
+//  }  
+if(node.hasLabel!=node2.hasLabel)ret=false
+  if(node.getChildren.size>0 && node2.getChildren.size>0){
+//println("Comparing " + node.getChildren.get(0).toShortString + " with " + node2.getChildren.get(0).toShortString)
+    if(node.getChildren.get(0).toShortString!=node2.getChildren.get(0).toShortString)ret=false
+  }else{
+    ret=false
+  }
+  if(node.getShortLabel!=node2.getShortLabel)ret=false
+  //if(node.getSize!=node2.getSize)ret=false
+  if(node.isLeaf!=node2.isLeaf)ret=false
+  if(node.isMatched!=node2.isMatched)ret=false
+  if(node.isRoot!=node2.isRoot)ret=false
+  if(node.positionInParent!=node2.positionInParent)ret=false
+  if(node.getPos>node2.getPos+100 || node.getPos<node2.getPos-100)ret=false
+
+ret
+}
+
+
+
   def match2ParameterReplacer(actions: List[Action]): Int = {
     var res = 0
+    var childrenNode:Int=0
+    var childrenNode2:Int=0
+    
+    if(actions.size<=3){
+    var target = closestMethodInvocation(actions.get(0).getNode)
+      for(node<-src.breadthFirst){
+        if(isVerySimilar(node,target) ){
+	  childrenNode=node.getChildren.length
+        }
+      }
+      for(node<-dst.breadthFirst){
+        if(isVerySimilar(node,target) ){
+	  childrenNode2=node.getChildren.length
+        }
+      }
+      if(childrenNode==childrenNode2){
+	if (actionName(actions.get(0)) == "Insert") {
+	  res+=1
+	}
+      }
+
+    }else{
+
+    cleanPosVars()
     for (ac <- actions) {
+
+      var target = closestMethodInvocation(ac.getNode)
+      if(!target.isRoot){
+        if(statementAlreadyExisted(target, actions)){ //parent already existed
+
+	  for (ac2 <- actions.reverse) {
+	    var target2 = closestMethodInvocation(ac2.getNode)
+	    if(target.isSimilar(target2)){
+
+	      var childAC = target.getChildren.size
+	      var childAC2 = target2.getChildren.size
+	      if(childAC==childAC2 && statementWasNotRemoved(target2,actions)){
+
+		      var position = target2.getChildPosition(ac2.getNode)
+		      if(position > 1 && !alreadyCounted(position)){
+		        position match {
+	  	          case 2  => pos2=true
+			  case 3  => pos3=true
+			  case 4  => pos4=true
+			  case 5  => pos5=true
+			  case 6  => pos6=true
+			  case 7  => pos7=true
+			  case 8  => pos8=true
+			  case 9  => pos9=true
+			}
+		        res+=1
+
+		  
+		       }
+	      }
+	    
+	  }
+	  }
+	  
+        }
+      }
+    }
+    }
+    cleanPosVars()
+    res2=res
+    res
+
+/*
+
         if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
           if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
 	  var exp = nodeClassName(ac.getNode)
@@ -608,8 +788,10 @@ class DiffTemplates {
           } 
         }
       }
-    }
-    res
+*/
+
+
+
   }
 
   def match3MethodReplacer(actions: List[Action]): Int = {
@@ -633,12 +815,63 @@ class DiffTemplates {
 	}
       }
     }
+    res3=res
     res
   }
 
+
+
+
   def match4ParameterAdderRemover(actions: List[Action]): Int = {
     var res = 0
+    var childrenNode:Int=0
+    var childrenNode2:Int=0
+    
+    if(actions.size<=3){
+    var target = closestMethodInvocation(actions.get(0).getNode)
+      for(node<-src.breadthFirst){
+        if(isVerySimilar(node,target) ){
+	  childrenNode=node.getChildren.length
+        }
+      }
+      for(node<-dst.breadthFirst){
+        if(isVerySimilar(node,target) ){
+	  childrenNode2=node.getChildren.length
+        }
+      }
+      if(childrenNode!=childrenNode2){
+	if (actionName(actions.get(0)) == "Insert" || actionName(actions.get(0)) == "Delete") {
+	  res+=1
+	}
+      }
+
+    }else{
+
     for (ac <- actions) {
+
+      var target = closestMethodInvocation(ac.getNode)
+      if (!target.isRoot) {
+        if(statementAlreadyExisted(target, actions)){ 
+	  breakable{
+	  for (ac2 <- actions.reverse) {
+	    var target2 = closestMethodInvocation(ac2.getNode)
+	    if(target.isSimilar(target2)){
+	      var childAC = target.getChildren.size
+	      var childAC2 = target2.getChildren.size
+	      if(childAC!=childAC2){
+		res+=1
+		break
+	      }
+	    }
+	  }
+	  }
+        }
+      }
+    }
+    }
+    res4=res
+    res
+/*
       if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
         if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
  	  if (isExpression(nodeClassName(ac.getNode))) {          
@@ -673,8 +906,12 @@ class DiffTemplates {
           }
         }
       }
-    }
-    res
+*/
+
+
+
+
+
   }
 
   def match5ObjectInitializer(actions: List[Action]): Int = {
@@ -696,23 +933,46 @@ class DiffTemplates {
 	  }
 	}
     }
+    res5=res
     res
   }
 
 
+  def noOtherTemplateWasCounted(): Boolean = {
+    return (res1==0 && res2==0 && res3==0 && res4==0 && res5==0 && res6==0 && res7==0 && res8==0 && res9==0 && res10==0 && res11==0 && res12==0 && res13==0 && res14==0 && res15==0 && res16==0)
+  }
+
   def match6SequenceExchanger(actions: List[Action]): Int = {
     var res = 0
+    if(noOtherTemplateWasCounted()){
     for (ac <- actions) {
+      var target = ac.getNode
+      breakable {
       for (ac1 <- actions) {
-	if(actionName(ac) == "Insert" && actionName(ac1) == "Delete"){
-	  if(nodeClassName(ac.getNode.getParent) == nodeClassName(ac1.getNode.getParent)){	
-	    if(nodeClassName(ac.getNode) == nodeClassName(ac1.getNode)){
-	       res += 1 
-            }
+	var target1 = ac1.getNode	
+	//look up a statement of the same kind as target
+	while(!target1.isRoot && nodeClassName(target) != nodeClassName(target1)){
+	  target1 = target1.getParent
+	}
+
+ 	if(!target1.isRoot && !target1.isLeaf && target1.getHeight>1){ //the ones of height 1 are usually considered in the other templates
+	  if(actionName(ac) == "Insert"){
+	  //if(nodeClassName(ac.getNode.getParent) == nodeClassName(ac1.getNode.getParent)){	
+
+	  if(target.getSize==target1.getSize && target.hasLabel==target1.hasLabel && target.getLabel==target1.getLabel){
+	      if(numberOfChildren(ac.getNode.getChildren)==numberOfChildren(ac1.getNode.getChildren)){
+	         res += 1 
+	         break
+	      }
+          }
+	  //}
 	  }
 	}
       }
+      }
     }
+    }
+    res6=res
     res
   }
 
@@ -750,6 +1010,7 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
             }
 	  }
     }
+    res7=res
     res
   }
 
@@ -757,27 +1018,26 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
 
     var res = 0
     for (ac <- actions) {
-
           if(nodeClassName(ac.getNode) == "IfStatement"){
 	    if (actionName(ac) == "Insert"){
 	      val condition = ac.getNode.getChildren.get(0)
 	      if((nodeClassName(condition) == "InfixExpression")){ 
-		//only checks one bound
-		if(nodeClassName(condition.getChildren.get(0)) != "InfixExpression" ){
+
 		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName" || 
 		    nodeClassName(condition.getChildren.get(0)) == "ArrayAccess" || 
 		    nodeClassName(condition.getChildren.get(0)) == "MethodInvocation"){
-		    if(nodeClassName(condition.getChildren.get(1)) == "MethodInvocation"){
+		    if(nodeClassName(condition.getChildren.get(1)) == "MethodInvocation" || nodeClassName(condition.getChildren.get(1)) == "QualifiedName"){
 		      if(condition.getShortLabel == "<" || condition.getShortLabel == "<=" || condition.getShortLabel == ">" || condition.getShortLabel == ">="){
 		        res += 1
 		      }
 		    }
 		  }
-		}
+		
 	      }
             }
 	  }
     }
+    res8=res
     res
   }
 
@@ -791,7 +1051,8 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
 	      if((nodeClassName(condition) == "InfixExpression")){ 
 		  if(nodeClassName(condition.getChildren.get(0)) == "SimpleName" ||
 		  nodeClassName(condition.getChildren.get(0)) == "ArrayAccess" ||
-		  nodeClassName(condition.getChildren.get(0)) == "MethodInvocation"){
+		  nodeClassName(condition.getChildren.get(0)) == "MethodInvocation" ||
+		  nodeClassName(condition.getChildren.get(0)) == "QualifiedName"){
 		        if(condition.getShortLabel == "<" || condition.getShortLabel == "<="){
 		            val ifBody = ac.getNode.getChildren.get(1)
 			     if((nodeClassName(ifBody.getChildren.get(0).getChildren.get(0)) == "Assignment")){ 
@@ -809,6 +1070,7 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
             }
 	  }
     }
+    res9=res
     res
   }
 
@@ -839,6 +1101,7 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
             }
 	  }
     }
+    res10=res
     res
   }
 
@@ -848,11 +1111,11 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
       if (nodeClassName(ac.getNode.getParent) == "ArrayAccess") {
         if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
           if (actionName(ac) == "Insert"){
-	    if(nodeClassName(ac.getNode) == "PostfixExpression"){
+	    if(nodeClassName(ac.getNode) == "PostfixExpression"){ //array[i++]
 	      if((nodeClassName(ac.getNode.getChildren.get(0)) == "SimpleName")){ 
 		 res += 1 
 	      }
-	    }else if(nodeClassName(ac.getNode) == "InfixExpression"){
+	    }else if(nodeClassName(ac.getNode) == "InfixExpression"){ //array[i+1]
 	      if(ac.getNode.getShortLabel == "+" || ac.getNode.getShortLabel == "-"){
 		if(nodeClassName(ac.getNode.getChildren.get(1))=="NumberLiteral"){
 		  if(ac.getNode.getChildren.get(1).hasLabel && ac.getNode.getChildren.get(1).getLabel == "1"){
@@ -872,6 +1135,7 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
 
 	}
     }
+    res11=res
     res
   }
 
@@ -892,6 +1156,7 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
             }
 	  }
     }
+    res12=res
     res
   }
 
@@ -914,28 +1179,24 @@ nodeClassName(condition.getChildren.get(1).getChildren.get(0)) == "MethodInvocat
 	  }
 	}
     }
+    res13=res
     res
   }
+
 
   def match14CasteeMutator(actions: List[Action]): Int = {
     var res = 0
     for (ac <- actions) {
-      if(isExpression(nodeClassName(ac.getNode))){
-	if(nodeClassName(ac.getNode.getParent) == "CastExpression"){	
-	    if (actionName(ac) == "Insert"){
-	      //if((nodeClassName(ac.getNode.getChildren.get(0)) == "SimpleName")){ 
-		 res += 1 
-	      //}
-            }
-	  }
-	}else if(nodeClassName(ac.getNode) == "SimpleName"){
-	  if(nodeClassName(ac.getNode.getParent) == "CastExpression"){	
-	    if (actionName(ac) == "Update"){ 
-		 res += 1 
-            }
+      if (actionName(ac) == "Insert"){
+      if(isExpression(nodeClassName(ac.getNode)) && !(nodeClassName(ac.getNode) == "SimpleType") && !(nodeClassName(ac.getNode) == "PrimitiveType") && !(nodeClassName(ac.getNode.getParent) == "SimpleType") && !(nodeClassName(ac.getNode.getParent.getParent) == "PrimitiveType")){
+
+	  if((nodeClassName(ac.getNode) == "SimpleName" && nodeClassName(ac.getNode.getParent) == "CastExpression") || (nodeClassName(ac.getNode) == "ArrayAccess" && nodeClassName(ac.getNode.getParent) == "CastExpression") || (nodeClassName(ac.getNode) == "MethodInvocation" && nodeClassName(ac.getNode.getParent) == "CastExpression")){	
+	    res += 1 
 	  }
 	}
+      }
     }
+    res14=res
     res
   }
 
@@ -953,6 +1214,27 @@ def numberOfChildren(ac: List[ITree]): Int = {
   }
 return ret
 }
+
+def childrenPos(ac: List[ITree],lookForThis: ITree): Int = {
+  var ret = 0
+  breakable{
+  for(des<-ac){
+    if(nodeClassName(des) == "InfixExpression" && des.getHeight >= 2){
+      ret += numberOfChildren(des.getChildren)
+    }else if(nodeClassName(des) == "Block"){
+
+    }else{
+      //println(nodeClassName(des)+" "+des.toShortString)  
+      ret += 1
+      if(des==lookForThis){
+	break
+      }
+    }
+  }
+  }
+return ret
+}
+
 
 def childrenInCondition(ac: List[ITree]): List[ITree] = {
   val ret = new ListBuffer[ITree]()
@@ -991,14 +1273,45 @@ def closestIf(acParam: ITree): ITree = {
 ac
 }
 
+var posIf2, posIf3, posIf4, posIf5, posIf6, posIf7, posIf8, posIf9 = false
+def cleanIfPosVars(): Boolean = {
+posIf2 = false
+posIf3 = false
+posIf4 = false
+posIf5 = false
+posIf6 = false
+posIf7 = false
+posIf8 = false
+posIf9 = false
+true
+}
+
+def alreadyCountedIf(pos: Int): Boolean = {
+  var ac = false
+  pos match {
+  case 2  => return posIf2
+  case 3  => return posIf3
+  case 4  => return posIf4
+  case 5  => return posIf5
+  case 6  => return posIf6
+  case 7  => return posIf7
+  case 8  => return posIf8
+  case 9  => return posIf9
+  case _  =>  
+  }
+ac
+}
+
+
   def match15ExpressionChanger(actions: List[Action]): Int = {
     var res = 0
+    cleanIfPosVars()
     for (ac <- actions) {
 	var target = closestIf(ac.getNode)
 
 	if(!target.isRoot){
 	  if(statementAlreadyExisted(target, actions)){ 
-
+	    if(ac.getNode==target.getChildren.get(0) || ac.getNode.getParent==target.getChildren.get(0) ||ac.getNode.getParent.getParent==target.getChildren.get(0) ||ac.getNode.getParent.getParent.getParent==target.getChildren.get(0) ||ac.getNode.getParent.getParent.getParent.getParent==target.getChildren.get(0)){
 	        if (actionName(ac) == "Update") {
                   res += 1
 	        }else if (actionName(ac) == "Insert" || actionName(ac) == "Delete"){ 
@@ -1013,18 +1326,33 @@ ac
 
 		      if(childrenBeginning.length == childrenEnd.length){
 			if(howManyChildrenAreDifferent(childrenBeginning,childrenEnd) != 0){
-		          res += 1
-		          break
+			  var position = childrenPos(target.getChildren, ac.getNode)
+		          if(position > 1 && !alreadyCountedIf(position)){
+		            position match {
+	  	            case 2  => posIf2=true
+			    case 3  => posIf3=true
+			    case 4  => posIf4=true
+			    case 5  => posIf5=true
+			    case 6  => posIf6=true
+			    case 7  => posIf7=true
+			    case 8  => posIf8=true
+			    case 9  => posIf9=true
+			    case _  =>  
+			  }
+		          res+=1
+		        }
 			}
 		      }
 	            }
 	          }
 		  }
- 	      
+ 	      }
 	    }
 	  }
         }
     }
+    cleanIfPosVars()
+    res15=res
     res
 
 
@@ -1121,6 +1449,7 @@ ac
 	  }
         }
     }
+    res16=res
     res
   }
 
@@ -1129,6 +1458,18 @@ ac
     var res = true
     for (ac <- actions) {
       if (actionName(ac) == "Insert"){
+        if(ac.getNode == nodeToLookFor){
+	  return false
+	}
+      }
+    }
+    res
+  }
+
+def statementWasNotRemoved(nodeToLookFor: ITree, actions: List[Action]): Boolean = {
+    var res = true
+    for (ac <- actions) {
+      if (actionName(ac) == "Delete"){
         if(ac.getNode == nodeToLookFor){
 	  return false
 	}
