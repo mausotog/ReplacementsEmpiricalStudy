@@ -152,11 +152,7 @@ object DiffTemplates {
     println(res14+": 14CasteeMutator")
     println(res15+": 15ExpressionChanger")
     println(res16+": 16ExpressionAdder")
-    
-    
-    
-    
-    
+   
     results
   }
 }
@@ -230,23 +226,25 @@ class DiffTemplates {
     Run.initGenerators()
     val srcTC = new JdtTreeGenerator().generateFromFile(file1)
     val dstTC = new JdtTreeGenerator().generateFromFile(file2)
-    src = srcTC.getRoot
-    dst = dstTC.getRoot
+    val src = srcTC.getRoot
+    val dst = dstTC.getRoot
     val m = Matchers.getInstance.getMatcher(src, dst)
     m.`match`()
     return m.getMappings()
   }
 
-  var src:ITree =_ ;
-  var dst:ITree =_;
+  var srcCp:ITree =_ 
+  var dstCp:ITree =_
 
   def getDiffActions(file1: String, file2: String): (List[Action], MyJdtTreeGenerator, MyJdtTreeGenerator) = {
     val srcTG = new MyJdtTreeGenerator()
     val srcTC = srcTG.generateFromFile(file1)
     val dstTG = new MyJdtTreeGenerator()
     val dstTC = dstTG.generateFromFile(file2)
-    src = srcTC.getRoot
-    dst = dstTC.getRoot
+    val src = srcTC.getRoot
+    val dst = dstTC.getRoot
+    srcCp = srcTC.getRoot
+    dstCp = dstTC.getRoot
     val m = Matchers.getInstance.getMatcher(src, dst)
     m.`match`()
     val g = new ActionGenerator(src, dst, m.getMappings)
@@ -672,20 +670,22 @@ def isVerySimilar(node: ITree, node2: ITree): Boolean = {
 //println(nodeClassName(node.getParent) + " " + nodeClassName(node2.getParent))
 //    if(node.getParent.toShortString!=node2.getParent.toShortString)ret=false
 //  }  
-if(node.hasLabel!=node2.hasLabel)ret=false
-  if(node.getChildren.size>0 && node2.getChildren.size>0){
+//if(node.hasLabel!=node2.hasLabel)ret=false
+//  if(node.getChildren.size>0 && node2.getChildren.size>0){
 //println("Comparing " + node.getChildren.get(0).toShortString + " with " + node2.getChildren.get(0).toShortString)
-    if(node.getChildren.get(0).toShortString!=node2.getChildren.get(0).toShortString)ret=false
-  }else{
+  if(node.getChildren.size>0 && node2.getChildren.size>0 && node.getChildren.get(0).toShortString!=node2.getChildren.get(0).toShortString){
+    ret=false
+  }
+  if(node.getChildren.size>1 && node2.getChildren.size>1 && node.getChildren.get(1).toShortString!=node2.getChildren.get(1).toShortString){
     ret=false
   }
   if(node.getShortLabel!=node2.getShortLabel)ret=false
   //if(node.getSize!=node2.getSize)ret=false
   if(node.isLeaf!=node2.isLeaf)ret=false
-  if(node.isMatched!=node2.isMatched)ret=false
+//  if(node.isMatched!=node2.isMatched)ret=false
   if(node.isRoot!=node2.isRoot)ret=false
-  if(node.positionInParent!=node2.positionInParent)ret=false
-  if(node.getPos>node2.getPos+100 || node.getPos<node2.getPos-100)ret=false
+//  if(node.positionInParent!=node2.positionInParent)ret=false
+//  if(node.getPos>node2.getPos+100 || node.getPos<node2.getPos-100)ret=false
 
 ret
 }
@@ -697,14 +697,17 @@ ret
     var childrenNode:Int=0
     var childrenNode2:Int=0
     
-    if(actions.size<=3){
+    if(actions.size<=3 && actions.size>0){
+//println("actions.size" + actions.size)
     var target = closestMethodInvocation(actions.get(0).getNode)
-      for(node<-src.breadthFirst){
+
+
+      for(node<-srcCp.breadthFirst){
         if(isVerySimilar(node,target) ){
 	  childrenNode=node.getChildren.length
         }
       }
-      for(node<-dst.breadthFirst){
+      for(node<-dstCp.breadthFirst){
         if(isVerySimilar(node,target) ){
 	  childrenNode2=node.getChildren.length
         }
@@ -827,18 +830,20 @@ ret
     var childrenNode:Int=0
     var childrenNode2:Int=0
     
-    if(actions.size<=3){
+    if(actions.size<=3 && actions.size>0){
     var target = closestMethodInvocation(actions.get(0).getNode)
-      for(node<-src.breadthFirst){
+      for(node<-srcCp.preOrder){
         if(isVerySimilar(node,target) ){
-	  childrenNode=node.getChildren.length
+	  childrenNode=node.getChildren.size
         }
       }
-      for(node<-dst.breadthFirst){
+
+      for(node<-dstCp.preOrder){
         if(isVerySimilar(node,target) ){
-	  childrenNode2=node.getChildren.length
+	  childrenNode2=node.getChildren.size
         }
       }
+
       if(childrenNode!=childrenNode2){
 	if (actionName(actions.get(0)) == "Insert" || actionName(actions.get(0)) == "Delete") {
 	  res+=1
@@ -855,7 +860,7 @@ ret
 	  breakable{
 	  for (ac2 <- actions.reverse) {
 	    var target2 = closestMethodInvocation(ac2.getNode)
-	    if(target.isSimilar(target2)){
+	    if(isVerySimilar(target,target2)){
 	      var childAC = target.getChildren.size
 	      var childAC2 = target2.getChildren.size
 	      if(childAC!=childAC2){
