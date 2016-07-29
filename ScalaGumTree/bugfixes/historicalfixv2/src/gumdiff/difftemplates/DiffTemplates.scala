@@ -108,10 +108,10 @@ object DiffTemplates {
     val (actions,srcTC,dstTC) = diff.getDiffActions(file1, file2)
     diff.gatherAllInforX(actions,srcTC, dstTC)
     for(action <- actions){
-      println("ACTION: " + action)
-	println("Node: "+ diff.nodeClassName(action.getNode))
-        println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
-	println()
+      //println("ACTION: " + action)
+	//println("Node: "+ diff.nodeClassName(action.getNode))
+        //println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
+	//println()
     }
     if(actions.isEmpty){
       //println("Bachle: Warning in match Template: actions size is zero!!!")
@@ -732,7 +732,6 @@ ret
 
 	      var childAC = target.getChildren.size
 	      var childAC2 = node.getChildren.size
-println(childAC==childAC2)
 	      if(childAC==childAC2 && statementWasNotRemoved(node,actions)){
 		      var position = target.getChildPosition(ac.getNode)
 		      if(position > 1 && !alreadyCounted(position)){
