@@ -108,10 +108,10 @@ object DiffTemplates {
     val (actions,srcTC,dstTC) = diff.getDiffActions(file1, file2)
     diff.gatherAllInforX(actions,srcTC, dstTC)
     for(action <- actions){
-      //println("ACTION: " + action)
-	//println("Node: "+ diff.nodeClassName(action.getNode))
-        //println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
-	//println()
+      println("ACTION: " + action)
+	println("Node: "+ diff.nodeClassName(action.getNode))
+        println("NodeParent: "+ diff.nodeClassName(action.getNode.getParent))
+	println()
     }
     if(actions.isEmpty){
       //println("Bachle: Warning in match Template: actions size is zero!!!")
@@ -702,12 +702,12 @@ ret
     var target = closestMethodInvocation(actions.get(0).getNode)
 
 
-      for(node<-srcCp.breadthFirst){
+      for(node<-srcCp.preOrder){
         if(isVerySimilar(node,target) ){
 	  childrenNode=node.getChildren.length
         }
       }
-      for(node<-dstCp.breadthFirst){
+      for(node<-dstCp.preOrder){
         if(isVerySimilar(node,target) ){
 	  childrenNode2=node.getChildren.length
         }
@@ -726,16 +726,15 @@ ret
       var target = closestMethodInvocation(ac.getNode)
       if(!target.isRoot){
         if(statementAlreadyExisted(target, actions)){ //parent already existed
-
-	  for (ac2 <- actions.reverse) {
-	    var target2 = closestMethodInvocation(ac2.getNode)
-	    if(target.isSimilar(target2)){
+          breakable{
+	  for(node<-srcCp.preOrder){
+            if(isVerySimilar(node,target) ){
 
 	      var childAC = target.getChildren.size
-	      var childAC2 = target2.getChildren.size
-	      if(childAC==childAC2 && statementWasNotRemoved(target2,actions)){
-
-		      var position = target2.getChildPosition(ac2.getNode)
+	      var childAC2 = node.getChildren.size
+println(childAC==childAC2)
+	      if(childAC==childAC2 && statementWasNotRemoved(node,actions)){
+		      var position = target.getChildPosition(ac.getNode)
 		      if(position > 1 && !alreadyCounted(position)){
 		        position match {
 	  	          case 2  => pos2=true
@@ -747,20 +746,20 @@ ret
 			  case 8  => pos8=true
 			  case 9  => pos9=true
 			}
-		        res+=1
-
-		  
+		        res+=1	
+			break
 		       }
 	      }
 	    
+	    }
 	  }
-	  }
-	  
+	  }//breakable
+	  cleanPosVars()
         }
       }
     }
     }
-    cleanPosVars()
+ 
     res2=res
     res
 
@@ -826,7 +825,13 @@ ret
 
 
   def match4ParameterAdderRemover(actions: List[Action]): Int = {
+
     var res = 0
+
+
+
+
+
     var childrenNode:Int=0
     var childrenNode2:Int=0
     
@@ -858,11 +863,10 @@ ret
       if (!target.isRoot) {
         if(statementAlreadyExisted(target, actions)){ 
 	  breakable{
-	  for (ac2 <- actions.reverse) {
-	    var target2 = closestMethodInvocation(ac2.getNode)
-	    if(isVerySimilar(target,target2)){
+	  for(node<-srcCp.preOrder){
+            if(isVerySimilar(node,target) ){
 	      var childAC = target.getChildren.size
-	      var childAC2 = target2.getChildren.size
+	      var childAC2 = node.getChildren.size
 	      if(childAC!=childAC2){
 		res+=1
 		break
@@ -876,6 +880,10 @@ ret
     }
     res4=res
     res
+
+
+
+
 /*
       if (nodeClassName(ac.getNode.getParent) == "MethodInvocation") {
         if(statementAlreadyExisted(ac.getNode.getParent, actions)){ //parent already existed
